@@ -524,20 +524,32 @@ export async function getCoverLetter(id: number): Promise<CoverLetter | null> {
 }
 
 /** Auto-name a letter from its company/role (e.g. "Google Cover Letter"). */
+/** Auto file name from company/role. Empty when neither is set — the caller
+ *  then falls back to "Untitled N" (N = the letter's number). */
 export function defaultLetterTitle(company?: string | null, role?: string | null): string {
   const c = company?.trim();
   const r = role?.trim();
   if (c && r) return `${c} — ${r}`;
   if (c) return `${c} Cover Letter`;
   if (r) return `${r} Cover Letter`;
-  return "Untitled Cover Letter";
+  return "";
+}
+
+/** 1-based position of a letter among all letters (oldest = 1). Used to name
+ *  untitled letters "Untitled 1", "Untitled 2", … */
+export async function getCoverLetterNumber(id: number): Promise<number> {
+  const db = await getDb();
+  const row = await db.getFirstAsync<{ n: number }>(
+    "SELECT COUNT(*) AS n FROM cover_letters WHERE id <= ?",
+    id
+  );
+  return row?.n ?? 1;
 }
 
 export async function saveCoverLetter(letter: NewCoverLetter): Promise<number> {
   const db = await getDb();
   const createdAt = new Date().toISOString();
-  const title =
-    letter.title?.trim() || defaultLetterTitle(letter.company, letter.role);
+  let title = letter.title?.trim() || defaultLetterTitle(letter.company, letter.role);
   const r = await db.runAsync(
     "INSERT INTO cover_letters (title, company, role, content, created_at) VALUES (?, ?, ?, ?, ?)",
     title,
@@ -546,6 +558,11 @@ export async function saveCoverLetter(letter: NewCoverLetter): Promise<number> {
     letter.content,
     createdAt
   );
+  // No company/role/title → name it by its position: "Untitled N".
+  if (!title) {
+    title = `Untitled ${await getCoverLetterNumber(r.lastInsertRowId)}`;
+    await db.runAsync("UPDATE cover_letters SET title = ? WHERE id = ?", title, r.lastInsertRowId);
+  }
   return r.lastInsertRowId;
 }
 

@@ -1,16 +1,21 @@
 // Export screen (spec §12). Name the file, read the FULL letter in a large
-// scrollable box, then copy/export. Actions sit at the bottom, side by side.
+// scrollable box with a copy button in its corner, then export. PDF / Word /
+// Google Docs share a row; Share sits centered below.
 
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Keyboard, Pressable, ScrollView, View } from "react-native";
-import { Text } from "../../src/ui/serif";
+import { Text, TextInput } from "../../src/ui/serif";
 import { ScreenContainer } from "../../src/components/ScreenContainer";
 import { BackButton } from "../../src/components/BackButton";
 import { Button } from "../../src/components/Button";
-import { TextField } from "../../src/components/TextField";
-import { getCoverLetter, updateCoverLetterTitle } from "../../src/db/repositories";
-import { coverLetterTitle } from "../../src/utils/format";
+import { useApp } from "../../src/context/AppContext";
+import {
+  getCoverLetter,
+  getCoverLetterNumber,
+  defaultLetterTitle,
+  updateCoverLetterTitle,
+} from "../../src/db/repositories";
 import {
   copyText,
   exportPdf,
@@ -23,30 +28,42 @@ export default function ExportScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const letterId = Number(id);
   const router = useRouter();
+  const { colors } = useApp();
   const [content, setContent] = useState<string | null>(null);
   const [fileName, setFileName] = useState("");
+  const [autoName, setAutoName] = useState("Untitled");
   const [editingName, setEditingName] = useState(false);
 
   useEffect(() => {
     (async () => {
       const letter = await getCoverLetter(letterId);
       setContent(letter?.content ?? "");
-      if (letter) setFileName(coverLetterTitle(letter));
+      if (letter) {
+        // Auto name: company + role, else "Untitled N" (N = the letter's number).
+        const auto =
+          defaultLetterTitle(letter.company, letter.role) ||
+          `Untitled ${await getCoverLetterNumber(letterId)}`;
+        setAutoName(auto);
+        setFileName(letter.title?.trim() || auto);
+      }
     })();
   }, [letterId]);
 
-  // Persist the edited file name to the archive (used on blur, on return-key,
-  // and by the Done button while editing).
+  // The name we'll actually use: the typed name, or the auto name when blank —
+  // never the previously-saved title. So clearing the field yields "Untitled N"
+  // (or company + role), not the old name.
+  const effectiveName = () => fileName.trim() || autoName;
+
   const saveName = async () => {
-    const name = fileName.trim();
-    if (name) await updateCoverLetterTitle(letterId, name);
+    await updateCoverLetterTitle(letterId, effectiveName());
   };
 
-  // Done button: while editing the name it saves + closes the keyboard and
-  // stays here; pressed again (keyboard down) it goes home.
+  // Done: while editing the name, save + close keyboard + stay; else go home.
   const onDone = async () => {
     if (editingName) {
-      await saveName();
+      const eff = effectiveName();
+      setFileName(eff);
+      await updateCoverLetterTitle(letterId, eff);
       Keyboard.dismiss();
       setEditingName(false);
       return;
@@ -54,13 +71,13 @@ export default function ExportScreen() {
     router.replace("/home");
   };
 
-  // Persist the (possibly edited) name to the archive, then run the action.
+  // Persist the effective name, then run the export action with it.
   const run =
     (fn: (name: string) => Promise<void>, successMsg?: string) => async () => {
       if (content == null) return;
-      const name = fileName.trim();
+      const name = effectiveName();
       try {
-        if (name) await updateCoverLetterTitle(letterId, name);
+        await updateCoverLetterTitle(letterId, name);
         await fn(name);
         if (successMsg) Alert.alert("Done", successMsg);
       } catch (e: any) {
@@ -68,67 +85,108 @@ export default function ExportScreen() {
       }
     };
 
-  const actions: { label: string; primary?: boolean; onPress: () => void }[] = [
-    { label: "Copy", primary: true, onPress: run(() => copyText(content!), "Copied to clipboard.") },
+  const copyLetter = async () => {
+    if (content == null) return;
+    await copyText(content);
+    Alert.alert("Copied", "The letter was copied to your clipboard.");
+  };
+  const copyFileName = async () => {
+    await copyText(effectiveName());
+    Alert.alert("Copied", "The file name was copied to your clipboard.");
+  };
+
+  const fileActions: { label: string; onPress: () => void }[] = [
     { label: "PDF", onPress: run((name) => exportPdf(content!, name)) },
     { label: "Word", onPress: run((name) => exportWord(content!, name)) },
-    { label: "Google Docs", onPress: run(() => openInGoogleDocs(content!), "Letter copied — paste it into the new doc.") },
-    { label: "Share", onPress: run((name) => shareText(content!, name)) },
+    {
+      label: "Docs",
+      onPress: run(() => openInGoogleDocs(content!), "Letter copied — paste it into the new Google Doc."),
+    },
   ];
 
   return (
     <ScreenContainer scroll={false}>
       <BackButton />
-      <TextField
-        label="File name"
-        value={fileName}
-        onChangeText={setFileName}
-        placeholder="e.g. Google — Software Engineer"
-        returnKeyType="done"
-        onFocus={() => setEditingName(true)}
-        onBlur={() => {
-          setEditingName(false);
-          void saveName();
-        }}
-        onSubmitEditing={() => {
-          void saveName();
-          Keyboard.dismiss();
-        }}
-      />
 
-      {/* Full letter, scrollable, fills the screen */}
-      <ScrollView className="mb-3 flex-1 rounded-2xl border border-border bg-white p-4 dark:border-dark-border dark:bg-dark-surface">
-        <Text className="text-sm leading-6 text-ink dark:text-dark-ink">
-          {content ?? "…"}
-        </Text>
-      </ScrollView>
+      {/* File name + copy-name button */}
+      <Text className="mb-1.5 text-sm font-medium text-primary dark:text-dark-primary">
+        File name
+      </Text>
+      <View className="mb-4 flex-row items-center">
+        <TextInput
+          value={fileName}
+          onChangeText={setFileName}
+          placeholder={autoName}
+          placeholderTextColor={colors.muted}
+          returnKeyType="done"
+          onFocus={() => setEditingName(true)}
+          onBlur={() => {
+            setEditingName(false);
+            const eff = effectiveName();
+            setFileName(eff);
+            void updateCoverLetterTitle(letterId, eff);
+          }}
+          onSubmitEditing={() => {
+            const eff = effectiveName();
+            setFileName(eff);
+            void updateCoverLetterTitle(letterId, eff);
+            Keyboard.dismiss();
+          }}
+          className="flex-1 rounded-xl border border-border bg-white/70 px-4 py-3 text-base text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink"
+        />
+        <Pressable
+          onPress={copyFileName}
+          hitSlop={8}
+          className="ml-2 h-11 w-11 items-center justify-center rounded-xl bg-highlight active:opacity-70 dark:bg-dark-highlight"
+        >
+          <Text className="text-lg">📋</Text>
+        </Pressable>
+      </View>
 
-      {/* Actions, side by side */}
-      <View className="flex-row flex-wrap justify-between">
-        {actions.map((a) => (
+      {/* Full letter with a copy button in the top-right corner */}
+      <View className="relative mb-3 flex-1">
+        <ScrollView className="flex-1 rounded-2xl border border-border bg-white p-4 pt-12 dark:border-dark-border dark:bg-dark-surface">
+          <Text className="text-sm leading-6 text-ink dark:text-dark-ink">{content ?? "…"}</Text>
+        </ScrollView>
+        <Pressable
+          onPress={copyLetter}
+          hitSlop={8}
+          className="absolute right-2 top-2 h-9 flex-row items-center rounded-full bg-highlight px-3 active:opacity-70 dark:bg-dark-highlight"
+        >
+          <Text className="mr-1 text-base">📋</Text>
+          <Text className="text-sm font-semibold text-primary">Copy</Text>
+        </Pressable>
+      </View>
+
+      {/* PDF · Word · Google Docs on one row */}
+      <View className="flex-row">
+        {fileActions.map((a, i) => (
           <Pressable
             key={a.label}
             onPress={a.onPress}
-            className={`mb-2 w-[48%] items-center rounded-xl px-3 py-3 active:opacity-80 ${
-              a.primary ? "bg-primary dark:bg-dark-primary" : "bg-secondary"
-            }`}
+            className={`items-center rounded-xl bg-secondary px-2 py-3 active:opacity-80 ${
+              i < fileActions.length - 1 ? "mr-2" : ""
+            } flex-1`}
           >
-            <Text
-              className={`text-sm font-semibold ${
-                a.primary ? "text-background dark:text-dark-background" : "text-white"
-              }`}
-            >
-              {a.label}
-            </Text>
+            <Text className="text-sm font-semibold text-white">{a.label}</Text>
           </Pressable>
         ))}
       </View>
+
+      {/* Share, centered below */}
+      <Pressable
+        onPress={run((name) => shareText(content!, name))}
+        className="mt-2 flex-row items-center self-center rounded-xl bg-primary px-8 py-3 active:opacity-80 dark:bg-dark-primary"
+      >
+        <Text className="mr-2 text-base">📤</Text>
+        <Text className="text-sm font-semibold text-background dark:text-dark-background">Share</Text>
+      </Pressable>
 
       <Button
         label={editingName ? "Save name" : "Done"}
         variant="ghost"
         onPress={onDone}
-        className="mt-1"
+        className="mt-2"
       />
     </ScreenContainer>
   );
