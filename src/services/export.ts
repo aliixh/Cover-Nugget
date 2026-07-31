@@ -27,9 +27,13 @@ function escapeHtml(s: string): string {
 function letterHtml(content: string): string {
   const paragraphs = content
     .split(/\n{2,}/)
-    .map((p) => p.trim())
-    .filter(Boolean)
-    .map((p) => `<p>${escapeHtml(p).replace(/\n/g, "<br/>")}</p>`)
+    .filter((p) => p.trim().length)
+    .map((p) => {
+      // A leading tab marks a semi-block indented paragraph.
+      const indented = /^\t/.test(p);
+      const html = escapeHtml(p.replace(/^\t+/, "").trim()).replace(/\n/g, "<br/>");
+      return `<p${indented ? ' style="text-indent:2.5em"' : ""}>${html}</p>`;
+    })
     .join("\n");
   return `<!DOCTYPE html><html><head><meta charset="utf-8"/>
     <style>

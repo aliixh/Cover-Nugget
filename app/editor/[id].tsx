@@ -20,10 +20,18 @@ import { editSelection, editWholeLetter, fitToLength } from "../../src/services/
 import { copyText } from "../../src/services/export";
 import {
   getCoverLetter,
+  getFullProfile,
   updateCoverLetter,
+  updateCoverLetterFormat,
   updateCoverLetterLimit,
   updateCoverLetterTitle,
 } from "../../src/db/repositories";
+import {
+  LETTER_FORMATS,
+  formatIndexByKey,
+  applyLetterFormat,
+} from "../../src/services/letterFormat";
+import type { Profile } from "../../src/types/models";
 import { coverLetterTitle } from "../../src/utils/format";
 import { LengthLimitControl, type LimitState } from "../../src/components/LengthLimitControl";
 import {
@@ -69,6 +77,11 @@ export default function EditorScreen() {
   const [limit, setLimit] = useState<LimitState>({ enabled: false, type: "word", value: 300 });
   const [loaded, setLoaded] = useState(false);
 
+  // Layout preset (Classic Block by default) + the data the header needs.
+  const [formatIdx, setFormatIdx] = useState(0);
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [company, setCompany] = useState<string | null>(null);
+
   // Selection: keep the LAST non-empty range so actions still work after the
   // keyboard is dismissed (which visually clears the highlight).
   const [savedSel, setSavedSel] = useState<{ start: number; end: number } | null>(null);
@@ -95,14 +108,17 @@ export default function EditorScreen() {
 
   useEffect(() => {
     (async () => {
-      const letter = await getCoverLetter(letterId);
+      const [letter, full] = await Promise.all([getCoverLetter(letterId), getFullProfile()]);
       if (letter) {
         setText(letter.content);
         setTitle(coverLetterTitle(letter));
+        setCompany(letter.company ?? null);
+        setFormatIdx(formatIndexByKey(letter.formatKey));
         if (letter.limitType) {
           setLimit({ enabled: true, type: letter.limitType, value: letter.limitValue ?? 0 });
         }
       }
+      if (full) setProfile(full.profile);
       setLoaded(true);
     })();
   }, [letterId]);
@@ -249,6 +265,18 @@ export default function EditorScreen() {
     }
   };
 
+  // Cycle to the next layout preset: re-render the current letter in it,
+  // preserving the body. Needs the profile to rebuild the header.
+  const cycleFormat = async () => {
+    if (!profile) return;
+    const next = (formatIdx + 1) % LETTER_FORMATS.length;
+    const reformatted = applyLetterFormat(text, next, profile, company);
+    setText(reformatted);
+    setFormatIdx(next);
+    await updateCoverLetter(letterId, reformatted);
+    void updateCoverLetterFormat(letterId, LETTER_FORMATS[next].key);
+  };
+
   const enterEdit = async () => {
     await updateCoverLetter(letterId, text);
     setMode("edit");
@@ -311,6 +339,19 @@ export default function EditorScreen() {
           inputAccessoryViewID={Platform.OS === "ios" ? KB_ACCESSORY_ID : undefined}
           className="mb-3 rounded-lg py-1 text-xl font-bold text-primary dark:text-dark-primary"
         />
+
+        {/* Layout-format cycle button */}
+        <Pressable
+          onPress={cycleFormat}
+          disabled={busyAny || !profile}
+          className={`mb-3 flex-row items-center self-start rounded-full border border-border px-3 py-1.5 active:opacity-70 dark:border-dark-border ${
+            busyAny || !profile ? "opacity-40" : ""
+          }`}
+        >
+          <Text className="text-sm font-medium text-secondary dark:text-dark-ink">
+            ⟳ Format: {LETTER_FORMATS[formatIdx].name}
+          </Text>
+        </Pressable>
 
         {mode === "preview" ? (
           /* ---------- PREVIEW ---------- */

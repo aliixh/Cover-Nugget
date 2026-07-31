@@ -7,7 +7,8 @@
 // UI to show.
 
 import { getAI } from "../ai";
-import { buildTemplateLetter, buildLetterHeader } from "../ai/template";
+import { buildTemplateLetter } from "../ai/template";
+import { applyLetterFormat } from "./letterFormat";
 import type { JobInput, SelectionAction } from "../ai/types";
 import { getFullProfile, listAiSettings } from "../db/repositories";
 import { withinLimit, type LengthLimit } from "../utils/textStats";
@@ -30,17 +31,19 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
   const instructions = await loadInstructions();
   const req = { profile, job, instructions };
 
-  // Deterministic header (name / address / contact / date) prepended to the
-  // body so the letter follows the standard business format regardless of which
-  // engine wrote the body.
-  const header = buildLetterHeader(profile.profile);
+  // Route whatever the engine writes through the default "Classic Block" format:
+  // this rebuilds the contact header / date / sign-off from the profile (so the
+  // model can never fake contact details) and normalizes the layout. The user
+  // can switch to any other preset from the editor.
+  const format = (body: string) =>
+    applyLetterFormat(body, 0, profile.profile, job.company);
 
   try {
     const body = await getAI().generate(req);
-    return { content: `${header}\n\n${body.trim()}`, usedFallback: false };
+    return { content: format(body), usedFallback: false };
   } catch {
     // Model unavailable (Expo Go / not downloaded / no runtime) — use template.
-    return { content: `${header}\n\n${buildTemplateLetter(req)}`, usedFallback: true };
+    return { content: format(buildTemplateLetter(req)), usedFallback: true };
   }
 }
 

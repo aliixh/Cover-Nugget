@@ -60,6 +60,8 @@ async function runMigrations(db: SQLite.SQLiteDatabase): Promise<void> {
   await ensureColumn(db, "cover_letters", "limit_value", "INTEGER");
   // v4: GPA on education.
   await ensureColumn(db, "education", "gpa", "TEXT");
+  // v5: chosen layout preset per letter.
+  await ensureColumn(db, "cover_letters", "format_key", "TEXT");
 }
 
 /**

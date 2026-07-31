@@ -116,6 +116,7 @@ const toCoverLetter = (r: Row): CoverLetter => ({
   createdAt: r.created_at,
   limitType: r.limit_type,
   limitValue: r.limit_value,
+  formatKey: r.format_key,
 });
 
 /* ------------------------------------------------------------------ */
@@ -571,6 +572,12 @@ export async function updateCoverLetterLimit(
     limitValue,
     id
   );
+}
+
+/** Persist the chosen layout preset for a letter. */
+export async function updateCoverLetterFormat(id: number, formatKey: string): Promise<void> {
+  const db = await getDb();
+  await db.runAsync("UPDATE cover_letters SET format_key = ? WHERE id = ?", formatKey, id);
 }
 
 export async function deleteCoverLetter(id: number): Promise<void> {

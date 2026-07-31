@@ -89,6 +89,8 @@ export interface CoverLetter {
   /** Optional length limit: "word" | "char" (null = no limit). */
   limitType?: "word" | "char" | null;
   limitValue?: number | null;
+  /** Chosen layout preset key (null = default Classic Block). */
+  formatKey?: string | null;
 }
 
 export interface AiSetting {
