@@ -20,28 +20,53 @@ function escapeHtml(s: string): string {
     .replace(/>/g, "&gt;");
 }
 
+// A line that is only "rule" characters (box-drawing / dashes) — rendered as a
+// full-width <hr> on export instead of fixed-width characters that stop halfway.
+const RULE_LINE = /^[─━—–\-─—–]{5,}$/;
+
 /** Wraps the letter text in a clean printable HTML document — a standard
- *  business letter set in Times New Roman 12pt with 1-inch margins. Blank lines
- *  separate paragraphs; single newlines (the header block) stay on their own
- *  lines, single-spaced. */
+ *  business letter set in Times New Roman 12pt with 1-inch margins. Margins come
+ *  from body padding (WebKit/expo-print ignores `@page` margins on iOS, which
+ *  left the text jammed against the page edge). Blank lines separate paragraphs;
+ *  single newlines stay on their own lines; a rule line becomes an <hr>. */
 function letterHtml(content: string): string {
-  const paragraphs = content
+  const renderBlock = (block: string): string => {
+    const indented = /^\t/.test(block);
+    const out: string[] = [];
+    let buf: string[] = [];
+    const flush = () => {
+      if (!buf.length) return;
+      const inner = buf.map((l) => escapeHtml(l.replace(/^\t+/, ""))).join("<br/>");
+      out.push(`<p${indented ? ' style="text-indent:2.5em"' : ""}>${inner}</p>`);
+      buf = [];
+    };
+    for (const line of block.split("\n")) {
+      if (RULE_LINE.test(line.trim())) {
+        flush();
+        out.push('<hr class="rule"/>');
+      } else {
+        buf.push(line);
+      }
+    }
+    flush();
+    return out.join("");
+  };
+
+  const body = content
     .split(/\n{2,}/)
-    .filter((p) => p.trim().length)
-    .map((p) => {
-      // A leading tab marks a semi-block indented paragraph.
-      const indented = /^\t/.test(p);
-      const html = escapeHtml(p.replace(/^\t+/, "").trim()).replace(/\n/g, "<br/>");
-      return `<p${indented ? ' style="text-indent:2.5em"' : ""}>${html}</p>`;
-    })
+    .filter((b) => b.trim().length)
+    .map(renderBlock)
     .join("\n");
+
   return `<!DOCTYPE html><html><head><meta charset="utf-8"/>
     <style>
-      @page { margin: 1in; }
+      @page { margin: 0; }
+      html, body { margin: 0; }
       body { font-family: 'Times New Roman', Times, serif; font-size: 12pt;
-             line-height: 1.4; color: #000000; margin: 0; padding: 0; }
+             line-height: 1.4; color: #000000; padding: 1in; }
       p { margin: 0 0 12pt 0; }
-    </style></head><body>${paragraphs}</body></html>`;
+      hr.rule { border: none; border-top: 1px solid #000; margin: 4pt 0 10pt 0; }
+    </style></head><body>${body}</body></html>`;
 }
 
 /** Make a filesystem-safe file base name from a user-facing title. */
