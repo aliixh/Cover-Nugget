@@ -25,10 +25,19 @@ export interface GenerateRequest {
 /** A highlight-based edit on a selected span (spec §8). */
 export type SelectionAction =
   | "shorten"
+  | "expand"
   | "less-formal"
   | "more-formal"
   | "more-confident"
+  | "more-playful"
+  | "more-sincere"
+  | "more-personal"
+  | "more-grateful"
+  | "more-enthusiastic"
   | "simplify"
+  | "change-structure"
+  | "rephrase"
+  | "active-voice"
   | "fix-grammar"
   | "remove"
   | "custom";

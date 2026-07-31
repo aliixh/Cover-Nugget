@@ -12,10 +12,19 @@ import type {
 // Human-readable phrasing for each highlight action (spec §8).
 const ACTION_PHRASING: Record<SelectionAction, string> = {
   shorten: "Make this shorter while keeping the meaning.",
+  expand: "Expand this with a little more relevant detail — no filler or padding.",
   "less-formal": "Rewrite this to be less formal.",
   "more-formal": "Rewrite this to be more formal.",
   "more-confident": "Rewrite this to sound more confident.",
+  "more-playful": "Rewrite this in a more playful, light-hearted tone.",
+  "more-sincere": "Rewrite this to sound more sincere and heartfelt.",
+  "more-personal": "Rewrite this to feel more personal and specific to me.",
+  "more-grateful": "Rewrite this to sound more appreciative and grateful.",
+  "more-enthusiastic": "Rewrite this to sound more enthusiastic.",
   simplify: "Simplify this so it is easier to read.",
+  "change-structure": "Restructure this — change the sentence structure while keeping the meaning.",
+  rephrase: "Rephrase this using different wording while keeping the meaning.",
+  "active-voice": "Rewrite this in active voice.",
   "fix-grammar": "Fix any grammar and spelling issues.",
   remove: "Remove this text.",
   custom: "", // provided by the user

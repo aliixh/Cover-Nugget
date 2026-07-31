@@ -22,16 +22,24 @@ const CATEGORIES: { key: EditCategory; label: string }[] = [
 const OPTS: Record<Exclude<EditCategory, "custom">, { label: string; action: SelectionAction }[]> = {
   length: [
     { label: "Shorten", action: "shorten" },
+    { label: "Expand", action: "expand" },
     { label: "Remove", action: "remove" },
   ],
   tone: [
     { label: "More formal", action: "more-formal" },
     { label: "Less formal", action: "less-formal" },
     { label: "More confident", action: "more-confident" },
+    { label: "More enthusiastic", action: "more-enthusiastic" },
+    { label: "More playful", action: "more-playful" },
+    { label: "More sincere", action: "more-sincere" },
+    { label: "More personal", action: "more-personal" },
+    { label: "More grateful", action: "more-grateful" },
   ],
   grammar: [
-    { label: "Fix grammar", action: "fix-grammar" },
     { label: "Simplify", action: "simplify" },
+    { label: "Change structure", action: "change-structure" },
+    { label: "Rephrase", action: "rephrase" },
+    { label: "Active voice", action: "active-voice" },
   ],
 };
 
