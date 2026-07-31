@@ -24,3 +24,7 @@ expo-env.d.ts
 
 # macOS
 .DS_Store
+
+# Agent working notes (not app code)
+memory/
+MEMORY.md
