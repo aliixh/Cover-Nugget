@@ -36,7 +36,7 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
   // model can never fake contact details) and normalizes the layout. The user
   // can switch to any other preset from the editor.
   const format = (body: string) =>
-    applyLetterFormat(body, 0, profile.profile, job.company);
+    applyLetterFormat(body, 0, profile.profile, job.company, job.role);
 
   try {
     const body = await getAI().generate(req);

@@ -84,7 +84,7 @@ export function OnboardingScaffold({
       </View>
 
       {/* Sticky footer actions (raised off the bottom edge) */}
-      <View className="mt-4 mb-4 flex-row items-center">
+      <View className="mt-4 mb-10 flex-row items-center">
         {onBack ? (
           <Button label="Back" variant="ghost" onPress={onBack} className="mr-3" />
         ) : null}

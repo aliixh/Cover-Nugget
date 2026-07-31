@@ -78,6 +78,7 @@ export default function EditorScreen() {
   const [formatIdx, setFormatIdx] = useState(0);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [company, setCompany] = useState<string | null>(null);
+  const [role, setRole] = useState<string | null>(null);
 
   // Sentence selection (indices into the token list).
   const [selected, setSelected] = useState<Set<number>>(new Set());
@@ -106,6 +107,7 @@ export default function EditorScreen() {
         setText(letter.content);
         setTitle(coverLetterTitle(letter));
         setCompany(letter.company ?? null);
+        setRole(letter.role ?? null);
         setFormatIdx(formatIndexByKey(letter.formatKey));
         if (letter.limitType) {
           setLimit({ enabled: true, type: letter.limitType, value: letter.limitValue ?? 0 });
@@ -243,7 +245,7 @@ export default function EditorScreen() {
   const cycleFormat = async () => {
     if (!profile) return;
     const next = (formatIdx + 1) % LETTER_FORMATS.length;
-    const reformatted = applyLetterFormat(text, next, profile, company);
+    const reformatted = applyLetterFormat(text, next, profile, company, role);
     setText(reformatted);
     setFormatIdx(next);
     clearSelection();

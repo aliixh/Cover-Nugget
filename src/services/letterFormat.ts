@@ -21,8 +21,11 @@ export interface LetterFormat {
   key: string;
   name: string; // shown on the cycle button
   blurb: string; // one-line description
-  render: (p: Profile, parts: LetterParts, company?: string) => string;
+  render: (p: Profile, parts: LetterParts, company?: string, role?: string) => string;
 }
+
+const RULE = "──────────────────────────";
+const DOTS = "•  •  •";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -34,11 +37,6 @@ function today(): string {
   return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
-/** "31 July 2026" — the MLA day-month-year date form. */
-function todayDMY(): string {
-  const d = new Date();
-  return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
-}
 
 const t = (s?: string | null) => (s ?? "").trim();
 
@@ -147,31 +145,33 @@ export const LETTER_FORMATS: LetterFormat[] = [
       ]),
   },
   {
-    key: "mla",
-    name: "MLA Style",
-    blurb: "Academic MLA: contact, day-month-year date, then the company.",
-    render: (p, parts, company) =>
+    key: "executive",
+    name: "Executive",
+    blurb: "Uppercase letterhead, a rule under the header, and a Re: line.",
+    render: (p, parts, _company, role) =>
       join([
-        [t(p.name), t(p.location), contactBits(p).join(" · ")].filter(Boolean).join("\n"),
-        todayDMY(),
-        t(company), // recipient org, only when we know it (never a placeholder)
+        // Letterhead: uppercase name + pipe-separated contact, underlined by a rule.
+        [t(p.name).toUpperCase(), contactBits(p).join("  |  ")].filter(Boolean).join("\n") +
+          "\n" +
+          RULE,
+        today(),
+        role ? `Re: Application for ${role}` : undefined,
         parts.greeting,
         body(parts),
         `Sincerely,\n${t(p.name)}`,
       ]),
   },
   {
-    key: "apa",
-    name: "APA Style",
-    blurb: "APA block letter: sender block, date, company, 'Best regards'.",
-    render: (p, parts, company) =>
+    key: "creative",
+    name: "Creative",
+    blurb: "Sparkle-separated contact, a dot section break, warm sign-off.",
+    render: (p, parts) =>
       join([
-        [t(p.name), t(p.location), contactBits(p).join(" · ")].filter(Boolean).join("\n"),
-        today(),
-        t(company), // recipient org, only when we know it (never a placeholder)
+        [t(p.name), contactBits(p).join("  ✦  ")].filter(Boolean).join("\n"),
+        DOTS,
         parts.greeting,
         body(parts),
-        `Best regards,\n${t(p.name)}`,
+        `Warmly,\n${t(p.name)}`,
       ]),
   },
 ];
@@ -186,7 +186,7 @@ export function formatIndexByKey(key?: string | null): number {
 // it can be re-rendered in another format.
 const GREETING_RE = /^(dear\b|to whom it may concern|hello\b|hi\b|greetings|to the\b)/i;
 const CLOSING_RE =
-  /^(sincerely(?: yours)?|yours sincerely|best regards|kind regards|warm regards|best|regards|respectfully|thank you|thanks|yours truly|cordially)[,.]?$/i;
+  /^(sincerely(?: yours)?|yours sincerely|best regards|kind regards|warm regards|warmly|best|regards|respectfully|thank you|thanks|yours truly|cordially|cheers|all the best|with appreciation)[,.]?$/i;
 
 /**
  * Split a letter string into its greeting + body paragraphs, discarding the
@@ -220,8 +220,9 @@ export function applyLetterFormat(
   content: string,
   index: number,
   profile: Profile,
-  company?: string | null
+  company?: string | null,
+  role?: string | null
 ): string {
   const fmt = LETTER_FORMATS[index] ?? LETTER_FORMATS[0];
-  return fmt.render(profile, deconstructLetter(content), company ?? undefined);
+  return fmt.render(profile, deconstructLetter(content), company ?? undefined, role ?? undefined);
 }
