@@ -1,0 +1,4 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-jobspy>=1.1.70
+trafilatura>=1.8

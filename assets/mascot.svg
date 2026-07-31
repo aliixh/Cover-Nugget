@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="40%" r="75%">
+        <stop offset="0%" stop-color="#12372A"/>
+        <stop offset="100%" stop-color="#14201C"/>
+      </radialGradient>
+    </defs>
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    
+    <g>
+      <!-- dino plates behind the nugget -->
+      <path d="M358 250 L392 190 L426 250 Z" fill="#7FAE8E"/>
+      <path d="M428 226 L468 152 L508 226 Z" fill="#7FAE8E"/>
+      <path d="M512 224 L552 150 L592 224 Z" fill="#7FAE8E"/>
+      <path d="M598 250 L632 190 L666 250 Z" fill="#7FAE8E"/>
+
+      <!-- nugget body -->
+      <path d="M512 220 C620 214 712 250 748 322 C792 360 832 402 820 470 C846 540 838 628 782 686 C742 760 648 812 540 812 C436 820 340 792 286 726 C214 700 178 616 198 540 C176 466 210 384 276 340 C316 268 404 226 512 220 Z" fill="#F0A94B" stroke="#D98E30" stroke-width="10"/>
+      <!-- breaded bumps -->
+      <g fill="#D98E30" opacity="0.35">
+        <circle cx="360" cy="430" r="16"/>
+        <circle cx="470" cy="360" r="13"/>
+        <circle cx="640" cy="400" r="15"/>
+        <circle cx="700" cy="520" r="14"/>
+        <circle cx="330" cy="600" r="14"/>
+        <circle cx="600" cy="690" r="15"/>
+        <circle cx="470" cy="650" r="12"/>
+      </g>
+
+      <!-- pink cheeks -->
+      <ellipse cx="388" cy="586" rx="42" ry="30" fill="#FF6B8A" opacity="0.85"/>
+      <ellipse cx="636" cy="586" rx="42" ry="30" fill="#FF6B8A" opacity="0.85"/>
+
+      <!-- eyes -->
+      <circle cx="430" cy="510" r="46" fill="#FFFFFF"/>
+      <circle cx="594" cy="510" r="46" fill="#FFFFFF"/>
+      <circle cx="442" cy="518" r="22" fill="#5A3A1E"/>
+      <circle cx="606" cy="518" r="22" fill="#5A3A1E"/>
+      <circle cx="450" cy="510" r="7" fill="#FFFFFF"/>
+      <circle cx="614" cy="510" r="7" fill="#FFFFFF"/>
+
+      <!-- happy mouth -->
+      <path d="M462 610 Q512 668 562 610" fill="none" stroke="#5A3A1E"
+            stroke-width="14" stroke-linecap="round"/>
+    </g>
+  </svg>
