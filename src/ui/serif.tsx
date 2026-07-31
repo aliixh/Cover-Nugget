@@ -11,6 +11,7 @@ import {
   Text as RNText,
   TextInput as RNTextInput,
   Platform,
+  StyleSheet,
   type TextProps,
   type TextInputProps,
 } from "react-native";
@@ -25,9 +26,15 @@ export const Text = React.forwardRef<RNText, TextProps>(({ style, ...props }, re
 Text.displayName = "Text";
 
 export const TextInput = React.forwardRef<RNTextInput, TextInputProps>(
-  ({ style, ...props }, ref) => (
-    <RNTextInput ref={ref} style={[serifStyle, style]} {...props} />
-  )
+  ({ style, ...props }, ref) => {
+    // iOS clips glyph descenders (j, g, y, p) inside a TextInput whenever a
+    // `lineHeight` is set on it — and the serif font has deep descenders. Drop
+    // any lineHeight so the font's natural metrics are used. (Android keeps its
+    // default includeFontPadding, which already reserves descender space.)
+    const flat: Record<string, any> = { ...(StyleSheet.flatten(style) || {}) };
+    if (flat.lineHeight != null) delete flat.lineHeight;
+    return <RNTextInput ref={ref} style={[serifStyle, flat]} {...props} />;
+  }
 );
 TextInput.displayName = "TextInput";
 
