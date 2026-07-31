@@ -40,10 +40,18 @@ function cleanJobText(raw: string): string {
     .trim();
 }
 
-/** True if the reader clearly returned a bot-check / wall, not a posting. */
+/**
+ * True only if the page is genuinely a bot-check / login WALL, not a real
+ * posting that happens to mention one of these words in its footer. Challenge
+ * pages are short; a real posting is long — so we require a marker AND very
+ * little visible text. This kills false positives (e.g. a job page whose footer
+ * says "Cloudflare" or a benefits blurb that says "captcha").
+ */
 function looksBlocked(text: string): boolean {
   const lower = text.toLowerCase();
-  return BLOCK_MARKERS.some((m) => lower.includes(m));
+  if (!BLOCK_MARKERS.some((m) => lower.includes(m))) return false;
+  const visible = text.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return visible.length < 1500;
 }
 
 // Phrases that typically START the boilerplate tail of a posting (EEO
@@ -146,6 +154,19 @@ function extractJobPosting(html: string): string | null {
   return null;
 }
 
+/** Whole-page readable text: drop scripts/styles/nav/header/footer, then strip
+ *  tags. Used as a fallback when there's no JobPosting JSON-LD. */
+function fullPageText(html: string): string {
+  const stripped = html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<noscript[\s\S]*?<\/noscript>/gi, " ")
+    .replace(/<nav[\s\S]*?<\/nav>/gi, " ")
+    .replace(/<header[\s\S]*?<\/header>/gi, " ")
+    .replace(/<footer[\s\S]*?<\/footer>/gi, " ");
+  return htmlToText(stripped);
+}
+
 async function fetchDirect(url: string): Promise<string | null> {
   let res: Response;
   try {
@@ -157,12 +178,17 @@ async function fetchDirect(url: string): Promise<string | null> {
   }
   if (!res.ok) return null;
   const html = await res.text();
-  // JobPosting JSON-LD is the clean win (most boards include it).
+  // 1) JobPosting JSON-LD is the clean win (most boards include it).
   const job = extractJobPosting(html);
-  if (job && job.length >= 120) return job;
-  // Bot-check page → let other methods try.
+  if (job && job.length >= 100) return job;
+  // 2) Genuine bot-check / login wall → let other methods try.
   if (looksBlocked(html)) return null;
-  return null; // raw full-page strip is too noisy; defer to Jina/backend
+  // 3) No JSON-LD but the page loaded fine → use its readable body text. This
+  //    is the common case for plain company career pages, and it means a page
+  //    we actually fetched no longer gets falsely reported as "no job desc".
+  const body = trimBoilerplate(fullPageText(html));
+  if (body.length >= 200) return body;
+  return null; // page had almost no text (likely JS-rendered) → try Jina
 }
 
 // Optional self-hosted backend (Oracle VM etc.). When set, we try it first — it
@@ -234,8 +260,12 @@ export async function fetchJobTextFromUrl(url: string): Promise<string> {
   }
 
   const cleaned = trimBoilerplate(cleanJobText(raw));
-  if (cleaned.length < 120) {
-    throw new Error(`That link didn't return a usable job description. ${PASTE_HINT}`);
+  // Only treat it as a failure if we truly got nothing. Anything with real
+  // content is returned and used, rather than wrongly rejected.
+  if (cleaned.length < 60) {
+    throw new Error(
+      `Couldn't read the job text from that link — the page may need a login or load its content with JavaScript. ${PASTE_HINT}`
+    );
   }
   return cleaned;
 }
