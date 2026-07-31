@@ -28,22 +28,27 @@ export function ScreenContainer({ children, scroll = true, className = "" }: Pro
       edges={["top", "left", "right"]}
       className="flex-1 bg-background dark:bg-dark-background"
     >
-      <KeyboardAvoidingView
-        className="flex-1"
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-      >
-        {scroll ? (
-          <ScrollView
-            className="flex-1"
-            contentContainerStyle={{ flexGrow: 1 }}
-            keyboardShouldPersistTaps="handled"
-          >
-            {inner}
-          </ScrollView>
-        ) : (
-          inner
-        )}
-      </KeyboardAvoidingView>
+      {scroll ? (
+        // `automaticallyAdjustKeyboardInsets` insets the scroll content by the
+        // keyboard height, so the focused field scrolls into view instead of
+        // sitting under the keyboard (which clipped the bottom of the text).
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{ flexGrow: 1, paddingBottom: 24 }}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="interactive"
+          automaticallyAdjustKeyboardInsets
+        >
+          {inner}
+        </ScrollView>
+      ) : (
+        <KeyboardAvoidingView
+          className="flex-1"
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+        >
+          {inner}
+        </KeyboardAvoidingView>
+      )}
     </SafeAreaView>
   );
 }

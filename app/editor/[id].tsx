@@ -1,22 +1,22 @@
-// Cover Letter Editor (spec §7–§11) — the core screen.
-//  - Opens in a clean read-only PREVIEW with an "Edit" button on top.
-//  - Edit mode: a big text area (kept large; the keyboard overlays rather than
-//    shrinking it) + a compact categorized AI toolbar (Selection/Whole letter,
-//    Length/Tone/Grammar/Custom).
-//  - Length limit: our counter tracks length; "Fit" shortens via the model with
-//    a progress bar you can cancel.
+// Cover Letter Editor.
+//  - SELECT mode (default): the letter is shown as tappable sentences. Tap one
+//    or more sentences (no keyboard) then pick an AI change to apply to them.
+//    "Select all" selects every sentence. A layout-format button cycles presets.
+//  - "Edit myself" opens MANUAL mode: a normal text box with the keyboard; a
+//    Done button then asks to Save changes or Revert to the pre-edit version.
+//  - Length limit: our counter tracks length; "Fit" shortens via the model.
 //
-// When the on-device model isn't available (Expo Go), AI actions show a clear
-// message; manual editing always works.
+// AI actions need the on-device model; in Expo Go they show a clear message.
+// Manual editing always works.
 
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Animated, InputAccessoryView, Keyboard, Modal, Platform, Pressable, ScrollView, View } from "react-native";
 import { Text, TextInput } from "../../src/ui/serif";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../../src/components/Button";
 import { useApp } from "../../src/context/AppContext";
-import { editSelection, editWholeLetter, fitToLength } from "../../src/services/coverLetter";
+import { editSelection, fitToLength } from "../../src/services/coverLetter";
 import { copyText } from "../../src/services/export";
 import {
   getCoverLetter,
@@ -26,20 +26,17 @@ import {
   updateCoverLetterLimit,
   updateCoverLetterTitle,
 } from "../../src/db/repositories";
+import { coverLetterTitle } from "../../src/utils/format";
 import {
   LETTER_FORMATS,
   formatIndexByKey,
   applyLetterFormat,
 } from "../../src/services/letterFormat";
 import type { Profile } from "../../src/types/models";
-import { coverLetterTitle } from "../../src/utils/format";
 import { LengthLimitControl, type LimitState } from "../../src/components/LengthLimitControl";
-import {
-  EditToolbar,
-  type EditScope,
-  type EditCategory,
-} from "../../src/components/EditToolbar";
+import { EditToolbar, type EditCategory } from "../../src/components/EditToolbar";
 import { countChars, countWords, withinLimit, type LengthLimit } from "../../src/utils/textStats";
+import { tokenizeSentences } from "../../src/utils/sentences";
 import type { SelectionAction } from "../../src/ai/types";
 
 const KB_ACCESSORY_ID = "editorKbDone";
@@ -71,23 +68,21 @@ export default function EditorScreen() {
   const router = useRouter();
   const { colors } = useApp();
 
-  const [mode, setMode] = useState<"preview" | "edit">("preview");
+  const [mode, setMode] = useState<"select" | "manual">("select");
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [limit, setLimit] = useState<LimitState>({ enabled: false, type: "word", value: 300 });
   const [loaded, setLoaded] = useState(false);
 
-  // Layout preset (Classic Block by default) + the data the header needs.
+  // Layout preset + the data its header needs.
   const [formatIdx, setFormatIdx] = useState(0);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [company, setCompany] = useState<string | null>(null);
 
-  // Selection: keep the LAST non-empty range so actions still work after the
-  // keyboard is dismissed (which visually clears the highlight).
-  const [savedSel, setSavedSel] = useState<{ start: number; end: number } | null>(null);
+  // Sentence selection (indices into the token list).
+  const [selected, setSelected] = useState<Set<number>>(new Set());
 
-  // Toolbar state.
-  const [scope, setScope] = useState<EditScope>("selection");
+  // Category currently expanded in the toolbar.
   const [openCat, setOpenCat] = useState<EditCategory | null>(null);
 
   const [busy, setBusy] = useState(false);
@@ -97,14 +92,12 @@ export default function EditorScreen() {
   const [fitStatus, setFitStatus] = useState("");
   const fitCancel = useRef(false);
 
+  // Manual-edit snapshot (for the Save / Revert prompt).
+  const manualSnapshot = useRef("");
+
   // Custom-edit modal.
   const [customOpen, setCustomOpen] = useState(false);
   const [customInstruction, setCustomInstruction] = useState("");
-  const [pendingSelection, setPendingSelection] = useState<{
-    text: string;
-    start: number;
-    end: number;
-  } | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -123,7 +116,11 @@ export default function EditorScreen() {
     })();
   }, [letterId]);
 
-  const hasSelection = !!savedSel && savedSel.end > savedSel.start;
+  const tokens = useMemo(() => tokenizeSentences(text), [text]);
+  const sentenceIdxs = useMemo(
+    () => tokens.map((t, i) => (t.sentence ? i : -1)).filter((i) => i >= 0),
+    [tokens]
+  );
   const busyAny = busy || fitting;
 
   const onChangeTitle = (t: string) => {
@@ -131,46 +128,53 @@ export default function EditorScreen() {
     if (t.trim().length > 0) void updateCoverLetterTitle(letterId, t.trim());
   };
 
-  const spliceSelection = (start: number, end: number, replacement: string) => {
-    const next = (text.slice(0, start) + replacement + text.slice(end)).replace(
-      /\n{3,}/g,
-      "\n\n"
-    );
-    setText(next);
+  const toggleSentence = (idx: number) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(idx)) next.delete(idx);
+      else next.add(idx);
+      return next;
+    });
   };
+  const selectAll = () => setSelected(new Set(sentenceIdxs));
+  const clearSelection = () => setSelected(new Set());
 
   const aiUnavailable = (e: any) => {
     Alert.alert(
       "This needs the full app",
       (e?.message ?? "This runs the on-device model.") +
-        "\n\nYou can still edit the letter by typing directly.",
+        "\n\nYou can still edit the letter yourself with “Edit myself.”"
     );
   };
 
-  const runSelectionAction = async (action: SelectionAction) => {
-    if (!hasSelection) {
-      Alert.alert("Select text first", "Highlight a sentence in the letter, then choose an action.");
+  // Apply an action to every selected sentence. Splice from the last sentence
+  // backwards so earlier offsets stay valid as text length changes.
+  const applyToSelected = async (action: SelectionAction, custom?: string) => {
+    const spans = [...selected]
+      .map((i) => tokens[i])
+      .filter((t) => t && t.sentence)
+      .sort((a, b) => b.start - a.start);
+    if (spans.length === 0) {
+      Alert.alert("Tap a sentence first", "Tap one or more sentences in the letter, then choose a change.");
       return;
     }
-    const { start, end } = savedSel!;
-    const selText = text.slice(start, end);
     try {
       setBusy(true);
-      const replacement = await editSelection(text, selText, action);
-      spliceSelection(start, end, replacement);
-      setSavedSel(null);
-    } catch (e: any) {
-      aiUnavailable(e);
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const runWholeAction = async (instruction: string) => {
-    try {
-      setBusy(true);
-      const next = await editWholeLetter(text, instruction);
+      let next = text;
+      for (const span of spans) {
+        const replacement =
+          action === "custom"
+            ? await editSelection(next, span.text, "custom", custom)
+            : await editSelection(next, span.text, action);
+        next = (next.slice(0, span.start) + replacement + next.slice(span.end)).replace(
+          /\n{3,}/g,
+          "\n\n"
+        );
+      }
       setText(next);
+      clearSelection();
+      setOpenCat(null);
+      await updateCoverLetter(letterId, next);
     } catch (e: any) {
       aiUnavailable(e);
     } finally {
@@ -179,60 +183,18 @@ export default function EditorScreen() {
   };
 
   const onCustom = () => {
-    if (scope === "selection") {
-      if (!hasSelection) {
-        Alert.alert("Select text first", "Highlight a sentence, then tap Custom.");
-        return;
-      }
-      const { start, end } = savedSel!;
-      setPendingSelection({ text: text.slice(start, end), start, end });
-    } else {
-      setPendingSelection(null);
+    if (selected.size === 0) {
+      Alert.alert("Tap a sentence first", "Tap one or more sentences, then tap Custom.");
+      return;
     }
     setCustomInstruction("");
     setCustomOpen(true);
   };
-
   const submitCustom = async () => {
-    if (customInstruction.trim().length === 0) {
-      setCustomOpen(false);
-      return;
-    }
+    const instruction = customInstruction.trim();
     setCustomOpen(false);
-    try {
-      setBusy(true);
-      if (scope === "selection" && pendingSelection) {
-        const replacement = await editSelection(
-          text,
-          pendingSelection.text,
-          "custom",
-          customInstruction.trim()
-        );
-        spliceSelection(pendingSelection.start, pendingSelection.end, replacement);
-        setSavedSel(null);
-      } else {
-        const next = await editWholeLetter(text, customInstruction.trim());
-        setText(next);
-      }
-    } catch (e: any) {
-      aiUnavailable(e);
-    } finally {
-      setBusy(false);
-      setPendingSelection(null);
-    }
-  };
-
-  const save = async () => {
-    await updateCoverLetter(letterId, text);
-    Alert.alert("Saved", "Your letter has been saved.");
-  };
-  const finish = async () => {
-    await updateCoverLetter(letterId, text);
-    router.push(`/export/${letterId}`);
-  };
-  const copyLetter = async () => {
-    await copyText(text);
-    Alert.alert("Copied", "The letter was copied to your clipboard.");
+    if (instruction.length === 0) return;
+    await applyToSelected("custom", instruction);
   };
 
   const onLimitChange = (s: LimitState) => {
@@ -265,25 +227,58 @@ export default function EditorScreen() {
     }
   };
 
-  // Cycle to the next layout preset: re-render the current letter in it,
-  // preserving the body. Needs the profile to rebuild the header.
   const cycleFormat = async () => {
     if (!profile) return;
     const next = (formatIdx + 1) % LETTER_FORMATS.length;
     const reformatted = applyLetterFormat(text, next, profile, company);
     setText(reformatted);
     setFormatIdx(next);
+    clearSelection();
     await updateCoverLetter(letterId, reformatted);
     void updateCoverLetterFormat(letterId, LETTER_FORMATS[next].key);
   };
 
-  const enterEdit = async () => {
-    await updateCoverLetter(letterId, text);
-    setMode("edit");
+  // --- Manual ("Edit myself") mode ---
+  const startManual = () => {
+    manualSnapshot.current = text;
+    clearSelection();
+    setOpenCat(null);
+    setMode("manual");
   };
-  const backToPreview = async () => {
+  const finishManual = () => {
+    Keyboard.dismiss();
+    if (text === manualSnapshot.current) {
+      setMode("select");
+      return;
+    }
+    Alert.alert("Keep your changes?", "Save your edits or go back to how it was before.", [
+      { text: "Keep editing", style: "cancel" },
+      {
+        text: "Revert",
+        style: "destructive",
+        onPress: async () => {
+          setText(manualSnapshot.current);
+          await updateCoverLetter(letterId, manualSnapshot.current);
+          setMode("select");
+        },
+      },
+      {
+        text: "Save changes",
+        onPress: async () => {
+          await updateCoverLetter(letterId, text);
+          setMode("select");
+        },
+      },
+    ]);
+  };
+
+  const copyLetter = async () => {
+    await copyText(text);
+    Alert.alert("Copied", "The letter was copied to your clipboard.");
+  };
+  const exportLetter = async () => {
     await updateCoverLetter(letterId, text);
-    setMode("preview");
+    router.push(`/export/${letterId}`);
   };
 
   if (!loaded) {
@@ -294,15 +289,15 @@ export default function EditorScreen() {
     );
   }
 
+  const selectedStyle = { backgroundColor: colors.accent, color: "#FFFFFF" };
+
   return (
     <SafeAreaView
       edges={["top", "left", "right"]}
       className="flex-1 bg-background dark:bg-dark-background"
     >
-      {/* No KeyboardAvoidingView squeeze — the letter stays big while you
-          highlight; the keyboard overlays the bottom (use "Done" to dismiss). */}
       <View className="flex-1 px-8 pt-3">
-        {/* Top row: round back button + primary action */}
+        {/* Top row: round back button + mode action */}
         <View className="mb-2 flex-row items-center justify-between">
           <Pressable
             onPress={() => router.back()}
@@ -311,28 +306,27 @@ export default function EditorScreen() {
           >
             <Text className="text-xl text-primary">←</Text>
           </Pressable>
-          {mode === "preview" ? (
+          {mode === "select" ? (
             <Pressable
-              onPress={enterEdit}
-              className="rounded-full bg-primary px-4 py-2 active:opacity-80 dark:bg-dark-primary"
+              onPress={startManual}
+              className="rounded-full border border-primary px-4 py-2 active:opacity-70 dark:border-dark-primary"
             >
-              <Text className="font-semibold text-background dark:text-dark-background">Edit</Text>
+              <Text className="font-semibold text-primary dark:text-dark-ink">✎ Edit myself</Text>
             </Pressable>
           ) : (
             <Pressable
-              onPress={backToPreview}
-              className="rounded-full border border-primary px-4 py-2 active:opacity-70 dark:border-dark-primary"
+              onPress={finishManual}
+              className="rounded-full bg-primary px-4 py-2 active:opacity-80 dark:bg-dark-primary"
             >
-              <Text className="font-semibold text-primary dark:text-dark-ink">Done</Text>
+              <Text className="font-semibold text-background dark:text-dark-background">Done</Text>
             </Pressable>
           )}
         </View>
 
-        {/* Editable name on its own row */}
+        {/* Editable name */}
         <TextInput
           value={title}
           onChangeText={onChangeTitle}
-          editable={mode === "edit"}
           placeholder="Cover letter name"
           placeholderTextColor={colors.muted}
           returnKeyType="done"
@@ -340,44 +334,42 @@ export default function EditorScreen() {
           className="mb-3 rounded-lg py-1 text-xl font-bold text-primary dark:text-dark-primary"
         />
 
-        {/* Layout-format cycle button */}
-        <Pressable
-          onPress={cycleFormat}
-          disabled={busyAny || !profile}
-          className={`mb-3 flex-row items-center self-start rounded-full border border-border px-3 py-1.5 active:opacity-70 dark:border-dark-border ${
-            busyAny || !profile ? "opacity-40" : ""
-          }`}
-        >
-          <Text className="text-sm font-medium text-secondary dark:text-dark-ink">
-            ⟳ Format: {LETTER_FORMATS[formatIdx].name}
-          </Text>
-        </Pressable>
+        {mode === "select" ? (
+          /* Format cycle button */
+          <Pressable
+            onPress={cycleFormat}
+            disabled={busyAny || !profile}
+            className={`mb-3 flex-row items-center self-start rounded-full border border-border px-3 py-1.5 active:opacity-70 dark:border-dark-border ${
+              busyAny || !profile ? "opacity-40" : ""
+            }`}
+          >
+            <Text className="text-sm font-medium text-secondary dark:text-dark-ink">
+              ⟳ Format: {LETTER_FORMATS[formatIdx].name}
+            </Text>
+          </Pressable>
+        ) : null}
 
-        {mode === "preview" ? (
-          /* ---------- PREVIEW ---------- */
-          <ScrollView className="flex-1 rounded-2xl border border-border bg-white p-4 dark:border-dark-border dark:bg-dark-surface">
-            <Text className="text-base leading-6 text-ink dark:text-dark-ink">{text}</Text>
-          </ScrollView>
-        ) : (
-          /* ---------- EDIT ---------- */
+        {mode === "select" ? (
+          /* ---------- SELECT (tap sentences) ---------- */
           <>
-            <TextInput
-              value={text}
-              onChangeText={setText}
-              onSelectionChange={(e) => {
-                const s = e.nativeEvent.selection;
-                if (s.end > s.start) setSavedSel({ start: s.start, end: s.end });
-              }}
-              multiline
-              scrollEnabled
-              textAlignVertical="top"
-              placeholder="Your cover letter…"
-              placeholderTextColor={colors.muted}
-              inputAccessoryViewID={Platform.OS === "ios" ? KB_ACCESSORY_ID : undefined}
-              className="flex-1 rounded-2xl border border-border bg-white p-4 text-base leading-6 text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink"
-            />
+            <ScrollView className="flex-1 rounded-2xl border border-border bg-white p-4 dark:border-dark-border dark:bg-dark-surface">
+              <Text className="text-base leading-6 text-ink dark:text-dark-ink">
+                {tokens.map((t, idx) =>
+                  t.sentence ? (
+                    <Text
+                      key={idx}
+                      onPress={() => toggleSentence(idx)}
+                      style={selected.has(idx) ? selectedStyle : undefined}
+                    >
+                      {t.text}
+                    </Text>
+                  ) : (
+                    <Text key={idx}>{t.text}</Text>
+                  )
+                )}
+              </Text>
+            </ScrollView>
 
-            {/* Shorten/regenerate progress OR the compact edit toolbar */}
             {fitting ? (
               <View className="mt-3 rounded-xl border border-border p-3 dark:border-dark-border">
                 <View className="mb-2 flex-row items-center justify-between">
@@ -400,15 +392,15 @@ export default function EditorScreen() {
             ) : (
               <View className="mt-3">
                 <EditToolbar
-                  scope={scope}
-                  setScope={setScope}
+                  selectedCount={selected.size}
+                  totalSentences={sentenceIdxs.length}
                   openCat={openCat}
                   setOpenCat={setOpenCat}
-                  hasSelection={hasSelection}
                   disabled={busyAny}
-                  onSelectionAction={runSelectionAction}
-                  onWholeAction={runWholeAction}
+                  onSelectionAction={applyToSelected}
                   onCustom={onCustom}
+                  onSelectAll={selectAll}
+                  onClear={clearSelection}
                 />
 
                 <View className="mt-3">
@@ -430,9 +422,23 @@ export default function EditorScreen() {
               </View>
             )}
           </>
+        ) : (
+          /* ---------- MANUAL (edit myself) ---------- */
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            autoFocus
+            multiline
+            scrollEnabled
+            textAlignVertical="top"
+            placeholder="Your cover letter…"
+            placeholderTextColor={colors.muted}
+            inputAccessoryViewID={Platform.OS === "ios" ? KB_ACCESSORY_ID : undefined}
+            className="flex-1 rounded-2xl border border-border bg-white p-4 text-base leading-6 text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink"
+          />
         )}
 
-        {/* Always-on word / char count (our own counter) */}
+        {/* Word / char count */}
         <Text className="mt-2 text-xs text-muted dark:text-dark-muted">
           {words} words · {chars} chars
           {activeLimit
@@ -442,18 +448,22 @@ export default function EditorScreen() {
             : ""}
         </Text>
 
-        {/* Bottom actions */}
-        <View className="mb-3 mt-2 flex-row">
-          {mode === "edit" ? (
-            <Button label="Save" variant="ghost" onPress={save} disabled={busyAny} className="mr-3 flex-1" />
-          ) : (
+        {/* Bottom actions (select mode only) */}
+        {mode === "select" ? (
+          <View className="mb-3 mt-2 flex-row">
             <Button label="Copy" variant="ghost" onPress={copyLetter} className="mr-3 flex-1" />
-          )}
-          <Button label="Export" onPress={finish} disabled={busyAny} className="flex-1" />
-        </View>
+            <Button label="Export" onPress={exportLetter} disabled={busyAny} className="flex-1" />
+          </View>
+        ) : (
+          <View className="mb-3 mt-2">
+            <Text className="text-center text-xs text-muted dark:text-dark-muted">
+              Tap Done to save or revert your edits.
+            </Text>
+          </View>
+        )}
       </View>
 
-      {/* Busy overlay while a single AI action runs */}
+      {/* Busy overlay while an AI action runs */}
       {busy ? (
         <View className="absolute inset-0 items-center justify-center bg-black/30">
           <View className="rounded-2xl bg-white p-6 dark:bg-dark-surface">
@@ -476,9 +486,8 @@ export default function EditorScreen() {
               Custom edit
             </Text>
             <Text className="mb-3 text-sm text-muted dark:text-dark-muted">
-              {scope === "selection"
-                ? "How should we rewrite the highlighted text?"
-                : "How should we rewrite the whole letter?"}
+              How should we rewrite the {selected.size} selected sentence
+              {selected.size === 1 ? "" : "s"}?
             </Text>
             <TextInput
               value={customInstruction}
