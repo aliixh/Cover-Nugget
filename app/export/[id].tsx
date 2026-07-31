@@ -104,7 +104,7 @@ export default function ExportScreen() {
       <Text className="mb-1.5 text-sm font-medium text-primary dark:text-dark-primary">
         File name
       </Text>
-      <View className="mb-4 flex-row items-center">
+      <View className="relative mb-4">
         <TextInput
           value={fileName}
           onChangeText={setFileName}
@@ -124,14 +124,14 @@ export default function ExportScreen() {
             void updateCoverLetterTitle(letterId, eff);
             Keyboard.dismiss();
           }}
-          className="flex-1 rounded-xl border border-border bg-white/70 px-4 py-3 text-base text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink"
+          className="rounded-xl border border-border bg-white/70 px-4 py-3 pr-11 text-base text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink"
         />
         <Pressable
           onPress={copyFileName}
           hitSlop={8}
-          className="ml-2 h-11 w-11 items-center justify-center rounded-xl bg-highlight active:opacity-70 dark:bg-dark-highlight"
+          className="absolute bottom-0 right-1 top-0 items-center justify-center px-2 active:opacity-60"
         >
-          <Ionicons name="copy-outline" size={20} color={colors.primary} />
+          <Ionicons name="copy-outline" size={20} color={colors.secondary} />
         </Pressable>
       </View>
 
@@ -140,15 +140,15 @@ export default function ExportScreen() {
         className="relative mb-4"
         style={{ flexBasis: "52%", flexGrow: 0, flexShrink: 1 }}
       >
-        <ScrollView className="flex-1 rounded-2xl border border-border bg-white p-4 pt-11 dark:border-dark-border dark:bg-dark-surface">
+        <ScrollView className="flex-1 rounded-2xl border border-border bg-white p-4 pr-10 dark:border-dark-border dark:bg-dark-surface">
           <Text className="text-sm leading-6 text-ink dark:text-dark-ink">{content ?? "…"}</Text>
         </ScrollView>
         <Pressable
           onPress={copyLetter}
           hitSlop={8}
-          className="absolute right-2 top-2 h-9 w-9 items-center justify-center rounded-full bg-highlight active:opacity-70 dark:bg-dark-highlight"
+          className="absolute right-3 top-3 items-center justify-center active:opacity-60"
         >
-          <Ionicons name="copy-outline" size={18} color={colors.primary} />
+          <Ionicons name="copy-outline" size={20} color={colors.secondary} />
         </Pressable>
       </View>
 

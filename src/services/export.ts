@@ -24,12 +24,9 @@ function escapeHtml(s: string): string {
 // full-width <hr> on export instead of fixed-width characters that stop halfway.
 const RULE_LINE = /^[─━—–\-─—–]{5,}$/;
 
-/** Wraps the letter text in a clean printable HTML document — a standard
- *  business letter set in Times New Roman 12pt with 1-inch margins. Margins come
- *  from body padding (WebKit/expo-print ignores `@page` margins on iOS, which
- *  left the text jammed against the page edge). Blank lines separate paragraphs;
- *  single newlines stay on their own lines; a rule line becomes an <hr>. */
-function letterHtml(content: string): string {
+/** The inner letter markup: paragraphs (blank-line separated), single newlines
+ *  as line breaks, a rule line as an <hr>, semi-block paragraphs indented. */
+function letterInner(content: string): string {
   const renderBlock = (block: string): string => {
     const indented = /^\t/.test(block);
     const out: string[] = [];
@@ -51,13 +48,17 @@ function letterHtml(content: string): string {
     flush();
     return out.join("");
   };
-
-  const body = content
+  return content
     .split(/\n{2,}/)
     .filter((b) => b.trim().length)
     .map(renderBlock)
     .join("\n");
+}
 
+/** Printable HTML (PDF) — Times New Roman 12pt. Margins come from body padding
+ *  (WebKit/expo-print ignores `@page` margins on iOS, which jammed the text
+ *  against the page edge). */
+function letterHtml(content: string): string {
   return `<!DOCTYPE html><html><head><meta charset="utf-8"/>
     <style>
       @page { margin: 0; }
@@ -66,7 +67,23 @@ function letterHtml(content: string): string {
              line-height: 1.4; color: #000000; padding: 1in; }
       p { margin: 0 0 12pt 0; }
       hr.rule { border: none; border-top: 1px solid #000; margin: 4pt 0 10pt 0; }
-    </style></head><body>${body}</body></html>`;
+    </style></head><body>${letterInner(content)}</body></html>`;
+}
+
+/** Word-compatible HTML (.doc). The Office XML namespaces + WordSection make
+ *  Word / Pages / Google Docs recognize and open it (a bare HTML .doc doesn't). */
+function wordHtml(content: string): string {
+  return `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+    <head><meta charset="utf-8"/><meta name="ProgId" content="Word.Document"/>
+    <!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View></w:WordDocument></xml><![endif]-->
+    <style>
+      @page WordSection1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; }
+      div.WordSection1 { page: WordSection1; }
+      body { font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.4; color: #000000; }
+      p { margin: 0 0 12pt 0; }
+      hr.rule { border: none; border-top: 1px solid #000; margin: 4pt 0 10pt 0; }
+    </style></head>
+    <body><div class="WordSection1">${letterInner(content)}</div></body></html>`;
 }
 
 /** Make a filesystem-safe file base name from a user-facing title. */
@@ -108,7 +125,7 @@ export async function exportWord(content: string, fileName?: string): Promise<vo
     throw new Error("Word export isn't available on web.");
   }
   const path = `${FileSystem.documentDirectory}${safeFileName(fileName)}.doc`;
-  await FileSystem.writeAsStringAsync(path, letterHtml(content), {
+  await FileSystem.writeAsStringAsync(path, wordHtml(content), {
     encoding: FileSystem.EncodingType.UTF8,
   });
   await shareFile(path, "application/msword");
@@ -121,7 +138,14 @@ export async function exportWord(content: string, fileName?: string): Promise<vo
  */
 export async function openInGoogleDocs(content: string): Promise<void> {
   await copyText(content);
-  await Linking.openURL("https://docs.new");
+  // `docs.new` is unreliable on mobile; the explicit create URL opens the Google
+  // Docs app (or the browser) to a fresh document to paste into.
+  const url = "https://docs.google.com/document/create";
+  try {
+    await Linking.openURL(url);
+  } catch {
+    await Linking.openURL("https://docs.new");
+  }
 }
 
 /** Generic share of the raw text via the OS share sheet. */
