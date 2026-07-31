@@ -34,6 +34,12 @@ function today(): string {
   return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
+/** "31 July 2026" — the MLA day-month-year date form. */
+function todayDMY(): string {
+  const d = new Date();
+  return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+}
+
 const t = (s?: string | null) => (s ?? "").trim();
 
 function contactBits(p: Profile): string[] {
@@ -89,14 +95,13 @@ export const LETTER_FORMATS: LetterFormat[] = [
   {
     key: "formal",
     name: "Formal",
-    blurb: "Stacked sender block with the date, then a recipient block.",
-    render: (p, parts, company) =>
+    blurb: "Stacked sender block with the date, single-spaced. Traditional.",
+    render: (p, parts) =>
       join([
         // Sender block + date, single-spaced (no blank line before the date).
         [t(p.name), t(p.location), t(p.email), t(p.phone), today()]
           .filter(Boolean)
           .join("\n"),
-        ["Hiring Manager", t(company)].filter(Boolean).join("\n"),
         parts.greeting,
         body(parts),
         `Respectfully,\n${t(p.name)}`,
@@ -139,6 +144,34 @@ export const LETTER_FORMATS: LetterFormat[] = [
         parts.greeting,
         body(parts),
         `Sincerely,\n${t(p.name)}`,
+      ]),
+  },
+  {
+    key: "mla",
+    name: "MLA Style",
+    blurb: "Academic MLA: contact, day-month-year date, then the company.",
+    render: (p, parts, company) =>
+      join([
+        [t(p.name), t(p.location), contactBits(p).join(" · ")].filter(Boolean).join("\n"),
+        todayDMY(),
+        t(company), // recipient org, only when we know it (never a placeholder)
+        parts.greeting,
+        body(parts),
+        `Sincerely,\n${t(p.name)}`,
+      ]),
+  },
+  {
+    key: "apa",
+    name: "APA Style",
+    blurb: "APA block letter: sender block, date, company, 'Best regards'.",
+    render: (p, parts, company) =>
+      join([
+        [t(p.name), t(p.location), contactBits(p).join(" · ")].filter(Boolean).join("\n"),
+        today(),
+        t(company), // recipient org, only when we know it (never a placeholder)
+        parts.greeting,
+        body(parts),
+        `Best regards,\n${t(p.name)}`,
       ]),
   },
 ];
