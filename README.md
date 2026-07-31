@@ -1,82 +1,155 @@
 # Cover Nugget 🦖🍗
 
-Privacy-focused, **local-first** AI cover letter generator (React Native + Expo).
-This folder is fully self-contained — nothing here depends on files outside it,
-and it is a **side project**, separate from the user's main project.
+**Cover Nugget** is a privacy-first, **local-first** AI cover-letter generator for
+iOS and Android. You keep a profile once, paste a job link or description, and it
+writes a tailored cover letter you can restyle, edit sentence-by-sentence, and
+export — all **on your device**. Nothing is uploaded; there's no account and no
+server.
 
-> ⚠️ **No GPU.** Nothing in this app runs on the GPU. The local Qwen model is a
-> Phase-4 concern and is stubbed behind a modular interface (`src/ai/`).
+Built with React Native + Expo (TypeScript), NativeWind (Tailwind), Expo Router,
+and `expo-sqlite`. The optional writing model runs **entirely on-device**.
 
-## Status — Phases 1–4 built
-Built: navigation, 9-step onboarding, local SQLite storage, main screen, archive,
-profile editor, AI-instruction settings, **generate flow (job link via Jina
-Reader or pasted description)**, **full editor with highlight + whole-letter AI
-edits**, **export (copy / PDF / Word / Google Docs / share)**, **auto model
-download on first run**, and modular seams for the **local LLM** and **AdMob**.
-Remaining for a real ship: register the native LLM + ad SDKs in a Dev Client
-build and submit via EAS (see `docs/`).
+---
 
-## Run it
-This scaffold ships **without** `node_modules` (not installed here). To run:
+## Features
+
+### ✍️ Generate
+- Provide a job by **link** or by **pasting the description**.
+- **On-device scraper** (no server): fetches the posting from your phone's own
+  connection and pulls the clean description from `JobPosting` structured data or
+  the page body. Works on most company career pages, Greenhouse, Lever, and
+  Ashby. (Indeed/LinkedIn block automated reading — paste those instead.)
+- **Auto-detects Company & Role** from the link or pasted text and fills them in
+  (still editable), so the letter and file name are right without extra typing.
+- Optional **length limit** (words or characters), enforced *before* you see the
+  letter — our own counter checks, and the model re-shortens until it fits.
+
+### 🎨 8 letter formats (cycle instantly, no model needed)
+Tap **Format** in the editor to cycle through layouts. Switching rebuilds the
+header/date/sign-off from your profile and **preserves your body text**:
+
+| Format | Feel |
+| --- | --- |
+| Classic Block | Standard full-block business letter |
+| Modern Compact | Two-line header, no date block |
+| Formal | Stacked sender block + date, traditional |
+| Email Style | No top header — contact sits under your signature |
+| Semi-Block | Indented paragraphs |
+| Minimalist | Uppercase name, bullet-separated contact |
+| Executive | Uppercase letterhead, rule line, "Re:" subject line |
+| Creative | Sparkle-separated contact, dot section break, warm sign-off |
+
+### 🖊️ Editor
+- **Tap sentences to select** them (one or many) — no keyboard pops up — then
+  apply an AI change to all selected at once. **Select all** in one tap.
+- Edit categories: **Length** (Shorten / Expand / Remove), **Tone** (formal,
+  confident, enthusiastic, playful, sincere, personal, grateful, …),
+  **Grammar** (Simplify / Change structure / Rephrase / Active voice), **Custom**.
+- **"Edit myself"** mode for manual typing, with a **Done → Save / Revert**
+  prompt so you can always roll back to the pre-edit version.
+- Live word/char count under the letter.
+
+### 📤 Export
+- **Times New Roman, 12 pt, 1-inch margins** — a clean standard letter.
+- **PDF**, **Word (.doc)**, **Google Docs**, **Copy**, and **Share**.
+- Smart file naming: **Company — Role**, or **"Untitled N"** when unknown; never
+  silently reverts to an old name.
+
+### 👤 Profile
+- Sections for personal info, skills, experience, education, projects,
+  certifications, and more — as **swipeable tabs** (swipe or tap).
+- The generator only uses profile details **relevant to the specific job**.
+
+### ⚙️ Settings — your writing rules
+- Add permanent **writing instructions** (e.g. "never use the word passionate",
+  "keep it under 250 words"). They're injected into every generation and edit so
+  the model follows your voice.
+
+### 🔒 Privacy
+- **Everything stays on the device.** Profile and letters live in local SQLite.
+- No account, no analytics, no cloud. The optional model runs offline.
+
+---
+
+## The on-device model
+- The writing model is **not** bundled in the app; it's downloaded once (~469 MB)
+  from the **Your Assistant** screen, then runs fully offline.
+- **Where it runs:** actual inference needs a Dev Client / production build. In
+  **Expo Go** (or web) there's no native model, so generation falls back to a
+  built-in **template** (still tailored to the job) and AI edits show a clear
+  "needs the full app" message. The whole flow stays usable without the model.
+
+---
+
+## Getting started
+
+Requires Node 18+ and the Expo tooling.
 
 ```bash
 cd side-project
-npm install          # install dependencies
-npx expo start       # then press i (iOS), a (Android), or scan the QR in Expo Go
+npm install          # install dependencies (needed after pulling)
+npx expo start       # press i (iOS), a (Android), or scan the QR in Expo Go
 ```
 
-Type-check only (no device needed):
+Type-check without a device:
 
 ```bash
 npm run typecheck
 ```
 
-## Project layout
+Verify a production JS bundle builds:
+
+```bash
+npx expo export --platform ios
+```
+
+> **Optional job-search backend** (`server/`): a small FastAPI service
+> (trafilatura + JobSpy) you can self-host and point the app at via
+> `EXPO_PUBLIC_JOBS_API`. The on-device scraper works without it — the backend
+> is only a fallback for tricky pages. See `server/DEPLOY.md`.
+
+---
+
+## Project structure
+
 ```
 side-project/
-├── app/                      # Expo Router screens (file-based routing)
-│   ├── _layout.tsx           # root: providers + top-level stack
-│   ├── index.tsx             # gate: onboarding vs main app
-│   ├── onboarding/           # 9-step onboarding flow
-│   └── (app)/                # main app behind the hamburger drawer
-│       ├── _layout.tsx       # drawer nav (Home / Profile / Archive / Settings)
-│       ├── index.tsx         # main screen
-│       ├── archive.tsx       # cover letter archive
-│       ├── profile.tsx       # profile editor
-│       └── settings.tsx      # permanent AI instructions
+├── app/                       # Expo Router screens (file-based routing)
+│   ├── _layout.tsx            # root providers + stack
+│   ├── index.tsx              # gate: welcome/onboarding vs main app
+│   ├── onboarding/            # welcome + step-by-step profile setup
+│   ├── generate.tsx           # job input + generate
+│   ├── editor/[id].tsx        # the sentence-select / edit-myself editor
+│   ├── export/[id].tsx        # naming + PDF/Word/Docs/Copy/Share
+│   └── (app)/                 # main app behind the drawer
+│       ├── home.tsx  archive.tsx  profile.tsx  settings.tsx  model.tsx
 ├── src/
-│   ├── ai/                   # modular AI seam (types + prompt builders + stub)
-│   ├── components/           # reusable UI (Button, TextField, TagInput, ...)
-│   ├── context/AppContext    # DB bootstrap + theme + onboarding gate
-│   ├── db/                   # schema, connection, repositories (all SQL)
-│   ├── theme/colors.ts       # design-system palette (light + dark)
-│   ├── types/models.ts       # domain models (mirror DB tables)
-│   └── utils/                # small helpers
-├── tailwind.config.js        # NativeWind theme (brand colors)
-└── MEMORY.md, memory/        # agent project memory (not app code)
+│   ├── ai/                    # prompt builders + provider seam + model config
+│   ├── components/            # reusable UI (Button, TextField, EditToolbar, …)
+│   ├── context/AppContext     # DB bootstrap + theme + onboarding gate
+│   ├── db/                    # schema, migrations, repositories (all SQL)
+│   ├── job/jina.ts            # on-device scraper + company/role detection
+│   ├── services/              # coverLetter, letterFormat, export
+│   ├── theme/colors.ts        # light + dark palette
+│   ├── types/models.ts        # domain models (mirror DB tables)
+│   └── utils/                 # counters, sentence tokenizer, formatting
+├── assets/brand/              # drop the dino-nugget logo here (see its README)
+├── server/                    # optional FastAPI job-fetch backend
+├── tailwind.config.js         # NativeWind theme (brand colors)
+└── README.md
 ```
 
 ## Architecture notes
-- **Local-first / no backend:** all data in `expo-sqlite`. No auth, no cloud DB.
-- **Single profile** for now; schema keeps `profile_id` FKs for future multi-profile.
-- **Repositories** (`src/db/repositories.ts`) hold every SQL statement; screens
-  never touch the DB directly.
-- **AI is modular:** screens call `getAI()`; Phase 4 registers the real Qwen
-  provider via `setAI()` with zero UI changes.
+- **Local-first / no backend:** all data in `expo-sqlite`; repositories
+  (`src/db/repositories.ts`) hold every SQL statement — screens never touch the
+  DB directly. Schema changes are additive migrations (`src/db/database.ts`).
+- **AI is modular:** screens call `getAI()`; a dev build registers the real
+  on-device provider (`src/native/registerNative.native.ts`) with no UI changes.
+- **Formats are pure functions** (`src/services/letterFormat.ts`): each rebuilds
+  the scaffolding around your body text, so cycling is instant and lossless.
 
-## Build order (from spec §20)
-1. ✅ **Phase 1** — nav, onboarding, profile storage, main, archive UI
-2. ✅ **Phase 2** — job input, cover-letter editor, export
-3. ✅ **Phase 3** — AI generation (+ local template fallback), highlight editing, AI settings
-4. ✅ **Phase 4** — Jina Reader ✅, model download ✅, LLM + AdMob **registered
-   in code** ✅ (`src/native/registerNative.native.ts`, auto-runs in a dev/prod
-   build; no-op in Expo Go/web) · app icon + splash ✅ · EAS release docs ✅
-   Remaining is not code: `npm install` + `eas build` on a Mac, and your AdMob
-   app ids in `app.json` (see `docs/MONETIZATION.md`).
-
-### Where AI actually runs
-Generation/editing call `getAI()`. In Expo Go / web (no native LLM) generation
-falls back to a **local, non-AI template** so the whole flow is usable; editing
-actions show a clear "needs the Dev Client build" message. A dev build that
-registers the llama runtime (`docs/AI_MODEL.md`) makes every AI action real and
-fully offline.
+## Roadmap
+- Ship a Dev Client / production build (EAS) to enable the on-device model.
+- Brand: replace the 🦖🍗 emoji with the dino-nugget logo (see `assets/brand/`).
+- Ideas under consideration: application tracker, résumé import, ATS/job-match
+  check, backup & restore.
