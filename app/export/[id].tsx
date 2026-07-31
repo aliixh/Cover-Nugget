@@ -3,7 +3,7 @@
 
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Alert, Pressable, ScrollView, View } from "react-native";
+import { Alert, Keyboard, Pressable, ScrollView, View } from "react-native";
 import { Text } from "../../src/ui/serif";
 import { ScreenContainer } from "../../src/components/ScreenContainer";
 import { BackButton } from "../../src/components/BackButton";
@@ -25,6 +25,7 @@ export default function ExportScreen() {
   const router = useRouter();
   const [content, setContent] = useState<string | null>(null);
   const [fileName, setFileName] = useState("");
+  const [editingName, setEditingName] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -33,6 +34,25 @@ export default function ExportScreen() {
       if (letter) setFileName(coverLetterTitle(letter));
     })();
   }, [letterId]);
+
+  // Persist the edited file name to the archive (used on blur, on return-key,
+  // and by the Done button while editing).
+  const saveName = async () => {
+    const name = fileName.trim();
+    if (name) await updateCoverLetterTitle(letterId, name);
+  };
+
+  // Done button: while editing the name it saves + closes the keyboard and
+  // stays here; pressed again (keyboard down) it goes home.
+  const onDone = async () => {
+    if (editingName) {
+      await saveName();
+      Keyboard.dismiss();
+      setEditingName(false);
+      return;
+    }
+    router.replace("/home");
+  };
 
   // Persist the (possibly edited) name to the archive, then run the action.
   const run =
@@ -64,6 +84,16 @@ export default function ExportScreen() {
         value={fileName}
         onChangeText={setFileName}
         placeholder="e.g. Google — Software Engineer"
+        returnKeyType="done"
+        onFocus={() => setEditingName(true)}
+        onBlur={() => {
+          setEditingName(false);
+          void saveName();
+        }}
+        onSubmitEditing={() => {
+          void saveName();
+          Keyboard.dismiss();
+        }}
       />
 
       {/* Full letter, scrollable, fills the screen */}
@@ -94,7 +124,12 @@ export default function ExportScreen() {
         ))}
       </View>
 
-      <Button label="Done" variant="ghost" onPress={() => router.replace("/home")} className="mt-1" />
+      <Button
+        label={editingName ? "Save name" : "Done"}
+        variant="ghost"
+        onPress={onDone}
+        className="mt-1"
+      />
     </ScreenContainer>
   );
 }

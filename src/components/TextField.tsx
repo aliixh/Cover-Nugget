@@ -14,6 +14,10 @@ interface Props {
   multiline?: boolean;
   keyboardType?: "default" | "email-address" | "phone-pad" | "url";
   autoCapitalize?: "none" | "sentences" | "words";
+  returnKeyType?: "done" | "next" | "go" | "search" | "send";
+  onSubmitEditing?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export function TextField({
@@ -25,6 +29,10 @@ export function TextField({
   multiline,
   keyboardType = "default",
   autoCapitalize = "sentences",
+  returnKeyType,
+  onSubmitEditing,
+  onFocus,
+  onBlur,
 }: Props) {
   const { colors } = useApp();
   return (
@@ -41,6 +49,10 @@ export function TextField({
         multiline={multiline}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
+        returnKeyType={returnKeyType}
+        onSubmitEditing={onSubmitEditing}
+        onFocus={onFocus}
+        onBlur={onBlur}
         className={`rounded-xl border border-border bg-white/70 px-4 py-3 text-base text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink ${
           multiline ? "h-28" : ""
         }`}
