@@ -25,10 +25,11 @@ export interface ModelConfig {
 }
 
 export const MODEL: ModelConfig = {
-  displayName: "Qwen (0.5B Instruct, Q4_K_M)",
+  // User-facing name only — we intentionally don't reveal the underlying model.
+  displayName: "Cover Nugget Assistant",
   // Verified live 2026-07-30: this GGUF resolves to a 491,400,032-byte file.
   url: "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf",
   fileName: "qwen-0_5b-instruct-q4_k_m.gguf",
   approxSizeMB: 469,
-  formatNote: "GGUF · 4-bit · runs fully offline on-device",
+  formatNote: "Private, on-device writing model · runs fully offline",
 };

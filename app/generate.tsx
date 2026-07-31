@@ -13,7 +13,7 @@ import { Button } from "../src/components/Button";
 import { TextField } from "../src/components/TextField";
 import { LengthLimitControl, type LimitState } from "../src/components/LengthLimitControl";
 import { useApp } from "../src/context/AppContext";
-import { fetchJobTextFromUrl } from "../src/job/jina";
+import { fetchJobTextFromUrl, guessCompanyRole } from "../src/job/jina";
 import { generateLetter, fitToLength } from "../src/services/coverLetter";
 import {
   defaultLetterTitle,
@@ -86,18 +86,35 @@ export default function GenerateScreen() {
   const [previewText, setPreviewText] = useState("");
   const [previewLoading, setPreviewLoading] = useState(false);
 
+  // Prefill Company/Role from a detected value only when the field is empty, so
+  // we never stomp on something the user typed.
+  const prefillCompanyRole = (found: { company?: string; role?: string }) => {
+    if (found.company) setCompany((c) => (c.trim() ? c : found.company!));
+    if (found.role) setRole((r) => (r.trim() ? r : found.role!));
+  };
+
   const runScrape = async (u: string) => {
     setScrapeState("loading");
     setScrapeError(null);
     try {
-      const text = await fetchJobTextFromUrl(u);
-      setScrapedText(text);
+      const job = await fetchJobTextFromUrl(u);
+      setScrapedText(job.text);
+      prefillCompanyRole(job);
       setScrapeState("ok");
     } catch (e: any) {
       setScrapeError(e?.message ?? "Couldn't read that link.");
       setScrapeState("error");
     }
   };
+
+  // In paste-description mode, quietly detect Company/Role from the text and
+  // fill the (empty) fields so the letter and file name get them for free.
+  useEffect(() => {
+    if (mode !== "description") return;
+    if (description.trim().length < 40) return;
+    prefillCompanyRole(guessCompanyRole(description));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [description, mode]);
 
   // Debounced auto-scrape as the user finishes pasting a URL.
   const onUrlChange = (t: string) => {
@@ -117,8 +134,8 @@ export default function GenerateScreen() {
     setPreviewLoading(true);
     setPreviewText("");
     try {
-      const text = await fetchJobTextFromUrl(url);
-      setPreviewText(text);
+      const job = await fetchJobTextFromUrl(url);
+      setPreviewText(job.text);
     } catch (e: any) {
       setPreviewText(`⚠️ ${e?.message ?? "Couldn't scrape that link."}`);
     } finally {
@@ -140,10 +157,15 @@ export default function GenerateScreen() {
             : "Please add a job description."
         );
       }
+      // Fall back to values detected from the job text if the fields are blank.
+      const guessed = guessCompanyRole(jobText);
+      const effCompany = company.trim() || guessed.company || "";
+      const effRole = role.trim() || guessed.role || "";
+
       setBusyLabel("Writing your cover letter…");
       const { content, usedFallback } = await generateLetter({
-        company: company.trim() || undefined,
-        role: role.trim() || undefined,
+        company: effCompany || undefined,
+        role: effRole || undefined,
         description: jobText,
       });
 
@@ -165,9 +187,9 @@ export default function GenerateScreen() {
       }
 
       const id = await saveCoverLetter({
-        title: defaultLetterTitle(company.trim(), role.trim()),
-        company: company.trim() || undefined,
-        role: role.trim() || undefined,
+        title: defaultLetterTitle(effCompany, effRole),
+        company: effCompany || undefined,
+        role: effRole || undefined,
         content: finalContent,
       });
       if (activeLimit) await updateCoverLetterLimit(id, activeLimit.type, activeLimit.value);
@@ -226,15 +248,6 @@ export default function GenerateScreen() {
         ))}
       </View>
 
-      <View className="mb-2 flex-row">
-        <View className="mr-2 flex-1">
-          <TextField label="Company" value={company} onChangeText={setCompany} optional placeholder="Google" />
-        </View>
-        <View className="flex-1">
-          <TextField label="Role" value={role} onChangeText={setRole} optional placeholder="SWE Intern" />
-        </View>
-      </View>
-
       {mode === "link" ? (
         <>
           <TextField
@@ -288,6 +301,17 @@ export default function GenerateScreen() {
           placeholder="Paste the job description here"
         />
       )}
+
+      {/* Company / Role — below the job input; auto-filled from the link or
+          pasted text when we can detect them (still editable). */}
+      <View className="mt-1 flex-row">
+        <View className="mr-2 flex-1">
+          <TextField label="Company" value={company} onChangeText={setCompany} optional placeholder="Google" />
+        </View>
+        <View className="flex-1">
+          <TextField label="Role" value={role} onChangeText={setRole} optional placeholder="SWE Intern" />
+        </View>
+      </View>
 
       {/* Optional length limit — enforced before the letter is shown. */}
       <View className="mt-4">

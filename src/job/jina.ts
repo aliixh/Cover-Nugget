@@ -89,6 +89,70 @@ function trimBoilerplate(text: string): string {
 const PASTE_HINT =
   'Switch to "Paste Description" and paste the job text.';
 
+/** Result of reading a job posting: the description plus, when we can find
+ *  them, the company and role (so the form can prefill them). */
+export interface JobText {
+  text: string;
+  company?: string;
+  role?: string;
+}
+
+function tidyField(s?: string | null): string | undefined {
+  if (!s) return undefined;
+  const v = s
+    .replace(/\s+/g, " ")
+    .replace(/[|•·–—-]+\s*$/, "")
+    .replace(/[.,;:]+$/, "")
+    .replace(/\s+(?:and|of|&)$/i, "")
+    .trim();
+  return v.length >= 2 && v.length <= 60 ? v : undefined;
+}
+
+/** Best-effort company/role extraction from plain job text (for pasted
+ *  descriptions and reader output that has no structured data). */
+export function guessCompanyRole(text: string): { company?: string; role?: string } {
+  const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
+  let role: string | undefined;
+  let company: string | undefined;
+  const roleLbl = /^(?:job\s*title|position|role|title)\s*[:\-]\s*(.+)$/i;
+  const compLbl = /^(?:company|organization|organisation|employer)\s*[:\-]\s*(.+)$/i;
+  for (const l of lines.slice(0, 40)) {
+    if (!role) {
+      const m = l.match(roleLbl);
+      if (m) role = tidyField(m[1]);
+    }
+    if (!company) {
+      const m = l.match(compLbl);
+      if (m) company = tidyField(m[1]);
+    }
+    if (role && company) break;
+  }
+  // "… at Acme Robotics" near the top, if we still don't have a company. Only
+  // capture a run of Capitalized words (plus of/and/&) so we stop at the next
+  // lowercase word instead of swallowing the rest of the sentence.
+  if (!company) {
+    for (const l of lines.slice(0, 8)) {
+      const m = l.match(/\bat\s+([A-Z][\w&'’\-]*(?:\s+(?:[A-Z][\w&'’\-]*|of|and|&)){0,4})/);
+      if (m) {
+        company = tidyField(m[1]);
+        if (company) break;
+      }
+    }
+  }
+  return { company, role };
+}
+
+/** Fill in any missing company/role on a JobText from its own text. */
+function withGuessedMeta(job: JobText): JobText {
+  if (job.company && job.role) return job;
+  const g = guessCompanyRole(job.text);
+  return {
+    text: job.text,
+    company: job.company ?? g.company,
+    role: job.role ?? g.role,
+  };
+}
+
 // ---------------------------------------------------------------------------
 // On-device direct fetch (primary). RN fetch has no CORS limits and uses the
 // phone's own (residential/cellular) IP — far less likely to be bot-blocked
@@ -120,8 +184,8 @@ function htmlToText(html: string): string {
     .trim();
 }
 
-/** Pull the description out of a JobPosting JSON-LD block, if present. */
-function extractJobPosting(html: string): string | null {
+/** Pull the description + company/role out of a JobPosting JSON-LD block. */
+function extractJobPosting(html: string): JobText | null {
   const blocks = html.match(
     /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
   );
@@ -147,7 +211,12 @@ function extractJobPosting(html: string): string | null {
       const isJob = t === "JobPosting" || (Array.isArray(t) && t.includes("JobPosting"));
       if (isJob && it.description) {
         const text = trimBoilerplate(htmlToText(String(it.description)));
-        if (text.length > 80) return text;
+        if (text.length > 80) {
+          const org = it.hiringOrganization;
+          const company = tidyField(typeof org === "string" ? org : org?.name);
+          const role = tidyField(it.title);
+          return { text, company, role };
+        }
       }
     }
   }
@@ -167,7 +236,7 @@ function fullPageText(html: string): string {
   return htmlToText(stripped);
 }
 
-async function fetchDirect(url: string): Promise<string | null> {
+async function fetchDirect(url: string): Promise<JobText | null> {
   let res: Response;
   try {
     res = await fetch(url, {
@@ -178,16 +247,17 @@ async function fetchDirect(url: string): Promise<string | null> {
   }
   if (!res.ok) return null;
   const html = await res.text();
-  // 1) JobPosting JSON-LD is the clean win (most boards include it).
+  // 1) JobPosting JSON-LD is the clean win (most boards include it) — and it
+  //    carries the company + role.
   const job = extractJobPosting(html);
-  if (job && job.length >= 100) return job;
+  if (job && job.text.length >= 100) return job;
   // 2) Genuine bot-check / login wall → let other methods try.
   if (looksBlocked(html)) return null;
   // 3) No JSON-LD but the page loaded fine → use its readable body text. This
   //    is the common case for plain company career pages, and it means a page
   //    we actually fetched no longer gets falsely reported as "no job desc".
   const body = trimBoilerplate(fullPageText(html));
-  if (body.length >= 200) return body;
+  if (body.length >= 200) return { text: body };
   return null; // page had almost no text (likely JS-rendered) → try Jina
 }
 
@@ -195,7 +265,7 @@ async function fetchDirect(url: string): Promise<string | null> {
 // extracts server-side (better for company/ATS pages) — then fall back to Jina.
 const JOBS_API = (process.env.EXPO_PUBLIC_JOBS_API || "").replace(/\/$/, "");
 
-async function fetchViaBackend(url: string): Promise<string | null> {
+async function fetchViaBackend(url: string): Promise<JobText | null> {
   if (!JOBS_API) return null;
   let res: Response;
   try {
@@ -212,11 +282,13 @@ async function fetchViaBackend(url: string): Promise<string | null> {
     );
   }
   const text = trimBoilerplate(cleanJobText(String(data.text || "")));
-  return text.length >= 120 ? text : null;
+  if (text.length < 120) return null;
+  return { text, company: tidyField(data.company), role: tidyField(data.title || data.role) };
 }
 
-/** Fetches and cleans the job description text for a posting URL. */
-export async function fetchJobTextFromUrl(url: string): Promise<string> {
+/** Fetches and cleans the job description for a posting URL, plus company/role
+ *  when we can extract them. */
+export async function fetchJobTextFromUrl(url: string): Promise<JobText> {
   const trimmed = url.trim();
   if (!/^https?:\/\//i.test(trimmed)) {
     throw new Error("Please enter a valid http(s) link.");
@@ -225,11 +297,11 @@ export async function fetchJobTextFromUrl(url: string): Promise<string> {
   // 1) On-device direct fetch (phone's own IP + JobPosting JSON-LD). Best for
   //    job boards, no server/key needed.
   const direct = await fetchDirect(trimmed);
-  if (direct) return direct;
+  if (direct) return withGuessedMeta(direct);
 
   // 2) Optional self-hosted backend, if configured.
   const viaBackend = await fetchViaBackend(trimmed);
-  if (viaBackend) return viaBackend;
+  if (viaBackend) return withGuessedMeta(viaBackend);
 
   // 3) Jina Reader.
   let res: Response;
@@ -267,5 +339,5 @@ export async function fetchJobTextFromUrl(url: string): Promise<string> {
       `Couldn't read the job text from that link — the page may need a login or load its content with JavaScript. ${PASTE_HINT}`
     );
   }
-  return cleaned;
+  return withGuessedMeta({ text: cleaned });
 }
