@@ -73,54 +73,31 @@ function Chip({
 
 interface Props {
   selectedCount: number;
-  totalSentences: number;
   openCat: EditCategory | null;
   setOpenCat: (c: EditCategory | null) => void;
   disabled?: boolean;
   onSelectionAction: (a: SelectionAction) => void;
   onCustom: () => void;
-  onSelectAll: () => void;
-  onClear: () => void;
 }
 
 export function EditToolbar({
   selectedCount,
-  totalSentences,
   openCat,
   setOpenCat,
   disabled,
   onSelectionAction,
   onCustom,
-  onSelectAll,
-  onClear,
 }: Props) {
   const hasSel = selectedCount > 0;
-  const allSelected = totalSentences > 0 && selectedCount === totalSentences;
 
   return (
     <View>
-      {/* Select all / Clear + count */}
-      <View className="mb-2 flex-row items-center">
-        <Pressable
-          onPress={allSelected ? onClear : onSelectAll}
-          disabled={disabled || totalSentences === 0}
-          className="mr-2 rounded-full bg-highlight px-3 py-1.5 active:opacity-70 dark:bg-dark-highlight"
-        >
-          <Text className="text-sm font-semibold text-primary">
-            {allSelected ? "Clear all" : "Select all"}
-          </Text>
-        </Pressable>
-        {hasSel && !allSelected ? (
-          <Pressable onPress={onClear} className="mr-2 py-1.5 active:opacity-70">
-            <Text className="text-sm font-medium text-muted dark:text-dark-muted">Clear</Text>
-          </Pressable>
-        ) : null}
-        <Text className="text-sm text-muted dark:text-dark-muted">
-          {hasSel
-            ? `${selectedCount} sentence${selectedCount === 1 ? "" : "s"} selected`
-            : "Tap sentences to select"}
-        </Text>
-      </View>
+      {/* Selection count / hint */}
+      <Text className="mb-2 text-sm text-muted dark:text-dark-muted">
+        {hasSel
+          ? `${selectedCount} sentence${selectedCount === 1 ? "" : "s"} selected — pick a change`
+          : "Tap sentences to select, then pick a change"}
+      </Text>
 
       {/* Category chips */}
       <View className="flex-row flex-wrap">

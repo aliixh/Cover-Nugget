@@ -348,18 +348,38 @@ export default function EditorScreen() {
         />
 
         {mode === "select" ? (
-          /* Format cycle button */
-          <Pressable
-            onPress={cycleFormat}
-            disabled={busyAny || !profile}
-            className={`mb-3 flex-row items-center self-start rounded-full border border-border px-3 py-1.5 active:opacity-70 dark:border-dark-border ${
-              busyAny || !profile ? "opacity-40" : ""
-            }`}
-          >
-            <Text className="text-sm font-medium text-secondary dark:text-dark-ink">
-              ⟳ Format: {LETTER_FORMATS[formatIdx].name}
+          /* Format cycle (left) + Select all / Clear all (right) */
+          <View className="mb-3 flex-row items-center">
+            <Text className="mr-2 text-sm font-medium text-secondary dark:text-dark-ink">
+              Format:
             </Text>
-          </Pressable>
+            <Pressable
+              onPress={cycleFormat}
+              disabled={busyAny || !profile}
+              className={`flex-row items-center rounded-full border border-border px-3 py-1.5 active:opacity-70 dark:border-dark-border ${
+                busyAny || !profile ? "opacity-40" : ""
+              }`}
+            >
+              <Text className="text-sm font-medium text-primary dark:text-dark-ink">
+                {LETTER_FORMATS[formatIdx].name}
+              </Text>
+              <Text className="ml-1 text-sm text-muted dark:text-dark-muted">⟳</Text>
+            </Pressable>
+
+            <View className="flex-1" />
+
+            <Pressable
+              onPress={selected.size > 0 ? clearSelection : selectAll}
+              disabled={busyAny || sentenceIdxs.length === 0}
+              className={`rounded-full bg-highlight px-3 py-1.5 active:opacity-70 dark:bg-dark-highlight ${
+                busyAny || sentenceIdxs.length === 0 ? "opacity-40" : ""
+              }`}
+            >
+              <Text className="text-sm font-semibold text-primary">
+                {selected.size > 0 ? "Clear all" : "Select all"}
+              </Text>
+            </Pressable>
+          </View>
         ) : null}
 
         {mode === "select" ? (
@@ -408,14 +428,11 @@ export default function EditorScreen() {
               <View className="mt-3">
                 <EditToolbar
                   selectedCount={selected.size}
-                  totalSentences={sentenceIdxs.length}
                   openCat={openCat}
                   setOpenCat={setOpenCat}
                   disabled={busyAny}
                   onSelectionAction={applyToSelected}
                   onCustom={onCustom}
-                  onSelectAll={selectAll}
-                  onClear={clearSelection}
                 />
 
                 <View className="mt-3">
