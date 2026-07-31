@@ -77,10 +77,10 @@ export const LETTER_FORMATS: LetterFormat[] = [
   {
     key: "modern",
     name: "Modern Compact",
-    blurb: "One-line header, no date block — clean and tech-friendly.",
+    blurb: "Tight two-line header, no date block — clean and tech-friendly.",
     render: (p, parts) =>
       join([
-        [t(p.name), contactBits(p).join("  ·  ")].filter(Boolean).join(" — "),
+        [t(p.name), contactBits(p).join("  ·  ")].filter(Boolean).join("\n"),
         parts.greeting,
         body(parts),
         `Best regards,\n${t(p.name)}`,
@@ -89,11 +89,13 @@ export const LETTER_FORMATS: LetterFormat[] = [
   {
     key: "formal",
     name: "Formal",
-    blurb: "Stacked contact, date, and a recipient block. Traditional.",
+    blurb: "Stacked sender block with the date, then a recipient block.",
     render: (p, parts, company) =>
       join([
-        [t(p.name), t(p.location), t(p.email), t(p.phone)].filter(Boolean).join("\n"),
-        today(),
+        // Sender block + date, single-spaced (no blank line before the date).
+        [t(p.name), t(p.location), t(p.email), t(p.phone), today()]
+          .filter(Boolean)
+          .join("\n"),
         ["Hiring Manager", t(company)].filter(Boolean).join("\n"),
         parts.greeting,
         body(parts),
@@ -130,8 +132,10 @@ export const LETTER_FORMATS: LetterFormat[] = [
     blurb: "Uppercase name, bullet-separated contact, spare and modern.",
     render: (p, parts) =>
       join([
-        [t(p.name).toUpperCase(), contactBits(p).join("  •  ")].filter(Boolean).join("\n"),
-        today(),
+        // Name, contact, and date all single-spaced — a tight header block.
+        [t(p.name).toUpperCase(), contactBits(p).join("  •  "), today()]
+          .filter(Boolean)
+          .join("\n"),
         parts.greeting,
         body(parts),
         `Sincerely,\n${t(p.name)}`,
