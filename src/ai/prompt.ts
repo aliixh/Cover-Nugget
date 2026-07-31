@@ -111,6 +111,13 @@ export function buildGeneratePrompt(req: GenerateRequest): string {
     job.company ? `Company: ${job.company}` : "",
     job.role ? `Role: ${job.role}` : "",
     `Description:\n${capDescription(job.description)}`,
+    // Restate the user's rules right before generation — small models follow
+    // instructions best when they're the last thing they read.
+    req.instructions.length
+      ? `\nBefore writing, re-read and strictly follow these rules:\n${req.instructions
+          .map((i) => `- ${i}`)
+          .join("\n")}`
+      : "",
     "\nReturn only the cover letter text.",
   ]
     .filter(Boolean)
