@@ -11,7 +11,7 @@
 
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ActivityIndicator, Alert, Animated, InputAccessoryView, Keyboard, Modal, Platform, Pressable, ScrollView, View } from "react-native";
+import { ActivityIndicator, Alert, Animated, InputAccessoryView, Keyboard, Modal, Platform, Pressable, ScrollView, Text as RNText, View } from "react-native";
 import { Text, TextInput } from "../../src/ui/serif";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "../../src/components/Button";
@@ -208,6 +208,19 @@ export default function EditorScreen() {
   const chars = countChars(text);
   const overLimit = !withinLimit(text, activeLimit);
 
+  // Live word/char count, shown right under the letter. Recomputed every render
+  // (from `text`), so it updates as you type or run an edit.
+  const countLine = (
+    <Text className="mb-1 mt-2 text-xs text-muted dark:text-dark-muted">
+      {words} words · {chars} chars
+      {activeLimit
+        ? overLimit
+          ? `  ·  over ${activeLimit.value} ${activeLimit.type === "word" ? "word" : "char"} limit`
+          : `  ·  within ${activeLimit.value} ${activeLimit.type === "word" ? "word" : "char"} limit`
+        : ""}
+    </Text>
+  );
+
   const fitLength = async () => {
     setFitting(true);
     fitCancel.current = false;
@@ -304,7 +317,7 @@ export default function EditorScreen() {
             hitSlop={10}
             className="h-10 w-10 items-center justify-center rounded-full bg-highlight active:opacity-70 dark:bg-dark-highlight"
           >
-            <Text className="text-xl text-primary">←</Text>
+            <RNText style={{ fontSize: 20, color: colors.primary, lineHeight: 22 }}>❮</RNText>
           </Pressable>
           {mode === "select" ? (
             <Pressable
@@ -370,6 +383,8 @@ export default function EditorScreen() {
               </Text>
             </ScrollView>
 
+            {countLine}
+
             {fitting ? (
               <View className="mt-3 rounded-xl border border-border p-3 dark:border-dark-border">
                 <View className="mb-2 flex-row items-center justify-between">
@@ -424,29 +439,22 @@ export default function EditorScreen() {
           </>
         ) : (
           /* ---------- MANUAL (edit myself) ---------- */
-          <TextInput
-            value={text}
-            onChangeText={setText}
-            autoFocus
-            multiline
-            scrollEnabled
-            textAlignVertical="top"
-            placeholder="Your cover letter…"
-            placeholderTextColor={colors.muted}
-            inputAccessoryViewID={Platform.OS === "ios" ? KB_ACCESSORY_ID : undefined}
-            className="flex-1 rounded-2xl border border-border bg-white p-4 text-base leading-6 text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink"
-          />
+          <>
+            <TextInput
+              value={text}
+              onChangeText={setText}
+              autoFocus
+              multiline
+              scrollEnabled
+              textAlignVertical="top"
+              placeholder="Your cover letter…"
+              placeholderTextColor={colors.muted}
+              inputAccessoryViewID={Platform.OS === "ios" ? KB_ACCESSORY_ID : undefined}
+              className="flex-1 rounded-2xl border border-border bg-white p-4 text-base leading-6 text-ink dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink"
+            />
+            {countLine}
+          </>
         )}
-
-        {/* Word / char count */}
-        <Text className="mt-2 text-xs text-muted dark:text-dark-muted">
-          {words} words · {chars} chars
-          {activeLimit
-            ? overLimit
-              ? `  ·  over ${activeLimit.value} ${activeLimit.type === "word" ? "word" : "char"} limit`
-              : `  ·  within ${activeLimit.value} ${activeLimit.type === "word" ? "word" : "char"} limit`
-            : ""}
-        </Text>
 
         {/* Bottom actions (select mode only) */}
         {mode === "select" ? (
