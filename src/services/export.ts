@@ -20,16 +20,22 @@ function escapeHtml(s: string): string {
     .replace(/>/g, "&gt;");
 }
 
-/** Wraps the letter text in a clean printable HTML document. */
+/** Wraps the letter text in a clean printable HTML document — a standard
+ *  business letter set in Times New Roman 12pt with 1-inch margins. Blank lines
+ *  separate paragraphs; single newlines (the header block) stay on their own
+ *  lines, single-spaced. */
 function letterHtml(content: string): string {
   const paragraphs = content
     .split(/\n{2,}/)
+    .map((p) => p.trim())
+    .filter(Boolean)
     .map((p) => `<p>${escapeHtml(p).replace(/\n/g, "<br/>")}</p>`)
     .join("\n");
   return `<!DOCTYPE html><html><head><meta charset="utf-8"/>
     <style>
-      body { font-family: Georgia, 'Times New Roman', serif; font-size: 12pt;
-             line-height: 1.5; color: #1A1A1A; padding: 48px; }
+      @page { margin: 1in; }
+      body { font-family: 'Times New Roman', Times, serif; font-size: 12pt;
+             line-height: 1.4; color: #000000; margin: 0; padding: 0; }
       p { margin: 0 0 12pt 0; }
     </style></head><body>${paragraphs}</body></html>`;
 }

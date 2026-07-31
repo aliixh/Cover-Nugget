@@ -10,6 +10,41 @@
 // stated focus, so the draft is tailored (not just "your info").
 
 import type { GenerateRequest } from "./types";
+import type { Profile } from "../types/models";
+
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+/** "July 31, 2026" */
+function formatLetterDate(d: Date): string {
+  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+
+/**
+ * The standard letter header, built deterministically from the profile (the
+ * model is never trusted with the applicant's real contact details):
+ *
+ *   Name
+ *   Address / location
+ *   Email · Phone · LinkedIn
+ *   <blank>
+ *   Date
+ *
+ * Lines with no data are skipped rather than faked. The letter body (greeting →
+ * sign-off) is appended after this by the caller.
+ */
+export function buildLetterHeader(p: Profile): string {
+  const lines: string[] = [];
+  if (p.name?.trim()) lines.push(p.name.trim());
+  if (p.location?.trim()) lines.push(p.location.trim());
+  const contact = [p.email, p.phone, p.linkedin, p.portfolio]
+    .map((s) => s?.trim())
+    .filter((s): s is string => !!s);
+  if (contact.length) lines.push(contact.join(" · "));
+  return `${lines.join("\n")}\n\n${formatLetterDate(new Date())}`;
+}
 
 /** "a, b and c" */
 function andList(items: string[]): string {

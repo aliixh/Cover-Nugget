@@ -7,7 +7,7 @@
 // UI to show.
 
 import { getAI } from "../ai";
-import { buildTemplateLetter } from "../ai/template";
+import { buildTemplateLetter, buildLetterHeader } from "../ai/template";
 import type { JobInput, SelectionAction } from "../ai/types";
 import { getFullProfile, listAiSettings } from "../db/repositories";
 import { withinLimit, type LengthLimit } from "../utils/textStats";
@@ -30,12 +30,17 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
   const instructions = await loadInstructions();
   const req = { profile, job, instructions };
 
+  // Deterministic header (name / address / contact / date) prepended to the
+  // body so the letter follows the standard business format regardless of which
+  // engine wrote the body.
+  const header = buildLetterHeader(profile.profile);
+
   try {
-    const content = await getAI().generate(req);
-    return { content, usedFallback: false };
+    const body = await getAI().generate(req);
+    return { content: `${header}\n\n${body.trim()}`, usedFallback: false };
   } catch {
     // Model unavailable (Expo Go / not downloaded / no runtime) — use template.
-    return { content: buildTemplateLetter(req), usedFallback: true };
+    return { content: `${header}\n\n${buildTemplateLetter(req)}`, usedFallback: true };
   }
 }
 
