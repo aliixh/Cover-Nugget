@@ -1,7 +1,8 @@
-// Export screen (spec §12). Name the file, read the FULL letter in a large
-// scrollable box with a copy button in its corner, then export. PDF / Word /
-// Google Docs share a row; Share sits centered below.
+// Export screen (spec §12). Name the file, read the letter in a cropped,
+// scrollable box (copy icon in its corner), then export. PDF / Word / Docs
+// share a row; the share icon sits centered below, with room underneath.
 
+import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Alert, Keyboard, Pressable, ScrollView, View } from "react-native";
@@ -39,7 +40,6 @@ export default function ExportScreen() {
       const letter = await getCoverLetter(letterId);
       setContent(letter?.content ?? "");
       if (letter) {
-        // Auto name: company + role, else "Untitled N" (N = the letter's number).
         const auto =
           defaultLetterTitle(letter.company, letter.role) ||
           `Untitled ${await getCoverLetterNumber(letterId)}`;
@@ -49,16 +49,9 @@ export default function ExportScreen() {
     })();
   }, [letterId]);
 
-  // The name we'll actually use: the typed name, or the auto name when blank —
-  // never the previously-saved title. So clearing the field yields "Untitled N"
-  // (or company + role), not the old name.
+  // Typed name, or the auto name when blank — never the previously-saved title.
   const effectiveName = () => fileName.trim() || autoName;
 
-  const saveName = async () => {
-    await updateCoverLetterTitle(letterId, effectiveName());
-  };
-
-  // Done: while editing the name, save + close keyboard + stay; else go home.
   const onDone = async () => {
     if (editingName) {
       const eff = effectiveName();
@@ -71,7 +64,6 @@ export default function ExportScreen() {
     router.replace("/home");
   };
 
-  // Persist the effective name, then run the export action with it.
   const run =
     (fn: (name: string) => Promise<void>, successMsg?: string) => async () => {
       if (content == null) return;
@@ -108,7 +100,7 @@ export default function ExportScreen() {
     <ScreenContainer scroll={false}>
       <BackButton />
 
-      {/* File name + copy-name button */}
+      {/* File name + copy-name icon */}
       <Text className="mb-1.5 text-sm font-medium text-primary dark:text-dark-primary">
         File name
       </Text>
@@ -139,26 +131,28 @@ export default function ExportScreen() {
           hitSlop={8}
           className="ml-2 h-11 w-11 items-center justify-center rounded-xl bg-highlight active:opacity-70 dark:bg-dark-highlight"
         >
-          <Text className="text-lg">📋</Text>
+          <Ionicons name="copy-outline" size={20} color={colors.primary} />
         </Pressable>
       </View>
 
-      {/* Full letter with a copy button in the top-right corner */}
-      <View className="relative mb-3 flex-1">
-        <ScrollView className="flex-1 rounded-2xl border border-border bg-white p-4 pt-12 dark:border-dark-border dark:bg-dark-surface">
+      {/* Cropped, scrollable letter with a copy icon in the corner */}
+      <View
+        className="relative mb-4"
+        style={{ flexBasis: "52%", flexGrow: 0, flexShrink: 1 }}
+      >
+        <ScrollView className="flex-1 rounded-2xl border border-border bg-white p-4 pt-11 dark:border-dark-border dark:bg-dark-surface">
           <Text className="text-sm leading-6 text-ink dark:text-dark-ink">{content ?? "…"}</Text>
         </ScrollView>
         <Pressable
           onPress={copyLetter}
           hitSlop={8}
-          className="absolute right-2 top-2 h-9 flex-row items-center rounded-full bg-highlight px-3 active:opacity-70 dark:bg-dark-highlight"
+          className="absolute right-2 top-2 h-9 w-9 items-center justify-center rounded-full bg-highlight active:opacity-70 dark:bg-dark-highlight"
         >
-          <Text className="mr-1 text-base">📋</Text>
-          <Text className="text-sm font-semibold text-primary">Copy</Text>
+          <Ionicons name="copy-outline" size={18} color={colors.primary} />
         </Pressable>
       </View>
 
-      {/* PDF · Word · Google Docs on one row */}
+      {/* PDF · Word · Docs on one row */}
       <View className="flex-row">
         {fileActions.map((a, i) => (
           <Pressable
@@ -173,21 +167,19 @@ export default function ExportScreen() {
         ))}
       </View>
 
-      {/* Share, centered below */}
+      {/* Share (icon only), centered below */}
       <Pressable
         onPress={run((name) => shareText(content!, name))}
-        className="mt-2 flex-row items-center self-center rounded-xl bg-primary px-8 py-3 active:opacity-80 dark:bg-dark-primary"
+        hitSlop={8}
+        className="mt-3 h-12 w-12 items-center justify-center self-center rounded-full bg-primary active:opacity-80 dark:bg-dark-primary"
       >
-        <Text className="mr-2 text-base">📤</Text>
-        <Text className="text-sm font-semibold text-background dark:text-dark-background">Share</Text>
+        <Ionicons name="share-outline" size={22} color={colors.background} />
       </Pressable>
 
-      <Button
-        label={editingName ? "Save name" : "Done"}
-        variant="ghost"
-        onPress={onDone}
-        className="mt-2"
-      />
+      {/* Push Done to the bottom, leaving open space under the actions. */}
+      <View className="flex-1" />
+
+      <Button label={editingName ? "Save name" : "Done"} variant="ghost" onPress={onDone} />
     </ScreenContainer>
   );
 }
