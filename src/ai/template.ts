@@ -11,6 +11,7 @@
 
 import type { GenerateRequest } from "./types";
 import type { Profile } from "../types/models";
+import { matchProfileToJob } from "./keywordMatch";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -89,7 +90,7 @@ export function buildTemplateLetter(req: GenerateRequest): string {
   // user happens to have listed (e.g. a joke "dino" skill) never get forced in.
   // If the job text is empty (rare), fall back to the candidate's own skills.
   const allSkills = skills.map((s) => s.skill).filter((s) => s.trim().length > 1);
-  const matchedSkills = allSkills.filter((s) => jobLower.includes(s.toLowerCase()));
+  const matchedSkills = jobLower ? matchProfileToJob(req.profile, jobText).skills : allSkills;
   const skillList = (jobLower ? matchedSkills : allSkills).slice(0, 6);
 
   const topExperience = experience[0];

@@ -8,6 +8,7 @@ import type {
   GenerateRequest,
   SelectionAction,
 } from "./types";
+import { matchProfileToJob } from "./keywordMatch";
 
 // Human-readable phrasing for each highlight action (spec §8).
 const ACTION_PHRASING: Record<SelectionAction, string> = {
@@ -106,6 +107,10 @@ function capDescription(d: string, maxChars = 4000): string {
  * paragraph. Narrowing the task is what makes a 0.5B model write coherently. */
 export function buildGeneratePrompt(req: GenerateRequest): string {
   const job = req.job;
+  // Deterministic keyword overlap between the profile and the posting — the
+  // small model can't reliably decide relevance, so we hand it the matches.
+  const match = matchProfileToJob(req.profile, job.description);
+  const matchedTerms = [...match.skills, ...match.keywords].slice(0, 12);
   return [
     "You write the BODY paragraphs of a professional cover letter. The greeting,",
     "header, date, and sign-off are added separately — do not write them.",
@@ -126,6 +131,10 @@ export function buildGeneratePrompt(req: GenerateRequest): string {
     job.company ? `Company: ${job.company}` : "",
     job.role ? `Role: ${job.role}` : "",
     `Description:\n${capDescription(job.description)}`,
+    // The concrete profile↔job overlaps to build the paragraphs around.
+    matchedTerms.length
+      ? `\nThese profile terms match this job — center the letter on them and do not invent others: ${matchedTerms.join(", ")}.`
+      : "",
     // Restate the user's rules right before generation — small models follow
     // instructions best when they're the last thing they read.
     req.instructions.length
