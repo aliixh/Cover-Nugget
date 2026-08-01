@@ -4,7 +4,7 @@
 // "+ Add" inserts a new blank entry).
 
 import { useFocusEffect } from "expo-router";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Alert, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView, View } from "react-native";
 import { Text } from "../../src/ui/serif";
 import { ScreenContainer } from "../../src/components/ScreenContainer";
@@ -63,6 +63,9 @@ export default function ProfileScreen() {
   const pagerRef = useRef<ScrollView>(null);
   const [pageW, setPageW] = useState(0);
   const [pageH, setPageH] = useState(0);
+  // True when the active tab changed because of a swipe (so the sync effect
+  // doesn't fight the gesture by scrolling again).
+  const fromSwipe = useRef(false);
 
   // Personal-info form state.
   const [name, setName] = useState("");
@@ -105,6 +108,20 @@ export default function ProfileScreen() {
       load();
     }, [load])
   );
+
+  // Keep the pager in sync with the active tab. Runs after commit, so the
+  // ScrollView ref + layout are ready (calling scrollTo inside the tap handler
+  // was unreliable on the new architecture). Skips when the change came from a
+  // swipe so it doesn't cancel the gesture.
+  useEffect(() => {
+    if (pageW <= 0) return;
+    if (fromSwipe.current) {
+      fromSwipe.current = false;
+      return;
+    }
+    const i = TABS.findIndex((t) => t.key === tab);
+    if (i >= 0) pagerRef.current?.scrollTo({ x: i * pageW, animated: true });
+  }, [tab, pageW]);
 
   const savePersonal = async (): Promise<boolean> => {
     if (name.trim().length === 0) {
@@ -269,16 +286,17 @@ export default function ProfileScreen() {
     }
   };
 
-  // Tap a tab → scroll the pager to it. Swipe → update the active tab.
-  const goToTab = (i: number) => {
-    setTab(TABS[i].key);
-    if (pageW > 0) pagerRef.current?.scrollTo({ x: i * pageW, animated: true });
-  };
+  // Tap a tab → set it; the effect above scrolls the pager to match.
+  const goToTab = (i: number) => setTab(TABS[i].key);
+  // Swipe → update the active tab (marked so the effect doesn't re-scroll).
   const onPagerEnd = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (pageW <= 0) return;
     const i = Math.round(e.nativeEvent.contentOffset.x / pageW);
     const key = TABS[i]?.key;
-    if (key && key !== tab) setTab(key);
+    if (key && key !== tab) {
+      fromSwipe.current = true;
+      setTab(key);
+    }
   };
 
   return (
