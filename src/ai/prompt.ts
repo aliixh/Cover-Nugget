@@ -98,21 +98,27 @@ function capDescription(d: string, maxChars = 4000): string {
   return t.length > maxChars ? t.slice(0, maxChars) + "\n…(truncated)" : t;
 }
 
-/** Full generation prompt (spec §6). */
+/** Full generation prompt (spec §6).
+ *
+ * "Mad Libs" strategy for the small on-device model: the app owns all structure
+ * (header, date, greeting, sign-off are added in code by letterFormat.ts), so we
+ * ask the model for ONLY the body paragraphs, with a decomposed brief per
+ * paragraph. Narrowing the task is what makes a 0.5B model write coherently. */
 export function buildGeneratePrompt(req: GenerateRequest): string {
   const job = req.job;
   return [
-    "Write a professional, personalized cover letter for the job below.",
-    "Base it on the job description: only include the candidate's experience,",
-    "skills, and details that are RELEVANT to this specific role. Do NOT mention",
-    "unrelated skills or padding just because they appear in the profile.",
+    "You write the BODY paragraphs of a professional cover letter. The greeting,",
+    "header, date, and sign-off are added separately — do not write them.",
+    "Use only the candidate's experience and skills that are RELEVANT to this",
+    "specific role; do not add unrelated skills or filler.",
     "",
-    "Format the body as follows (unless a user rule below overrides it):",
-    "- First line: the greeting \"Dear Hiring Manager,\"",
-    "- Then 2-4 short paragraphs, each separated by a blank line.",
-    "- Finally a sign-off line \"Sincerely,\" followed by the candidate's name.",
-    "- Do NOT add the candidate's name, address, contact info, or the date at the",
-    "  top — the header is added automatically, so begin with the greeting.",
+    "Write 2-3 short paragraphs, separated by a blank line:",
+    "1. Why the candidate is a strong fit for THIS role at THIS company.",
+    "2. One or two concrete skills/experiences that match the job description.",
+    "3. A brief, confident closing that thanks them and invites a conversation.",
+    "",
+    "Do NOT write \"Dear ...\", a sign-off, a name, an address, contact info, or a",
+    "date — only the paragraphs themselves.",
     instructionBlock(req.instructions),
     "\nCandidate profile:",
     buildProfileSummary(req),
@@ -127,7 +133,7 @@ export function buildGeneratePrompt(req: GenerateRequest): string {
           .map((i) => `- ${i}`)
           .join("\n")}`
       : "",
-    "\nReturn only the cover letter text.",
+    "\nReturn only the body paragraphs — no greeting, no sign-off.",
   ]
     .filter(Boolean)
     .join("\n");
