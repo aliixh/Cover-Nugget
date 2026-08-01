@@ -10,6 +10,7 @@ import {
 } from "@react-navigation/drawer";
 import { Platform, View } from "react-native";
 import { Text } from "../../src/ui/serif";
+import { Logo } from "../../src/components/Logo";
 import { useApp } from "../../src/context/AppContext";
 
 // React Navigation renders the header title + drawer labels with its own Text
@@ -21,7 +22,7 @@ function DrawerContent(props: DrawerContentComponentProps) {
   return (
     <DrawerContentScrollView {...props}>
       <View className="mb-3 items-center px-4 pb-4 pt-2">
-        <Text style={{ fontSize: 40 }}>🦖🍗</Text>
+        <Logo width={92} />
         <Text className="mt-1 text-lg font-bold text-primary dark:text-dark-primary">
           Cover Nugget
         </Text>
@@ -30,7 +31,7 @@ function DrawerContent(props: DrawerContentComponentProps) {
       <DrawerItemList {...props} />
 
       <View className="mt-8 items-center opacity-30">
-        <Text style={{ fontSize: 18 }}>🦖 · 🍗 · 🦖</Text>
+        <Logo width={54} />
       </View>
     </DrawerContentScrollView>
   );

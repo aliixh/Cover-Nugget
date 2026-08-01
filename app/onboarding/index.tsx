@@ -6,6 +6,7 @@ import { View } from "react-native";
 import { Text } from "../../src/ui/serif";
 import { ScreenContainer } from "../../src/components/ScreenContainer";
 import { Button } from "../../src/components/Button";
+import { Logo } from "../../src/components/Logo";
 
 const POINTS: { icon: string; title: string; body: string }[] = [
   {
@@ -31,7 +32,7 @@ export default function OnboardingWelcome() {
   return (
     <ScreenContainer scroll={false}>
       <View className="flex-1 justify-center">
-        <Text className="text-center text-6xl">🦖🍗</Text>
+        <Logo width={150} style={{ alignSelf: "center" }} />
         <Text className="mt-4 text-center text-4xl font-bold text-primary dark:text-dark-primary">
           Cover Nugget
         </Text>

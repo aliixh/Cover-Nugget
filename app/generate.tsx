@@ -10,6 +10,7 @@ import { Text } from "../src/ui/serif";
 import { ScreenContainer } from "../src/components/ScreenContainer";
 import { BackButton } from "../src/components/BackButton";
 import { Button } from "../src/components/Button";
+import { Logo } from "../src/components/Logo";
 import { TextField } from "../src/components/TextField";
 import { LengthLimitControl, type LimitState } from "../src/components/LengthLimitControl";
 import { useApp } from "../src/context/AppContext";
@@ -205,7 +206,7 @@ export default function GenerateScreen() {
     return (
       <ScreenContainer scroll={false}>
         <View className="flex-1 items-center justify-center">
-          <Text className="mb-6 text-6xl">🦖🍗</Text>
+          <Logo width={140} style={{ marginBottom: 24 }} />
           <ActivityIndicator size="large" />
           <Text className="mt-4 text-base text-secondary dark:text-dark-ink">
             {busyLabel}

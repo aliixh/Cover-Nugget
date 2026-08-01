@@ -13,6 +13,7 @@ import { Text } from "../src/ui/serif";
 import { ScreenContainer } from "../src/components/ScreenContainer";
 import { Button } from "../src/components/Button";
 import { ProgressBar } from "../src/components/ProgressBar";
+import { Logo } from "../src/components/Logo";
 import { MODEL } from "../src/ai/modelConfig";
 import { downloadModel, getModelStatus } from "../src/ai/modelManager";
 import { setMeta } from "../src/db/repositories";
@@ -63,7 +64,7 @@ export default function ModelSetup() {
   return (
     <ScreenContainer scroll={false}>
       <View className="flex-1 items-center justify-center">
-        <Text className="text-6xl">🦖🍗</Text>
+        <Logo width={140} />
         <Text className="mt-6 text-center text-2xl font-bold text-primary dark:text-dark-primary">
           Hold on tight!
         </Text>
