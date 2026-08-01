@@ -12,7 +12,7 @@ const POINTS: { icon: string; title: string; body: string }[] = [
   {
     icon: "🔒",
     title: "Private by design",
-    body: "Your profile and letters stay on your phone — nothing is uploaded.",
+    body: "Your profile and letters stay on your phone; nothing is uploaded.",
   },
   {
     icon: "🎯",
@@ -20,9 +20,9 @@ const POINTS: { icon: string; title: string; body: string }[] = [
     body: "Paste a link or description and get a letter matched to that role.",
   },
   {
-    icon: "✍️",
-    title: "Edit your way",
-    body: "Tweak sentences, pick a format, and export to PDF or Word.",
+    icon: "📄",
+    title: "Yours to finish",
+    body: "Tweak sentences, pick a format, then export to PDF, Word, Google Docs, or just copy.",
   },
 ];
 
@@ -37,7 +37,7 @@ export default function OnboardingWelcome() {
           Cover Nugget
         </Text>
         <Text className="mb-8 mt-2 text-center text-base text-secondary dark:text-dark-ink">
-          Cover letters that actually sound like you — in a couple of taps.
+          Cover letters that actually sound like you, in a couple of taps.
         </Text>
 
         {POINTS.map((p) => (
@@ -56,7 +56,7 @@ export default function OnboardingWelcome() {
       <View className="mb-4">
         <Button label="Get started" onPress={() => router.push("/onboarding/personal")} />
         <Text className="mt-3 text-center text-xs text-muted dark:text-dark-muted">
-          Takes about a minute. You can skip any step.
+          Just a few minutes, and only once. Skip anything you like.
         </Text>
       </View>
     </ScreenContainer>
