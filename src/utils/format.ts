@@ -29,6 +29,6 @@ export function coverLetterTitle(l: {
   if (t) return t;
   const c = l.company?.trim();
   const r = l.role?.trim();
-  if (c && r) return `${c} — ${r}`;
+  if (c && r) return `${c}, ${r}`;
   return c || r || "Untitled Cover Letter";
 }

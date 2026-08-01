@@ -530,7 +530,7 @@ export async function getCoverLetter(id: number): Promise<CoverLetter | null> {
 export function defaultLetterTitle(company?: string | null, role?: string | null): string {
   const c = company?.trim();
   const r = role?.trim();
-  if (c && r) return `${c} — ${r}`;
+  if (c && r) return `${c}, ${r}`;
   if (c) return `${c} Cover Letter`;
   if (r) return `${r} Cover Letter`;
   return "";
