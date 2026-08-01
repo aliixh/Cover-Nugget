@@ -13,7 +13,7 @@ import { AdBanner } from "../../src/components/AdBanner";
 import { listCoverLetters } from "../../src/db/repositories";
 import { getModelStatus } from "../../src/ai/modelManager";
 import type { CoverLetter } from "../../src/types/models";
-import { coverLetterTitle, formatMonthYear } from "../../src/utils/format";
+import { coverLetterTitle, formatFullDate } from "../../src/utils/format";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -90,7 +90,7 @@ export default function HomeScreen() {
               {coverLetterTitle(letter)}
             </Text>
             <Text className="text-sm text-muted dark:text-dark-muted">
-              {formatMonthYear(letter.createdAt)}
+              Edited {formatFullDate(letter.updatedAt ?? letter.createdAt)}
             </Text>
           </Card>
         ))

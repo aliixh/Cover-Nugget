@@ -12,6 +12,13 @@ export function formatMonthYear(iso: string): string {
   return `${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+/** ISO timestamp -> e.g. "July 31, 2026". Falls back to the raw string. */
+export function formatFullDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+
 /** Display name for a cover letter: its title, else a company/role fallback. */
 export function coverLetterTitle(l: {
   title?: string | null;

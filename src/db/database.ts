@@ -62,6 +62,11 @@ async function runMigrations(db: SQLite.SQLiteDatabase): Promise<void> {
   await ensureColumn(db, "education", "gpa", "TEXT");
   // v5: chosen layout preset per letter.
   await ensureColumn(db, "cover_letters", "format_key", "TEXT");
+  // v6: last-edited timestamp (sort letters by most recently edited).
+  await ensureColumn(db, "cover_letters", "updated_at", "TEXT");
+  await db.runAsync(
+    "UPDATE cover_letters SET updated_at = created_at WHERE updated_at IS NULL"
+  );
 }
 
 /**

@@ -62,6 +62,7 @@ export default function ProfileScreen() {
   // Swipeable pager (tap a tab OR swipe left/right between them).
   const pagerRef = useRef<ScrollView>(null);
   const [pageW, setPageW] = useState(0);
+  const [pageH, setPageH] = useState(0);
 
   // Personal-info form state.
   const [name, setName] = useState("");
@@ -311,30 +312,39 @@ export default function ProfileScreen() {
         })}
       </ScrollView>
 
-      {/* Swipeable pages — one per tab. Each page scrolls vertically on its own. */}
-      <View className="flex-1" onLayout={(e) => setPageW(e.nativeEvent.layout.width)}>
-        <ScrollView
-          ref={pagerRef}
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-          onMomentumScrollEnd={onPagerEnd}
-        >
-          {pageW > 0 &&
-            TABS.map((t) => (
-              <ScrollView
-                key={t.key}
-                style={{ width: pageW }}
-                contentContainerStyle={{ paddingBottom: 24 }}
-                keyboardShouldPersistTaps="handled"
-                automaticallyAdjustKeyboardInsets
-                showsVerticalScrollIndicator={false}
-              >
-                {tabContent(t.key)}
-              </ScrollView>
+      {/* Swipeable pages — one per tab. Each page is a fixed-size box so the
+          horizontal pager can page; its inner ScrollView (bounded by that box)
+          scrolls the tab's content vertically. */}
+      <View
+        className="flex-1"
+        onLayout={(e) => {
+          setPageW(e.nativeEvent.layout.width);
+          setPageH(e.nativeEvent.layout.height);
+        }}
+      >
+        {pageW > 0 && pageH > 0 ? (
+          <ScrollView
+            ref={pagerRef}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+            onMomentumScrollEnd={onPagerEnd}
+          >
+            {TABS.map((t) => (
+              <View key={t.key} style={{ width: pageW, height: pageH }}>
+                <ScrollView
+                  contentContainerStyle={{ paddingBottom: 24 }}
+                  keyboardShouldPersistTaps="handled"
+                  automaticallyAdjustKeyboardInsets
+                  showsVerticalScrollIndicator={false}
+                >
+                  {tabContent(t.key)}
+                </ScrollView>
+              </View>
             ))}
-        </ScrollView>
+          </ScrollView>
+        ) : null}
       </View>
     </ScreenContainer>
   );

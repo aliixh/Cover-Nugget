@@ -15,7 +15,7 @@ import {
   updateCoverLetterTitle,
 } from "../../src/db/repositories";
 import type { CoverLetter } from "../../src/types/models";
-import { coverLetterTitle, formatMonthYear } from "../../src/utils/format";
+import { coverLetterTitle, formatFullDate } from "../../src/utils/format";
 
 export default function ArchiveScreen() {
   const router = useRouter();
@@ -111,7 +111,7 @@ export default function ArchiveScreen() {
                   {coverLetterTitle(letter)}
                 </Text>
                 <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
-                  {formatMonthYear(letter.createdAt)}
+                  Edited {formatFullDate(letter.updatedAt ?? letter.createdAt)}
                 </Text>
               </View>
               <View className="flex-row">

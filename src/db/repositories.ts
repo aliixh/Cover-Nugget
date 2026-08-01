@@ -114,6 +114,7 @@ const toCoverLetter = (r: Row): CoverLetter => ({
   role: r.role,
   content: r.content,
   createdAt: r.created_at,
+  updatedAt: r.updated_at ?? r.created_at,
   limitType: r.limit_type,
   limitValue: r.limit_value,
   formatKey: r.format_key,
@@ -509,7 +510,7 @@ export async function getFullProfile(): Promise<FullProfile | null> {
 export async function listCoverLetters(): Promise<CoverLetter[]> {
   const db = await getDb();
   const rows = await db.getAllAsync<Row>(
-    "SELECT * FROM cover_letters ORDER BY created_at DESC"
+    "SELECT * FROM cover_letters ORDER BY COALESCE(updated_at, created_at) DESC"
   );
   return rows.map(toCoverLetter);
 }
@@ -551,11 +552,12 @@ export async function saveCoverLetter(letter: NewCoverLetter): Promise<number> {
   const createdAt = new Date().toISOString();
   let title = letter.title?.trim() || defaultLetterTitle(letter.company, letter.role);
   const r = await db.runAsync(
-    "INSERT INTO cover_letters (title, company, role, content, created_at) VALUES (?, ?, ?, ?, ?)",
+    "INSERT INTO cover_letters (title, company, role, content, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)",
     title,
     letter.company ?? null,
     letter.role ?? null,
     letter.content,
+    createdAt,
     createdAt
   );
   // No company/role/title → name it by its position: "Untitled N".
@@ -568,12 +570,22 @@ export async function saveCoverLetter(letter: NewCoverLetter): Promise<number> {
 
 export async function updateCoverLetter(id: number, content: string): Promise<void> {
   const db = await getDb();
-  await db.runAsync("UPDATE cover_letters SET content = ? WHERE id = ?", content, id);
+  await db.runAsync(
+    "UPDATE cover_letters SET content = ?, updated_at = ? WHERE id = ?",
+    content,
+    new Date().toISOString(),
+    id
+  );
 }
 
 export async function updateCoverLetterTitle(id: number, title: string): Promise<void> {
   const db = await getDb();
-  await db.runAsync("UPDATE cover_letters SET title = ? WHERE id = ?", title, id);
+  await db.runAsync(
+    "UPDATE cover_letters SET title = ?, updated_at = ? WHERE id = ?",
+    title,
+    new Date().toISOString(),
+    id
+  );
 }
 
 /** Set (or clear, with nulls) a letter's word/char length limit. */
@@ -584,9 +596,10 @@ export async function updateCoverLetterLimit(
 ): Promise<void> {
   const db = await getDb();
   await db.runAsync(
-    "UPDATE cover_letters SET limit_type = ?, limit_value = ? WHERE id = ?",
+    "UPDATE cover_letters SET limit_type = ?, limit_value = ?, updated_at = ? WHERE id = ?",
     limitType,
     limitValue,
+    new Date().toISOString(),
     id
   );
 }
@@ -594,7 +607,12 @@ export async function updateCoverLetterLimit(
 /** Persist the chosen layout preset for a letter. */
 export async function updateCoverLetterFormat(id: number, formatKey: string): Promise<void> {
   const db = await getDb();
-  await db.runAsync("UPDATE cover_letters SET format_key = ? WHERE id = ?", formatKey, id);
+  await db.runAsync(
+    "UPDATE cover_letters SET format_key = ?, updated_at = ? WHERE id = ?",
+    formatKey,
+    new Date().toISOString(),
+    id
+  );
 }
 
 export async function deleteCoverLetter(id: number): Promise<void> {

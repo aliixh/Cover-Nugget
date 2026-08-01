@@ -4,7 +4,7 @@
 // to run every launch. `SCHEMA_VERSION` + the meta table let us add lightweight
 // migrations later without wiping user data.
 
-export const SCHEMA_VERSION = 5;
+export const SCHEMA_VERSION = 6;
 
 export const CREATE_TABLES_SQL = `
 PRAGMA journal_mode = WAL;
@@ -98,7 +98,8 @@ CREATE TABLE IF NOT EXISTS cover_letters (
   created_at  TEXT NOT NULL,
   limit_type  TEXT,
   limit_value INTEGER,
-  format_key  TEXT
+  format_key  TEXT,
+  updated_at  TEXT
 );
 
 CREATE TABLE IF NOT EXISTS ai_settings (

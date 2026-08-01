@@ -86,6 +86,7 @@ export interface CoverLetter {
   role?: string | null;
   content: string;
   createdAt: string; // ISO timestamp
+  updatedAt?: string; // ISO timestamp of the last edit
   /** Optional length limit: "word" | "char" (null = no limit). */
   limitType?: "word" | "char" | null;
   limitValue?: number | null;
