@@ -5,7 +5,7 @@
       "location": "San Francisco, CA",
       "skills": ["React", "TypeScript", "Node.js", "GraphQL", "accessibility", "design systems"],
       "experience": [
-        {"role": "Frontend Engineer", "company": "Nimbus", "description": "Built and maintained a component library used by 12 product teams; improved Lighthouse performance scores by 35% and led accessibility remediation to WCAG 2.1 AA."}
+        {"role": "Frontend Engineer", "company": "Nimbus", "startDate": "05/2021", "isCurrent": true, "description": "Built and maintained a component library used by 12 product teams; improved Lighthouse performance scores by 35% and led accessibility remediation to WCAG 2.1 AA."}
       ],
       "education": [{"degree": "B.S. Computer Science", "school": "UC Berkeley", "year": "2021"}],
       "projects": [{"name": "Portfolio", "technologies": "Next.js, GraphQL"}]
@@ -13,26 +13,9 @@
     "job": {
       "company": "Bright Labs",
       "role": "Frontend Engineer",
-      "description": "We're hiring a Frontend Engineer to build accessible, high-performance React interfaces in TypeScript. You'll own our design system, collaborate with product and design, and integrate GraphQL APIs. Experience with accessibility (WCAG) and performance optimization is important."
+      "description": "Bright Labs builds analytics tools used by thousands of teams, and we're hiring a Frontend Engineer to help make them fast and accessible. You'll build responsive, accessible interfaces in React and TypeScript, own and evolve our design system, and partner closely with product and design to ship features end to end. You'll also integrate our GraphQL APIs and help set the bar for performance across the product. We're looking for 3+ years of frontend experience, strong React and TypeScript, experience maintaining a design system, and familiarity with WCAG accessibility standards and performance optimization. GraphQL and Next.js are a plus."
     },
-    "letter_body": "I was excited to see your opening for a Frontend Engineer, because building accessible, high-performance React interfaces is exactly the work I care most about. At Nimbus I built and maintained the component library that 12 product teams relied on, so owning a design system end to end is familiar territory for me.\n\nYour emphasis on accessibility and performance maps directly to my recent work. I led our WCAG 2.1 AA remediation and raised our Lighthouse performance scores by 35%, and I'm comfortable wiring up GraphQL APIs in TypeScript alongside product and design partners.\n\nI'd welcome the chance to bring that same focus on quality and inclusive design to Bright Labs. Thank you for considering my application, and I look forward to talking."
-  },
-  {
-    "profile": {
-      "name": "Marcus Bell",
-      "location": "Austin, TX",
-      "skills": ["content marketing", "SEO", "email campaigns", "analytics", "copywriting", "social media"],
-      "experience": [
-        {"role": "Marketing Coordinator", "company": "Fernwood Goods", "description": "Ran email and social campaigns that grew the newsletter list from 4k to 22k in a year; improved organic search traffic 60% through an SEO content plan."}
-      ],
-      "education": [{"degree": "B.A. Communications", "school": "UT Austin", "year": "2022"}]
-    },
-    "job": {
-      "company": "Loop & Co",
-      "role": "Marketing Coordinator",
-      "description": "Loop & Co is looking for a Marketing Coordinator to plan email campaigns, grow our social channels, and support SEO content. You should be data-driven, a strong writer, and comfortable using analytics to guide decisions."
-    },
-    "letter_body": "I'd love to bring my content and email marketing experience to the Marketing Coordinator role at Loop & Co. Growing an audience through writing that people actually want to read is what I enjoy most, and it's where I've had the clearest results.\n\nAt Fernwood Goods I grew our newsletter list from 4,000 to 22,000 subscribers in a year and lifted organic search traffic by 60% with an SEO-focused content plan. I lean on analytics to decide what to write next, which fits the data-driven approach your posting describes.\n\nI'm confident I could help Loop & Co reach and keep a larger audience. Thank you for your time, and I hope to discuss how I can contribute."
+    "letter_body": "I was genuinely excited to see the Frontend Engineer opening at Bright Labs. Building accessible, high-performance React interfaces is exactly the work I care most about, and the idea of doing it on analytics tools that thousands of teams rely on is a strong pull for me.\n\nMuch of what you describe mirrors my day-to-day. At Nimbus I built and maintained the component library that twelve product teams depended on, so owning and evolving a design system end to end is familiar territory. I work in TypeScript by default and partner closely with product and design to take features from idea to ship.\n\nYour emphasis on accessibility and performance is where I do some of my best work. I led our WCAG 2.1 AA remediation so the whole product met the standard, and I raised our Lighthouse performance scores by 35% through focused profiling and code-splitting. I'm also comfortable wiring up GraphQL APIs, which lines up with your stack.\n\nI'd welcome the chance to bring that same focus on quality and inclusive design to Bright Labs. Thank you for considering my application, and I'd love to talk more about how I can help your team."
   },
   {
     "profile": {
@@ -40,16 +23,33 @@
       "location": "Chicago, IL",
       "skills": ["patient care", "IV therapy", "EPIC EHR", "triage", "patient education", "wound care"],
       "experience": [
-        {"role": "Registered Nurse", "company": "Lakeside Medical Center", "description": "Provided care for up to 6 medical-surgical patients per shift; precepted new grad nurses and championed a hand-off checklist that reduced medication errors."}
+        {"role": "Registered Nurse", "company": "Lakeside Medical Center", "startDate": "06/2020", "isCurrent": true, "description": "Provides care for up to 6 medical-surgical patients per shift; precepts new-grad nurses and championed a hand-off checklist that reduced medication errors."}
       ],
       "education": [{"degree": "B.S. Nursing", "school": "University of Illinois", "year": "2020"}]
     },
     "job": {
       "company": "Riverside Health",
-      "role": "Registered Nurse, Med-Surg",
-      "description": "Riverside Health seeks a compassionate Registered Nurse for our medical-surgical unit. Responsibilities include patient assessment, IV therapy, patient education, and documentation in EPIC. We value teamwork and a commitment to patient safety."
+      "role": "Registered Nurse, Medical-Surgical",
+      "description": "Riverside Health is seeking a compassionate Registered Nurse for our medical-surgical unit. In this role you'll perform patient assessments, administer IV therapy and medications, provide patient and family education, and document care accurately in EPIC. You'll work closely with physicians and fellow nurses to coordinate safe, timely care across each shift. We're looking for a current RN license, a BSN preferred, strong clinical assessment skills, and experience in an acute-care or med-surg setting. Above all, we value teamwork, clear communication, and a genuine commitment to patient safety."
     },
-    "letter_body": "Compassionate, safe patient care is the heart of nursing for me, so I was glad to see the Med-Surg Registered Nurse opening at Riverside Health. I've spent the last four years caring for medical-surgical patients and would be proud to bring that experience to your unit.\n\nAt Lakeside Medical Center I managed care for up to six patients a shift, handled IV therapy and patient education daily, and documented in EPIC. I also introduced a hand-off checklist that reduced medication errors, which speaks to the patient-safety focus your posting emphasizes.\n\nI'd be grateful for the opportunity to support your patients and team. Thank you for considering my application."
+    "letter_body": "Compassionate, safe patient care is the heart of nursing for me, so I was glad to see the Medical-Surgical Registered Nurse opening at Riverside Health. Your emphasis on teamwork and patient safety is exactly the kind of unit I want to be part of.\n\nI currently work as a Registered Nurse at Lakeside Medical Center, where I've spent the last several years caring for medical-surgical patients. On a typical shift I manage care for up to six patients, handle IV therapy and medications, and make patient education a priority so families understand what comes next.\n\nThe patient-safety focus in your posting is something I've acted on directly. I introduced a hand-off checklist on my unit that measurably reduced medication errors, and I regularly precept new-grad nurses, which has sharpened how clearly I communicate under pressure. I document thoroughly in EPIC and coordinate closely with the care team throughout the day.\n\nI'd be grateful for the opportunity to bring that experience and care to your patients and staff. Thank you for considering my application, and I welcome the chance to discuss the role further."
+  },
+  {
+    "profile": {
+      "name": "Marcus Bell",
+      "location": "Austin, TX",
+      "skills": ["content marketing", "SEO", "email campaigns", "analytics", "copywriting", "social media"],
+      "experience": [
+        {"role": "Marketing Coordinator", "company": "Fernwood Goods", "startDate": "07/2022", "isCurrent": true, "description": "Runs email and social campaigns that grew the newsletter list from 4k to 22k in a year; improved organic search traffic 60% through an SEO content plan."}
+      ],
+      "education": [{"degree": "B.A. Communications", "school": "UT Austin", "year": "2022"}]
+    },
+    "job": {
+      "company": "Loop & Co",
+      "role": "Marketing Coordinator",
+      "description": "Loop & Co is a growing consumer brand looking for a Marketing Coordinator to help us reach and keep a larger audience. You'll plan and send email campaigns, grow our social channels, support an SEO-driven content calendar, and use analytics to decide what to do next. You'll collaborate with design and product to keep our messaging consistent across every touchpoint. We're looking for someone who is a strong writer, comfortable in analytics tools, organized enough to run a content calendar, and genuinely curious about what makes people click. One to three years of marketing experience is ideal."
+    },
+    "letter_body": "I'd love to bring my content and email marketing experience to the Marketing Coordinator role at Loop & Co. Growing an audience through writing that people actually want to read is the part of marketing I enjoy most, and it's where I've had the clearest results.\n\nI currently coordinate marketing at Fernwood Goods, where I run our email and social campaigns day to day. Over the past year I grew our newsletter list from 4,000 to 22,000 subscribers, largely by writing emails people looked forward to rather than deleted.\n\nYour focus on SEO and analytics fits how I already work. I built an SEO-driven content plan that lifted our organic search traffic by 60%, and I lean on analytics to decide what to write next instead of guessing. I'm comfortable owning a content calendar and keeping messaging consistent with design and product.\n\nI'm confident I could help Loop & Co reach and retain a bigger audience. Thank you for your time and consideration, and I hope to discuss how I can contribute."
   },
   {
     "profile": {
@@ -57,118 +57,16 @@
       "location": "Remote",
       "skills": ["SQL", "Python", "Tableau", "data cleaning", "A/B testing", "dashboards"],
       "experience": [
-        {"role": "Data Analyst", "company": "Cartwheel", "description": "Built self-serve Tableau dashboards used across the company and ran A/B tests that informed a checkout redesign, lifting conversion 8%."}
+        {"role": "Data Analyst", "company": "Cartwheel", "startDate": "08/2021", "isCurrent": true, "description": "Built self-serve Tableau dashboards used across the company and ran A/B tests that informed a checkout redesign, lifting conversion 8%."}
       ],
       "education": [{"degree": "B.S. Statistics", "school": "Ohio State", "year": "2021"}]
     },
     "job": {
       "company": "Vantage",
       "role": "Data Analyst",
-      "description": "Vantage is hiring a Data Analyst to turn data into decisions. You'll write SQL, build dashboards (Tableau or similar), run experiments, and present findings to non-technical stakeholders. Strong communication is a must."
+      "description": "Vantage is hiring a Data Analyst to turn data into decisions the whole company can act on. You'll write SQL to pull and shape data, build and maintain dashboards in Tableau or a similar tool, design and analyze experiments, and present clear findings to non-technical stakeholders. You'll partner with product, marketing, and operations to answer the questions that actually move the business. We're looking for strong SQL, comfort with a BI/visualization tool, experience running A/B tests, and, most importantly, the ability to explain results simply. Familiarity with Python is a plus."
     },
-    "letter_body": "Turning messy data into a decision someone can act on is my favorite part of analytics, so the Data Analyst role at Vantage caught my eye. I write SQL daily and enjoy making findings clear to people who don't live in spreadsheets.\n\nAt Cartwheel I built self-serve Tableau dashboards that teams across the company used without needing me in the room, and I ran the A/B tests behind a checkout redesign that raised conversion by 8%. Presenting those results to non-technical stakeholders was central to getting them adopted.\n\nI'd be excited to bring that mix of rigor and clear communication to Vantage. Thank you for your consideration."
-  },
-  {
-    "profile": {
-      "name": "Sarah Okonkwo",
-      "location": "Denver, CO",
-      "skills": ["lesson planning", "classroom management", "differentiated instruction", "literacy", "parent communication"],
-      "experience": [
-        {"role": "3rd Grade Teacher", "company": "Maple Grove Elementary", "description": "Taught a class of 26; raised reading proficiency 20% through small-group literacy instruction and kept families informed with weekly updates."}
-      ],
-      "education": [{"degree": "B.A. Elementary Education", "school": "Colorado State", "year": "2019"}]
-    },
-    "job": {
-      "company": "Sunnyside School District",
-      "role": "Elementary Teacher",
-      "description": "Sunnyside is seeking an elementary teacher who excels at differentiated instruction, classroom management, and building relationships with families. A focus on literacy growth is highly valued."
-    },
-    "letter_body": "Helping young students find their footing as readers is the most rewarding work I know, so I was thrilled to see the elementary teaching opening at Sunnyside. Differentiated instruction and strong family relationships are at the center of how I teach.\n\nIn my third-grade classroom at Maple Grove I raised reading proficiency by 20% through targeted small-group literacy instruction, and I kept families involved with weekly updates. Managing a class of 26 taught me to build routines that let every student feel supported.\n\nI would love to bring that literacy focus and warmth to Sunnyside's students. Thank you for your time and consideration."
-  },
-  {
-    "profile": {
-      "name": "Jordan Lee",
-      "location": "Seattle, WA",
-      "skills": ["user research", "Figma", "prototyping", "usability testing", "design systems", "interaction design"],
-      "experience": [
-        {"role": "Product Designer", "company": "Halcyon", "description": "Led design for a mobile onboarding flow that cut drop-off by 25%; ran usability tests and maintained the Figma design system."}
-      ],
-      "education": [{"degree": "B.F.A. Design", "school": "RISD", "year": "2020"}]
-    },
-    "job": {
-      "company": "Meadow",
-      "role": "Product Designer",
-      "description": "Meadow is hiring a Product Designer to own flows end to end: research, prototyping in Figma, usability testing, and contributing to our design system. We want someone who validates decisions with users."
-    },
-    "letter_body": "The Product Designer role at Meadow stood out to me because it pairs end-to-end ownership with a real commitment to validating decisions with users — the way I like to work. Research and testing aren't extra steps for me; they're how I know a design is right.\n\nAt Halcyon I led the redesign of a mobile onboarding flow that cut drop-off by 25%, ran the usability tests behind it, and kept our Figma design system consistent as the team grew. Prototyping and iterating with real user feedback is where I do my best work.\n\nI'd be glad to bring that user-first approach to Meadow. Thank you for considering my application."
-  },
-  {
-    "profile": {
-      "name": "Emily Carter",
-      "location": "New York, NY",
-      "skills": ["financial modeling", "Excel", "forecasting", "variance analysis", "SQL", "presentations"],
-      "experience": [
-        {"role": "Financial Analyst", "company": "Grayson Partners", "description": "Owned the monthly forecast and variance analysis for a $40M portfolio; built Excel models that cut the close process by two days."}
-      ],
-      "education": [{"degree": "B.B.A. Finance", "school": "NYU Stern", "year": "2021"}]
-    },
-    "job": {
-      "company": "Keystone Capital",
-      "role": "Financial Analyst",
-      "description": "Keystone Capital seeks a Financial Analyst to build financial models, run forecasting and variance analysis, and present findings to leadership. Advanced Excel is required; SQL is a plus."
-    },
-    "letter_body": "I'm writing to apply for the Financial Analyst position at Keystone Capital. Building models that make a forecast trustworthy — and explaining what the numbers mean — is the part of finance I find most satisfying.\n\nAt Grayson Partners I owned the monthly forecast and variance analysis for a $40M portfolio and built Excel models that cut two days off our close. I also use SQL to pull the data behind those models, so the plus your posting mentions is already part of my toolkit.\n\nI'd welcome the chance to bring that precision to Keystone's team. Thank you for your consideration."
-  },
-  {
-    "profile": {
-      "name": "Sam Whitfield",
-      "location": "Remote",
-      "skills": ["customer success", "onboarding", "SaaS", "Salesforce", "churn reduction", "account management"],
-      "experience": [
-        {"role": "Customer Success Manager", "company": "Tidewave", "description": "Owned a book of 60 SaaS accounts; cut churn from 12% to 7% and ran onboarding that shortened time-to-value for new customers."}
-      ],
-      "education": [{"degree": "B.A. Business", "school": "University of Oregon", "year": "2019"}]
-    },
-    "job": {
-      "company": "Beacon",
-      "role": "Customer Success Manager",
-      "description": "Beacon is looking for a Customer Success Manager to onboard new SaaS customers, manage a book of accounts, reduce churn, and be the trusted point of contact. Salesforce experience preferred."
-    },
-    "letter_body": "The Customer Success Manager role at Beacon appeals to me because I genuinely like being the person customers trust to help them succeed — especially early on, when good onboarding makes all the difference.\n\nAt Tidewave I managed a book of 60 SaaS accounts and cut churn from 12% to 7%, largely by rebuilding onboarding so customers reached value faster. I worked in Salesforce every day to stay ahead of account health, which lines up with what your posting is looking for.\n\nI'd be excited to help Beacon's customers get more out of your product. Thank you for your time."
-  },
-  {
-    "profile": {
-      "name": "Tomas Rivera",
-      "location": "Detroit, MI",
-      "skills": ["SolidWorks", "GD&T", "FEA", "DFM", "tolerance analysis", "prototyping"],
-      "experience": [
-        {"role": "Mechanical Engineer", "company": "Aster Manufacturing", "description": "Designed sheet-metal enclosures in SolidWorks and ran FEA to cut part weight 18% while passing drop tests; owned DFM reviews with suppliers."}
-      ],
-      "education": [{"degree": "B.S. Mechanical Engineering", "school": "Michigan State", "year": "2020"}]
-    },
-    "job": {
-      "company": "Northwind Robotics",
-      "role": "Mechanical Engineer",
-      "description": "Northwind Robotics needs a Mechanical Engineer to design components in SolidWorks, apply GD&T, run FEA, and drive design-for-manufacturing with suppliers. Hardware prototyping experience is a plus."
-    },
-    "letter_body": "Designing hardware that survives the real world is what pulls me toward the Mechanical Engineer role at Northwind Robotics. Robotics puts real demands on mechanical design, and that challenge is exactly what I enjoy.\n\nAt Aster Manufacturing I designed sheet-metal enclosures in SolidWorks and used FEA to cut part weight by 18% while still passing drop tests. I applied GD&T on every drawing and led DFM reviews directly with suppliers, so the design-for-manufacturing focus in your posting is second nature to me.\n\nI'd be glad to bring that hands-on, build-it-right approach to your team. Thank you for considering my application."
-  },
-  {
-    "profile": {
-      "name": "Nadia Farouk",
-      "location": "Remote",
-      "skills": ["B2B sales", "prospecting", "CRM", "negotiation", "pipeline management", "product demos"],
-      "experience": [
-        {"role": "Account Executive", "company": "Brightpath", "description": "Carried a $1.2M quota and hit 118% of target two years running; built pipeline through cold outreach and ran product demos end to end."}
-      ],
-      "education": [{"degree": "B.A. Marketing", "school": "Arizona State", "year": "2019"}]
-    },
-    "job": {
-      "company": "Cadence Software",
-      "role": "Account Executive",
-      "description": "Cadence Software is hiring an Account Executive to build pipeline, run demos, and close B2B deals. You should be comfortable with prospecting, CRM hygiene, and negotiation, and motivated by quota."
-    },
-    "letter_body": "I'm drawn to the Account Executive role at Cadence Software because I like the full arc of a deal, from a cold first touch to a signature, and I've spent my career getting good at it.\n\nAt Brightpath I carried a $1.2M quota and hit 118% of target two years in a row, building most of that pipeline through disciplined prospecting and running demos myself. Keeping my CRM clean and negotiating to a fair close are habits, not chores, which fits what your posting values.\n\nI'd love to bring that momentum to Cadence. Thank you for your time and consideration."
+    "letter_body": "Turning messy data into a decision someone can act on is my favorite part of analytics, so the Data Analyst role at Vantage caught my eye. I especially like the emphasis on presenting to non-technical stakeholders, because that's often where analysis actually turns into impact.\n\nI currently work as a Data Analyst at Cartwheel, where I write SQL every day and build the dashboards teams rely on. My Tableau dashboards are self-serve, so people across the company can answer their own questions without waiting on me.\n\nExperimentation is a strong part of my background, which fits what you're after. I ran the A/B tests behind a checkout redesign that raised conversion by 8%, and getting that adopted meant presenting the results clearly to people who don't live in spreadsheets. I also use Python for the heavier data-cleaning work.\n\nI'd be excited to bring that mix of rigor and clear communication to Vantage. Thank you for your consideration, and I'd welcome the chance to talk through how I can help your teams make better decisions."
   },
   {
     "profile": {
@@ -176,218 +74,66 @@
       "location": "Boston, MA",
       "skills": ["GAAP", "month-end close", "reconciliations", "Excel", "accounts payable", "audit support"],
       "experience": [
-        {"role": "Staff Accountant", "company": "Halden Group", "description": "Owned month-end close for three entities, prepared reconciliations, and supported the annual audit with clean, well-documented workpapers."}
+        {"role": "Staff Accountant", "company": "Halden Group", "startDate": "07/2021", "isCurrent": true, "description": "Owns month-end close for three entities, prepares reconciliations, and supports the annual audit with clean, well-documented workpapers."}
       ],
       "education": [{"degree": "B.S. Accounting", "school": "Boston College", "year": "2021"}]
     },
     "job": {
       "company": "Merit Partners",
       "role": "Staff Accountant",
-      "description": "Merit Partners seeks a Staff Accountant to handle month-end close, reconciliations, accounts payable, and audit support under GAAP. Strong Excel and attention to detail are essential."
+      "description": "Merit Partners is looking for a detail-oriented Staff Accountant to join our finance team. You'll own pieces of the month-end close, prepare account reconciliations, process accounts payable, and support the annual external audit under GAAP. You'll help document and improve our close processes so they get faster and cleaner over time. We're looking for a bachelor's in accounting, one to three years of experience, strong Excel skills, a solid grasp of GAAP, and the kind of attention to detail that keeps the books accurate and audit-ready. CPA progress is a plus but not required."
     },
-    "letter_body": "Accurate books close on time because someone cares about the details, and that is the part of accounting I take pride in, so the Staff Accountant role at Merit Partners is a natural fit.\n\nAt Halden Group I owned month-end close across three entities, prepared the reconciliations behind it, and supported our annual audit with workpapers clean enough that reviewers rarely had questions. Working under GAAP with heavy Excel is exactly the day-to-day your posting describes.\n\nI'd welcome the chance to bring that reliability to your team. Thank you for reviewing my application."
+    "letter_body": "Accurate books close on time because someone cares about the details, and that is the part of accounting I take pride in, so the Staff Accountant role at Merit Partners is a natural fit for me.\n\nI currently work as a Staff Accountant at Halden Group, where I own the month-end close across three entities. That means preparing the reconciliations behind the numbers and making sure everything ties out before we report, which is exactly the kind of ownership your posting describes.\n\nYour emphasis on audit-readiness and GAAP matches how I already operate. I support our annual external audit with workpapers clean enough that reviewers rarely have questions, and I process accounts payable accurately while looking for small ways to make the close faster. I work in Excel constantly and keep GAAP front of mind.\n\nI'd welcome the chance to bring that reliability and care to Merit Partners. Thank you for reviewing my application, and I'd be glad to discuss how I can support your team."
   },
   {
     "profile": {
-      "name": "Andre Whitlock",
-      "location": "Chicago, IL",
-      "skills": ["project scheduling", "budgeting", "stakeholder management", "risk management", "Jira", "reporting"],
+      "name": "Nadia Farouk",
+      "location": "Remote",
+      "skills": ["B2B sales", "prospecting", "CRM", "negotiation", "pipeline management", "product demos"],
       "experience": [
-        {"role": "Project Manager", "company": "Corevale", "description": "Delivered a 9-month platform migration on time and 6% under budget, coordinating five teams and keeping stakeholders aligned with weekly reporting."}
+        {"role": "Account Executive", "company": "Brightpath", "startDate": "03/2020", "isCurrent": true, "description": "Carries a $1.2M quota and has hit 118% of target two years running; builds pipeline through cold outreach and runs product demos end to end."}
       ],
-      "education": [{"degree": "B.S. Business Administration", "school": "University of Illinois", "year": "2018"}]
+      "education": [{"degree": "B.A. Marketing", "school": "Arizona State", "year": "2019"}]
     },
     "job": {
-      "company": "Linden Health",
-      "role": "Project Manager",
-      "description": "Linden Health needs a Project Manager to run cross-functional projects: scheduling, budgeting, risk management, and clear stakeholder communication. Experience delivering on time and on budget is key."
+      "company": "Cadence Software",
+      "role": "Account Executive",
+      "description": "Cadence Software is scaling its sales team and hiring an Account Executive to own the full B2B cycle from first touch to close. You'll build pipeline through prospecting and outreach, run product demos, manage opportunities in the CRM, and negotiate deals to a fair close. You'll work with marketing and sales engineering to move deals forward and hit quarterly targets. We're looking for two or more years of B2B sales experience, a track record of hitting quota, strong discovery and demo skills, disciplined CRM habits, and comfort negotiating. SaaS experience is a plus."
     },
-    "letter_body": "Good project management is mostly about keeping people aligned and problems small before they grow, and that is the work I enjoy, which is why the Project Manager role at Linden Health caught my attention.\n\nAt Corevale I delivered a nine-month platform migration on time and 6% under budget, coordinating five teams and keeping every stakeholder current through weekly reporting. Scheduling, budgeting, and getting ahead of risk are the core of how I run a project, matching what your posting is after.\n\nI'd be glad to bring that steady delivery to Linden Health. Thank you for your consideration."
+    "letter_body": "I'm drawn to the Account Executive role at Cadence Software because I like the full arc of a deal, from a cold first touch to a signature, and I've spent my career getting good at every step of it.\n\nI currently work as an Account Executive at Brightpath, where I carry a $1.2M quota and have hit 118% of target two years in a row. Most of that pipeline I built myself through disciplined prospecting, so the outreach-heavy front of the funnel your posting describes is second nature to me.\n\nThe rest of the cycle is where I stay just as involved. I run my own product demos, keep my CRM clean enough that forecasting is honest, and negotiate to a close that works for both sides. Those aren't chores I tolerate; they're habits I rely on to hit number after number.\n\nI'd love to bring that momentum to Cadence, especially as the team scales. Thank you for your time and consideration, and I'd welcome the chance to talk about how I can contribute to your targets."
   },
   {
     "profile": {
-      "name": "Leila Osman",
+      "name": "Jordan Lee",
       "location": "Seattle, WA",
-      "skills": ["cell culture", "PCR", "data analysis", "lab documentation", "microscopy", "literature review"],
+      "skills": ["user research", "Figma", "prototyping", "usability testing", "design systems", "interaction design"],
       "experience": [
-        {"role": "Research Assistant", "company": "UW Bioengineering Lab", "description": "Ran cell-culture and PCR experiments, maintained meticulous lab records, and co-authored a poster presented at a regional conference."}
+        {"role": "Product Designer", "company": "Halcyon", "startDate": "02/2021", "isCurrent": true, "description": "Leads design for mobile flows end to end; a redesigned onboarding flow cut drop-off by 25%. Runs usability tests and maintains the Figma design system."}
       ],
-      "education": [{"degree": "B.S. Biology", "school": "University of Washington", "year": "2022"}]
+      "education": [{"degree": "B.F.A. Design", "school": "RISD", "year": "2020"}]
     },
     "job": {
-      "company": "Cascade Therapeutics",
-      "role": "Research Associate",
-      "description": "Cascade Therapeutics is hiring a Research Associate for wet-lab work: cell culture, PCR, careful documentation, and data analysis. Attention to detail and reproducibility are critical."
+      "company": "Meadow",
+      "role": "Product Designer",
+      "description": "Meadow is hiring a Product Designer to own flows end to end and help shape how our product feels. You'll run user research, prototype in Figma, test with real users, and contribute to our growing design system. You'll collaborate with product and engineering from problem definition through launch, and you'll be expected to validate decisions with evidence rather than opinion. We're looking for a strong portfolio, experience taking features from research to shipped design, fluency in Figma and prototyping, and a habit of usability testing. Experience contributing to a design system is a plus."
     },
-    "letter_body": "Careful, reproducible bench work is the foundation of good science, and it is the part of research I am most committed to, so I was excited to see the Research Associate opening at Cascade Therapeutics.\n\nIn the UW Bioengineering Lab I ran cell-culture and PCR experiments daily and kept lab records precise enough that others could repeat my work exactly. That attention to documentation and reproducibility is exactly what your posting emphasizes, and I also co-authored a poster from the work.\n\nI'd be grateful for the chance to contribute to your research. Thank you for considering my application."
+    "letter_body": "The Product Designer role at Meadow stood out to me because it pairs end-to-end ownership with a real commitment to validating decisions with users, which is exactly how I like to work. Research and testing aren't extra steps for me; they're how I know a design is right.\n\nI currently work as a Product Designer at Halcyon, where I lead flows from problem definition through launch. My clearest example is a mobile onboarding flow I redesigned that cut drop-off by 25% once it shipped.\n\nThat outcome came from the process your posting describes. I ran the usability tests behind the redesign, iterated on prototypes in Figma based on what real users struggled with, and kept our design system consistent as the team and product grew. I'm comfortable collaborating closely with product and engineering throughout.\n\nI'd be glad to bring that user-first approach to Meadow. Thank you for considering my application, and I'd love to walk you through my process and portfolio."
   },
   {
     "profile": {
-      "name": "Marisol Vega",
-      "location": "Los Angeles, CA",
-      "skills": ["Adobe Illustrator", "Photoshop", "branding", "typography", "layout", "print production"],
-      "experience": [
-        {"role": "Graphic Designer", "company": "Juniper Studio", "startDate": "03/2021", "isCurrent": true, "description": "Designed brand identities and marketing collateral for 20+ clients and refreshed a retail brand that lifted in-store engagement."}
-      ],
-      "education": [{"degree": "B.F.A. Graphic Design", "school": "ArtCenter", "year": "2020"}]
-    },
-    "job": {
-      "company": "Cove Creative",
-      "role": "Graphic Designer",
-      "description": "Cove Creative seeks a Graphic Designer skilled in Adobe Illustrator and Photoshop to build brand identities, marketing collateral, and print-ready layouts. A strong sense of typography is important."
-    },
-    "letter_body": "Design that makes a brand feel like itself is what I love making, so the Graphic Designer role at Cove Creative is a natural fit for me. Building identities from a blank page and seeing them out in the world is the most rewarding part of the job.\n\nAt Juniper Studio I designed brand identities and marketing collateral for more than twenty clients, working daily in Illustrator and Photoshop with a careful eye on typography. One retail rebrand I led measurably lifted in-store engagement, which speaks to the kind of results your posting is after.\n\nI'd love to bring that craft to Cove Creative's clients. Thank you for considering my application."
-  },
-  {
-    "profile": {
-      "name": "Devin Brooks",
-      "location": "Remote",
-      "skills": ["full-cycle recruiting", "sourcing", "ATS", "interview coordination", "onboarding", "candidate experience"],
-      "experience": [
-        {"role": "Recruiting Coordinator", "company": "Alta People", "startDate": "01/2022", "isCurrent": true, "description": "Coordinated interviews across 40+ open roles, sourced candidates, and cut time-to-schedule by streamlining the ATS workflow."}
-      ],
-      "education": [{"degree": "B.A. Psychology", "school": "Ohio University", "year": "2021"}]
-    },
-    "job": {
-      "company": "Northgate",
-      "role": "Recruiter",
-      "description": "Northgate is hiring a Recruiter to run full-cycle recruiting: sourcing, ATS management, interview coordination, and a great candidate experience."
-    },
-    "letter_body": "Recruiting done well is really about treating candidates like people, and that is what draws me to the Recruiter role at Northgate. A smooth, respectful process is something I take personally.\n\nAt Alta People I coordinated interviews across more than forty open roles and sourced candidates for each, and I cut our time-to-schedule noticeably by cleaning up the ATS workflow. Running the full cycle while keeping the candidate experience strong is exactly what your posting describes.\n\nI'd welcome the chance to help Northgate build its team. Thank you for your time and consideration."
-  },
-  {
-    "profile": {
-      "name": "Priyansh Mehta",
-      "location": "Champaign, IL",
-      "skills": ["Python", "Java", "data structures", "Git", "SQL"],
-      "experience": [],
-      "projects": [{"name": "CampusEats", "technologies": "React Native, Firebase", "description": "A food-ordering app I built for my campus that reached 500+ student users."}],
-      "education": [{"degree": "B.S. Computer Science (in progress)", "school": "University of Illinois", "year": "2027"}]
-    },
-    "job": {
-      "company": "Trailhead",
-      "role": "Software Engineering Intern",
-      "description": "Trailhead's summer internship is for CS students comfortable with Python or Java, data structures, and Git. You'll ship real features alongside a mentor."
-    },
-    "letter_body": "I'm applying for the Software Engineering Intern role at Trailhead because I learn fastest by building real things with people who know more than I do, and shipping features alongside a mentor is exactly the kind of summer I'm hoping for.\n\nMy coursework has given me a solid footing in Python, Java, and data structures, and I put it to work on CampusEats, a food-ordering app I built and launched to over 500 students on my campus. Managing that project with Git taught me how to keep code and collaborators organized.\n\nI'd be grateful for the chance to contribute and grow at Trailhead this summer. Thank you for considering my application."
-  },
-  {
-    "profile": {
-      "name": "Hana Suzuki",
-      "location": "San Diego, CA",
-      "skills": ["prescription filling", "inventory management", "insurance claims", "patient service", "HIPAA", "pharmacy software"],
-      "experience": [
-        {"role": "Pharmacy Technician", "company": "Bayside Pharmacy", "startDate": "07/2020", "endDate": "05/2024", "description": "Filled 200+ prescriptions daily, managed inventory, and resolved insurance claims while keeping patient wait times low."}
-      ],
-      "education": [{"degree": "Pharmacy Technician Certification (CPhT)", "year": "2020"}]
-    },
-    "job": {
-      "company": "Harbor Health",
-      "role": "Pharmacy Technician",
-      "description": "Harbor Health needs a certified Pharmacy Technician for prescription filling, inventory, insurance claims, and friendly patient service in a busy retail pharmacy."
-    },
-    "letter_body": "A busy pharmacy runs on accuracy and a calm, friendly presence at the counter, and that combination is where I do my best work, so the Pharmacy Technician role at Harbor Health caught my eye.\n\nAt Bayside Pharmacy I filled more than 200 prescriptions a day, kept inventory in order, and resolved insurance claims without letting wait times climb. I'm CPhT-certified and careful with HIPAA, which lines up with what your posting requires.\n\nI'd be glad to bring that reliability and warmth to your patients. Thank you for your time."
-  },
-  {
-    "profile": {
-      "name": "Carlos Mendes",
-      "location": "Newark, NJ",
-      "skills": ["inventory control", "team leadership", "logistics", "safety compliance", "WMS", "process improvement"],
-      "experience": [
-        {"role": "Warehouse Supervisor", "company": "Vantage Logistics", "startDate": "09/2019", "isCurrent": true, "description": "Led a team of 18, cut order-picking errors by 30%, and finished last year with zero lost-time safety incidents."}
-      ],
-      "education": [{"degree": "A.S. Business", "school": "Essex County College", "year": "2018"}]
-    },
-    "job": {
-      "company": "Ridgeline Distribution",
-      "role": "Operations Supervisor",
-      "description": "Ridgeline Distribution seeks an Operations Supervisor to lead a warehouse team, manage inventory in a WMS, drive process improvement, and maintain safety compliance."
-    },
-    "letter_body": "Running a warehouse floor well comes down to a steady team and tight processes, and building both is what I enjoy most, which is why the Operations Supervisor role at Ridgeline Distribution appeals to me.\n\nAt Vantage Logistics I currently lead a team of 18 and have cut order-picking errors by 30% through better process, all while finishing last year with zero lost-time safety incidents. Managing inventory in a WMS and keeping the floor compliant are the core of my day, matching what your posting needs.\n\nI'd be glad to bring that leadership to Ridgeline. Thank you for your consideration."
-  },
-  {
-    "profile": {
-      "name": "Imani Cole",
-      "location": "Remote",
-      "skills": ["copywriting", "brand voice", "email marketing", "landing pages", "editing", "SEO"],
-      "experience": [
-        {"role": "Copywriter", "company": "Fable & Co", "startDate": "02/2021", "endDate": "08/2024", "description": "Wrote landing pages and email campaigns; an email series I wrote lifted click-through by 22% for a product launch."}
-      ],
-      "education": [{"degree": "B.A. English", "school": "Spelman College", "year": "2020"}]
-    },
-    "job": {
-      "company": "Lumen Brands",
-      "role": "Copywriter",
-      "description": "Lumen Brands is hiring a Copywriter to craft landing pages, email campaigns, and on-brand product copy. Strong editing and a feel for brand voice are essential; SEO awareness is a plus."
-    },
-    "letter_body": "Good copy sounds like a person, not a brand talking at you, and finding that voice is the part of the work I care about most, so the Copywriter role at Lumen Brands is a strong fit.\n\nAt Fable & Co I wrote landing pages and email campaigns across very different brand voices, and one launch email series I wrote raised click-through by 22%. I edit closely and keep SEO in mind without letting it flatten the writing, which lines up with what you're looking for.\n\nI'd love to write in Lumen's voice. Thank you for reviewing my application."
-  },
-  {
-    "profile": {
-      "name": "Omar Haddad",
-      "location": "Washington, DC",
-      "skills": ["SIEM", "incident response", "threat detection", "Splunk", "vulnerability management", "network security"],
-      "experience": [
-        {"role": "Security Analyst", "company": "Sentinel Systems", "startDate": "06/2021", "isCurrent": true, "description": "Monitored SIEM alerts, led incident response for phishing and malware events, and cut mean time to respond by 40%."}
-      ],
-      "education": [{"degree": "B.S. Information Security", "school": "George Mason", "year": "2021"}]
-    },
-    "job": {
-      "company": "Fortify Defense",
-      "role": "Cybersecurity Analyst",
-      "description": "Fortify Defense seeks a Cybersecurity Analyst for SIEM monitoring, incident response, threat detection, and vulnerability management. Splunk experience preferred."
-    },
-    "letter_body": "The Cybersecurity Analyst role at Fortify Defense caught my attention because I like being on the side of the fight where fast, clear-headed response actually limits the damage.\n\nAt Sentinel Systems I currently monitor SIEM alerts and lead incident response for phishing and malware events, and I've brought our mean time to respond down by 40%. I work in Splunk daily and stay on top of vulnerability management, which matches what your posting is looking for.\n\nI'd be glad to bring that vigilance to your team. Thank you for your consideration."
-  },
-  {
-    "profile": {
-      "name": "Jamie Foster",
-      "location": "Portland, OR",
-      "skills": ["customer service", "cash handling", "teamwork", "food safety", "POS systems", "time management"],
-      "experience": [
-        {"role": "Barista", "company": "Wildwood Coffee", "startDate": "05/2022", "isCurrent": true, "description": "Handled a busy morning rush, trained three new hires, and kept regulars coming back with fast, friendly service."}
-      ],
-      "education": []
-    },
-    "job": {
-      "company": "Rosebud Cafe",
-      "role": "Barista",
-      "description": "Rosebud Cafe is looking for a friendly Barista who thrives in a fast morning rush, handles the register accurately, and makes every customer feel welcome. Food-safety knowledge is a plus."
-    },
-    "letter_body": "There's something I really enjoy about a busy morning rush, the rhythm of it and the regulars you get to know, so the Barista role at Rosebud Cafe feels like a great fit for me.\n\nAt Wildwood Coffee I currently work the morning rush, handle the register accurately, and helped train three new hires. I keep things friendly and fast, and I follow food-safety practices closely, which is exactly what your posting is after.\n\nI'd love to help make Rosebud a place people look forward to. Thank you for your time."
-  },
-  {
-    "profile": {
-      "name": "Tara Nguyen",
-      "location": "Remote",
-      "skills": ["social media strategy", "content calendar", "Instagram", "TikTok", "analytics", "community management"],
-      "experience": [
-        {"role": "Social Media Coordinator", "company": "Bloom Collective", "startDate": "03/2022", "isCurrent": true, "description": "Grew Instagram from 8k to 45k followers in a year and ran the content calendar across Instagram and TikTok."}
-      ],
-      "education": [{"degree": "B.A. Communications", "school": "San Diego State", "year": "2021"}]
-    },
-    "job": {
-      "company": "Halo Beauty",
-      "role": "Social Media Manager",
-      "description": "Halo Beauty seeks a Social Media Manager to own strategy and the content calendar across Instagram and TikTok, grow the community, and report on analytics."
-    },
-    "letter_body": "Growing a community that actually wants to hear from a brand is the part of social I find most fun, so the Social Media Manager role at Halo Beauty really appeals to me.\n\nAt Bloom Collective I currently run the content calendar across Instagram and TikTok, and I grew our Instagram from 8,000 to 45,000 followers in a year. I lean on analytics to decide what to make next, which fits the data-aware approach your posting describes.\n\nI'd be excited to help Halo's audience grow. Thank you for your consideration."
-  },
-  {
-    "profile": {
-      "name": "Ethan Park",
+      "name": "Sarah Okonkwo",
       "location": "Denver, CO",
-      "skills": ["AutoCAD", "Civil 3D", "site design", "stormwater", "permitting", "construction documents"],
+      "skills": ["lesson planning", "classroom management", "differentiated instruction", "literacy", "parent communication"],
       "experience": [
-        {"role": "Civil Engineer", "company": "Summit Engineering", "startDate": "08/2020", "isCurrent": true, "description": "Produced site and grading plans in Civil 3D, designed stormwater systems, and moved projects through municipal permitting."}
+        {"role": "3rd Grade Teacher", "company": "Maple Grove Elementary", "startDate": "08/2019", "isCurrent": true, "description": "Teaches a class of 26; raised reading proficiency 20% through small-group literacy instruction and keeps families informed with weekly updates."}
       ],
-      "education": [{"degree": "B.S. Civil Engineering", "school": "Colorado School of Mines", "year": "2020"}]
+      "education": [{"degree": "B.A. Elementary Education", "school": "Colorado State", "year": "2019"}]
     },
     "job": {
-      "company": "Cornerstone Civil",
-      "role": "Civil Engineer",
-      "description": "Cornerstone Civil needs a Civil Engineer for land-development projects: site design in Civil 3D, stormwater design, construction documents, and permitting coordination."
+      "company": "Sunnyside School District",
+      "role": "Elementary Teacher",
+      "description": "Sunnyside School District is seeking a caring, skilled Elementary Teacher for the upcoming year. You'll plan and deliver engaging lessons, differentiate instruction to meet a range of learners, manage a positive classroom, and build strong relationships with students and families. A focus on literacy growth is highly valued, and you'll use assessment data to guide small-group instruction. We're looking for a state teaching license, a bachelor's in education, classroom experience, and a genuine commitment to helping every child grow. Experience with early literacy and family engagement is a strong plus."
     },
-    "letter_body": "Land-development work is satisfying because you can drive past something real that started as your drawing, and that's what draws me to the Civil Engineer role at Cornerstone Civil.\n\nAt Summit Engineering I currently produce site and grading plans in Civil 3D, design stormwater systems, and coordinate projects through municipal permitting. That end-to-end involvement, from construction documents to approvals, is exactly what your posting describes.\n\nI'd welcome the chance to contribute to Cornerstone's projects. Thank you for your time and consideration."
+    "letter_body": "Helping young students find their footing as readers is the most rewarding work I know, so I was thrilled to see the Elementary Teacher opening at Sunnyside. Your emphasis on literacy growth and strong family relationships is exactly what I center my teaching around.\n\nI currently teach third grade at Maple Grove Elementary, where I plan and deliver lessons for a class of 26 and differentiate instruction so every learner has a way in. Managing a room that size has taught me to build routines that make each student feel supported and known.\n\nLiteracy is where I've had my clearest impact, which fits what your district values. I raised reading proficiency in my class by 20% through targeted small-group instruction guided by assessment data, and I keep families involved with weekly updates so learning continues at home. Clear, consistent parent communication is something I genuinely prioritize.\n\nI would love to bring that literacy focus and warmth to Sunnyside's students. Thank you for your time and consideration, and I'd welcome the chance to discuss how I can contribute to your school community."
   }
 ]
