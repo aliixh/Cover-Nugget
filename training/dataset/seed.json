@@ -220,5 +220,174 @@
       "description": "Cascade Therapeutics is hiring a Research Associate for wet-lab work: cell culture, PCR, careful documentation, and data analysis. Attention to detail and reproducibility are critical."
     },
     "letter_body": "Careful, reproducible bench work is the foundation of good science, and it is the part of research I am most committed to, so I was excited to see the Research Associate opening at Cascade Therapeutics.\n\nIn the UW Bioengineering Lab I ran cell-culture and PCR experiments daily and kept lab records precise enough that others could repeat my work exactly. That attention to documentation and reproducibility is exactly what your posting emphasizes, and I also co-authored a poster from the work.\n\nI'd be grateful for the chance to contribute to your research. Thank you for considering my application."
+  },
+  {
+    "profile": {
+      "name": "Marisol Vega",
+      "location": "Los Angeles, CA",
+      "skills": ["Adobe Illustrator", "Photoshop", "branding", "typography", "layout", "print production"],
+      "experience": [
+        {"role": "Graphic Designer", "company": "Juniper Studio", "startDate": "03/2021", "isCurrent": true, "description": "Designed brand identities and marketing collateral for 20+ clients and refreshed a retail brand that lifted in-store engagement."}
+      ],
+      "education": [{"degree": "B.F.A. Graphic Design", "school": "ArtCenter", "year": "2020"}]
+    },
+    "job": {
+      "company": "Cove Creative",
+      "role": "Graphic Designer",
+      "description": "Cove Creative seeks a Graphic Designer skilled in Adobe Illustrator and Photoshop to build brand identities, marketing collateral, and print-ready layouts. A strong sense of typography is important."
+    },
+    "letter_body": "Design that makes a brand feel like itself is what I love making, so the Graphic Designer role at Cove Creative is a natural fit for me. Building identities from a blank page and seeing them out in the world is the most rewarding part of the job.\n\nAt Juniper Studio I designed brand identities and marketing collateral for more than twenty clients, working daily in Illustrator and Photoshop with a careful eye on typography. One retail rebrand I led measurably lifted in-store engagement, which speaks to the kind of results your posting is after.\n\nI'd love to bring that craft to Cove Creative's clients. Thank you for considering my application."
+  },
+  {
+    "profile": {
+      "name": "Devin Brooks",
+      "location": "Remote",
+      "skills": ["full-cycle recruiting", "sourcing", "ATS", "interview coordination", "onboarding", "candidate experience"],
+      "experience": [
+        {"role": "Recruiting Coordinator", "company": "Alta People", "startDate": "01/2022", "isCurrent": true, "description": "Coordinated interviews across 40+ open roles, sourced candidates, and cut time-to-schedule by streamlining the ATS workflow."}
+      ],
+      "education": [{"degree": "B.A. Psychology", "school": "Ohio University", "year": "2021"}]
+    },
+    "job": {
+      "company": "Northgate",
+      "role": "Recruiter",
+      "description": "Northgate is hiring a Recruiter to run full-cycle recruiting: sourcing, ATS management, interview coordination, and a great candidate experience."
+    },
+    "letter_body": "Recruiting done well is really about treating candidates like people, and that is what draws me to the Recruiter role at Northgate. A smooth, respectful process is something I take personally.\n\nAt Alta People I coordinated interviews across more than forty open roles and sourced candidates for each, and I cut our time-to-schedule noticeably by cleaning up the ATS workflow. Running the full cycle while keeping the candidate experience strong is exactly what your posting describes.\n\nI'd welcome the chance to help Northgate build its team. Thank you for your time and consideration."
+  },
+  {
+    "profile": {
+      "name": "Priyansh Mehta",
+      "location": "Champaign, IL",
+      "skills": ["Python", "Java", "data structures", "Git", "SQL"],
+      "experience": [],
+      "projects": [{"name": "CampusEats", "technologies": "React Native, Firebase", "description": "A food-ordering app I built for my campus that reached 500+ student users."}],
+      "education": [{"degree": "B.S. Computer Science (in progress)", "school": "University of Illinois", "year": "2027"}]
+    },
+    "job": {
+      "company": "Trailhead",
+      "role": "Software Engineering Intern",
+      "description": "Trailhead's summer internship is for CS students comfortable with Python or Java, data structures, and Git. You'll ship real features alongside a mentor."
+    },
+    "letter_body": "I'm applying for the Software Engineering Intern role at Trailhead because I learn fastest by building real things with people who know more than I do, and shipping features alongside a mentor is exactly the kind of summer I'm hoping for.\n\nMy coursework has given me a solid footing in Python, Java, and data structures, and I put it to work on CampusEats, a food-ordering app I built and launched to over 500 students on my campus. Managing that project with Git taught me how to keep code and collaborators organized.\n\nI'd be grateful for the chance to contribute and grow at Trailhead this summer. Thank you for considering my application."
+  },
+  {
+    "profile": {
+      "name": "Hana Suzuki",
+      "location": "San Diego, CA",
+      "skills": ["prescription filling", "inventory management", "insurance claims", "patient service", "HIPAA", "pharmacy software"],
+      "experience": [
+        {"role": "Pharmacy Technician", "company": "Bayside Pharmacy", "startDate": "07/2020", "endDate": "05/2024", "description": "Filled 200+ prescriptions daily, managed inventory, and resolved insurance claims while keeping patient wait times low."}
+      ],
+      "education": [{"degree": "Pharmacy Technician Certification (CPhT)", "year": "2020"}]
+    },
+    "job": {
+      "company": "Harbor Health",
+      "role": "Pharmacy Technician",
+      "description": "Harbor Health needs a certified Pharmacy Technician for prescription filling, inventory, insurance claims, and friendly patient service in a busy retail pharmacy."
+    },
+    "letter_body": "A busy pharmacy runs on accuracy and a calm, friendly presence at the counter, and that combination is where I do my best work, so the Pharmacy Technician role at Harbor Health caught my eye.\n\nAt Bayside Pharmacy I filled more than 200 prescriptions a day, kept inventory in order, and resolved insurance claims without letting wait times climb. I'm CPhT-certified and careful with HIPAA, which lines up with what your posting requires.\n\nI'd be glad to bring that reliability and warmth to your patients. Thank you for your time."
+  },
+  {
+    "profile": {
+      "name": "Carlos Mendes",
+      "location": "Newark, NJ",
+      "skills": ["inventory control", "team leadership", "logistics", "safety compliance", "WMS", "process improvement"],
+      "experience": [
+        {"role": "Warehouse Supervisor", "company": "Vantage Logistics", "startDate": "09/2019", "isCurrent": true, "description": "Led a team of 18, cut order-picking errors by 30%, and finished last year with zero lost-time safety incidents."}
+      ],
+      "education": [{"degree": "A.S. Business", "school": "Essex County College", "year": "2018"}]
+    },
+    "job": {
+      "company": "Ridgeline Distribution",
+      "role": "Operations Supervisor",
+      "description": "Ridgeline Distribution seeks an Operations Supervisor to lead a warehouse team, manage inventory in a WMS, drive process improvement, and maintain safety compliance."
+    },
+    "letter_body": "Running a warehouse floor well comes down to a steady team and tight processes, and building both is what I enjoy most, which is why the Operations Supervisor role at Ridgeline Distribution appeals to me.\n\nAt Vantage Logistics I currently lead a team of 18 and have cut order-picking errors by 30% through better process, all while finishing last year with zero lost-time safety incidents. Managing inventory in a WMS and keeping the floor compliant are the core of my day, matching what your posting needs.\n\nI'd be glad to bring that leadership to Ridgeline. Thank you for your consideration."
+  },
+  {
+    "profile": {
+      "name": "Imani Cole",
+      "location": "Remote",
+      "skills": ["copywriting", "brand voice", "email marketing", "landing pages", "editing", "SEO"],
+      "experience": [
+        {"role": "Copywriter", "company": "Fable & Co", "startDate": "02/2021", "endDate": "08/2024", "description": "Wrote landing pages and email campaigns; an email series I wrote lifted click-through by 22% for a product launch."}
+      ],
+      "education": [{"degree": "B.A. English", "school": "Spelman College", "year": "2020"}]
+    },
+    "job": {
+      "company": "Lumen Brands",
+      "role": "Copywriter",
+      "description": "Lumen Brands is hiring a Copywriter to craft landing pages, email campaigns, and on-brand product copy. Strong editing and a feel for brand voice are essential; SEO awareness is a plus."
+    },
+    "letter_body": "Good copy sounds like a person, not a brand talking at you, and finding that voice is the part of the work I care about most, so the Copywriter role at Lumen Brands is a strong fit.\n\nAt Fable & Co I wrote landing pages and email campaigns across very different brand voices, and one launch email series I wrote raised click-through by 22%. I edit closely and keep SEO in mind without letting it flatten the writing, which lines up with what you're looking for.\n\nI'd love to write in Lumen's voice. Thank you for reviewing my application."
+  },
+  {
+    "profile": {
+      "name": "Omar Haddad",
+      "location": "Washington, DC",
+      "skills": ["SIEM", "incident response", "threat detection", "Splunk", "vulnerability management", "network security"],
+      "experience": [
+        {"role": "Security Analyst", "company": "Sentinel Systems", "startDate": "06/2021", "isCurrent": true, "description": "Monitored SIEM alerts, led incident response for phishing and malware events, and cut mean time to respond by 40%."}
+      ],
+      "education": [{"degree": "B.S. Information Security", "school": "George Mason", "year": "2021"}]
+    },
+    "job": {
+      "company": "Fortify Defense",
+      "role": "Cybersecurity Analyst",
+      "description": "Fortify Defense seeks a Cybersecurity Analyst for SIEM monitoring, incident response, threat detection, and vulnerability management. Splunk experience preferred."
+    },
+    "letter_body": "The Cybersecurity Analyst role at Fortify Defense caught my attention because I like being on the side of the fight where fast, clear-headed response actually limits the damage.\n\nAt Sentinel Systems I currently monitor SIEM alerts and lead incident response for phishing and malware events, and I've brought our mean time to respond down by 40%. I work in Splunk daily and stay on top of vulnerability management, which matches what your posting is looking for.\n\nI'd be glad to bring that vigilance to your team. Thank you for your consideration."
+  },
+  {
+    "profile": {
+      "name": "Jamie Foster",
+      "location": "Portland, OR",
+      "skills": ["customer service", "cash handling", "teamwork", "food safety", "POS systems", "time management"],
+      "experience": [
+        {"role": "Barista", "company": "Wildwood Coffee", "startDate": "05/2022", "isCurrent": true, "description": "Handled a busy morning rush, trained three new hires, and kept regulars coming back with fast, friendly service."}
+      ],
+      "education": []
+    },
+    "job": {
+      "company": "Rosebud Cafe",
+      "role": "Barista",
+      "description": "Rosebud Cafe is looking for a friendly Barista who thrives in a fast morning rush, handles the register accurately, and makes every customer feel welcome. Food-safety knowledge is a plus."
+    },
+    "letter_body": "There's something I really enjoy about a busy morning rush, the rhythm of it and the regulars you get to know, so the Barista role at Rosebud Cafe feels like a great fit for me.\n\nAt Wildwood Coffee I currently work the morning rush, handle the register accurately, and helped train three new hires. I keep things friendly and fast, and I follow food-safety practices closely, which is exactly what your posting is after.\n\nI'd love to help make Rosebud a place people look forward to. Thank you for your time."
+  },
+  {
+    "profile": {
+      "name": "Tara Nguyen",
+      "location": "Remote",
+      "skills": ["social media strategy", "content calendar", "Instagram", "TikTok", "analytics", "community management"],
+      "experience": [
+        {"role": "Social Media Coordinator", "company": "Bloom Collective", "startDate": "03/2022", "isCurrent": true, "description": "Grew Instagram from 8k to 45k followers in a year and ran the content calendar across Instagram and TikTok."}
+      ],
+      "education": [{"degree": "B.A. Communications", "school": "San Diego State", "year": "2021"}]
+    },
+    "job": {
+      "company": "Halo Beauty",
+      "role": "Social Media Manager",
+      "description": "Halo Beauty seeks a Social Media Manager to own strategy and the content calendar across Instagram and TikTok, grow the community, and report on analytics."
+    },
+    "letter_body": "Growing a community that actually wants to hear from a brand is the part of social I find most fun, so the Social Media Manager role at Halo Beauty really appeals to me.\n\nAt Bloom Collective I currently run the content calendar across Instagram and TikTok, and I grew our Instagram from 8,000 to 45,000 followers in a year. I lean on analytics to decide what to make next, which fits the data-aware approach your posting describes.\n\nI'd be excited to help Halo's audience grow. Thank you for your consideration."
+  },
+  {
+    "profile": {
+      "name": "Ethan Park",
+      "location": "Denver, CO",
+      "skills": ["AutoCAD", "Civil 3D", "site design", "stormwater", "permitting", "construction documents"],
+      "experience": [
+        {"role": "Civil Engineer", "company": "Summit Engineering", "startDate": "08/2020", "isCurrent": true, "description": "Produced site and grading plans in Civil 3D, designed stormwater systems, and moved projects through municipal permitting."}
+      ],
+      "education": [{"degree": "B.S. Civil Engineering", "school": "Colorado School of Mines", "year": "2020"}]
+    },
+    "job": {
+      "company": "Cornerstone Civil",
+      "role": "Civil Engineer",
+      "description": "Cornerstone Civil needs a Civil Engineer for land-development projects: site design in Civil 3D, stormwater design, construction documents, and permitting coordination."
+    },
+    "letter_body": "Land-development work is satisfying because you can drive past something real that started as your drawing, and that's what draws me to the Civil Engineer role at Cornerstone Civil.\n\nAt Summit Engineering I currently produce site and grading plans in Civil 3D, design stormwater systems, and coordinate projects through municipal permitting. That end-to-end involvement, from construction documents to approvals, is exactly what your posting describes.\n\nI'd welcome the chance to contribute to Cornerstone's projects. Thank you for your time and consideration."
   }
 ]
