@@ -67,6 +67,10 @@ async function runMigrations(db: SQLite.SQLiteDatabase): Promise<void> {
   await db.runAsync(
     "UPDATE cover_letters SET updated_at = created_at WHERE updated_at IS NULL"
   );
+  // v7: structured start/end dates + current-job flag on experience.
+  await ensureColumn(db, "experience", "start_date", "TEXT");
+  await ensureColumn(db, "experience", "end_date", "TEXT");
+  await ensureColumn(db, "experience", "is_current", "INTEGER");
 }
 
 /**

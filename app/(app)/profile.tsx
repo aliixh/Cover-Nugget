@@ -203,12 +203,14 @@ export default function ProfileScreen() {
             fields={[
               { key: "company", label: "Company / Organization" },
               { key: "role", label: "Role" },
-              { key: "dates", label: "Dates" },
+              { key: "startDate", label: "Start (MM/YYYY)", placeholder: "06/2022" },
+              { key: "current", label: "I currently work here", type: "switch" },
+              { key: "endDate", label: "End (MM/YYYY)", placeholder: "08/2024", hidden: (v) => v.current === "1" },
               { key: "description", label: "What you did", multiline: true },
             ]}
-            load={listExperience}
-            add={(p, v) => addExperience(p, { company: v.company, role: v.role, dates: v.dates, description: v.description })}
-            update={(id, v) => updateExperience(id, { company: v.company, role: v.role, dates: v.dates, description: v.description })}
+            load={async (p) => (await listExperience(p)).map((e) => ({ ...e, current: e.isCurrent ? "1" : "" }))}
+            add={(p, v) => addExperience(p, { company: v.company, role: v.role, startDate: v.startDate, endDate: v.endDate, isCurrent: v.current === "1", description: v.description })}
+            update={(id, v) => updateExperience(id, { company: v.company, role: v.role, startDate: v.startDate, endDate: v.endDate, isCurrent: v.current === "1", description: v.description })}
             remove={(id) => deleteRow("experience", id)}
             summarize={(e) => ({ primary: [e.role, e.company].filter(Boolean).join(" @ ") })}
           />

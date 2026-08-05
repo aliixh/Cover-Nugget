@@ -16,22 +16,26 @@ export default function ExperienceStep() {
       fields={[
         { key: "company", label: "Company / Organization", placeholder: "Amazon / Local Food Bank" },
         { key: "role", label: "Role", placeholder: "Software Engineering Intern" },
-        { key: "dates", label: "Dates", placeholder: "Jun 2025 – Sep 2025" },
+        { key: "startDate", label: "Start (MM/YYYY)", placeholder: "06/2025" },
+        { key: "current", label: "I currently work here", type: "switch" },
+        { key: "endDate", label: "End (MM/YYYY)", placeholder: "09/2025", hidden: (v) => v.current === "1" },
         { key: "description", label: "What you did", multiline: true, placeholder: "Built internal tools using React." },
       ]}
-      load={listExperience}
+      load={async (p) => (await listExperience(p)).map((e) => ({ ...e, current: e.isCurrent ? "1" : "" }))}
       add={(profileId, v) =>
         addExperience(profileId, {
           company: v.company,
           role: v.role,
-          dates: v.dates,
+          startDate: v.startDate,
+          endDate: v.endDate,
+          isCurrent: v.current === "1",
           description: v.description,
         })
       }
       remove={(id) => deleteRow("experience", id)}
       summarize={(e) => ({
         primary: [e.role, e.company].filter(Boolean).join(" @ "),
-        secondary: e.dates,
+        secondary: e.isCurrent ? "Current" : [e.startDate, e.endDate].filter(Boolean).join(" – ") || e.dates,
       })}
     />
   );

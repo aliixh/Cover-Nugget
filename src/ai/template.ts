@@ -12,6 +12,7 @@
 import type { GenerateRequest } from "./types";
 import type { Profile } from "../types/models";
 import { matchProfileToJob } from "./keywordMatch";
+import { currentOrRecentClause } from "../utils/experience";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -98,11 +99,12 @@ export function buildTemplateLetter(req: GenerateRequest): string {
 
   const opener = `Dear Hiring Manager,`;
 
+  const recentClause = currentOrRecentClause(experience);
   const intro =
     `I am excited to apply for ${role} at ${company}. ` +
-    `With my background${topExperience?.role ? ` as ${topExperience.role}` : ""}${
-      topExperience?.company ? ` at ${topExperience.company}` : ""
-    }, I believe I can make a meaningful contribution to your team.`;
+    (recentClause
+      ? `${recentClause}, and I believe I can make a meaningful contribution to your team.`
+      : `I believe I can make a meaningful contribution to your team.`);
 
   const bodyBits: string[] = [];
 

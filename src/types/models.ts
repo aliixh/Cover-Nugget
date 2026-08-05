@@ -33,6 +33,9 @@ export interface Experience {
   company?: string | null;
   role?: string | null;
   dates?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  isCurrent?: boolean;
   description?: string | null;
   achievements?: string | null;
 }

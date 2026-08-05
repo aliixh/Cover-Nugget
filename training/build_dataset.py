@@ -192,13 +192,74 @@ def synthesize(seed, n):
     return made
 
 
+def _strip_letter_body(text):
+    """Drop the greeting and sign-off from a full letter, keeping the body."""
+    lines = [l for l in (text or "").splitlines()]
+    body = []
+    for l in lines:
+        s = l.strip()
+        if re.match(r"^(dear|to whom|hello|hi|greetings)\b", s, re.I):
+            continue
+        if re.match(r"^(sincerely|best regards|regards|thank you|yours|warm)\b", s, re.I):
+            break
+        body.append(l)
+    return "\n".join(body).strip()
+
+
+def _parse_role_company(text):
+    m = re.match(r"^(.*?)\s+at\s+(.*?)(?:\s+for\s+.*)?$", (text or "").strip(), re.I)
+    return (m.group(1).strip(), m.group(2).strip()) if m else ((text or "").strip(), "")
+
+
+def load_shashivish():
+    """Map ShashiVish/cover-letter-dataset rows into our example format (CPU;
+    needs `pip install datasets`)."""
+    try:
+        from datasets import load_dataset
+    except ImportError:
+        sys.exit("pip install datasets  to use --hf")
+    ds = load_dataset("ShashiVish/cover-letter-dataset", split="train")
+    out = []
+    for row in ds:
+        g = {k.lower().strip(): v for k, v in row.items()}
+        cur = g.get("current working experience", "")
+        past = g.get("past working experience", "")
+        exp = []
+        if cur:
+            r, c = _parse_role_company(cur); exp.append({"role": r, "company": c, "isCurrent": True, "description": cur})
+        if past:
+            r, c = _parse_role_company(past); exp.append({"role": r, "company": c, "description": past})
+        body = _strip_letter_body(g.get("cover letter", ""))
+        if not body:
+            continue
+        out.append({
+            "profile": {
+                "name": g.get("applicant name", "Applicant"),
+                "skills": [s.strip() for s in re.split(r"[,;]", g.get("skills", "")) if s.strip()],
+                "experience": exp,
+                "education": [{"degree": g.get("qualifications", "")}] if g.get("qualifications") else [],
+            },
+            "job": {
+                "company": g.get("hiring company", ""),
+                "role": g.get("job title", ""),
+                "description": " ".join(x for x in [g.get("preferred qualifications", ""), g.get("qualifications", "")] if x),
+            },
+            "letter_body": body,
+        })
+    print(f"  loaded {len(out)} rows from ShashiVish/cover-letter-dataset", file=sys.stderr)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--synth", type=int, default=0, help="synthesize N extra examples via API")
+    ap.add_argument("--hf", action="store_true", help="also include ShashiVish/cover-letter-dataset")
     args = ap.parse_args()
 
     seed = json.loads(SEED.read_text())
     examples = list(seed)
+    if args.hf:
+        examples += load_shashivish()
     if args.synth:
         examples += synthesize(seed, args.synth)
 

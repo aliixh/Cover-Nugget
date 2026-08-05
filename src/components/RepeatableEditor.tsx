@@ -19,11 +19,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Pressable, View } from "react-native";
+import { Pressable, Switch, View } from "react-native";
 import { Text } from "../ui/serif";
 import { TextField } from "./TextField";
 import { Card } from "./Card";
 import { SaveButton } from "./SaveButton";
+import { useApp } from "../context/AppContext";
 import { getOrCreateProfile } from "../db/repositories";
 
 export interface FieldDef {
@@ -31,6 +32,10 @@ export interface FieldDef {
   label: string;
   multiline?: boolean;
   placeholder?: string;
+  /** "switch" renders an on/off toggle (stored as "1"/""); default is text. */
+  type?: "text" | "switch";
+  /** Hide this field when the predicate (given the row's current values) is true. */
+  hidden?: (values: Record<string, string>) => boolean;
 }
 
 export interface SavedEntry {
@@ -84,9 +89,45 @@ export const RepeatableEditor = forwardRef<RepeatableEditorHandle, Props>(
     },
     ref
   ) {
+    const { colors } = useApp();
     const [pid, setPid] = useState<number | null>(profileId);
     const [entries, setEntries] = useState<SavedEntry[]>([]);
     const [draft, setDraft] = useState<Record<string, string>>(emptyDraft(fields));
+
+    // Render one field (text or switch), honoring an optional `hidden` predicate.
+    const renderField = (
+      f: FieldDef,
+      values: Record<string, any>,
+      onChange: (key: string, text: string) => void
+    ) => {
+      if (f.hidden && f.hidden(values as Record<string, string>)) return null;
+      if (f.type === "switch") {
+        const on = String(values[f.key] ?? "") === "1";
+        return (
+          <View key={f.key} className="mb-4 flex-row items-center justify-between">
+            <Text className="text-sm font-medium text-primary dark:text-dark-primary">
+              {f.label}
+            </Text>
+            <Switch
+              value={on}
+              onValueChange={(v) => onChange(f.key, v ? "1" : "")}
+              trackColor={{ true: colors.accent }}
+            />
+          </View>
+        );
+      }
+      return (
+        <TextField
+          key={f.key}
+          label={f.label}
+          optional
+          placeholder={f.placeholder}
+          multiline={f.multiline}
+          value={String(values[f.key] ?? "")}
+          onChangeText={(t) => onChange(f.key, t)}
+        />
+      );
+    };
 
     // Negative ids mark unsaved (blank) entries not yet in the DB.
     const tempIdRef = useRef(-1);
@@ -170,17 +211,7 @@ export const RepeatableEditor = forwardRef<RepeatableEditorHandle, Props>(
 
           {entries.map((e) => (
             <Card key={e.id} className="mb-3">
-              {fields.map((f) => (
-                <TextField
-                  key={f.key}
-                  label={f.label}
-                  optional
-                  placeholder={f.placeholder}
-                  multiline={f.multiline}
-                  value={String(e[f.key] ?? "")}
-                  onChangeText={(t) => onEditField(e, f.key, t)}
-                />
-              ))}
+              {fields.map((f) => renderField(f, e, (k, t) => onEditField(e, k, t)))}
               <Pressable
                 onPress={() => onRemove(e.id)}
                 className="self-start rounded-full bg-highlight px-3 py-1 active:opacity-70 dark:bg-dark-highlight"
@@ -244,17 +275,9 @@ export const RepeatableEditor = forwardRef<RepeatableEditorHandle, Props>(
           </View>
         ) : null}
 
-        {fields.map((f) => (
-          <TextField
-            key={f.key}
-            label={f.label}
-            optional
-            placeholder={f.placeholder}
-            multiline={f.multiline}
-            value={draft[f.key]}
-            onChangeText={(t) => setDraft((d) => ({ ...d, [f.key]: t }))}
-          />
-        ))}
+        {fields.map((f) =>
+          renderField(f, draft, (k, t) => setDraft((d) => ({ ...d, [k]: t })))
+        )}
 
         <Pressable
           onPress={commitDraft}

@@ -9,6 +9,7 @@ import type {
   SelectionAction,
 } from "./types";
 import { matchProfileToJob } from "./keywordMatch";
+import { describeExperiences } from "../utils/experience";
 
 // Human-readable phrasing for each highlight action (spec §8).
 const ACTION_PHRASING: Record<SelectionAction, string> = {
@@ -56,17 +57,8 @@ export function buildProfileSummary(req: GenerateRequest): string {
     );
   }
   if (experience.length) {
-    parts.push(
-      "Experience:\n" +
-        experience
-          .map(
-            (e) =>
-              `  - ${[e.role, e.company, e.dates].filter(Boolean).join(", ")}` +
-              (e.description ? `: ${e.description}` : "") +
-              (e.achievements ? ` (${e.achievements})` : "")
-          )
-          .join("\n")
-    );
+    // Recency-ranked, with [CURRENT] markers + approximate tenure.
+    parts.push("Experience (most recent first):\n" + describeExperiences(experience).lines.join("\n"));
   }
   if (projects.length) {
     parts.push(
@@ -111,6 +103,7 @@ export function buildGeneratePrompt(req: GenerateRequest): string {
   // small model can't reliably decide relevance, so we hand it the matches.
   const match = matchProfileToJob(req.profile, job.description);
   const matchedTerms = [...match.skills, ...match.keywords].slice(0, 12);
+  const recency = describeExperiences(req.profile.experience).recencyNote;
   return [
     "You write the BODY paragraphs of a professional cover letter. The greeting,",
     "header, date, and sign-off are added separately — do not write them.",
@@ -135,6 +128,7 @@ export function buildGeneratePrompt(req: GenerateRequest): string {
     matchedTerms.length
       ? `\nThese profile terms match this job — center the letter on them and do not invent others: ${matchedTerms.join(", ")}.`
       : "",
+    recency ? `\n${recency} Use natural, approximate tenure (e.g. "about two years"), never exact months.` : "",
     // Restate the user's rules right before generation — small models follow
     // instructions best when they're the last thing they read.
     req.instructions.length

@@ -4,7 +4,7 @@
 // to run every launch. `SCHEMA_VERSION` + the meta table let us add lightweight
 // migrations later without wiping user data.
 
-export const SCHEMA_VERSION = 6;
+export const SCHEMA_VERSION = 7;
 
 export const CREATE_TABLES_SQL = `
 PRAGMA journal_mode = WAL;
@@ -43,6 +43,9 @@ CREATE TABLE IF NOT EXISTS experience (
   company      TEXT,
   role         TEXT,
   dates        TEXT,
+  start_date   TEXT,
+  end_date     TEXT,
+  is_current   INTEGER,
   description  TEXT,
   achievements TEXT
 );

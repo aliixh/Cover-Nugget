@@ -61,6 +61,9 @@ const toExperience = (r: Row): Experience => ({
   company: r.company,
   role: r.role,
   dates: r.dates,
+  startDate: r.start_date,
+  endDate: r.end_date,
+  isCurrent: !!r.is_current,
   description: r.description,
   achievements: r.achievements,
 });
@@ -240,12 +243,15 @@ export async function listExperience(profileId: number): Promise<Experience[]> {
 export async function addExperience(profileId: number, e: NewExperience): Promise<number> {
   const db = await getDb();
   const r = await db.runAsync(
-    `INSERT INTO experience (profile_id, company, role, dates, description, achievements)
-     VALUES (?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO experience (profile_id, company, role, dates, start_date, end_date, is_current, description, achievements)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     profileId,
     e.company ?? null,
     e.role ?? null,
     e.dates ?? null,
+    e.startDate ?? null,
+    e.endDate ?? null,
+    e.isCurrent ? 1 : 0,
     e.description ?? null,
     e.achievements ?? null
   );
@@ -344,11 +350,14 @@ export async function updateEducation(id: number, e: NewEducation): Promise<void
 export async function updateExperience(id: number, e: NewExperience): Promise<void> {
   const db = await getDb();
   await db.runAsync(
-    `UPDATE experience SET company = ?, role = ?, dates = ?, description = ?,
-       achievements = ? WHERE id = ?`,
+    `UPDATE experience SET company = ?, role = ?, dates = ?, start_date = ?,
+       end_date = ?, is_current = ?, description = ?, achievements = ? WHERE id = ?`,
     e.company ?? null,
     e.role ?? null,
     e.dates ?? null,
+    e.startDate ?? null,
+    e.endDate ?? null,
+    e.isCurrent ? 1 : 0,
     e.description ?? null,
     e.achievements ?? null,
     id
