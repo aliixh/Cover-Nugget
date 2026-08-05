@@ -9,6 +9,7 @@
 import { getAI } from "../ai";
 import { buildTemplateLetter } from "../ai/template";
 import { applyLetterFormat } from "./letterFormat";
+import { AVOID_LINE, stripDashes } from "../ai/humanize";
 import type { JobInput, SelectionAction } from "../ai/types";
 import { getFullProfile, listAiSettings } from "../db/repositories";
 import { withinLimit, type LengthLimit } from "../utils/textStats";
@@ -29,8 +30,9 @@ export interface GenerateResult {
 const POLISH_INSTRUCTION =
   "Rewrite this cover letter so it reads smoothly and naturally: improve the flow " +
   "between sentences, vary the sentence structure, and make it sound genuinely human. " +
-  "Keep EVERY fact exactly as written — do not add, remove, or change any names, " +
-  "companies, roles, skills, dates, numbers, or achievements, and do not invent anything.";
+  "Keep EVERY fact exactly as written: do not add, remove, or change any names, " +
+  "companies, roles, skills, dates, numbers, or achievements, and do not invent anything. " +
+  AVOID_LINE;
 
 /**
  * Generate a first draft with the hybrid, tiered approach:
@@ -51,8 +53,8 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
   const format = (body: string) =>
     applyLetterFormat(body, 0, profile.profile, job.company, job.role);
 
-  // Tier 1: accurate, varied skeleton.
-  const skeleton = buildTemplateLetter(req);
+  // Tier 1: accurate, varied skeleton (dashes stripped for a human feel).
+  const skeleton = stripDashes(buildTemplateLetter(req));
 
   // Tier 2: model polishes it (facts preserved).
   try {
@@ -61,7 +63,7 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
       instruction: POLISH_INSTRUCTION,
       instructions,
     });
-    return { content: format(polished), usedFallback: false };
+    return { content: format(stripDashes(polished)), usedFallback: false };
   } catch {
     return { content: format(skeleton), usedFallback: true };
   }
@@ -80,13 +82,14 @@ export async function editSelection(
 ): Promise<string> {
   if (action === "remove") return "";
   const instructions = await loadInstructions();
-  return getAI().editSelection({
+  const out = await getAI().editSelection({
     fullText,
     selectedText,
     action,
     customInstruction,
     instructions,
   });
+  return stripDashes(out);
 }
 
 /** Apply a whole-letter rewrite instruction. */
@@ -95,7 +98,7 @@ export async function editWholeLetter(
   instruction: string
 ): Promise<string> {
   const instructions = await loadInstructions();
-  return getAI().editWhole({ fullText, instruction, instructions });
+  return stripDashes(await getAI().editWhole({ fullText, instruction, instructions }));
 }
 
 /**
