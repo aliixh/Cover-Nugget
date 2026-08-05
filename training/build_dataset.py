@@ -250,16 +250,58 @@ def load_shashivish():
     return out
 
 
+def load_cultural():
+    """akhan02/cultural-dimension-cover-letters — has MANY phrasings of the same
+    letter, great for variation. Maps the structured fields like ShashiVish and
+    turns every letter-like column into its own example."""
+    try:
+        from datasets import load_dataset
+    except ImportError:
+        sys.exit("pip install datasets  to use --hf2")
+    ds = load_dataset("akhan02/cultural-dimension-cover-letters", split="train")
+    out = []
+    for row in ds:
+        g = {k.lower().strip(): v for k, v in row.items()}
+        cur = g.get("current working experience", "")
+        past = g.get("past working experience", "")
+        exp = []
+        if cur:
+            r, c = _parse_role_company(cur); exp.append({"role": r, "company": c, "isCurrent": True, "description": cur})
+        if past:
+            r, c = _parse_role_company(past); exp.append({"role": r, "company": c, "description": past})
+        profile = {
+            "name": g.get("applicant name", "Applicant"),
+            "skills": [s.strip() for s in re.split(r"[,;]", g.get("skills", "")) if s.strip()],
+            "experience": exp,
+        }
+        job = {
+            "company": g.get("hiring company", ""),
+            "role": g.get("job title", ""),
+            "description": g.get("preferred qualifications", "") or g.get("qualifications", ""),
+        }
+        # every column that looks like a cover letter becomes an example
+        for k, v in g.items():
+            if "letter" in k and isinstance(v, str) and len(v) > 120:
+                body = _strip_letter_body(v)
+                if body:
+                    out.append({"profile": profile, "job": job, "letter_body": body})
+    print(f"  loaded {len(out)} letter variants from akhan02/cultural-dimension-cover-letters", file=sys.stderr)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--synth", type=int, default=0, help="synthesize N extra examples via API")
     ap.add_argument("--hf", action="store_true", help="also include ShashiVish/cover-letter-dataset")
+    ap.add_argument("--hf2", action="store_true", help="also include akhan02/cultural-dimension-cover-letters")
     args = ap.parse_args()
 
     seed = json.loads(SEED.read_text())
     examples = list(seed)
     if args.hf:
         examples += load_shashivish()
+    if args.hf2:
+        examples += load_cultural()
     if args.synth:
         examples += synthesize(seed, args.synth)
 

@@ -24,26 +24,46 @@ export interface GenerateResult {
   usedFallback: boolean;
 }
 
-/** Generate a first draft. Tries the model, falls back to a local template. */
+// The polish instruction: the model rewrites the grounded skeleton for flow and
+// variation but is forbidden from changing any facts (hybrid, tiered approach).
+const POLISH_INSTRUCTION =
+  "Rewrite this cover letter so it reads smoothly and naturally: improve the flow " +
+  "between sentences, vary the sentence structure, and make it sound genuinely human. " +
+  "Keep EVERY fact exactly as written — do not add, remove, or change any names, " +
+  "companies, roles, skills, dates, numbers, or achievements, and do not invent anything.";
+
+/**
+ * Generate a first draft with the hybrid, tiered approach:
+ *   Tier 1 — build an accurate, VARIED skeleton from the sentence-structure
+ *            library (grounded in the real profile + matched job keywords).
+ *   Tier 2 — the on-device model POLISHES that skeleton for flow/variation,
+ *            keeping every fact. Falls back to the skeleton when no model is
+ *            available (Expo Go / not downloaded).
+ */
 export async function generateLetter(job: JobInput): Promise<GenerateResult> {
   const profile = await getFullProfile();
   if (!profile) throw new Error("No profile found. Complete onboarding first.");
   const instructions = await loadInstructions();
   const req = { profile, job, instructions };
 
-  // Route whatever the engine writes through the default "Classic Block" format:
-  // this rebuilds the contact header / date / sign-off from the profile (so the
-  // model can never fake contact details) and normalizes the layout. The user
-  // can switch to any other preset from the editor.
+  // Rebuilds the contact header / date / sign-off from the profile (so the model
+  // can never fake contact details) and applies the chosen layout.
   const format = (body: string) =>
     applyLetterFormat(body, 0, profile.profile, job.company, job.role);
 
+  // Tier 1: accurate, varied skeleton.
+  const skeleton = buildTemplateLetter(req);
+
+  // Tier 2: model polishes it (facts preserved).
   try {
-    const body = await getAI().generate(req);
-    return { content: format(body), usedFallback: false };
+    const polished = await getAI().editWhole({
+      fullText: skeleton,
+      instruction: POLISH_INSTRUCTION,
+      instructions,
+    });
+    return { content: format(polished), usedFallback: false };
   } catch {
-    // Model unavailable (Expo Go / not downloaded / no runtime) — use template.
-    return { content: format(buildTemplateLetter(req)), usedFallback: true };
+    return { content: format(skeleton), usedFallback: true };
   }
 }
 

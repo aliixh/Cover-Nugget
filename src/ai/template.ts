@@ -13,6 +13,7 @@ import type { GenerateRequest } from "./types";
 import type { Profile } from "../types/models";
 import { matchProfileToJob } from "./keywordMatch";
 import { currentOrRecentClause } from "../utils/experience";
+import { composeBody, type Slots } from "./sentenceLibrary";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -62,21 +63,8 @@ function extractRole(desc: string): string | null {
   return m ? m[1].split(/[\n.]/)[0].trim() : null;
 }
 
-/** Pull one short phrase describing what the posting emphasizes. */
-function firstRequirement(desc: string): string | null {
-  const lines = desc
-    .split(/\r?\n|•|;|\.|\-\s/)
-    .map((l) => l.trim())
-    .filter((l) => l.length >= 12 && l.length <= 90);
-  const cue =
-    /(experience (?:with|in)|proficien|knowledge of|ability to|familiar(?:ity)? with|responsible for|skills? in|background in)/i;
-  const hit = lines.find((l) => cue.test(l));
-  if (!hit) return null;
-  return hit.replace(/^[^a-zA-Z]*/, "").replace(/[,:;]+$/, "");
-}
-
-/** Builds a clean, structured letter from the profile + job. */
-export function buildTemplateLetter(req: GenerateRequest): string {
+/** Extracts the slots for the sentence library from the profile + job. */
+function buildSlots(req: GenerateRequest): Slots {
   const { profile } = req.profile;
   const { experience, skills, education } = req.profile;
   const job = req.job;
@@ -87,57 +75,34 @@ export function buildTemplateLetter(req: GenerateRequest): string {
   const role = job.role?.trim() || extractRole(jobText) || "the open role";
   const company = job.company?.trim() || "your company";
 
-  // Only surface skills the posting actually mentions — so unrelated ones the
-  // user happens to have listed (e.g. a joke "dino" skill) never get forced in.
-  // If the job text is empty (rare), fall back to the candidate's own skills.
   const allSkills = skills.map((s) => s.skill).filter((s) => s.trim().length > 1);
-  const matchedSkills = jobLower ? matchProfileToJob(req.profile, jobText).skills : allSkills;
-  const skillList = (jobLower ? matchedSkills : allSkills).slice(0, 6);
+  const matched = jobLower ? matchProfileToJob(req.profile, jobText).skills : allSkills;
+  const topSkills = andList((matched.length ? matched : allSkills).slice(0, 3));
 
-  const topExperience = experience[0];
-  const topEducation = education[0];
+  const top = experience[0];
+  const achievement = (top?.description || top?.achievements || "").trim();
 
-  const opener = `Dear Hiring Manager,`;
+  const edu = education[0];
+  const degree = edu
+    ? `${edu.degree || "a degree"}${edu.school ? ` from ${edu.school}` : ""}`
+    : "";
 
-  const recentClause = currentOrRecentClause(experience);
-  const intro =
-    `I am excited to apply for ${role} at ${company}. ` +
-    (recentClause
-      ? `${recentClause}, and I believe I can make a meaningful contribution to your team.`
-      : `I believe I can make a meaningful contribution to your team.`);
+  return {
+    name: profile.name,
+    role,
+    company,
+    matched,
+    topSkills,
+    recentClause: currentOrRecentClause(experience),
+    achievement,
+    degree,
+  };
+}
 
-  const bodyBits: string[] = [];
-
-  // Tie the letter directly to the posting.
-  if (matchedSkills.length) {
-    bodyBits.push(
-      `Your posting calls for ${andList(matchedSkills.slice(0, 4))}, which are central to my experience.`
-    );
-  }
-  const requirement = firstRequirement(jobText);
-  if (requirement) {
-    bodyBits.push(`I was especially drawn to your emphasis on ${requirement}.`);
-  }
-
-  if (topExperience?.description) bodyBits.push(topExperience.description.trim());
-  if (topExperience?.achievements) bodyBits.push(topExperience.achievements.trim());
-  if (skillList.length) {
-    bodyBits.push(
-      `My core strengths include ${andList(skillList)}, which align well with what this role requires.`
-    );
-  }
-  if (topEducation?.degree || topEducation?.school) {
-    bodyBits.push(
-      `I hold ${[topEducation.degree, topEducation.school].filter(Boolean).join(" from ")}.`
-    );
-  }
-  const body = bodyBits.join(" ");
-
-  const closing =
-    `I would welcome the chance to discuss how my experience can support ${company}'s goals. ` +
-    `Thank you for your time and consideration.`;
-
-  const signOff = `Sincerely,\n${profile.name}`;
-
-  return [opener, "", intro, "", body, "", closing, "", signOff].join("\n");
+/** Builds a clean, structured, VARIED letter from the profile + job using the
+ *  sentence-structure library. The model then polishes this for flow. */
+export function buildTemplateLetter(req: GenerateRequest): string {
+  const slots = buildSlots(req);
+  const body = composeBody(slots);
+  return `Dear Hiring Manager,\n\n${body}\n\nSincerely,\n${slots.name}`;
 }
