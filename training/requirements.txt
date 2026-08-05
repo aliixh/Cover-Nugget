@@ -1,0 +1,8 @@
+# For build_dataset.py --synth (CPU only, optional):
+anthropic>=0.40
+
+# For train_qwen_lora.py (GPU — install in Colab / on your GPU box):
+#   pip install unsloth
+#   (unsloth pulls in torch, transformers, trl, peft, datasets, bitsandbytes)
+# Left commented so `pip install -r requirements.txt` on a laptop stays light.
+# unsloth

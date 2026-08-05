@@ -85,3 +85,32 @@ export async function deleteModel(): Promise<void> {
     await FileSystem.deleteAsync(path, { idempotent: true });
   }
 }
+
+/* ---- Optional LoRA adapter (only when MODEL.adapter is configured) ------- */
+
+/** On-device path for the LoRA adapter, or null if none is configured. */
+export function getAdapterPath(): string | null {
+  if (!MODEL.adapter || !FileSystem.documentDirectory) return null;
+  return `${FileSystem.documentDirectory}${MODEL.adapter.fileName}`;
+}
+
+/** Returns the adapter's local path if it's configured AND downloaded. */
+export async function getDownloadedAdapterPath(): Promise<string | null> {
+  const path = getAdapterPath();
+  if (!path) return null;
+  const info = await FileSystem.getInfoAsync(path);
+  return info.exists ? path : null;
+}
+
+/** Downloads the LoRA adapter (no-op if none is configured). */
+export async function downloadAdapter(onProgress?: ProgressCallback): Promise<string | null> {
+  const path = getAdapterPath();
+  if (!MODEL.adapter || !path) return null;
+  const task = FileSystem.createDownloadResumable(MODEL.adapter.url, path, {}, (progress) => {
+    if (!onProgress) return;
+    const { totalBytesWritten, totalBytesExpectedToWrite } = progress;
+    if (totalBytesExpectedToWrite > 0) onProgress(totalBytesWritten / totalBytesExpectedToWrite);
+  });
+  const result = await task.downloadAsync();
+  return result?.uri ?? null;
+}

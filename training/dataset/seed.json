@@ -1,0 +1,139 @@
+[
+  {
+    "profile": {
+      "name": "Aaliyah Huang",
+      "location": "San Francisco, CA",
+      "skills": ["React", "TypeScript", "Node.js", "GraphQL", "accessibility", "design systems"],
+      "experience": [
+        {"role": "Frontend Engineer", "company": "Nimbus", "description": "Built and maintained a component library used by 12 product teams; improved Lighthouse performance scores by 35% and led accessibility remediation to WCAG 2.1 AA."}
+      ],
+      "education": [{"degree": "B.S. Computer Science", "school": "UC Berkeley", "year": "2021"}],
+      "projects": [{"name": "Portfolio", "technologies": "Next.js, GraphQL"}]
+    },
+    "job": {
+      "company": "Bright Labs",
+      "role": "Frontend Engineer",
+      "description": "We're hiring a Frontend Engineer to build accessible, high-performance React interfaces in TypeScript. You'll own our design system, collaborate with product and design, and integrate GraphQL APIs. Experience with accessibility (WCAG) and performance optimization is important."
+    },
+    "letter_body": "I was excited to see your opening for a Frontend Engineer, because building accessible, high-performance React interfaces is exactly the work I care most about. At Nimbus I built and maintained the component library that 12 product teams relied on, so owning a design system end to end is familiar territory for me.\n\nYour emphasis on accessibility and performance maps directly to my recent work. I led our WCAG 2.1 AA remediation and raised our Lighthouse performance scores by 35%, and I'm comfortable wiring up GraphQL APIs in TypeScript alongside product and design partners.\n\nI'd welcome the chance to bring that same focus on quality and inclusive design to Bright Labs. Thank you for considering my application, and I look forward to talking."
+  },
+  {
+    "profile": {
+      "name": "Marcus Bell",
+      "location": "Austin, TX",
+      "skills": ["content marketing", "SEO", "email campaigns", "analytics", "copywriting", "social media"],
+      "experience": [
+        {"role": "Marketing Coordinator", "company": "Fernwood Goods", "description": "Ran email and social campaigns that grew the newsletter list from 4k to 22k in a year; improved organic search traffic 60% through an SEO content plan."}
+      ],
+      "education": [{"degree": "B.A. Communications", "school": "UT Austin", "year": "2022"}]
+    },
+    "job": {
+      "company": "Loop & Co",
+      "role": "Marketing Coordinator",
+      "description": "Loop & Co is looking for a Marketing Coordinator to plan email campaigns, grow our social channels, and support SEO content. You should be data-driven, a strong writer, and comfortable using analytics to guide decisions."
+    },
+    "letter_body": "I'd love to bring my content and email marketing experience to the Marketing Coordinator role at Loop & Co. Growing an audience through writing that people actually want to read is what I enjoy most, and it's where I've had the clearest results.\n\nAt Fernwood Goods I grew our newsletter list from 4,000 to 22,000 subscribers in a year and lifted organic search traffic by 60% with an SEO-focused content plan. I lean on analytics to decide what to write next, which fits the data-driven approach your posting describes.\n\nI'm confident I could help Loop & Co reach and keep a larger audience. Thank you for your time, and I hope to discuss how I can contribute."
+  },
+  {
+    "profile": {
+      "name": "Priya Nair",
+      "location": "Chicago, IL",
+      "skills": ["patient care", "IV therapy", "EPIC EHR", "triage", "patient education", "wound care"],
+      "experience": [
+        {"role": "Registered Nurse", "company": "Lakeside Medical Center", "description": "Provided care for up to 6 medical-surgical patients per shift; precepted new grad nurses and championed a hand-off checklist that reduced medication errors."}
+      ],
+      "education": [{"degree": "B.S. Nursing", "school": "University of Illinois", "year": "2020"}]
+    },
+    "job": {
+      "company": "Riverside Health",
+      "role": "Registered Nurse, Med-Surg",
+      "description": "Riverside Health seeks a compassionate Registered Nurse for our medical-surgical unit. Responsibilities include patient assessment, IV therapy, patient education, and documentation in EPIC. We value teamwork and a commitment to patient safety."
+    },
+    "letter_body": "Compassionate, safe patient care is the heart of nursing for me, so I was glad to see the Med-Surg Registered Nurse opening at Riverside Health. I've spent the last four years caring for medical-surgical patients and would be proud to bring that experience to your unit.\n\nAt Lakeside Medical Center I managed care for up to six patients a shift, handled IV therapy and patient education daily, and documented in EPIC. I also introduced a hand-off checklist that reduced medication errors, which speaks to the patient-safety focus your posting emphasizes.\n\nI'd be grateful for the opportunity to support your patients and team. Thank you for considering my application."
+  },
+  {
+    "profile": {
+      "name": "Diego Ramos",
+      "location": "Remote",
+      "skills": ["SQL", "Python", "Tableau", "data cleaning", "A/B testing", "dashboards"],
+      "experience": [
+        {"role": "Data Analyst", "company": "Cartwheel", "description": "Built self-serve Tableau dashboards used across the company and ran A/B tests that informed a checkout redesign, lifting conversion 8%."}
+      ],
+      "education": [{"degree": "B.S. Statistics", "school": "Ohio State", "year": "2021"}]
+    },
+    "job": {
+      "company": "Vantage",
+      "role": "Data Analyst",
+      "description": "Vantage is hiring a Data Analyst to turn data into decisions. You'll write SQL, build dashboards (Tableau or similar), run experiments, and present findings to non-technical stakeholders. Strong communication is a must."
+    },
+    "letter_body": "Turning messy data into a decision someone can act on is my favorite part of analytics, so the Data Analyst role at Vantage caught my eye. I write SQL daily and enjoy making findings clear to people who don't live in spreadsheets.\n\nAt Cartwheel I built self-serve Tableau dashboards that teams across the company used without needing me in the room, and I ran the A/B tests behind a checkout redesign that raised conversion by 8%. Presenting those results to non-technical stakeholders was central to getting them adopted.\n\nI'd be excited to bring that mix of rigor and clear communication to Vantage. Thank you for your consideration."
+  },
+  {
+    "profile": {
+      "name": "Sarah Okonkwo",
+      "location": "Denver, CO",
+      "skills": ["lesson planning", "classroom management", "differentiated instruction", "literacy", "parent communication"],
+      "experience": [
+        {"role": "3rd Grade Teacher", "company": "Maple Grove Elementary", "description": "Taught a class of 26; raised reading proficiency 20% through small-group literacy instruction and kept families informed with weekly updates."}
+      ],
+      "education": [{"degree": "B.A. Elementary Education", "school": "Colorado State", "year": "2019"}]
+    },
+    "job": {
+      "company": "Sunnyside School District",
+      "role": "Elementary Teacher",
+      "description": "Sunnyside is seeking an elementary teacher who excels at differentiated instruction, classroom management, and building relationships with families. A focus on literacy growth is highly valued."
+    },
+    "letter_body": "Helping young students find their footing as readers is the most rewarding work I know, so I was thrilled to see the elementary teaching opening at Sunnyside. Differentiated instruction and strong family relationships are at the center of how I teach.\n\nIn my third-grade classroom at Maple Grove I raised reading proficiency by 20% through targeted small-group literacy instruction, and I kept families involved with weekly updates. Managing a class of 26 taught me to build routines that let every student feel supported.\n\nI would love to bring that literacy focus and warmth to Sunnyside's students. Thank you for your time and consideration."
+  },
+  {
+    "profile": {
+      "name": "Jordan Lee",
+      "location": "Seattle, WA",
+      "skills": ["user research", "Figma", "prototyping", "usability testing", "design systems", "interaction design"],
+      "experience": [
+        {"role": "Product Designer", "company": "Halcyon", "description": "Led design for a mobile onboarding flow that cut drop-off by 25%; ran usability tests and maintained the Figma design system."}
+      ],
+      "education": [{"degree": "B.F.A. Design", "school": "RISD", "year": "2020"}]
+    },
+    "job": {
+      "company": "Meadow",
+      "role": "Product Designer",
+      "description": "Meadow is hiring a Product Designer to own flows end to end: research, prototyping in Figma, usability testing, and contributing to our design system. We want someone who validates decisions with users."
+    },
+    "letter_body": "The Product Designer role at Meadow stood out to me because it pairs end-to-end ownership with a real commitment to validating decisions with users — the way I like to work. Research and testing aren't extra steps for me; they're how I know a design is right.\n\nAt Halcyon I led the redesign of a mobile onboarding flow that cut drop-off by 25%, ran the usability tests behind it, and kept our Figma design system consistent as the team grew. Prototyping and iterating with real user feedback is where I do my best work.\n\nI'd be glad to bring that user-first approach to Meadow. Thank you for considering my application."
+  },
+  {
+    "profile": {
+      "name": "Emily Carter",
+      "location": "New York, NY",
+      "skills": ["financial modeling", "Excel", "forecasting", "variance analysis", "SQL", "presentations"],
+      "experience": [
+        {"role": "Financial Analyst", "company": "Grayson Partners", "description": "Owned the monthly forecast and variance analysis for a $40M portfolio; built Excel models that cut the close process by two days."}
+      ],
+      "education": [{"degree": "B.B.A. Finance", "school": "NYU Stern", "year": "2021"}]
+    },
+    "job": {
+      "company": "Keystone Capital",
+      "role": "Financial Analyst",
+      "description": "Keystone Capital seeks a Financial Analyst to build financial models, run forecasting and variance analysis, and present findings to leadership. Advanced Excel is required; SQL is a plus."
+    },
+    "letter_body": "I'm writing to apply for the Financial Analyst position at Keystone Capital. Building models that make a forecast trustworthy — and explaining what the numbers mean — is the part of finance I find most satisfying.\n\nAt Grayson Partners I owned the monthly forecast and variance analysis for a $40M portfolio and built Excel models that cut two days off our close. I also use SQL to pull the data behind those models, so the plus your posting mentions is already part of my toolkit.\n\nI'd welcome the chance to bring that precision to Keystone's team. Thank you for your consideration."
+  },
+  {
+    "profile": {
+      "name": "Sam Whitfield",
+      "location": "Remote",
+      "skills": ["customer success", "onboarding", "SaaS", "Salesforce", "churn reduction", "account management"],
+      "experience": [
+        {"role": "Customer Success Manager", "company": "Tidewave", "description": "Owned a book of 60 SaaS accounts; cut churn from 12% to 7% and ran onboarding that shortened time-to-value for new customers."}
+      ],
+      "education": [{"degree": "B.A. Business", "school": "University of Oregon", "year": "2019"}]
+    },
+    "job": {
+      "company": "Beacon",
+      "role": "Customer Success Manager",
+      "description": "Beacon is looking for a Customer Success Manager to onboard new SaaS customers, manage a book of accounts, reduce churn, and be the trusted point of contact. Salesforce experience preferred."
+    },
+    "letter_body": "The Customer Success Manager role at Beacon appeals to me because I genuinely like being the person customers trust to help them succeed — especially early on, when good onboarding makes all the difference.\n\nAt Tidewave I managed a book of 60 SaaS accounts and cut churn from 12% to 7%, largely by rebuilding onboarding so customers reached value faster. I worked in Salesforce every day to stay ahead of account health, which lines up with what your posting is looking for.\n\nI'd be excited to help Beacon's customers get more out of your product. Thank you for your time."
+  }
+]

@@ -16,9 +16,15 @@
 // so dev builds never risk serving live ads against unfilled inventory.
 import Constants from "expo-constants";
 import { setLlamaRuntime } from "../ai/runtime";
+import { getDownloadedAdapterPath } from "../ai/modelManager";
 
 // Provided by the Metro/React Native runtime.
 declare const require: (name: string) => any;
+
+// Shared system message. MUST match training/build_dataset.py SYSTEM so a
+// fine-tuned LoRA sees the same framing at inference as during training.
+const SYSTEM =
+  "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked.";
 
 export function registerNative(): void {
   // Expo Go can't load custom native modules — leave everything stubbed.
@@ -31,14 +37,28 @@ export function registerNative(): void {
     setLlamaRuntime({
       async load(path: string) {
         // 4096 ctx gives room for a capped job description + profile + output.
-        ctx = await initLlama({ model: path, n_ctx: 4096 });
+        // Apply the cover-letter LoRA adapter if one has been downloaded.
+        const lora = await getDownloadedAdapterPath();
+        ctx = await initLlama({ model: path, n_ctx: 4096, ...(lora ? { lora } : {}) });
       },
       async complete(prompt: string, opts?: { maxTokens?: number }) {
-        const r = await ctx.completion({
-          prompt,
-          n_predict: opts?.maxTokens ?? 512,
-        });
-        return r.text as string;
+        const n_predict = opts?.maxTokens ?? 512;
+        // Feed the model via its chat template — this matches how the LoRA is
+        // fine-tuned and how an instruct model expects input. Fall back to a raw
+        // prompt if this llama.rn build doesn't accept `messages`.
+        try {
+          const r = await ctx.completion({
+            messages: [
+              { role: "system", content: SYSTEM },
+              { role: "user", content: prompt },
+            ],
+            n_predict,
+          });
+          return r.text as string;
+        } catch {
+          const r = await ctx.completion({ prompt, n_predict });
+          return r.text as string;
+        }
       },
     });
   } catch {
