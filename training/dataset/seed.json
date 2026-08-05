@@ -135,5 +135,90 @@
       "description": "Beacon is looking for a Customer Success Manager to onboard new SaaS customers, manage a book of accounts, reduce churn, and be the trusted point of contact. Salesforce experience preferred."
     },
     "letter_body": "The Customer Success Manager role at Beacon appeals to me because I genuinely like being the person customers trust to help them succeed — especially early on, when good onboarding makes all the difference.\n\nAt Tidewave I managed a book of 60 SaaS accounts and cut churn from 12% to 7%, largely by rebuilding onboarding so customers reached value faster. I worked in Salesforce every day to stay ahead of account health, which lines up with what your posting is looking for.\n\nI'd be excited to help Beacon's customers get more out of your product. Thank you for your time."
+  },
+  {
+    "profile": {
+      "name": "Tomas Rivera",
+      "location": "Detroit, MI",
+      "skills": ["SolidWorks", "GD&T", "FEA", "DFM", "tolerance analysis", "prototyping"],
+      "experience": [
+        {"role": "Mechanical Engineer", "company": "Aster Manufacturing", "description": "Designed sheet-metal enclosures in SolidWorks and ran FEA to cut part weight 18% while passing drop tests; owned DFM reviews with suppliers."}
+      ],
+      "education": [{"degree": "B.S. Mechanical Engineering", "school": "Michigan State", "year": "2020"}]
+    },
+    "job": {
+      "company": "Northwind Robotics",
+      "role": "Mechanical Engineer",
+      "description": "Northwind Robotics needs a Mechanical Engineer to design components in SolidWorks, apply GD&T, run FEA, and drive design-for-manufacturing with suppliers. Hardware prototyping experience is a plus."
+    },
+    "letter_body": "Designing hardware that survives the real world is what pulls me toward the Mechanical Engineer role at Northwind Robotics. Robotics puts real demands on mechanical design, and that challenge is exactly what I enjoy.\n\nAt Aster Manufacturing I designed sheet-metal enclosures in SolidWorks and used FEA to cut part weight by 18% while still passing drop tests. I applied GD&T on every drawing and led DFM reviews directly with suppliers, so the design-for-manufacturing focus in your posting is second nature to me.\n\nI'd be glad to bring that hands-on, build-it-right approach to your team. Thank you for considering my application."
+  },
+  {
+    "profile": {
+      "name": "Nadia Farouk",
+      "location": "Remote",
+      "skills": ["B2B sales", "prospecting", "CRM", "negotiation", "pipeline management", "product demos"],
+      "experience": [
+        {"role": "Account Executive", "company": "Brightpath", "description": "Carried a $1.2M quota and hit 118% of target two years running; built pipeline through cold outreach and ran product demos end to end."}
+      ],
+      "education": [{"degree": "B.A. Marketing", "school": "Arizona State", "year": "2019"}]
+    },
+    "job": {
+      "company": "Cadence Software",
+      "role": "Account Executive",
+      "description": "Cadence Software is hiring an Account Executive to build pipeline, run demos, and close B2B deals. You should be comfortable with prospecting, CRM hygiene, and negotiation, and motivated by quota."
+    },
+    "letter_body": "I'm drawn to the Account Executive role at Cadence Software because I like the full arc of a deal, from a cold first touch to a signature, and I've spent my career getting good at it.\n\nAt Brightpath I carried a $1.2M quota and hit 118% of target two years in a row, building most of that pipeline through disciplined prospecting and running demos myself. Keeping my CRM clean and negotiating to a fair close are habits, not chores, which fits what your posting values.\n\nI'd love to bring that momentum to Cadence. Thank you for your time and consideration."
+  },
+  {
+    "profile": {
+      "name": "Grace Kim",
+      "location": "Boston, MA",
+      "skills": ["GAAP", "month-end close", "reconciliations", "Excel", "accounts payable", "audit support"],
+      "experience": [
+        {"role": "Staff Accountant", "company": "Halden Group", "description": "Owned month-end close for three entities, prepared reconciliations, and supported the annual audit with clean, well-documented workpapers."}
+      ],
+      "education": [{"degree": "B.S. Accounting", "school": "Boston College", "year": "2021"}]
+    },
+    "job": {
+      "company": "Merit Partners",
+      "role": "Staff Accountant",
+      "description": "Merit Partners seeks a Staff Accountant to handle month-end close, reconciliations, accounts payable, and audit support under GAAP. Strong Excel and attention to detail are essential."
+    },
+    "letter_body": "Accurate books close on time because someone cares about the details, and that is the part of accounting I take pride in, so the Staff Accountant role at Merit Partners is a natural fit.\n\nAt Halden Group I owned month-end close across three entities, prepared the reconciliations behind it, and supported our annual audit with workpapers clean enough that reviewers rarely had questions. Working under GAAP with heavy Excel is exactly the day-to-day your posting describes.\n\nI'd welcome the chance to bring that reliability to your team. Thank you for reviewing my application."
+  },
+  {
+    "profile": {
+      "name": "Andre Whitlock",
+      "location": "Chicago, IL",
+      "skills": ["project scheduling", "budgeting", "stakeholder management", "risk management", "Jira", "reporting"],
+      "experience": [
+        {"role": "Project Manager", "company": "Corevale", "description": "Delivered a 9-month platform migration on time and 6% under budget, coordinating five teams and keeping stakeholders aligned with weekly reporting."}
+      ],
+      "education": [{"degree": "B.S. Business Administration", "school": "University of Illinois", "year": "2018"}]
+    },
+    "job": {
+      "company": "Linden Health",
+      "role": "Project Manager",
+      "description": "Linden Health needs a Project Manager to run cross-functional projects: scheduling, budgeting, risk management, and clear stakeholder communication. Experience delivering on time and on budget is key."
+    },
+    "letter_body": "Good project management is mostly about keeping people aligned and problems small before they grow, and that is the work I enjoy, which is why the Project Manager role at Linden Health caught my attention.\n\nAt Corevale I delivered a nine-month platform migration on time and 6% under budget, coordinating five teams and keeping every stakeholder current through weekly reporting. Scheduling, budgeting, and getting ahead of risk are the core of how I run a project, matching what your posting is after.\n\nI'd be glad to bring that steady delivery to Linden Health. Thank you for your consideration."
+  },
+  {
+    "profile": {
+      "name": "Leila Osman",
+      "location": "Seattle, WA",
+      "skills": ["cell culture", "PCR", "data analysis", "lab documentation", "microscopy", "literature review"],
+      "experience": [
+        {"role": "Research Assistant", "company": "UW Bioengineering Lab", "description": "Ran cell-culture and PCR experiments, maintained meticulous lab records, and co-authored a poster presented at a regional conference."}
+      ],
+      "education": [{"degree": "B.S. Biology", "school": "University of Washington", "year": "2022"}]
+    },
+    "job": {
+      "company": "Cascade Therapeutics",
+      "role": "Research Associate",
+      "description": "Cascade Therapeutics is hiring a Research Associate for wet-lab work: cell culture, PCR, careful documentation, and data analysis. Attention to detail and reproducibility are critical."
+    },
+    "letter_body": "Careful, reproducible bench work is the foundation of good science, and it is the part of research I am most committed to, so I was excited to see the Research Associate opening at Cascade Therapeutics.\n\nIn the UW Bioengineering Lab I ran cell-culture and PCR experiments daily and kept lab records precise enough that others could repeat my work exactly. That attention to documentation and reproducibility is exactly what your posting emphasizes, and I also co-authored a poster from the work.\n\nI'd be grateful for the chance to contribute to your research. Thank you for considering my application."
   }
 ]
