@@ -135,5 +135,124 @@
       "description": "Sunnyside School District is seeking a caring, skilled Elementary Teacher for the upcoming year. You'll plan and deliver engaging lessons, differentiate instruction to meet a range of learners, manage a positive classroom, and build strong relationships with students and families. A focus on literacy growth is highly valued, and you'll use assessment data to guide small-group instruction. We're looking for a state teaching license, a bachelor's in education, classroom experience, and a genuine commitment to helping every child grow. Experience with early literacy and family engagement is a strong plus."
     },
     "letter_body": "Helping young students find their footing as readers is the most rewarding work I know, so I was thrilled to see the Elementary Teacher opening at Sunnyside. Your emphasis on literacy growth and strong family relationships is exactly what I center my teaching around.\n\nI currently teach third grade at Maple Grove Elementary, where I plan and deliver lessons for a class of 26 and differentiate instruction so every learner has a way in. Managing a room that size has taught me to build routines that make each student feel supported and known.\n\nLiteracy is where I've had my clearest impact, which fits what your district values. I raised reading proficiency in my class by 20% through targeted small-group instruction guided by assessment data, and I keep families involved with weekly updates so learning continues at home. Clear, consistent parent communication is something I genuinely prioritize.\n\nI would love to bring that literacy focus and warmth to Sunnyside's students. Thank you for your time and consideration, and I'd welcome the chance to discuss how I can contribute to your school community."
+  },
+  {
+    "profile": {
+      "name": "Tomas Rivera",
+      "location": "Detroit, MI",
+      "skills": ["SolidWorks", "GD&T", "FEA", "DFM", "tolerance analysis", "prototyping"],
+      "experience": [
+        {"role": "Mechanical Engineer", "company": "Aster Manufacturing", "startDate": "06/2020", "isCurrent": true, "description": "Designs sheet-metal enclosures in SolidWorks and runs FEA to cut part weight 18% while passing drop tests; owns DFM reviews with suppliers."}
+      ],
+      "education": [{"degree": "B.S. Mechanical Engineering", "school": "Michigan State", "year": "2020"}]
+    },
+    "job": {
+      "company": "Northwind Robotics",
+      "role": "Mechanical Engineer",
+      "description": "Northwind Robotics is building the next generation of warehouse robots and needs a Mechanical Engineer to design and validate their components. You'll model parts and assemblies in SolidWorks, apply GD&T to your drawings, run FEA to hit weight and durability targets, and lead design-for-manufacturing reviews with our suppliers. You'll work closely with electrical and firmware engineers from prototype through production. We're looking for a mechanical engineering degree, strong SolidWorks and GD&T skills, hands-on FEA experience, and comfort owning parts end to end. Hardware prototyping experience is a strong plus."
+    },
+    "letter_body": "Designing hardware that has to survive the real world is what pulls me toward the Mechanical Engineer role at Northwind Robotics. Robots put real demands on mechanical design, and that's exactly the kind of challenge I enjoy solving.\n\nI currently work as a Mechanical Engineer at Aster Manufacturing, where I design sheet-metal enclosures in SolidWorks and validate them with FEA. On a recent project I cut part weight by 18% while still passing our drop tests, which is the kind of trade-off your robots will need handled carefully.\n\nThe design-for-manufacturing focus in your posting is already a core part of how I work. I apply GD&T on every drawing and lead DFM reviews directly with suppliers, so parts are cheaper and cleaner to build by the time they reach production. I'm used to partnering with electrical and firmware engineers to get there.\n\nI'd be glad to bring that build-it-right mindset to Northwind. Thank you for considering my application, and I'd welcome the chance to talk through my work."
+  },
+  {
+    "profile": {
+      "name": "Rosa Delgado",
+      "location": "Houston, TX",
+      "skills": ["legal research", "e-filing", "document management", "discovery", "case management", "drafting"],
+      "experience": [
+        {"role": "Paralegal", "company": "Whitmore & Reese", "startDate": "03/2019", "isCurrent": true, "description": "Manages 50+ active civil cases, drafts pleadings and discovery, and keeps filings on deadline through the court e-filing system."}
+      ],
+      "education": [{"degree": "Paralegal Certificate", "school": "Houston Community College", "year": "2018"}]
+    },
+    "job": {
+      "company": "Caldwell Law Group",
+      "role": "Paralegal",
+      "description": "Caldwell Law Group, a busy civil litigation firm, is hiring a Paralegal to support our attorneys through every stage of a case. You'll conduct legal research, draft pleadings and discovery, manage documents and case files, and handle court e-filings so nothing misses a deadline. You'll be a key point of coordination between attorneys, clients, and the courts. We're looking for paralegal experience in litigation, strong legal research and drafting skills, familiarity with e-filing systems, and the kind of organization that keeps dozens of cases moving at once. A paralegal certificate is preferred."
+    },
+    "letter_body": "Litigation runs on deadlines and details, and staying on top of both is genuinely where I do my best work, so the Paralegal role at Caldwell Law Group caught my eye.\n\nI currently work as a Paralegal at Whitmore & Reese, where I support our attorneys across more than fifty active civil cases at a time. Keeping that many matters organized, from filings to client contact, has made me the person the team relies on to catch what would otherwise slip.\n\nThe core of your posting is already my daily routine. I draft pleadings and discovery, run legal research to back them up, and manage every filing through the court e-filing system so nothing lands late. I'm comfortable coordinating between attorneys, clients, and the court under pressure.\n\nI'd welcome the chance to bring that reliability to Caldwell's litigation team. Thank you for reviewing my application, and I'd be glad to discuss how I can support your attorneys."
+  },
+  {
+    "profile": {
+      "name": "Aisha Bello",
+      "location": "Atlanta, GA",
+      "skills": ["nutrition assessment", "meal planning", "counseling", "EHR charting", "diabetes education", "patient education"],
+      "experience": [
+        {"role": "Clinical Dietitian", "company": "Grady Health", "startDate": "07/2021", "isCurrent": true, "description": "Assesses and counsels 15+ inpatients daily, builds care plans for diabetes and renal patients, and charts in the EHR."}
+      ],
+      "education": [{"degree": "B.S. Nutrition and Dietetics, RD", "school": "University of Georgia", "year": "2020"}]
+    },
+    "job": {
+      "company": "Peachtree Medical",
+      "role": "Registered Dietitian",
+      "description": "Peachtree Medical is seeking a Registered Dietitian for our inpatient team. You'll perform nutrition assessments, build individualized care plans, counsel patients and families, and document your work in the EHR. You'll collaborate with physicians and nurses on the care of patients with diabetes, renal disease, and other conditions where nutrition is central to recovery. We're looking for RD credentials, clinical experience in an acute-care setting, strong patient-education skills, and a collaborative, compassionate approach. Experience with diabetes and renal nutrition is a plus."
+    },
+    "letter_body": "Nutrition can quietly change how a patient recovers, and helping people understand that is the part of dietetics I care about most, so the Registered Dietitian role at Peachtree Medical is a strong fit for me.\n\nI currently work as a Clinical Dietitian at Grady Health, where I assess and counsel more than fifteen inpatients a day. Much of my caseload involves diabetes and renal patients, so building individualized care plans for the conditions your posting mentions is already my daily work.\n\nCounseling is where I try to make the difference. I meet patients and families where they are, explain changes in plain terms, and chart everything in the EHR so the whole care team stays aligned. Working closely with physicians and nurses is second nature to me.\n\nI'd be grateful for the chance to bring that care to Peachtree's patients. Thank you for considering my application, and I welcome the opportunity to discuss the role."
+  },
+  {
+    "profile": {
+      "name": "Kevin Tran",
+      "location": "Columbus, OH",
+      "skills": ["demand planning", "Excel", "SQL", "inventory optimization", "ERP", "forecasting"],
+      "experience": [
+        {"role": "Supply Chain Analyst", "company": "Meridian Foods", "startDate": "08/2021", "isCurrent": true, "description": "Runs demand forecasts across 300 SKUs, cut stockouts 22%, and built ERP reports that shortened planning cycles."}
+      ],
+      "education": [{"degree": "B.S. Supply Chain Management", "school": "Ohio State", "year": "2021"}]
+    },
+    "job": {
+      "company": "Harborline Distribution",
+      "role": "Supply Chain Analyst",
+      "description": "Harborline Distribution is hiring a Supply Chain Analyst to keep the right inventory in the right place. You'll build demand forecasts, optimize inventory levels, pull and analyze data from our ERP, and partner with purchasing and operations to reduce stockouts and excess. You'll turn messy planning data into decisions the team can act on. We're looking for strong Excel and analytical skills, experience with demand planning or inventory optimization, comfort querying data (SQL a plus), and familiarity with an ERP system. A supply chain or analytics background is ideal."
+    },
+    "letter_body": "Getting the right product to the right place without tying up cash is a satisfying puzzle, and it's the part of supply chain I enjoy most, so the Supply Chain Analyst role at Harborline Distribution appeals to me.\n\nI currently work as a Supply Chain Analyst at Meridian Foods, where I run demand forecasts across roughly 300 SKUs. By tightening those forecasts I cut our stockouts by 22%, which is exactly the kind of outcome your posting is after.\n\nThe analytical side is where I add the most value. I live in Excel, query our data directly, and built a set of ERP reports that shortened our planning cycles and gave purchasing and operations a clearer picture. Turning planning data into a decision people trust is the habit I'd bring.\n\nI'd be glad to help Harborline keep inventory lean and reliable. Thank you for your consideration, and I'd welcome the chance to talk through how I can contribute."
+  },
+  {
+    "profile": {
+      "name": "Sofia Marchetti",
+      "location": "Remote",
+      "skills": ["user interviews", "usability testing", "survey design", "synthesis", "journey mapping", "research ops"],
+      "experience": [
+        {"role": "UX Researcher", "company": "Pinehill", "startDate": "02/2021", "isCurrent": true, "description": "Runs interviews and usability tests; research I led reframed an onboarding flow and reduced support tickets 30%."}
+      ],
+      "education": [{"degree": "M.S. Human-Computer Interaction", "school": "Carnegie Mellon", "year": "2020"}]
+    },
+    "job": {
+      "company": "Verova",
+      "role": "UX Researcher",
+      "description": "Verova is hiring a UX Researcher to make sure we build the right things. You'll plan and run interviews and usability tests, design surveys, synthesize findings into clear recommendations, and share them with product and design so they actually change decisions. You'll help mature our research practice and pick the right method for each question. We're looking for experience running qualitative and quantitative studies end to end, strong synthesis and storytelling skills, and the ability to influence without authority. Experience setting up research operations is a plus."
+    },
+    "letter_body": "The best research changes what a team decides to build, not just what they know, and that impact is what draws me to the UX Researcher role at Verova.\n\nI currently work as a UX Researcher at Pinehill, where I plan and run interviews and usability tests across the product. My clearest example is a study I led on our onboarding flow: the findings reframed how the team approached it, and the redesign cut support tickets by 30%.\n\nWhat your posting describes, choosing the right method and making findings actually land, is where I focus. I pick qualitative or quantitative approaches based on the question, and I put real effort into synthesis and storytelling so product and design walk away knowing what to do. I've also helped set up lightweight research operations.\n\nI'd love to bring that influence-through-evidence approach to Verova. Thank you for considering my application, and I'd be glad to share examples of my work."
+  },
+  {
+    "profile": {
+      "name": "Jalen Rivers",
+      "location": "Remote",
+      "skills": ["prospecting", "cold calling", "email outreach", "CRM", "lead qualification", "discovery"],
+      "experience": [
+        {"role": "Sales Development Representative", "company": "Cloudmark", "startDate": "06/2022", "isCurrent": true, "description": "Books 20+ qualified meetings a month through cold outreach and consistently beats pipeline targets."}
+      ],
+      "education": [{"degree": "B.A. Business", "school": "University of Arizona", "year": "2022"}]
+    },
+    "job": {
+      "company": "Skyward SaaS",
+      "role": "Sales Development Representative",
+      "description": "Skyward SaaS is growing and hiring a Sales Development Representative to fill the top of our funnel. You'll prospect into target accounts, run cold calls and email outreach, qualify inbound and outbound leads, and book meetings for our Account Executives. You'll keep the CRM clean and hit a monthly meeting target. We're looking for someone resilient, organized, and coachable, with strong written and verbal communication. Prior SDR or outbound sales experience is a plus, but a track record of hitting goals and a willingness to make the calls matters more."
+    },
+    "letter_body": "I like the top of the funnel. Cold outreach is hard, and getting good at it is a real skill, which is exactly why the Sales Development Representative role at Skyward SaaS appeals to me.\n\nI currently work as an SDR at Cloudmark, where I book more than twenty qualified meetings a month through cold calls and email. I've consistently beaten my pipeline target, and I've learned the difference is usually just doing the reps and staying organized.\n\nThe rest of what you're looking for is how I already operate. I qualify leads carefully so my AEs get real opportunities instead of noise, and I keep my CRM clean enough that our forecasting means something. I take coaching well because I'd rather improve than be right.\n\nI'd be excited to fill Skyward's funnel and grow toward closing. Thank you for your time, and I'd welcome the chance to talk about how I can hit your targets."
+  },
+  {
+    "profile": {
+      "name": "Rahul Kapoor",
+      "location": "Remote",
+      "skills": ["AWS", "Terraform", "Docker", "Kubernetes", "CI/CD", "monitoring"],
+      "experience": [
+        {"role": "DevOps Engineer", "company": "Streamline", "startDate": "04/2021", "isCurrent": true, "description": "Manages AWS infrastructure with Terraform, built CI/CD pipelines that cut deploy time 60%, and set up monitoring that reduced incidents."}
+      ],
+      "education": [{"degree": "B.S. Computer Engineering", "school": "UT Dallas", "year": "2020"}]
+    },
+    "job": {
+      "company": "Nimbus Cloud",
+      "role": "DevOps Engineer",
+      "description": "Nimbus Cloud is hiring a DevOps Engineer to keep our platform reliable and our releases fast. You'll manage cloud infrastructure as code, build and maintain CI/CD pipelines, containerize and orchestrate services, and own monitoring and alerting so we catch problems before customers do. You'll partner with engineering to make shipping safe and routine. We're looking for solid AWS experience, infrastructure-as-code with Terraform, comfort with Docker and Kubernetes, and a background building CI/CD. A focus on reliability and clean automation is what we value most."
+    },
+    "letter_body": "Reliable infrastructure that lets engineers ship without fear is the kind of work I find genuinely satisfying, so the DevOps Engineer role at Nimbus Cloud is a strong match for me.\n\nI currently work as a DevOps Engineer at Streamline, where I manage our AWS infrastructure entirely through Terraform. Treating infrastructure as code has made our environments predictable and easy to reason about, which is the foundation your posting is built on.\n\nThe results I care about are speed and stability together. I built CI/CD pipelines that cut our deploy time by 60% and set up monitoring and alerting that brought our incident count down by catching issues early. I'm comfortable with Docker and Kubernetes for getting services to run the same way everywhere.\n\nI'd be glad to bring that reliability-first approach to Nimbus Cloud. Thank you for considering my application, and I'd welcome the chance to talk through how I can help your team ship safely."
   }
 ]
