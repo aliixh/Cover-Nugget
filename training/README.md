@@ -28,7 +28,17 @@ ANTHROPIC_API_KEY=sk-... python build_dataset.py --synth 300
 - Output `dataset/train.jsonl` is chat-format and, crucially, renders each
   example into **the exact prompt the app sends at inference**
   (`build_prompt` mirrors `src/ai/prompt.ts`). Keep them in sync.
-- Aim for **a few hundred** high-quality examples before training.
+- Aim for **~50–250** high-quality examples before training (not thousands).
+
+### 1b. (Recommended) Polish pairs — matches how the app runs
+The app doesn't generate from scratch; it builds a library **skeleton** and asks
+the model to **polish** it. Train on that exact task:
+```bash
+npx tsx make_polish_data.ts        # -> dataset/train_polish.jsonl
+```
+Each row is `skeleton (real prompt the app sends) → gold polished letter`, built
+from the same profile+job fields, so the LoRA trains on precisely what it sees
+live. Train on `train_polish.jsonl` instead of `train.jsonl` for Option A.
 
 ### 2. Train the LoRA (GPU — run later, e.g. free Colab T4)
 Three interchangeable options, all consuming `dataset/train.jsonl`:

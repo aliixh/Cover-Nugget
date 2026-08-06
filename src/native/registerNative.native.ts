@@ -17,14 +17,10 @@
 import Constants from "expo-constants";
 import { setLlamaRuntime } from "../ai/runtime";
 import { getDownloadedAdapterPath } from "../ai/modelManager";
+import { SYSTEM } from "../ai/promptConstants";
 
 // Provided by the Metro/React Native runtime.
 declare const require: (name: string) => any;
-
-// Shared system message. MUST match training/build_dataset.py SYSTEM so a
-// fine-tuned LoRA sees the same framing at inference as during training.
-const SYSTEM =
-  "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked.";
 
 export function registerNative(): void {
   // Expo Go can't load custom native modules — leave everything stubbed.

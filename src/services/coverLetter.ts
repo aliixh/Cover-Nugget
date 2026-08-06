@@ -9,7 +9,8 @@
 import { getAI } from "../ai";
 import { buildTemplateLetter } from "../ai/template";
 import { applyLetterFormat } from "./letterFormat";
-import { AVOID_LINE, stripDashes } from "../ai/humanize";
+import { stripDashes } from "../ai/humanize";
+import { POLISH_INSTRUCTION } from "../ai/promptConstants";
 import type { JobInput, SelectionAction } from "../ai/types";
 import { getFullProfile, listAiSettings } from "../db/repositories";
 import { withinLimit, type LengthLimit } from "../utils/textStats";
@@ -24,15 +25,6 @@ export interface GenerateResult {
   /** True when the local template was used because AI wasn't available. */
   usedFallback: boolean;
 }
-
-// The polish instruction: the model rewrites the grounded skeleton for flow and
-// variation but is forbidden from changing any facts (hybrid, tiered approach).
-const POLISH_INSTRUCTION =
-  "Rewrite this cover letter so it reads smoothly and naturally: improve the flow " +
-  "between sentences, vary the sentence structure, and make it sound genuinely human. " +
-  "Keep EVERY fact exactly as written: do not add, remove, or change any names, " +
-  "companies, roles, skills, dates, numbers, or achievements, and do not invent anything. " +
-  AVOID_LINE;
 
 /**
  * Generate a first draft with the hybrid, tiered approach:
