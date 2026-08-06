@@ -221,7 +221,8 @@ def load_shashivish():
     ds = load_dataset("ShashiVish/cover-letter-dataset", split="train")
     out = []
     for row in ds:
-        g = {k.lower().strip(): v for k, v in row.items()}
+        # None-safe: some cells are null, so coerce every field to a string.
+        g = {k.lower().strip(): (v or "") for k, v in row.items()}
         cur = g.get("current working experience", "")
         past = g.get("past working experience", "")
         exp = []
@@ -234,8 +235,9 @@ def load_shashivish():
             continue
         out.append({
             "profile": {
-                "name": g.get("applicant name", "Applicant"),
-                "skills": [s.strip() for s in re.split(r"[,;]", g.get("skills", "")) if s.strip()],
+                "name": g.get("applicant name") or "Applicant",
+                # NOTE: the skills column is "Skillsets", not "Skills".
+                "skills": [s.strip() for s in re.split(r"[,;]", g.get("skillsets", "")) if s.strip()],
                 "experience": exp,
                 "education": [{"degree": g.get("qualifications", "")}] if g.get("qualifications") else [],
             },
@@ -247,45 +249,37 @@ def load_shashivish():
             "letter_body": body,
         })
     print(f"  loaded {len(out)} rows from ShashiVish/cover-letter-dataset", file=sys.stderr)
+    print("  WARNING: these letters use generic AI-cliche openers; prefer them as", file=sys.stderr)
+    print("           field variety, not as gold targets.", file=sys.stderr)
     return out
 
 
 def load_cultural():
-    """akhan02/cultural-dimension-cover-letters — has MANY phrasings of the same
-    letter, great for variation. Maps the structured fields like ShashiVish and
-    turns every letter-like column into its own example."""
+    """akhan02/cultural-dimension-cover-letters has NO structured fields — only
+    13 tone-variant letters per row. It appears derived from ShashiVish, so we
+    align by index to borrow ShashiVish's profile/job, and verify by checking the
+    company/role actually appear in the base letter before trusting a row."""
     try:
         from datasets import load_dataset
     except ImportError:
         sys.exit("pip install datasets  to use --hf2")
-    ds = load_dataset("akhan02/cultural-dimension-cover-letters", split="train")
+    base = load_shashivish()  # structured triples (already field-mapped)
+    cul = load_dataset("akhan02/cultural-dimension-cover-letters", split="train")
     out = []
-    for row in ds:
-        g = {k.lower().strip(): v for k, v in row.items()}
-        cur = g.get("current working experience", "")
-        past = g.get("past working experience", "")
-        exp = []
-        if cur:
-            r, c = _parse_role_company(cur); exp.append({"role": r, "company": c, "isCurrent": True, "description": cur})
-        if past:
-            r, c = _parse_role_company(past); exp.append({"role": r, "company": c, "description": past})
-        profile = {
-            "name": g.get("applicant name", "Applicant"),
-            "skills": [s.strip() for s in re.split(r"[,;]", g.get("skills", "")) if s.strip()],
-            "experience": exp,
-        }
-        job = {
-            "company": g.get("hiring company", ""),
-            "role": g.get("job title", ""),
-            "description": g.get("preferred qualifications", "") or g.get("qualifications", ""),
-        }
-        # every column that looks like a cover letter becomes an example
-        for k, v in g.items():
-            if "letter" in k and isinstance(v, str) and len(v) > 120:
-                body = _strip_letter_body(v)
-                if body:
-                    out.append({"profile": profile, "job": job, "letter_body": body})
-    print(f"  loaded {len(out)} letter variants from akhan02/cultural-dimension-cover-letters", file=sys.stderr)
+    for i, row in enumerate(cul):
+        if i >= len(base):
+            break
+        ref = base[i]
+        company = (ref["job"]["company"] or "").split()[0] if ref["job"]["company"] else ""
+        letters = [v for k, v in row.items() if isinstance(v, str) and len(v) > 120]
+        # verify alignment: the base company should appear in these letters
+        if company and not any(company.lower() in l.lower() for l in letters):
+            continue
+        for v in letters:
+            body = _strip_letter_body(v)
+            if body:
+                out.append({"profile": ref["profile"], "job": ref["job"], "letter_body": body})
+    print(f"  built {len(out)} tone-variant examples from akhan02 (index-aligned to ShashiVish)", file=sys.stderr)
     return out
 
 
