@@ -38,7 +38,12 @@ npx tsx make_polish_data.ts        # -> dataset/train_polish.jsonl
 ```
 Each row is `skeleton (real prompt the app sends) → gold polished letter`, built
 from the same profile+job fields, so the LoRA trains on precisely what it sees
-live. Train on `train_polish.jsonl` instead of `train.jsonl` for Option A.
+live. Train on `train_polish.jsonl` instead of `train.jsonl` for Option A —
+`train_qwen_lora.py` already points there.
+
+The script also splits off a small, field-diverse **held-out** set to
+`dataset/eval_polish.jsonl` (roles the model never trains on) so you can judge
+generalization after training. Current split: 24 gold seeds → 20 train / 4 eval.
 
 ### 2. Train the LoRA (GPU — run later, e.g. free Colab T4)
 Three interchangeable options, all consuming `dataset/train.jsonl`:

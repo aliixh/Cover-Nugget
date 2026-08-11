@@ -5,9 +5,13 @@ RUN THIS ON A GPU (free Google Colab T4 is plenty for a 0.5B). It is NOT run
 during setup. Reference notebooks: https://github.com/unslothai/notebooks
 
 Pipeline:
-  1) python build_dataset.py                # -> dataset/train.jsonl
+  1) npx tsx make_polish_data.ts            # -> dataset/train_polish.jsonl
   2) (on GPU) python train_qwen_lora.py     # -> outputs/ (adapter + GGUF)
   3) ship the GGUF adapter with the app (see training/README.md)
+
+Trains on the Option-A POLISH pairs (skeleton -> gold letter), which match the
+app's runtime task. Point DATA at dataset/train.jsonl only for the dormant
+from-scratch generation strategy.
 
 Alternatives to Unsloth, same dataset:
   - Silicon Studio (Apple MLX) — fine-tune locally on your M-series Mac.
@@ -17,7 +21,7 @@ import json
 from pathlib import Path
 
 MODEL = "unsloth/Qwen2.5-0.5B-Instruct"
-DATA = Path(__file__).parent / "dataset" / "train.jsonl"
+DATA = Path(__file__).parent / "dataset" / "train_polish.jsonl"
 OUT = Path(__file__).parent / "outputs"
 MAX_SEQ = 2048
 

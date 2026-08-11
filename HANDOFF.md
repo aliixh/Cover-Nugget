@@ -124,14 +124,17 @@ so training matches the app's runtime task.
 - Train the LoRA (<1–2 GPU-hr, free Colab T4 or Silicon-Studio/MLX on Mac).
 - **Evaluate** on-device.
 
-## 9. Open decision: model size (0.5B vs 1.5B)
+## 9. Open decision: model size (0.5B vs 1B)
 - 0.5B (`Qwen2.5-0.5B-Instruct`, Q4 ~469 MB) is what's shipped. It's the floor of
   usable — viable ONLY because the library owns accuracy.
-- **1.5B** = clearly better prose, but ~1.1 GB download, ~2–3× slower, and
-  **~1.5–2 GB RAM → real iOS OOM-kill risk on older phones.**
+- **Upgrade candidate = `Llama-3.2-1B-Instruct-Q4_K_M`** (~770 MB download,
+  ~1.5 GB RAM). This supersedes the earlier "Qwen 1.5B" framing: same
+  speed/RAM-vs-quality tradeoff, but Llama-3.2-1B is the specific model to test.
+  Better prose than the 0.5B, but the larger download + RAM means a **real iOS
+  OOM-kill risk on older phones** to watch for.
 - **Recommendation:** decide AFTER the dev build, by measuring speed + memory on
   the actual phone. Switching is one line in `modelConfig.ts` + retraining on the
-  1.5B base (same pipeline). Keep everything model-agnostic.
+  1B base (same pipeline). Keep everything model-agnostic.
 
 ## 10. Gotchas
 - iOS `TextInput` clips descenders (j/g/y) if a `lineHeight` is set → handled in

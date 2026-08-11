@@ -5,9 +5,12 @@
 // on precisely what it will see live.
 //
 //   npx tsx training/make_polish_data.ts
-//   -> training/dataset/train_polish.jsonl
+//   -> training/dataset/train_polish.jsonl   (training pairs)
+//   -> training/dataset/eval_polish.jsonl    (held-out, never trained on)
 //
-// CPU only, no GPU.
+// A small, field-diverse HELD-OUT set (EVAL_NAMES below) is split off so we can
+// judge the LoRA on roles it did not train on. The trainer reads only
+// train_polish.jsonl. CPU only, no GPU.
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -20,6 +23,11 @@ import { SYSTEM, POLISH_INSTRUCTION } from "../src/ai/promptConstants";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SEED = join(HERE, "dataset", "seed.json");
 const OUT = join(HERE, "dataset", "train_polish.jsonl");
+const EVAL_OUT = join(HERE, "dataset", "eval_polish.jsonl");
+
+// Held-out eval set: one example per broad field (tech, healthcare, marketing,
+// human services), chosen so we test generalization to roles not in training.
+const EVAL_NAMES = new Set(["Omar Haddad", "Priya Nair", "Marcus Bell", "Bianca Torres"]);
 
 function fullProfile(sp: any) {
   return {
@@ -43,6 +51,7 @@ function fullProfile(sp: any) {
 
 const seed = JSON.parse(readFileSync(SEED, "utf8"));
 const lines: string[] = [];
+const evalLines: string[] = [];
 
 for (const ex of seed) {
   const req: any = { profile: fullProfile(ex.profile), job: ex.job, instructions: [] };
@@ -57,16 +66,18 @@ for (const ex of seed) {
   // The exact user turn the app sends at runtime.
   const user = buildWholePrompt({ fullText: skeleton, instruction: POLISH_INSTRUCTION, instructions: [] });
 
-  lines.push(
-    JSON.stringify({
-      messages: [
-        { role: "system", content: SYSTEM },
-        { role: "user", content: user },
-        { role: "assistant", content: target },
-      ],
-    })
-  );
+  const row = JSON.stringify({
+    messages: [
+      { role: "system", content: SYSTEM },
+      { role: "user", content: user },
+      { role: "assistant", content: target },
+    ],
+  });
+
+  (EVAL_NAMES.has(ex.profile.name) ? evalLines : lines).push(row);
 }
 
 writeFileSync(OUT, lines.join("\n") + "\n");
-console.log(`Wrote ${lines.length} polish pairs -> ${OUT}`);
+writeFileSync(EVAL_OUT, evalLines.join("\n") + "\n");
+console.log(`Wrote ${lines.length} train pairs -> ${OUT}`);
+console.log(`Wrote ${evalLines.length} held-out eval pairs -> ${EVAL_OUT}`);

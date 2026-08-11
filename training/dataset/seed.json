@@ -254,5 +254,158 @@
       "description": "Nimbus Cloud is hiring a DevOps Engineer to keep our platform reliable and our releases fast. You'll manage cloud infrastructure as code, build and maintain CI/CD pipelines, containerize and orchestrate services, and own monitoring and alerting so we catch problems before customers do. You'll partner with engineering to make shipping safe and routine. We're looking for solid AWS experience, infrastructure-as-code with Terraform, comfort with Docker and Kubernetes, and a background building CI/CD. A focus on reliability and clean automation is what we value most."
     },
     "letter_body": "Reliable infrastructure that lets engineers ship without fear is the kind of work I find genuinely satisfying, so the DevOps Engineer role at Nimbus Cloud is a strong match for me.\n\nI currently work as a DevOps Engineer at Streamline, where I manage our AWS infrastructure entirely through Terraform. Treating infrastructure as code has made our environments predictable and easy to reason about, which is the foundation your posting is built on.\n\nThe results I care about are speed and stability together. I built CI/CD pipelines that cut our deploy time by 60% and set up monitoring and alerting that brought our incident count down by catching issues early. I'm comfortable with Docker and Kubernetes for getting services to run the same way everywhere.\n\nI'd be glad to bring that reliability-first approach to Nimbus Cloud. Thank you for considering my application, and I'd welcome the chance to talk through how I can help your team ship safely."
+  },
+  {
+    "profile": {
+      "name": "Omar Haddad",
+      "location": "Remote",
+      "skills": ["Go", "PostgreSQL", "microservices", "gRPC", "AWS", "observability"],
+      "experience": [
+        {"role": "Backend Engineer", "company": "Tidepool", "startDate": "03/2021", "isCurrent": true, "description": "Owns payment and billing services in Go handling 5M requests/day; led a PostgreSQL migration with zero downtime and cut p99 latency 40%."}
+      ],
+      "education": [{"degree": "B.S. Computer Science", "school": "Georgia Tech", "year": "2020"}]
+    },
+    "job": {
+      "company": "Ledgerline",
+      "role": "Backend Engineer",
+      "description": "Ledgerline builds payments infrastructure for online businesses, and we're hiring a Backend Engineer to help our core services scale. You'll design and build backend services in Go, model data in PostgreSQL, work with gRPC and event-driven systems, and own reliability for what you ship, including monitoring and on-call. You'll partner with product and platform teams to keep our payment flows fast and correct. We're looking for several years of backend experience, strong Go and SQL, familiarity with distributed systems and AWS, and a track record of running services in production. Experience with payments or high-throughput systems is a plus."
+    },
+    "letter_body": "Payments code has to be both fast and exactly right, and that combination is what draws me to the Backend Engineer role at Ledgerline. Building infrastructure that other businesses quietly depend on is the kind of work I find most worthwhile.\n\nI currently work as a Backend Engineer at Tidepool, where I own our payment and billing services in Go. Those services handle around five million requests a day, so correctness and latency are never abstract concerns for me, they are the job.\n\nThe reliability focus in your posting matches how I already work. I led a database migration to PostgreSQL with zero downtime and brought our p99 latency down by 40% through targeted profiling. I also carry on-call for what I ship, because owning a service end to end is what makes it better.\n\nI'd welcome the chance to bring that ownership to Ledgerline's payment platform. Thank you for considering my application, and I'd be glad to talk through how I can help your services scale."
+  },
+  {
+    "profile": {
+      "name": "Hannah Weiss",
+      "location": "Minneapolis, MN",
+      "skills": ["project planning", "Agile", "stakeholder management", "risk management", "Jira", "PMP"],
+      "experience": [
+        {"role": "Project Manager", "company": "Verano Systems", "startDate": "05/2019", "isCurrent": true, "description": "Runs cross-functional software projects up to $2M; delivered a platform migration across five teams on time and about 10% under budget."}
+      ],
+      "education": [{"degree": "B.S. Business Administration", "school": "University of Minnesota", "year": "2018"}]
+    },
+    "job": {
+      "company": "Cobalt Systems",
+      "role": "Project Manager",
+      "description": "Cobalt Systems is hiring a Project Manager to lead cross-functional software projects from kickoff to delivery. You'll build project plans and timelines, manage scope, budget, and risk, coordinate engineering, design, and product stakeholders, and keep everyone aligned on status and priorities. You'll run Agile ceremonies and track progress in Jira. We're looking for experience managing software projects end to end, strong stakeholder communication, comfort with Agile and project-tracking tools, and a calm approach to risk and change. A PMP or similar certification is a plus."
+    },
+    "letter_body": "Keeping a complex project on track without losing the people doing the work is a skill I've spent years sharpening, so the Project Manager role at Cobalt Systems stood out to me. I like being the person who turns a messy plan into a clear path everyone can follow.\n\nI currently work as a Project Manager at Verano Systems, where I run cross-functional software projects worth up to two million dollars. My most recent was a platform migration across five teams that I delivered on time and about ten percent under budget.\n\nThat outcome came from the fundamentals your posting emphasizes. I keep scope, budget, and risk visible rather than letting them surprise anyone, run Agile ceremonies that stay useful instead of routine, and use Jira to keep status honest. When priorities shift, I'd rather adjust the plan early than defend the old one.\n\nI'd be glad to bring that steady coordination to Cobalt's teams. Thank you for your time and consideration, and I'd welcome the chance to discuss how I can help your projects land."
+  },
+  {
+    "profile": {
+      "name": "Denise Okoro",
+      "location": "Charlotte, NC",
+      "skills": ["full-cycle recruiting", "sourcing", "interviewing", "ATS", "candidate experience", "employer branding"],
+      "experience": [
+        {"role": "Technical Recruiter", "company": "Brightwork Staffing", "startDate": "04/2021", "isCurrent": true, "description": "Fills 15+ engineering and product roles a quarter; cut average time-to-hire from 45 to 28 days and improved the offer-accept rate."}
+      ],
+      "education": [{"degree": "B.A. Psychology", "school": "UNC Chapel Hill", "year": "2019"}]
+    },
+    "job": {
+      "company": "Northgate Technologies",
+      "role": "Technical Recruiter",
+      "description": "Northgate Technologies is growing its engineering org and hiring a Technical Recruiter to own hiring end to end. You'll partner with hiring managers to define roles, source and engage candidates, run screens and coordinate interviews, and guide candidates through a strong experience from first contact to offer. You'll keep the ATS clean and report on pipeline health. We're looking for full-cycle recruiting experience, strong sourcing skills, comfort recruiting for technical roles, and a genuine focus on candidate experience. Experience improving time-to-hire or offer-accept rates is a plus."
+    },
+    "letter_body": "Good recruiting is really about respecting people's time on both sides of the table, and that's the part of the work I care about, so the Technical Recruiter role at Northgate Technologies caught my attention.\n\nI currently work as a Technical Recruiter at Brightwork Staffing, where I fill more than fifteen engineering and product roles a quarter. I own the full cycle, from writing the role with the hiring manager to closing the offer, which is exactly the ownership your posting describes.\n\nThe metrics your team values are ones I've moved directly. I cut our average time-to-hire from forty-five days to twenty-eight by tightening the process and keeping candidates informed, and I improved our offer-accept rate by treating candidate experience as part of the job rather than an afterthought. I keep the ATS clean enough that pipeline reporting actually means something.\n\nI'd love to help Northgate hire the engineers it needs without losing the human touch. Thank you for considering my application, and I'd welcome the chance to talk through how I can support your teams."
+  },
+  {
+    "profile": {
+      "name": "Aaron Mensah",
+      "location": "Remote",
+      "skills": ["onboarding", "account management", "churn reduction", "quarterly business reviews", "CRM", "customer advocacy"],
+      "experience": [
+        {"role": "Customer Success Manager", "company": "Flowbase", "startDate": "02/2021", "isCurrent": true, "description": "Manages a $3M book of SaaS accounts; lifted net revenue retention to 115% and cut churn by keeping renewals ahead of schedule."}
+      ],
+      "education": [{"degree": "B.A. Communications", "school": "University of Washington", "year": "2019"}]
+    },
+    "job": {
+      "company": "Cascade Software",
+      "role": "Customer Success Manager",
+      "description": "Cascade Software is hiring a Customer Success Manager to own the health and growth of our customer accounts. You'll onboard new customers, run regular check-ins and quarterly business reviews, drive adoption, and handle renewals and expansion in partnership with sales. You'll be the voice of the customer internally and step in early when an account is at risk. We're looking for experience managing a book of SaaS accounts, a track record of retention and expansion, strong relationship and communication skills, and comfort with a CRM. Experience reducing churn or growing net revenue retention is a plus."
+    },
+    "letter_body": "The best part of customer success, to me, is catching a problem before the customer has to raise it, so the Customer Success Manager role at Cascade Software is a strong fit for how I work.\n\nI currently manage a three million dollar book of SaaS accounts as a Customer Success Manager at Flowbase. I run onboarding, regular check-ins, and quarterly business reviews, and I stay close enough to my accounts to see risk coming rather than reacting to a cancellation notice.\n\nThe retention and growth your posting focuses on is where I've had clear results. I lifted net revenue retention to 115% by keeping renewals ahead of schedule and finding expansion that genuinely helped the customer. I also act as the customer's voice internally, because the fastest way to keep an account is to fix what's frustrating them.\n\nI'd be glad to bring that proactive approach to Cascade's customers. Thank you for your time and consideration, and I'd welcome the chance to discuss how I can help your accounts grow."
+  },
+  {
+    "profile": {
+      "name": "Maya Fischer",
+      "location": "Portland, OR",
+      "skills": ["Adobe Illustrator", "Photoshop", "InDesign", "brand identity", "typography", "layout"],
+      "experience": [
+        {"role": "Graphic Designer", "company": "Foldhouse Studio", "startDate": "06/2020", "isCurrent": true, "description": "Designs brand identities and marketing collateral for consumer clients; rebranded a regional retailer, refreshing the logo and packaging across 40 stores."}
+      ],
+      "education": [{"degree": "B.F.A. Graphic Design", "school": "Pacific Northwest College of Art", "year": "2020"}]
+    },
+    "job": {
+      "company": "Marigold Creative",
+      "role": "Graphic Designer",
+      "description": "Marigold Creative is a branding studio hiring a Graphic Designer to help shape identities for our consumer clients. You'll design logos, brand systems, packaging, and marketing collateral, work in Illustrator, Photoshop, and InDesign, and take projects from concept through production-ready files. You'll collaborate with art directors and copywriters and present your work to clients. We're looking for a strong portfolio, fluency in the Adobe suite, a sharp eye for typography and layout, and experience taking brand work from idea to final delivery. Packaging experience is a plus."
+    },
+    "letter_body": "Turning a company's fuzzy sense of itself into a clear visual identity is the work I find most satisfying, so the Graphic Designer role at Marigold Creative immediately appealed to me. A studio built around branding is exactly where I want to be.\n\nI currently work as a Graphic Designer at Foldhouse Studio, where I design brand identities and marketing collateral for consumer clients. My favorite recent project was rebranding a regional retailer, where I refreshed the logo and packaging and watched it roll out across forty stores.\n\nThe range your posting describes, from logo to packaging to production files, is how I already work. I'm fluent in Illustrator, Photoshop, and InDesign, I care a lot about typography and layout, and I take projects all the way to clean, production-ready files. I'm comfortable presenting to clients and folding their feedback in without losing the idea.\n\nI'd love to bring that craft to Marigold's clients. Thank you for considering my application, and I'd be glad to walk you through my portfolio."
+  },
+  {
+    "profile": {
+      "name": "Daniel Cho",
+      "location": "New York, NY",
+      "skills": ["financial modeling", "forecasting", "variance analysis", "Excel", "budgeting", "SQL"],
+      "experience": [
+        {"role": "Financial Analyst", "company": "Corewell Capital", "startDate": "07/2021", "isCurrent": true, "description": "Owns the FP&A model for a $50M business unit; builds monthly forecasts and variance analysis and automated a reporting process that saved two days each close."}
+      ],
+      "education": [{"degree": "B.S. Finance", "school": "NYU Stern", "year": "2021"}]
+    },
+    "job": {
+      "company": "Brightbridge",
+      "role": "Financial Analyst",
+      "description": "Brightbridge is hiring a Financial Analyst to support planning and decision-making across the business. You'll build and maintain financial models, produce monthly forecasts and budgets, run variance analysis, and turn the numbers into clear recommendations for business partners. You'll help improve and automate the reporting behind the monthly close. We're looking for strong financial modeling and Excel skills, experience with forecasting and variance analysis, the ability to explain financial results to non-finance partners, and comfort working with data. SQL and FP&A experience are a plus."
+    },
+    "letter_body": "Financial analysis earns its keep when it changes a decision, not just when it explains the past, and that is what draws me to the Financial Analyst role at Brightbridge.\n\nI currently work as a Financial Analyst at Corewell Capital, where I own the FP&A model for a fifty million dollar business unit. I build the monthly forecasts and run the variance analysis that our business partners rely on to plan.\n\nThe process improvement your posting mentions is something I've acted on directly. I automated a piece of our reporting that saved about two days on every close, which freed up time for the analysis that actually helps people decide. I work in Excel constantly, use SQL to get the data I need, and put real effort into explaining results plainly to partners outside of finance.\n\nI'd welcome the chance to bring that mix of rigor and clarity to Brightbridge. Thank you for your consideration, and I'd be glad to discuss how I can support your planning."
+  },
+  {
+    "profile": {
+      "name": "Carla Nunez",
+      "location": "Phoenix, AZ",
+      "skills": ["process improvement", "team leadership", "scheduling", "vendor management", "KPIs", "inventory"],
+      "experience": [
+        {"role": "Operations Supervisor", "company": "Sunpath Logistics", "startDate": "03/2019", "isCurrent": true, "description": "Leads a 25-person warehouse team; redesigned the pick-pack workflow to raise throughput 20% while holding a 99% on-time shipping rate."}
+      ],
+      "education": [{"degree": "B.S. Business Management", "school": "Arizona State", "year": "2018"}]
+    },
+    "job": {
+      "company": "Vertex Distribution",
+      "role": "Operations Manager",
+      "description": "Vertex Distribution is hiring an Operations Manager to run the day-to-day of our distribution center. You'll lead a warehouse team, own scheduling and staffing, improve pick-pack and shipping processes, manage vendor relationships, and track the KPIs that keep the operation on target. You'll be responsible for throughput, accuracy, and on-time shipping. We're looking for experience leading an operations or warehouse team, a track record of process improvement, comfort managing to KPIs, and strong people-leadership skills. Experience in distribution or logistics is a plus."
+    },
+    "letter_body": "A distribution center runs on the small details of process and people, and keeping both moving is the part of operations I enjoy, so the Operations Manager role at Vertex Distribution is a natural fit for me.\n\nI currently work as an Operations Supervisor at Sunpath Logistics, where I lead a twenty-five-person warehouse team. Owning scheduling, staffing, and the daily flow of the floor has taught me that steady throughput comes from a team that knows what good looks like.\n\nThe improvement and KPI focus in your posting is where I've made my mark. I redesigned our pick-pack workflow to raise throughput by twenty percent and held a ninety-nine percent on-time shipping rate while doing it. I manage to the numbers without losing sight of the people hitting them, and I keep vendor relationships steady so supply issues don't become floor problems.\n\nI'd be glad to bring that hands-on approach to Vertex's operation. Thank you for your time and consideration, and I'd welcome the chance to discuss how I can help your center run."
+  },
+  {
+    "profile": {
+      "name": "Ethan Caldwell",
+      "location": "Sacramento, CA",
+      "skills": ["AutoCAD Civil 3D", "site design", "stormwater", "permitting", "grading", "construction documents"],
+      "experience": [
+        {"role": "Civil Engineer", "company": "Terra Ridge Engineering", "startDate": "06/2020", "isCurrent": true, "description": "Designs site and grading plans for commercial developments in Civil 3D; handled stormwater design and permitting for a 30-acre project through city approval."}
+      ],
+      "education": [{"degree": "B.S. Civil Engineering", "school": "UC Davis", "year": "2020"}]
+    },
+    "job": {
+      "company": "Foothill Civil Group",
+      "role": "Civil Engineer",
+      "description": "Foothill Civil Group is a land development consultancy hiring a Civil Engineer to design and permit commercial and residential sites. You'll produce site, grading, and stormwater designs in AutoCAD Civil 3D, prepare construction documents, manage permitting with local agencies, and coordinate with surveyors, architects, and contractors. You'll help take projects from concept through agency approval and construction. We're looking for a civil engineering degree, experience with Civil 3D and site design, familiarity with stormwater and permitting, and strong construction-document skills. An EIT or PE is a plus."
+    },
+    "letter_body": "Site design is where a set of drawings becomes something people actually build and use, and that connection is what I like most about civil engineering, so the Civil Engineer role at Foothill Civil Group stood out to me.\n\nI currently work as a Civil Engineer at Terra Ridge Engineering, where I design site and grading plans for commercial developments in AutoCAD Civil 3D. Recently I handled the stormwater design and permitting for a thirty-acre project and carried it through city approval.\n\nThe permitting and construction-document work your posting describes is already my day-to-day. I prepare clean construction documents, manage grading and stormwater, and coordinate with surveyors, architects, and contractors so a design holds together from concept through approval. I'm used to working with agencies to keep a project moving rather than stuck in review.\n\nI'd welcome the chance to bring that experience to Foothill's projects. Thank you for considering my application, and I'd be glad to talk through my work."
+  },
+  {
+    "profile": {
+      "name": "Bianca Torres",
+      "location": "Albuquerque, NM",
+      "skills": ["case management", "crisis intervention", "client advocacy", "resource coordination", "documentation", "motivational interviewing"],
+      "experience": [
+        {"role": "Social Worker", "company": "Mesa Community Services", "startDate": "08/2020", "isCurrent": true, "description": "Carries a caseload of 30+ clients; connects families to housing and benefits and coordinates care across agencies to keep cases from falling through."}
+      ],
+      "education": [{"degree": "M.S.W.", "school": "New Mexico State University", "year": "2020"}]
+    },
+    "job": {
+      "company": "Rio Grande Family Services",
+      "role": "Case Manager",
+      "description": "Rio Grande Family Services is hiring a Case Manager to support families facing housing instability and other challenges. You'll carry a caseload, assess client needs, connect families to housing, benefits, and community resources, coordinate care across agencies, and document your work accurately. You'll advocate for clients and step in during crises. We're looking for a social work or human services background, case management experience, strong assessment and advocacy skills, and the organization to keep a full caseload moving. An MSW or licensure and experience with crisis intervention are a plus."
+    },
+    "letter_body": "The families who need case management most are usually the ones already stretched thin, so making the system easier for them to navigate is the work I care about, and it's why the Case Manager role at Rio Grande Family Services drew me in.\n\nI currently work as a Social Worker at Mesa Community Services, where I carry a caseload of more than thirty clients. Much of my work is connecting families to housing and benefits and making sure the pieces of their care actually fit together.\n\nThe coordination and advocacy your posting emphasizes are the heart of what I do. I coordinate care across agencies so cases don't fall through the gaps between them, step in during crises with a calm plan, and document thoroughly so the next person always knows where things stand. I use motivational interviewing to meet clients where they are rather than where a form expects them to be.\n\nI'd be grateful for the chance to bring that steady advocacy to Rio Grande's families. Thank you for your time and consideration, and I welcome the opportunity to discuss the role."
   }
 ]
