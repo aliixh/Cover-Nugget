@@ -1,53 +1,15 @@
-// Deterministic, non-AI cover-letter builder.
+// Deterministic, non-AI cover-letter builder (Tier 1 of the hybrid flow).
 //
-// Used as a FALLBACK when the on-device model isn't available (e.g. running in
-// Expo Go / web, or before the user downloads the model). It lets the entire
-// generate → edit → export flow work end-to-end without any model or GPU.
-// The real AI provider (getAI().generate) is always tried first.
-//
-// Unlike a pure boilerplate letter, this DOES read the job description: it
-// matches the candidate's skills against the posting and references the job's
-// stated focus, so the draft is tailored (not just "your info").
+// Assembles an accurate, VARIED skeleton from the sentence-structure library
+// (sentenceLibrary.ts), filled from the real profile + matched job keywords +
+// recency. The on-device model then POLISHES this skeleton for flow
+// (services/coverLetter.ts). When no model is available (Expo Go / web / not
+// downloaded), the skeleton is used as-is, so the whole flow works with no GPU.
 
 import type { GenerateRequest } from "./types";
-import type { Profile } from "../types/models";
 import { matchProfileToJob } from "./keywordMatch";
 import { currentOrRecentClause } from "../utils/experience";
 import { composeBody, type Slots } from "./sentenceLibrary";
-
-const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
-
-/** "July 31, 2026" */
-function formatLetterDate(d: Date): string {
-  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-}
-
-/**
- * The standard letter header, built deterministically from the profile (the
- * model is never trusted with the applicant's real contact details):
- *
- *   Name
- *   Address / location
- *   Email · Phone · LinkedIn
- *   <blank>
- *   Date
- *
- * Lines with no data are skipped rather than faked. The letter body (greeting →
- * sign-off) is appended after this by the caller.
- */
-export function buildLetterHeader(p: Profile): string {
-  const lines: string[] = [];
-  if (p.name?.trim()) lines.push(p.name.trim());
-  if (p.location?.trim()) lines.push(p.location.trim());
-  const contact = [p.email, p.phone, p.linkedin, p.portfolio]
-    .map((s) => s?.trim())
-    .filter((s): s is string => !!s);
-  if (contact.length) lines.push(contact.join(" · "));
-  return `${lines.join("\n")}\n\n${formatLetterDate(new Date())}`;
-}
 
 /** "a, b and c" */
 function andList(items: string[]): string {
