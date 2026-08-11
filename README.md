@@ -9,6 +9,10 @@ server.
 Built with React Native + Expo (TypeScript), NativeWind (Tailwind), Expo Router,
 and `expo-sqlite`. The optional writing model runs **entirely on-device**.
 
+> 📖 **Full product vision & spec:** [`docs/PRODUCT.md`](docs/PRODUCT.md) — the
+> deep "what/who/why" (problem, positioning, the hybrid AI architecture, data
+> model, flows, roadmap). Start there if you're picking this project up.
+
 ---
 
 ## Features
