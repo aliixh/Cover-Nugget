@@ -25,9 +25,9 @@ type S = (s: Slots) => string;
 
 // --- Openers: express interest in the role -------------------------------
 const OPENERS: S[] = [
-  (s) => `I'm excited to apply for the ${s.role} position at ${s.company}.`,
+  (s) => `The ${s.role} position at ${s.company} is a strong match for what I do.`,
   (s) => `The ${s.role} opening at ${s.company} immediately caught my eye.`,
-  (s) => `I'm writing to express my strong interest in the ${s.role} role at ${s.company}.`,
+  (s) => `I'm very interested in the ${s.role} role at ${s.company}.`,
   (s) => `${s.company}'s ${s.role} position stood out to me the moment I saw it.`,
   (s) => `I'd love to be considered for the ${s.role} role at ${s.company}.`,
   (s) => `When I came across the ${s.role} opening at ${s.company}, I knew I wanted to apply.`,
@@ -62,12 +62,14 @@ const SKILL_MATCH: S[] = [
   (s) => `Much of what you describe — ${s.topSkills} — is where I do my best work.`,
 ];
 
-// --- Achievement: a real sentence from the profile (kept verbatim) --------
+// --- Achievement: a real, first-person sentence from the profile ----------
+// (template.ts normalizes the raw "What you did" text to first person, so each
+// of these reads correctly whether the model polishes it or we fall back.)
 const ACHIEVEMENT: S[] = [
   (s) => s.achievement,
   (s) => `A recent highlight: ${s.achievement}`,
-  (s) => `To give a concrete example — ${lowerFirst(s.achievement)}`,
-  (s) => `Here's a snapshot of my recent work: ${s.achievement}`,
+  (s) => `To put that concretely, ${s.achievement}`,
+  (s) => `As one example, ${s.achievement}`,
 ];
 
 // --- Education (optional) -------------------------------------------------
@@ -89,13 +91,9 @@ const CLOSERS: S[] = [
   (s) => `I'd welcome the chance to discuss how I can help ${s.company}. Thank you for your time and consideration.`,
   () => `I'd love to talk about how my background fits your team. Thank you for considering my application.`,
   () => `Thank you for reviewing my application — I'd be glad to share more in a conversation.`,
-  (s) => `I'd be excited to contribute to ${s.company}, and I appreciate you taking the time to consider me.`,
+  (s) => `I'd be glad to contribute to ${s.company}, and I appreciate you taking the time to consider me.`,
   () => `Thanks for your consideration; I hope we can discuss the role further.`,
 ];
-
-function lowerFirst(t: string): string {
-  return t ? t.charAt(0).toLowerCase() + t.slice(1) : t;
-}
 
 // Tiny seeded RNG so the same inputs give a stable letter.
 function hashStr(s: string): number {
