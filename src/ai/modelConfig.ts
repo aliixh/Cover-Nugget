@@ -5,9 +5,11 @@
 // storage on first run (see modelManager.ts). This file is the single place to
 // change which model/URL is used.
 //
-// NOTE: the spec calls for "Qwen3.5-0.8B". Set MODEL.url to the exact GGUF you
-// want to ship. The default below points at a small, instruction-tuned Qwen
-// GGUF that runs comfortably on-device; swap it for your chosen weight file.
+// The shipped model is our fine-tuned Llama-3.2-1B (LoRA merged in, quantized to
+// Q4_K_M, ~770 MB). It was trained to POLISH the deterministic skeleton in the
+// app's voice (see training/ + training/README.md "Export to GGUF"). Because the
+// LoRA is merged into the weights, it's a single GGUF — no separate adapter.
+// Host the GGUF (produced by the export step) and set MODEL.url to it below.
 // (Nothing here runs on our build machine or any GPU — the download happens on
 // the end-user's device.)
 
@@ -41,17 +43,12 @@ export interface ModelConfig {
 export const MODEL: ModelConfig = {
   // User-facing name only — we intentionally don't reveal the underlying model.
   displayName: "Cover Nugget Assistant",
-  // Verified live 2026-07-30: this GGUF resolves to a 491,400,032-byte file.
-  url: "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf",
-  fileName: "qwen-0_5b-instruct-q4_k_m.gguf",
-  approxSizeMB: 469,
+  // TODO(host): upload cn-llama1b-q4_k_m.gguf (807,693,984 bytes) produced by the
+  // export step and put its public URL here. Placeholder points at the owner's HF.
+  url: "https://huggingface.co/aliixh/cover-nugget-1b/resolve/main/cover-nugget-1b-q4_k_m.gguf",
+  fileName: "cover-nugget-1b-q4_k_m.gguf",
+  approxSizeMB: 770,
   formatNote: "Private, on-device writing model · runs fully offline",
-  // Once you've trained a cover-letter LoRA (see training/), host the GGUF and
-  // point to it here — it downloads next to the base model and is applied on
-  // load. Example:
-  // adapter: {
-  //   url: "https://huggingface.co/<you>/cover-nugget-lora/resolve/main/cover-nugget-lora.gguf",
-  //   fileName: "cover-nugget-lora.gguf",
-  //   approxSizeMB: 20,
-  // },
+  // LoRA is merged into the weights above, so no separate adapter is needed.
+  // (AdapterConfig is kept for the alternative base+adapter strategy.)
 };

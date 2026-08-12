@@ -78,8 +78,37 @@ Outputs: a LoRA adapter and (via Unsloth) a merged **q4_k_m GGUF**.
   the baseline output first, *then* decide if the LoRA is worth it.
 - A 0.5B ceiling is real: expect nicer prose and consistency, not GPT-4.
 
+## Export to GGUF (ship the fine-tuned model)
+
+The app loads a single GGUF; we merge the LoRA into the base and quantize.
+
+```bash
+# 1) merge LoRA -> full HF model (transformers + peft)
+python3 - <<'PY'
+import torch; from transformers import AutoModelForCausalLM, AutoTokenizer; from peft import PeftModel
+base="unsloth/Llama-3.2-1B-Instruct"; adp="training/adapters/llama1b_v3"; out="training/merged/llama1b_v3_merged"
+tok=AutoTokenizer.from_pretrained(base); m=AutoModelForCausalLM.from_pretrained(base,dtype=torch.float16)
+PeftModel.from_pretrained(m,adp).merge_and_unload().save_pretrained(out,safe_serialization=True); tok.save_pretrained(out)
+PY
+
+# 2) HF -> GGUF F16  (needs llama.cpp source + `pip install gguf`)
+python3 ~/llamacpp-src/convert_hf_to_gguf.py training/merged/llama1b_v3_merged \
+  --outfile cn-llama1b-f16.gguf --outtype f16
+
+# 3) quantize -> Q4_K_M (~770 MB)  (prebuilt llama-quantize)
+llama-quantize cn-llama1b-f16.gguf cn-llama1b-q4_k_m.gguf Q4_K_M
+```
+
+Then **host `cn-llama1b-q4_k_m.gguf`** (HF/R2/etc.) and set `MODEL.url` in
+`src/ai/modelConfig.ts`. Sanity-check locally with `llama-cli -m ... -f prompt.txt`.
+
+The runtime **fact guard** (`src/ai/factGuard.ts`) backs this up: if the model
+drops/invents a number, the app keeps the deterministic skeleton.
+
 ## Files
-- `dataset/seed.json` — structured training examples (edit / add here).
-- `build_dataset.py` — renders seed → `dataset/train.jsonl` (+ optional `--synth`).
-- `train_qwen_lora.py` — Unsloth LoRA trainer (run on GPU).
+- `dataset/seed.json` — 50 structured gold examples (edit / add here).
+- `make_polish_data.ts` — renders seed → `dataset/train_polish.jsonl` (+ held-out `eval_polish.jsonl`).
+- `build_dataset.py` — legacy from-scratch dataset (dormant; `--hf`/`--hf2` loaders).
+- `train_lora.py` — HF/peft/trl LoRA trainer for any base (Qwen2.5-0.5B, Llama-3.2-1B).
+- `generate_bench.py` — base-vs-LoRA generation on the held-out set.
 - `requirements.txt` — CPU deps (synth); training deps install on the GPU box.
