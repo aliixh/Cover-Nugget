@@ -69,6 +69,18 @@ export function significantNumbers(text: string): Set<string> {
     if (significant(tok)) out.add(tok);
   }
 
+  // spelled-out percentages: "ten percent", "twenty-five percent", "ninety-nine percent".
+  // A faithful polish often turns "10%" into "ten percent"; treat them as equal.
+  const tens = "twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety";
+  const ones = "one|two|three|four|five|six|seven|eight|nine";
+  const small = Object.keys(WORD).join("|");
+  const pctRe = new RegExp(`\\b((?:${tens})(?:[- ](?:${ones}))?|${small})\\s+percent\\b`, "g");
+  for (const m of t.matchAll(pctRe)) {
+    const parts = m[1].toLowerCase().replace(/-/g, " ").split(/\s+/);
+    const value = parts.length === 2 ? (WORD[parts[0]] ?? 0) + (WORD[parts[1]] ?? 0) : WORD[parts[0]] ?? 0;
+    if (value) out.add(token(value, "%"));
+  }
+
   const push = (valStr: string, unitKey?: string) => {
     const value = parseFloat(valStr.replace(/,/g, ""));
     if (Number.isNaN(value)) return;
@@ -76,14 +88,15 @@ export function significantNumbers(text: string): Set<string> {
     if (significant(tok)) out.add(tok);
   };
 
+  // NB: (?<![A-Za-z]) keeps us from reading the "2b" out of "B2B", "v2", etc.
   // digits with an ATTACHED single-letter unit (boundary after): "5m", "22k", "3x"
-  for (const m of t.matchAll(/(\d[\d,]*(?:\.\d+)?)(k|mn|m|b|x)\b/g)) push(m[1], m[2]);
+  for (const m of t.matchAll(/(?<![A-Za-z])(\d[\d,]*(?:\.\d+)?)(k|mn|m|b|x)\b/g)) push(m[1], m[2]);
   // digits + percent, attached or spaced: "40%", "40 percent"
-  for (const m of t.matchAll(/(\d[\d,]*(?:\.\d+)?)\s*(?:%|percent\b)/g)) push(m[1], "%");
+  for (const m of t.matchAll(/(?<![A-Za-z])(\d[\d,]*(?:\.\d+)?)\s*(?:%|percent\b)/g)) push(m[1], "%");
   // digits + a spaced word unit: "5 million", "22 thousand"
-  for (const m of t.matchAll(/(\d[\d,]*(?:\.\d+)?)\s+(thousand|million|billion)\b/g)) push(m[1], m[2]);
+  for (const m of t.matchAll(/(?<![A-Za-z])(\d[\d,]*(?:\.\d+)?)\s+(thousand|million|billion)\b/g)) push(m[1], m[2]);
   // bare numbers >= 100 (no unit): "300", "5,000"
-  for (const m of t.matchAll(/\b(\d[\d,]*(?:\.\d+)?)\b/g)) {
+  for (const m of t.matchAll(/(?<![A-Za-z])\b(\d[\d,]*(?:\.\d+)?)\b/g)) {
     const value = parseFloat(m[1].replace(/,/g, ""));
     if (!Number.isNaN(value) && value >= 100) out.add(token(value, ""));
   }
