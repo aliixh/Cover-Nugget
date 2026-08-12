@@ -1,41 +1,41 @@
 # Push cheat-sheet
 
-The assistant commits locally; **you push from your Mac** (this repo's box has no
-GitHub credentials by design).
+The box **pushes directly** to GitHub. A Personal Access Token lives in
+`~/.git-credentials` (consumed via `git config credential.helper store`), so there's
+**no Mac round-trip and no `cnpull`** — commit and push straight from the box.
 
 Remote: `origin https://github.com/aliixh/Cover-Nugget.git` · Branch: `main`
 
 ## Normal flow
 ```bash
-cnpull                       # rsync the latest files to your Mac
 cd <path>/side-project
-git status                   # see what git thinks changed
+git add -A
+git commit -m "…"            # author: aliixh <aliixhuang@gmail.com>
+git push origin main
 ```
+Afterward `git status` should read `working tree clean` and
+`up to date with 'origin/main'`. The user runs `git pull` on their Mac to sync.
 
-- **"nothing to commit, working tree clean"** → just push:
+## Troubleshooting
+- **Login prompt / auth fails:** the credential helper isn't set, or the PAT is
+  missing/expired. Set it with `git config --local credential.helper store` so git
+  reads `~/.git-credentials`, or refresh the token (GitHub **username + a Personal
+  Access Token**, never the account password).
+- **Rejected (`updates were rejected` / non-fast-forward):** the remote moved.
+  `git fetch origin`, then rebase/reset onto it and push again. Only overwrite with
+  `git push --force-with-lease` when you're certain what you'd replace.
+- **Unrelated histories:** if the box's clone and `origin/main` diverged (e.g. a
+  force push replaced remote history), adopt the remote and re-apply your files:
   ```bash
-  git push
+  git fetch origin
+  git checkout -B main origin/main   # adopt the real history
+  # copy your changed files back on top, then:
+  git add -A && git commit -m "…" && git push origin main
   ```
-- **Files show as modified/untracked** (cnpull copies files, not git history) →
-  commit them, then push:
-  ```bash
-  git add -A
-  git commit -m "sync latest"
-  git push
-  ```
+- **`MEMORY.md` never commits:** it's gitignored on purpose (privacy) — local only.
 
-## First-time / troubleshooting
-- **Login prompt:** use your GitHub **username + a Personal Access Token** (not
-  your account password).
-- **Rejected** ("updates were rejected" / "unrelated histories") — the remote has
-  an old starter commit; overwrite it once (safe on your own fresh repo):
-  ```bash
-  git push -u origin main --force-with-lease
-  ```
-- **"not a git repository"** — `cnpull` didn't copy the hidden `.git/` folder. Ask
-  the assistant to bundle the repo, or make sure your rsync includes dotfiles.
-
-## Uploading a file via the GitHub website (e.g. an image)
-Open the repo → into the folder → **Add file ▸ Upload files** → drag it in →
-**Commit changes**. Then run `cnpull`… actually the reverse: run `git pull` on
-your Mac afterward so local stays in sync.
+## Guardrails (do not relax)
+- **Never** act in the **kyleshu** or **fluxion** accounts.
+- **No force-push over shared history** without first checking what you'd overwrite;
+  prefer `--force-with-lease`.
+- Owner: GitHub `aliixh` · **aliixhuang@gmail.com**.

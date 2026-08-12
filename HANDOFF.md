@@ -15,16 +15,16 @@ no server, nothing leaves the device. Lives entirely in `side-project/`.
 - **Never** take actions in the **kyleshu** or **fluxion** accounts.
 - **Do NOT use the GPU (A100) on this box.** CPU is fine. GPU training is done by
   the user later (free Colab / their Mac).
-- **This box has no GitHub credentials** → you can commit locally but **cannot
-  push**. The user pushes from their Mac (or a machine with creds).
+- **This box can push directly** (PAT in `~/.git-credentials`) → commit and push
+  freely to `origin/main`. No Mac round-trip needed.
 - On-device model does **not** run in Expo Go — evaluating model output requires
   a dev/prod build (the user's step).
 
 ## 3. How the user works (preferences)
 - Tests on an **iPhone via Expo Go** (so: template/skeleton path runs, real LLM
   does not).
-- Pulls code to their Mac with an **rsync alias `cnpull`** (copies files, not git
-  history — so they run `git add -A && git commit && git push` on their side).
+- Syncs via git directly (**`cnpull` retired**): the box commits and pushes to
+  `origin/main`; the user `git pull`s on their Mac.
 - **Style: no em dashes** anywhere (the app strips them; keep them out of copy).
 - Wants natural, human-sounding letters; dislikes AI clichés.
 - Commits are authored as `aliixh <aliixhuang@gmail.com>`.
@@ -32,7 +32,7 @@ no server, nothing leaves the device. Lives entirely in `side-project/`.
 ## 4. Repo & git workflow
 - Repo root **is** `side-project/` (there's no `side-project/` folder inside the
   GitHub repo). Branch: **main**. Remote: **https://github.com/aliixh/Cover-Nugget.git**.
-- **Workflow:** you `git add -A && git -c user.name="aliixh" -c user.email="aliixhuang@gmail.com" commit -m "..."` locally. The user runs `git push` from their Mac.
+- **Workflow:** `git add -A && git -c user.name="aliixh" -c user.email="aliixhuang@gmail.com" commit -m "..."` then `git push origin main` directly from the box (PAT in `~/.git-credentials`).
 - End commit messages with: `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`.
 - Detailed change history is in `git log` (every feature is one commit).
 
