@@ -1,0 +1,150 @@
+[
+  {
+    "company": "Riverside Health",
+    "job": {
+      "company": "Riverside Health",
+      "role": "Registered Nurse, Medical-Surgical",
+      "description": "Riverside Health is seeking a compassionate Registered Nurse for our medical-surgical unit. In this role you'll perform patient assessments, administer IV therapy and medications, provide patient and family education, and document care accurately in EPIC. You'll work closely with physicians and fellow nurses to coordinate safe, timely care across each shift. We're looking for a current RN license, a BSN preferred, strong clinical assessment skills, and experience in an acute-care or med-surg setting. Above all, we value teamwork, clear communication, and a genuine commitment to patient safety."
+    },
+    "profile": {
+      "name": "Priya Nair",
+      "location": "Chicago, IL",
+      "skills": [
+        "patient care",
+        "IV therapy",
+        "EPIC EHR",
+        "triage",
+        "patient education",
+        "wound care"
+      ],
+      "experience": [
+        {
+          "role": "Registered Nurse",
+          "company": "Lakeside Medical Center",
+          "startDate": "06/2020",
+          "isCurrent": true,
+          "description": "Provides care for up to 6 medical-surgical patients per shift; precepts new-grad nurses and championed a hand-off checklist that reduced medication errors."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Nursing",
+          "school": "University of Illinois",
+          "graduationYear": "2020"
+        }
+      ]
+    },
+    "llama1b_v3": "Dear Hiring Manager,\n\nCaring for patients is the work I know, so the Registered Nurse role at Riverside Health stood out to me. I like being the steady hand in the ICU or operating room, where a small mistake can be a difference between a bad day and a good one.\n\nI currently work as a Registered Nurse at Lakeside Medical Center, where I care for up to six medical-surgical patients at a time. Precepting new graduates and supporting experienced nurses through hand-offs is my normal day, so your core responsibilities are ones I already own.\n\nYour posting values IV therapy and EPIC EHR, which is where I work. I administer IVs correctly every time and keep our patients and families informed so no one is out of the loop about what's happening.\n\nI would be glad to bring that care to Riverside's medical-surgical unit. Thank you for considering my application, and I would welcome the chance to meet your team.\n\nSincerely,\nPriya Nair"
+  },
+  {
+    "company": "Loop & Co",
+    "job": {
+      "company": "Loop & Co",
+      "role": "Marketing Coordinator",
+      "description": "Loop & Co is a growing consumer brand looking for a Marketing Coordinator to help us reach and keep a larger audience. You'll plan and send email campaigns, grow our social channels, support an SEO-driven content calendar, and use analytics to decide what to do next. You'll collaborate with design and product to keep our messaging consistent across every touchpoint. We're looking for someone who is a strong writer, comfortable in analytics tools, organized enough to run a content calendar, and genuinely curious about what makes people click. One to three years of marketing experience is ideal."
+    },
+    "profile": {
+      "name": "Marcus Bell",
+      "location": "Austin, TX",
+      "skills": [
+        "content marketing",
+        "SEO",
+        "email campaigns",
+        "analytics",
+        "copywriting",
+        "social media"
+      ],
+      "experience": [
+        {
+          "role": "Marketing Coordinator",
+          "company": "Fernwood Goods",
+          "startDate": "07/2022",
+          "isCurrent": true,
+          "description": "Runs email and social campaigns that grew the newsletter list from 4k to 22k in a year; improved organic search traffic 60% through an SEO content plan."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Communications",
+          "school": "UT Austin",
+          "graduationYear": "2022"
+        }
+      ]
+    },
+    "llama1b_v3": "Dear Hiring Manager,\n\nMarketing helps you know your audience to the smallest detail, and that clarity is what I like most about marketing, so the Marketing Coordinator role at Loop & Co stood out to me. I especially like the emphasis on analytics and A/B testing, because that's where I get my clearest read on what works and what doesn't.\n\nI currently work as a Marketing Coordinator at Fernwood Goods, where I run email and social campaigns. My email list grew by 22% in a year I managed, and I improved our organic search traffic by 60% through the content I wrote and sent.\n\nThat hands-on approach to analytics and campaign-focused planning is exactly what Loop & Co needs. I'd love to bring that to Loop & Co, especially as we grow. Thank you for considering my application, and I'd be glad to walk you through my past campaigns.\n\nSincerely,\nMarcus Bell"
+  },
+  {
+    "company": "Ledgerline",
+    "job": {
+      "company": "Ledgerline",
+      "role": "Backend Engineer",
+      "description": "Ledgerline builds payments infrastructure for online businesses, and we're hiring a Backend Engineer to help our core services scale. You'll design and build backend services in Go, model data in PostgreSQL, work with gRPC and event-driven systems, and own reliability for what you ship, including monitoring and on-call. You'll partner with product and platform teams to keep our payment flows fast and correct. We're looking for several years of backend experience, strong Go and SQL, familiarity with distributed systems and AWS, and a track record of running services in production. Experience with payments or high-throughput systems is a plus."
+    },
+    "profile": {
+      "name": "Omar Haddad",
+      "location": "Remote",
+      "skills": [
+        "Go",
+        "PostgreSQL",
+        "microservices",
+        "gRPC",
+        "AWS",
+        "observability"
+      ],
+      "experience": [
+        {
+          "role": "Backend Engineer",
+          "company": "Tidepool",
+          "startDate": "03/2021",
+          "isCurrent": true,
+          "description": "Owns payment and billing services in Go handling 5M requests/day; led a PostgreSQL migration with zero downtime and cut p99 latency 40%."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "Georgia Tech",
+          "graduationYear": "2020"
+        }
+      ]
+    },
+    "llama1b_v3": "Dear Hiring Manager,\n\nReliable, secure servers are the only things that matter to me, so the Backend Engineer role at Ledgerline caught my eye. Building the infrastructure that lets a whole app grow without crashing is the kind of work I want to keep doing.\n\nI currently work as a Backend Engineer at Tidepool, where I own the payment and billing services. I handle five million requests a day, so the scale your posting describes, and I've spent years tuning for reliability and latency without losing the trust of the team behind the app.\n\nThe stack you mention is familiar. I write in Go, query PostgreSQL directly, and use gRPC for API calls, which lines up with your needs. I led a PostgreSQL migration that moved our database without downtime, and I cut our p99 latency by 40% while doing it.\n\nI'd be glad to bring that reliability-first approach to Ledgerline. Thank you for considering my application, and I'd welcome the chance to talk through how I can help your team grow.\n\nSincerely,\nOmar Haddad"
+  },
+  {
+    "company": "Rio Grande Family Services",
+    "job": {
+      "company": "Rio Grande Family Services",
+      "role": "Case Manager",
+      "description": "Rio Grande Family Services is hiring a Case Manager to support families facing housing instability and other challenges. You'll carry a caseload, assess client needs, connect families to housing, benefits, and community resources, coordinate care across agencies, and document your work accurately. You'll advocate for clients and step in during crises. We're looking for a social work or human services background, case management experience, strong assessment and advocacy skills, and the organization to keep a full caseload moving. An MSW or licensure and experience with crisis intervention are a plus."
+    },
+    "profile": {
+      "name": "Bianca Torres",
+      "location": "Albuquerque, NM",
+      "skills": [
+        "case management",
+        "crisis intervention",
+        "client advocacy",
+        "resource coordination",
+        "documentation",
+        "motivational interviewing"
+      ],
+      "experience": [
+        {
+          "role": "Social Worker",
+          "company": "Mesa Community Services",
+          "startDate": "08/2020",
+          "isCurrent": true,
+          "description": "Carries a caseload of 30+ clients; connects families to housing and benefits and coordinates care across agencies to keep cases from falling through."
+        }
+      ],
+      "education": [
+        {
+          "degree": "M.S.W.",
+          "school": "New Mexico State University",
+          "graduationYear": "2020"
+        }
+      ]
+    },
+    "llama1b_v3": "Dear Hiring Manager,\n\nFamily work is hard, and being the steady hand in the middle of it is the part of the job I care about most, so the Case Manager role at Rio Grande Family Services caught my attention.\n\nI currently work as a Social Worker at Mesa Community Services, where I carry a caseload of more than thirty clients at once. Most of those cases involve families in crisis, and I coordinate closely with agencies and providers to keep support reaching the people who need it.\n\nThe core of your posting is already my daily work. I connect families to housing and benefits, run on the ground with families to see a support plan work, and stay steady in the face of crisis. When a family is struggling to keep a promise, I follow up until they can keep it.\n\nI would be glad to bring that steady care to Rio Grande Family Services families. Thank you for considering my application, and I would welcome the chance to meet your team.\n\nSincerely,\nBianca Torres"
+  }
+]
