@@ -28,3 +28,6 @@ expo-env.d.ts
 # Agent working notes (not app code)
 memory/
 MEMORY.md
+
+# LoRA adapter weights (large binaries; export GGUF for release)
+training/adapters/

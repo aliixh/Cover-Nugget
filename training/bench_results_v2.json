@@ -1,0 +1,170 @@
+[
+  {
+    "idx": 0,
+    "company": "Riverside Health",
+    "gold": "Dear Hiring Manager,\n\nCompassionate, safe patient care is the heart of nursing for me, so I was glad to see the Medical-Surgical Registered Nurse opening at Riverside Health. Your emphasis on teamwork and patient safety is exactly the kind of unit I want to be part of.\n\nI currently work as a Registered Nurse at Lakeside Medical Center, where I've spent the last several years caring for medical-surgical patients. On a typical shift I manage care for up to six patients, handle IV therapy and medications, and make patient education a priority so families understand what comes next.\n\nThe patient-safety focus in your posting is something I've acted on directly. I introduced a hand-off checklist on my unit that measurably reduced medication errors, and I regularly precept new-grad nurses, which has sharpened how clearly I communicate under pressure. I document thoroughly in EPIC and coordinate closely with the care team throughout the day.\n\nI'd be grateful for the opportunity to bring that experience and care to your patients and staff. Thank you for considering my application, and I welcome the chance to discuss the role further.\n\nSincerely,\nPriya Nair",
+    "qwen05b_base": "Here is the rewritten cover letter following the given instructions:\n\n---\n\nDear Hiring Manager,\n\nI am reaching out to express my interest in the Registered Nurse position at Riverside Health. As a registered nurse with over six years of experience, I believe my skills and qualifications align perfectly with the requirements of this role.\n\nMy current role at Lakeside Medical Center has provided me with extensive experience in managing medical-surgical patients, ensuring high-quality care through meticulous planning and execution. One notable aspect of my work was the implementation of a comprehensive handoff protocol that significantly reduced medication errors, demonstrating my commitment to safety and efficiency.\n\nAdditionally, I hold a Bachelor of Science in Nursing from the University of Illinois, which further enhances my ability to provide compassionate and effective nursing care. My dedication to continuous learning and improvement has allowed me to excel in both clinical settings and leadership positions within the healthcare industry.\n\nI am excited about the opportunity to contribute to Riverside Health and bring my expertise to the table. I look forward to discussing how my background and experiences could be beneficial to your team.\n\nThank you for considering my application.\n\nBest regards,\n\n[Your Name]\n\n---\n\nThis version maintains the original content while improving readability and naturalness.",
+    "qwen05b_lora": "Dear Hiring Manager,\n\nPatient safety starts with someone who cares enough to take the time to plan and deliver a care, which is why the Registered Nurse role at Riverside Health caught my attention. Providing care for multiple patients at once while keeping the floor clean is the work I am good at.\n\nI currently work as a Registered Nurse at Lakeside Medical Center, where I provide care for up to six medical-surgical patients per shift. Precepting new-nurse nurses and championing a hand-off checklist that reduced medication errors, and planning and executing complex rounds so doctors stay informed is my normal day.\n\nYour emphasis on IV therapy and EPIC EHR matches my current practice. I prepare patients for catheter insertion and manage their lines so the nurses don't have to, and I lead bedside turns so teams move them together rather than one by one. I am also comfortable operating in the ICU.\n\nI would be glad to bring that care-to-care approach to Riverside Health. Thank you for considering my application, and I would welcome the chance to meet the nursing staff I would support.\n\nSincerely,\nPriya Nair",
+    "llama1b_base": "Here is the rewritten cover letter:\n\nDear Hiring Manager,\n\nI saw the Registered Nurse, Medical-Surgical opening at Riverside Health and it really caught my eye. I've been working as a Registered Nurse at Lakeside Medical Center for about six years, and I'm ready to bring my experience to your team.\n\nI've always been interested in IV therapy, patient care, and Electronic Health Records (EHRs). I've had the opportunity to work with these in my current role, and I've seen firsthand the importance of them in providing high-quality care. One example that stands out is when I was a new graduate nurse, I helped develop a hand-off checklist that reduced medication errors by 30%. I also hold a Bachelor of Science in Nursing from the University of Illinois.\n\nI'm excited about the chance to discuss how I can contribute to Riverside Health's team.",
+    "llama1b_lora": "Dear Hiring Manager,\n\nCaring for adults in the ICU is the kind of work that makes a difference, and the Medical-Surgical role at Riverside Health is a strong fit for me. I currently work as a Registered Nurse at Lakeside Medical Center, where I provide care for up to six medical-surgical patients at a time.\n\nThe core of nursing is patient care, and that is the part of the job I have built my career around. I precept new graduates and acted as the lead on a hand-off checklist that reduced medication errors, so I am comfortable leading shifts and trusting nurses to do the same.\n\nI am particularly drawn to Riverside Health because of its emphasis on safety and patient satisfaction. I have worked in environments that value these factors, and I would bring that same focus to your unit. I am also comfortable working in an EPIC EHR, which is how your posting describes your system.\n\nI would welcome the chance to bring that care to Riverside's surgical floor. Thank you for considering my application, and I would be glad to talk more about my experience and qualifications.\n\nSincerely,\nPriya Nair",
+    "profile": {
+      "name": "Priya Nair",
+      "location": "Chicago, IL",
+      "skills": [
+        "patient care",
+        "IV therapy",
+        "EPIC EHR",
+        "triage",
+        "patient education",
+        "wound care"
+      ],
+      "experience": [
+        {
+          "role": "Registered Nurse",
+          "company": "Lakeside Medical Center",
+          "startDate": "06/2020",
+          "isCurrent": true,
+          "description": "Provides care for up to 6 medical-surgical patients per shift; precepts new-grad nurses and championed a hand-off checklist that reduced medication errors."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Nursing",
+          "school": "University of Illinois",
+          "year": "2020"
+        }
+      ]
+    },
+    "job": {
+      "company": "Riverside Health",
+      "role": "Registered Nurse, Medical-Surgical",
+      "description": "Riverside Health is seeking a compassionate Registered Nurse for our medical-surgical unit. In this role you'll perform patient assessments, administer IV therapy and medications, provide patient and family education, and document care accurately in EPIC. You'll work closely with physicians and fellow nurses to coordinate safe, timely care across each shift. We're looking for a current RN license, a BSN preferred, strong clinical assessment skills, and experience in an acute-care or med-surg setting. Above all, we value teamwork, clear communication, and a genuine commitment to patient safety."
+    }
+  },
+  {
+    "idx": 1,
+    "company": "Loop & Co",
+    "gold": "Dear Hiring Manager,\n\nI'd love to bring my content and email marketing experience to the Marketing Coordinator role at Loop & Co. Growing an audience through writing that people actually want to read is the part of marketing I enjoy most, and it's where I've had the clearest results.\n\nI currently coordinate marketing at Fernwood Goods, where I run our email and social campaigns day to day. Over the past year I grew our newsletter list from 4,000 to 22,000 subscribers, largely by writing emails people looked forward to rather than deleted.\n\nYour focus on SEO and analytics fits how I already work. I built an SEO-driven content plan that lifted our organic search traffic by 60%, and I lean on analytics to decide what to write next instead of guessing. I'm comfortable owning a content calendar and keeping messaging consistent with design and product.\n\nI'm confident I could help Loop & Co reach and retain a bigger audience. Thank you for your time and consideration, and I hope to discuss how I can contribute.\n\nSincerely,\nMarcus Bell",
+    "qwen05b_base": "Subject: Re: Marketing Coordinator Opportunity at Loop & Co\n\nDear Hiring Manager,\n\nThank you for considering my application for the Marketing Coordinator position at Loop & Co. My name is Marcus Bell and I am excited about the opportunity to join your team. As a Marketing Coordinator at Fernwood Goods, I have been working diligently since 4 years now, which has equipped me with valuable experience in managing various marketing initiatives.\n\nYour description of analytics, SEO, and email campaigns aligns perfectly with my role. For instance, I successfully ran email and social campaigns that increased the newsletter list by 4k to 22k in just one year, resulting in a 60% increase in organic search traffic through an SEO content plan. Additionally, I hold a Bachelor's degree in Communications from the University of Texas at Austin.\n\nI am eager to contribute to your team and bring my expertise in marketing strategies to Loop & Co. If there is any additional information or details you would like to know, please let me know. Thank you again for considering my application.\n\nBest regards,\n\nMarcus Bell",
+    "qwen05b_lora": "Dear Hiring Manager,\n\nGood marketing is actually about making decisions quickly while also knowing clearly why something works, and those are the parts of marketing I take pride in, so the Marketing Coordinator role at Loop & Co stood out to me.\n\nAt Fernwood Goods I run our email and social campaigns so growing our list and improving our traffic came naturally to me. I hit that mark at Loop & Co by growing the newsletter list from 4k to 22k in a year and improving our organic search traffic by 60% through an SEO content plan.\n\nAnalyzing results and keeping the budget focused is another part of this role. I keep our analytics simple enough for managers like yours to understand without losing the core of what matters. I'm comfortable crafting copy that pulls clicks and moves actions instead of just warnings.\n\nI would be glad to bring that mix of execution and storytelling to Loop & Co. Thank you for considering my application, and I would welcome a conversation about how I can support your marketing plans.\n\nSincerely,\nMarcus Bell",
+    "llama1b_base": "Here is the rewritten cover letter:\n\nDear Hiring Manager,\n\nI saw the Marketing Coordinator opening at Loop & Co. and was immediately drawn to the company's focus on analytics, SEO, and email campaigns. As a Marketing Coordinator at Fernwood Goods for four years, I've developed a strong foundation in these areas. My work has consistently demonstrated my ability to drive results, and I'm excited about the opportunity to bring my skills to a new challenge.\n\nOne of my proudest accomplishments was growing the newsletter list from 4,000 to 22,000 in a single year through targeted email and social media campaigns. I've also had success with SEO, increasing organic traffic by 60% through a content plan. I hold a Bachelor's degree in Communications from the University of Texas at Austin.\n\nI'm eager to discuss how I can contribute to Loop & Co.'s success. Thank you for considering my application.",
+    "llama1b_lora": "Dear Hiring Manager,\n\nThe best marketing campaigns are the ones that slowly, steadily move a needle, and the part of marketing I enjoy most is the detail that makes that needle move, so the Marketing Coordinator role at Loop & Co caught my attention.\n\nI currently work as a Marketing Coordinator at Fernwood Goods, where I plan and execute the emails and social media campaigns that grow our newsletter list and drive traffic. My clearest example is a campaign that grew our newsletter list from 4k to 22k in a year through a focused SEO strategy and the discipline to spend real time in analytics instead of assuming the wrong answer.\n\nYour emphasis on analytics and A/B testing is exactly what I use every day. I improve the campaigns I run by looking at the data instead of the hunches that come from experience, and I've set up and executed an organic search traffic campaign that grew by 60% through a plan I owned. I'm comfortable working in Excel to spend money and measure results, and I keep the whole funnel moving with clear, measurable opt-ins and a newsletter that genuinely interests readers.\n\nI'd love to bring that steady, results-focused approach to Loop & Co. Thank you for your consideration, and I'd be glad to walk you through my past campaigns and how I'd run your next one.\n\nSincerely,\nMarcus Bell",
+    "profile": {
+      "name": "Marcus Bell",
+      "location": "Austin, TX",
+      "skills": [
+        "content marketing",
+        "SEO",
+        "email campaigns",
+        "analytics",
+        "copywriting",
+        "social media"
+      ],
+      "experience": [
+        {
+          "role": "Marketing Coordinator",
+          "company": "Fernwood Goods",
+          "startDate": "07/2022",
+          "isCurrent": true,
+          "description": "Runs email and social campaigns that grew the newsletter list from 4k to 22k in a year; improved organic search traffic 60% through an SEO content plan."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Communications",
+          "school": "UT Austin",
+          "year": "2022"
+        }
+      ]
+    },
+    "job": {
+      "company": "Loop & Co",
+      "role": "Marketing Coordinator",
+      "description": "Loop & Co is a growing consumer brand looking for a Marketing Coordinator to help us reach and keep a larger audience. You'll plan and send email campaigns, grow our social channels, support an SEO-driven content calendar, and use analytics to decide what to do next. You'll collaborate with design and product to keep our messaging consistent across every touchpoint. We're looking for someone who is a strong writer, comfortable in analytics tools, organized enough to run a content calendar, and genuinely curious about what makes people click. One to three years of marketing experience is ideal."
+    }
+  },
+  {
+    "idx": 2,
+    "company": "Ledgerline",
+    "gold": "Dear Hiring Manager,\n\nPayments code has to be both fast and exactly right, and that combination is what draws me to the Backend Engineer role at Ledgerline. Building infrastructure that other businesses quietly depend on is the kind of work I find most worthwhile.\n\nI currently work as a Backend Engineer at Tidepool, where I own our payment and billing services in Go. Those services handle around five million requests a day, so correctness and latency are never abstract concerns for me, they are the job.\n\nThe reliability focus in your posting matches how I already work. I led a database migration to PostgreSQL with zero downtime and brought our p99 latency down by 40% through targeted profiling. I also carry on-call for what I ship, because owning a service end to end is what makes it better.\n\nI'd welcome the chance to bring that ownership to Ledgerline's payment platform. Thank you for considering my application, and I'd be glad to talk through how I can help your services scale.\n\nSincerely,\nOmar Haddad",
+    "qwen05b_base": "Dear Hiring Manager,\n\nI am excited to apply for the Backend Engineer position at Ledgerline. The focus of the position aligns perfectly with my past experiences. I have been working as a Backend Engineer at Tidepool for approximately five and a half years, and I am eager to bring my extensive knowledge and expertise to your team.\n\nYour requirements include proficiency in Go, PostgreSQL, and gRPC, which I frequently utilize. Below is a brief overview of my recent work:\n\n- Owns payment and billing services in Go, handling over 5 million requests per day.\n- Led a PostgreSQL migration with zero downtime and reduced p99 latency by 40%.\n\nMy background includes a Bachelor's degree in Computer Science from Georgia Tech. I am confident that my strong technical skills and practical experience will be valuable to your team.\n\nThank you for considering my application.\n\nSincerely,\nOmar Haddad",
+    "qwen05b_lora": "Dear Hiring Manager,\n\nThe Backend Engineer role at Ledgerline caught my attention because it lines up with where I already am. Owning payment and billing services in Go, which is exactly the kind of work I enjoy, is exactly the environment I want to be a part of.\n\nYour posting asks for reliability and performance, which is exactly where I've had a real impact. I own those services at Tidepool, where I lead a whole team across hundreds of thousands of requests per day without losing any stability, and I built our gRPC API so the front and back ends stayed aligned.\n\nThe rest of your list is mostly me doing the same kinds of tasks. I wrote the Go code behind our payment gateways, I write the GRR migrations that ship with Ledgerline, and I design and build our database carefully so users never know there's a query they don't understand. I'm comfortable working on both the client-side and server-side.\n\nI'd welcome the chance to bring that reliability-first approach to Ledgerline. Thank you for considering my application, and I'd be glad to walk through how I would grow your team.\n\nSincerely,\nOmar Haddad",
+    "llama1b_base": "I'm excited to apply for the Backend Engineer position at Ledgerline. The role aligns with my experience, which spans five and a half years as a Backend Engineer at Tidepool. I'm ready to bring that experience to your team.\n\nYou're looking for Go, PostgreSQL, and gRPC, all areas I work in regularly. Here's a snapshot of my recent work: I own payment and billing services, handling five million requests per day, and led a PostgreSQL migration with zero downtime and a 40% reduction in latency. My background includes a Bachelor's degree in Computer Science from Georgia Tech.\n\nI'd love to discuss how my background fits your team.",
+    "llama1b_lora": "Dear Hiring Manager,\n\nReliable, scalable backend infrastructure is the work I enjoy most, so the Backend Engineer role at Ledgerline caught my attention. Building the services that let a whole team ship without fear is exactly the kind of work I want to contribute.\n\nI currently work as a Backend Engineer at Tidepool, where I own the payment and billing services in Go. I handle five million requests a day, so your daily volume is familiar territory.\n\nThe stack you mention is where I spend most of my time. I work in PostgreSQL for the database and gRPC for APIs, and I've learned the latter for handling high-latency, low-priority requests. I recently led a PostgreSQL migration with zero downtime and cut our p99 latency by 40% without losing the service's reliability.\n\nI'd love to bring that reliability-first approach to Ledgerline. Thank you for considering my application, and I'd be glad to talk through how I would grow your infrastructure.\n\nSincerely,\nOmar Haddad",
+    "profile": {
+      "name": "Omar Haddad",
+      "location": "Remote",
+      "skills": [
+        "Go",
+        "PostgreSQL",
+        "microservices",
+        "gRPC",
+        "AWS",
+        "observability"
+      ],
+      "experience": [
+        {
+          "role": "Backend Engineer",
+          "company": "Tidepool",
+          "startDate": "03/2021",
+          "isCurrent": true,
+          "description": "Owns payment and billing services in Go handling 5M requests/day; led a PostgreSQL migration with zero downtime and cut p99 latency 40%."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "Georgia Tech",
+          "year": "2020"
+        }
+      ]
+    },
+    "job": {
+      "company": "Ledgerline",
+      "role": "Backend Engineer",
+      "description": "Ledgerline builds payments infrastructure for online businesses, and we're hiring a Backend Engineer to help our core services scale. You'll design and build backend services in Go, model data in PostgreSQL, work with gRPC and event-driven systems, and own reliability for what you ship, including monitoring and on-call. You'll partner with product and platform teams to keep our payment flows fast and correct. We're looking for several years of backend experience, strong Go and SQL, familiarity with distributed systems and AWS, and a track record of running services in production. Experience with payments or high-throughput systems is a plus."
+    }
+  },
+  {
+    "idx": 3,
+    "company": "Rio Grande Family Services",
+    "gold": "Dear Hiring Manager,\n\nThe families who need case management most are usually the ones already stretched thin, so making the system easier for them to navigate is the work I care about, and it's why the Case Manager role at Rio Grande Family Services drew me in.\n\nI currently work as a Social Worker at Mesa Community Services, where I carry a caseload of more than thirty clients. Much of my work is connecting families to housing and benefits and making sure the pieces of their care actually fit together.\n\nThe coordination and advocacy your posting emphasizes are the heart of what I do. I coordinate care across agencies so cases don't fall through the gaps between them, step in during crises with a calm plan, and document thoroughly so the next person always knows where things stand. I use motivational interviewing to meet clients where they are rather than where a form expects them to be.\n\nI'd be grateful for the chance to bring that steady advocacy to Rio Grande's families. Thank you for your time and consideration, and I welcome the opportunity to discuss the role.\n\nSincerely,\nBianca Torres",
+    "qwen05b_base": "Here's the rewritten cover letter:\n\nSubject: Rejection - Case Management Experience\n\nDear Hiring Manager,\n\nThank you for considering my application for the Case Manager position at Rio Grande Family Services. Your interest in my qualifications aligns with the requirements outlined in the job description. However, I must respectfully decline the offer due to my current responsibilities and commitments.\n\nAs a social worker at Mesa Community Services for over six years, I have extensive experience in case management, crisis intervention, and client advocacy. My role involves managing caseloads of approximately 30+ clients, coordinating care across various agencies to ensure that cases remain open and effective. Additionally, I hold a Master of Social Work degree from New Mexico State University.\n\nWhile I am excited about the opportunity to contribute to Rio Grande Family Services' mission, I believe my current responsibilities and commitments preclude me from taking on the Case Manager role. I look forward to discussing how I can further enhance my skills and contributions to the organization.\n\nThank you once again for considering my application. I appreciate your time and consideration.\n\nBest regards,\n\nBianca Torres",
+    "qwen05b_lora": "Dear Hiring Manager,\n\nCrisis is when there's no room for ambiguity, and being ready to move quickly when that's needed is the part of case management I take seriously, which is why the Case Manager role at Rio Grande Family Services appeals to me.\n\nI currently work as a Social Worker at Mesa Community Services, where I carry a caseload of about thirty clients at a time. Connecting families to the services they need without letting either side get stuck is my daily work, so the core of this role is familiar ground.\n\nThe rest of what you describe involves doing both. I run crisis plans, coordinate care across agencies so a problem stays fixed rather than growing worse, and stay calm under pressure. I'd be glad to bring that steady presence to Rio Grande's clients.\n\nThank you for considering my application, and I'd welcome the chance to talk through how I can support your families.\n\nSincerely,\nBianca Torres",
+    "llama1b_base": "Here is the rewritten cover letter:\n\nI'm excited to apply for the Case Manager role at Rio Grande Family Services, as your emphasis on case management, crisis intervention, and client advocacy aligns perfectly with my day-to-day work experience. With six years of experience as a Social Worker at Mesa Community Services, I've developed a strong foundation in these areas.\n\nMy current caseload is around 30+ clients, and I've successfully connected them with housing and benefits, as well as coordinated care across agencies to prevent cases from falling through. I've also worked with a range of clients, including families, individuals, and children, and have a proven track record of providing effective support and advocacy.\n\nI'm eager to bring my skills and experience to Rio Grande Family Services and contribute to the team. I'm particularly drawn to this role because of the organization's focus on providing comprehensive support to families in need. I'm confident that my experience, skills, and passion for social work make me a strong fit for this position.\n\nThank you for considering my application. I'd welcome the opportunity to discuss how I can help Rio Grande Family Services.",
+    "llama1b_lora": "Dear Hiring Manager,\n\nCasa is the kind of work I want to do, and keeping families together is the part of it I care about most. That is why the Case Manager role at Rio Grande Family Services caught my attention.\n\nI currently work as a Social Worker at Mesa Community Services, where I carry a caseload of more than twenty clients at once. I coordinate across agencies to keep cases moving, so the problem description matches how I already operate.\n\nThe core of your posting is client advocacy and crisis intervention, which is where I do some of my best work. I connect families to housing and benefits, help them navigate the system, and stand up for them when necessary. I've had to deal with crisis after crisis, and I've learned to stay calm and level-headed while still keeping the client's best interests at heart.\n\nI'd be glad to bring that steady, client-focused approach to Rio Grande's clients. Thank you for considering my application, and I'd welcome the chance to meet the team.\n\nSincerely,\nBianca Torres",
+    "profile": {
+      "name": "Bianca Torres",
+      "location": "Albuquerque, NM",
+      "skills": [
+        "case management",
+        "crisis intervention",
+        "client advocacy",
+        "resource coordination",
+        "documentation",
+        "motivational interviewing"
+      ],
+      "experience": [
+        {
+          "role": "Social Worker",
+          "company": "Mesa Community Services",
+          "startDate": "08/2020",
+          "isCurrent": true,
+          "description": "Carries a caseload of 30+ clients; connects families to housing and benefits and coordinates care across agencies to keep cases from falling through."
+        }
+      ],
+      "education": [
+        {
+          "degree": "M.S.W.",
+          "school": "New Mexico State University",
+          "year": "2020"
+        }
+      ]
+    },
+    "job": {
+      "company": "Rio Grande Family Services",
+      "role": "Case Manager",
+      "description": "Rio Grande Family Services is hiring a Case Manager to support families facing housing instability and other challenges. You'll carry a caseload, assess client needs, connect families to housing, benefits, and community resources, coordinate care across agencies, and document your work accurately. You'll advocate for clients and step in during crises. We're looking for a social work or human services background, case management experience, strong assessment and advocacy skills, and the organization to keep a full caseload moving. An MSW or licensure and experience with crisis intervention are a plus."
+    }
+  }
+]

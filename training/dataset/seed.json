@@ -3,12 +3,36 @@
     "profile": {
       "name": "Aaliyah Huang",
       "location": "San Francisco, CA",
-      "skills": ["React", "TypeScript", "Node.js", "GraphQL", "accessibility", "design systems"],
-      "experience": [
-        {"role": "Frontend Engineer", "company": "Nimbus", "startDate": "05/2021", "isCurrent": true, "description": "Built and maintained a component library used by 12 product teams; improved Lighthouse performance scores by 35% and led accessibility remediation to WCAG 2.1 AA."}
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "GraphQL",
+        "accessibility",
+        "design systems"
       ],
-      "education": [{"degree": "B.S. Computer Science", "school": "UC Berkeley", "year": "2021"}],
-      "projects": [{"name": "Portfolio", "technologies": "Next.js, GraphQL"}]
+      "experience": [
+        {
+          "role": "Frontend Engineer",
+          "company": "Nimbus",
+          "startDate": "05/2021",
+          "isCurrent": true,
+          "description": "Built and maintained a component library used by 12 product teams; improved Lighthouse performance scores by 35% and led accessibility remediation to WCAG 2.1 AA."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "UC Berkeley",
+          "year": "2021"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Portfolio",
+          "technologies": "Next.js, GraphQL"
+        }
+      ]
     },
     "job": {
       "company": "Bright Labs",
@@ -21,11 +45,30 @@
     "profile": {
       "name": "Priya Nair",
       "location": "Chicago, IL",
-      "skills": ["patient care", "IV therapy", "EPIC EHR", "triage", "patient education", "wound care"],
-      "experience": [
-        {"role": "Registered Nurse", "company": "Lakeside Medical Center", "startDate": "06/2020", "isCurrent": true, "description": "Provides care for up to 6 medical-surgical patients per shift; precepts new-grad nurses and championed a hand-off checklist that reduced medication errors."}
+      "skills": [
+        "patient care",
+        "IV therapy",
+        "EPIC EHR",
+        "triage",
+        "patient education",
+        "wound care"
       ],
-      "education": [{"degree": "B.S. Nursing", "school": "University of Illinois", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Registered Nurse",
+          "company": "Lakeside Medical Center",
+          "startDate": "06/2020",
+          "isCurrent": true,
+          "description": "Provides care for up to 6 medical-surgical patients per shift; precepts new-grad nurses and championed a hand-off checklist that reduced medication errors."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Nursing",
+          "school": "University of Illinois",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Riverside Health",
@@ -38,11 +81,30 @@
     "profile": {
       "name": "Marcus Bell",
       "location": "Austin, TX",
-      "skills": ["content marketing", "SEO", "email campaigns", "analytics", "copywriting", "social media"],
-      "experience": [
-        {"role": "Marketing Coordinator", "company": "Fernwood Goods", "startDate": "07/2022", "isCurrent": true, "description": "Runs email and social campaigns that grew the newsletter list from 4k to 22k in a year; improved organic search traffic 60% through an SEO content plan."}
+      "skills": [
+        "content marketing",
+        "SEO",
+        "email campaigns",
+        "analytics",
+        "copywriting",
+        "social media"
       ],
-      "education": [{"degree": "B.A. Communications", "school": "UT Austin", "year": "2022"}]
+      "experience": [
+        {
+          "role": "Marketing Coordinator",
+          "company": "Fernwood Goods",
+          "startDate": "07/2022",
+          "isCurrent": true,
+          "description": "Runs email and social campaigns that grew the newsletter list from 4k to 22k in a year; improved organic search traffic 60% through an SEO content plan."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Communications",
+          "school": "UT Austin",
+          "year": "2022"
+        }
+      ]
     },
     "job": {
       "company": "Loop & Co",
@@ -55,11 +117,30 @@
     "profile": {
       "name": "Diego Ramos",
       "location": "Remote",
-      "skills": ["SQL", "Python", "Tableau", "data cleaning", "A/B testing", "dashboards"],
-      "experience": [
-        {"role": "Data Analyst", "company": "Cartwheel", "startDate": "08/2021", "isCurrent": true, "description": "Built self-serve Tableau dashboards used across the company and ran A/B tests that informed a checkout redesign, lifting conversion 8%."}
+      "skills": [
+        "SQL",
+        "Python",
+        "Tableau",
+        "data cleaning",
+        "A/B testing",
+        "dashboards"
       ],
-      "education": [{"degree": "B.S. Statistics", "school": "Ohio State", "year": "2021"}]
+      "experience": [
+        {
+          "role": "Data Analyst",
+          "company": "Cartwheel",
+          "startDate": "08/2021",
+          "isCurrent": true,
+          "description": "Built self-serve Tableau dashboards used across the company and ran A/B tests that informed a checkout redesign, lifting conversion 8%."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Statistics",
+          "school": "Ohio State",
+          "year": "2021"
+        }
+      ]
     },
     "job": {
       "company": "Vantage",
@@ -72,11 +153,30 @@
     "profile": {
       "name": "Grace Kim",
       "location": "Boston, MA",
-      "skills": ["GAAP", "month-end close", "reconciliations", "Excel", "accounts payable", "audit support"],
-      "experience": [
-        {"role": "Staff Accountant", "company": "Halden Group", "startDate": "07/2021", "isCurrent": true, "description": "Owns month-end close for three entities, prepares reconciliations, and supports the annual audit with clean, well-documented workpapers."}
+      "skills": [
+        "GAAP",
+        "month-end close",
+        "reconciliations",
+        "Excel",
+        "accounts payable",
+        "audit support"
       ],
-      "education": [{"degree": "B.S. Accounting", "school": "Boston College", "year": "2021"}]
+      "experience": [
+        {
+          "role": "Staff Accountant",
+          "company": "Halden Group",
+          "startDate": "07/2021",
+          "isCurrent": true,
+          "description": "Owns month-end close for three entities, prepares reconciliations, and supports the annual audit with clean, well-documented workpapers."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Accounting",
+          "school": "Boston College",
+          "year": "2021"
+        }
+      ]
     },
     "job": {
       "company": "Merit Partners",
@@ -89,11 +189,30 @@
     "profile": {
       "name": "Nadia Farouk",
       "location": "Remote",
-      "skills": ["B2B sales", "prospecting", "CRM", "negotiation", "pipeline management", "product demos"],
-      "experience": [
-        {"role": "Account Executive", "company": "Brightpath", "startDate": "03/2020", "isCurrent": true, "description": "Carries a $1.2M quota and has hit 118% of target two years running; builds pipeline through cold outreach and runs product demos end to end."}
+      "skills": [
+        "B2B sales",
+        "prospecting",
+        "CRM",
+        "negotiation",
+        "pipeline management",
+        "product demos"
       ],
-      "education": [{"degree": "B.A. Marketing", "school": "Arizona State", "year": "2019"}]
+      "experience": [
+        {
+          "role": "Account Executive",
+          "company": "Brightpath",
+          "startDate": "03/2020",
+          "isCurrent": true,
+          "description": "Carries a $1.2M quota and has hit 118% of target two years running; builds pipeline through cold outreach and runs product demos end to end."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Marketing",
+          "school": "Arizona State",
+          "year": "2019"
+        }
+      ]
     },
     "job": {
       "company": "Cadence Software",
@@ -106,11 +225,30 @@
     "profile": {
       "name": "Jordan Lee",
       "location": "Seattle, WA",
-      "skills": ["user research", "Figma", "prototyping", "usability testing", "design systems", "interaction design"],
-      "experience": [
-        {"role": "Product Designer", "company": "Halcyon", "startDate": "02/2021", "isCurrent": true, "description": "Leads design for mobile flows end to end; a redesigned onboarding flow cut drop-off by 25%. Runs usability tests and maintains the Figma design system."}
+      "skills": [
+        "user research",
+        "Figma",
+        "prototyping",
+        "usability testing",
+        "design systems",
+        "interaction design"
       ],
-      "education": [{"degree": "B.F.A. Design", "school": "RISD", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Product Designer",
+          "company": "Halcyon",
+          "startDate": "02/2021",
+          "isCurrent": true,
+          "description": "Leads design for mobile flows end to end; a redesigned onboarding flow cut drop-off by 25%. Runs usability tests and maintains the Figma design system."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.F.A. Design",
+          "school": "RISD",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Meadow",
@@ -123,11 +261,29 @@
     "profile": {
       "name": "Sarah Okonkwo",
       "location": "Denver, CO",
-      "skills": ["lesson planning", "classroom management", "differentiated instruction", "literacy", "parent communication"],
-      "experience": [
-        {"role": "3rd Grade Teacher", "company": "Maple Grove Elementary", "startDate": "08/2019", "isCurrent": true, "description": "Teaches a class of 26; raised reading proficiency 20% through small-group literacy instruction and keeps families informed with weekly updates."}
+      "skills": [
+        "lesson planning",
+        "classroom management",
+        "differentiated instruction",
+        "literacy",
+        "parent communication"
       ],
-      "education": [{"degree": "B.A. Elementary Education", "school": "Colorado State", "year": "2019"}]
+      "experience": [
+        {
+          "role": "3rd Grade Teacher",
+          "company": "Maple Grove Elementary",
+          "startDate": "08/2019",
+          "isCurrent": true,
+          "description": "Teaches a class of 26; raised reading proficiency 20% through small-group literacy instruction and keeps families informed with weekly updates."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Elementary Education",
+          "school": "Colorado State",
+          "year": "2019"
+        }
+      ]
     },
     "job": {
       "company": "Sunnyside School District",
@@ -140,11 +296,30 @@
     "profile": {
       "name": "Tomas Rivera",
       "location": "Detroit, MI",
-      "skills": ["SolidWorks", "GD&T", "FEA", "DFM", "tolerance analysis", "prototyping"],
-      "experience": [
-        {"role": "Mechanical Engineer", "company": "Aster Manufacturing", "startDate": "06/2020", "isCurrent": true, "description": "Designs sheet-metal enclosures in SolidWorks and runs FEA to cut part weight 18% while passing drop tests; owns DFM reviews with suppliers."}
+      "skills": [
+        "SolidWorks",
+        "GD&T",
+        "FEA",
+        "DFM",
+        "tolerance analysis",
+        "prototyping"
       ],
-      "education": [{"degree": "B.S. Mechanical Engineering", "school": "Michigan State", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Mechanical Engineer",
+          "company": "Aster Manufacturing",
+          "startDate": "06/2020",
+          "isCurrent": true,
+          "description": "Designs sheet-metal enclosures in SolidWorks and runs FEA to cut part weight 18% while passing drop tests; owns DFM reviews with suppliers."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Mechanical Engineering",
+          "school": "Michigan State",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Northwind Robotics",
@@ -157,11 +332,30 @@
     "profile": {
       "name": "Rosa Delgado",
       "location": "Houston, TX",
-      "skills": ["legal research", "e-filing", "document management", "discovery", "case management", "drafting"],
-      "experience": [
-        {"role": "Paralegal", "company": "Whitmore & Reese", "startDate": "03/2019", "isCurrent": true, "description": "Manages 50+ active civil cases, drafts pleadings and discovery, and keeps filings on deadline through the court e-filing system."}
+      "skills": [
+        "legal research",
+        "e-filing",
+        "document management",
+        "discovery",
+        "case management",
+        "drafting"
       ],
-      "education": [{"degree": "Paralegal Certificate", "school": "Houston Community College", "year": "2018"}]
+      "experience": [
+        {
+          "role": "Paralegal",
+          "company": "Whitmore & Reese",
+          "startDate": "03/2019",
+          "isCurrent": true,
+          "description": "Manages 50+ active civil cases, drafts pleadings and discovery, and keeps filings on deadline through the court e-filing system."
+        }
+      ],
+      "education": [
+        {
+          "degree": "Paralegal Certificate",
+          "school": "Houston Community College",
+          "year": "2018"
+        }
+      ]
     },
     "job": {
       "company": "Caldwell Law Group",
@@ -174,11 +368,30 @@
     "profile": {
       "name": "Aisha Bello",
       "location": "Atlanta, GA",
-      "skills": ["nutrition assessment", "meal planning", "counseling", "EHR charting", "diabetes education", "patient education"],
-      "experience": [
-        {"role": "Clinical Dietitian", "company": "Grady Health", "startDate": "07/2021", "isCurrent": true, "description": "Assesses and counsels 15+ inpatients daily, builds care plans for diabetes and renal patients, and charts in the EHR."}
+      "skills": [
+        "nutrition assessment",
+        "meal planning",
+        "counseling",
+        "EHR charting",
+        "diabetes education",
+        "patient education"
       ],
-      "education": [{"degree": "B.S. Nutrition and Dietetics, RD", "school": "University of Georgia", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Clinical Dietitian",
+          "company": "Grady Health",
+          "startDate": "07/2021",
+          "isCurrent": true,
+          "description": "Assesses and counsels 15+ inpatients daily, builds care plans for diabetes and renal patients, and charts in the EHR."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Nutrition and Dietetics, RD",
+          "school": "University of Georgia",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Peachtree Medical",
@@ -191,11 +404,30 @@
     "profile": {
       "name": "Kevin Tran",
       "location": "Columbus, OH",
-      "skills": ["demand planning", "Excel", "SQL", "inventory optimization", "ERP", "forecasting"],
-      "experience": [
-        {"role": "Supply Chain Analyst", "company": "Meridian Foods", "startDate": "08/2021", "isCurrent": true, "description": "Runs demand forecasts across 300 SKUs, cut stockouts 22%, and built ERP reports that shortened planning cycles."}
+      "skills": [
+        "demand planning",
+        "Excel",
+        "SQL",
+        "inventory optimization",
+        "ERP",
+        "forecasting"
       ],
-      "education": [{"degree": "B.S. Supply Chain Management", "school": "Ohio State", "year": "2021"}]
+      "experience": [
+        {
+          "role": "Supply Chain Analyst",
+          "company": "Meridian Foods",
+          "startDate": "08/2021",
+          "isCurrent": true,
+          "description": "Runs demand forecasts across 300 SKUs, cut stockouts 22%, and built ERP reports that shortened planning cycles."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Supply Chain Management",
+          "school": "Ohio State",
+          "year": "2021"
+        }
+      ]
     },
     "job": {
       "company": "Harborline Distribution",
@@ -208,11 +440,30 @@
     "profile": {
       "name": "Sofia Marchetti",
       "location": "Remote",
-      "skills": ["user interviews", "usability testing", "survey design", "synthesis", "journey mapping", "research ops"],
-      "experience": [
-        {"role": "UX Researcher", "company": "Pinehill", "startDate": "02/2021", "isCurrent": true, "description": "Runs interviews and usability tests; research I led reframed an onboarding flow and reduced support tickets 30%."}
+      "skills": [
+        "user interviews",
+        "usability testing",
+        "survey design",
+        "synthesis",
+        "journey mapping",
+        "research ops"
       ],
-      "education": [{"degree": "M.S. Human-Computer Interaction", "school": "Carnegie Mellon", "year": "2020"}]
+      "experience": [
+        {
+          "role": "UX Researcher",
+          "company": "Pinehill",
+          "startDate": "02/2021",
+          "isCurrent": true,
+          "description": "Runs interviews and usability tests; research I led reframed an onboarding flow and reduced support tickets 30%."
+        }
+      ],
+      "education": [
+        {
+          "degree": "M.S. Human-Computer Interaction",
+          "school": "Carnegie Mellon",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Verova",
@@ -225,11 +476,30 @@
     "profile": {
       "name": "Jalen Rivers",
       "location": "Remote",
-      "skills": ["prospecting", "cold calling", "email outreach", "CRM", "lead qualification", "discovery"],
-      "experience": [
-        {"role": "Sales Development Representative", "company": "Cloudmark", "startDate": "06/2022", "isCurrent": true, "description": "Books 20+ qualified meetings a month through cold outreach and consistently beats pipeline targets."}
+      "skills": [
+        "prospecting",
+        "cold calling",
+        "email outreach",
+        "CRM",
+        "lead qualification",
+        "discovery"
       ],
-      "education": [{"degree": "B.A. Business", "school": "University of Arizona", "year": "2022"}]
+      "experience": [
+        {
+          "role": "Sales Development Representative",
+          "company": "Cloudmark",
+          "startDate": "06/2022",
+          "isCurrent": true,
+          "description": "Books 20+ qualified meetings a month through cold outreach and consistently beats pipeline targets."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Business",
+          "school": "University of Arizona",
+          "year": "2022"
+        }
+      ]
     },
     "job": {
       "company": "Skyward SaaS",
@@ -242,11 +512,30 @@
     "profile": {
       "name": "Rahul Kapoor",
       "location": "Remote",
-      "skills": ["AWS", "Terraform", "Docker", "Kubernetes", "CI/CD", "monitoring"],
-      "experience": [
-        {"role": "DevOps Engineer", "company": "Streamline", "startDate": "04/2021", "isCurrent": true, "description": "Manages AWS infrastructure with Terraform, built CI/CD pipelines that cut deploy time 60%, and set up monitoring that reduced incidents."}
+      "skills": [
+        "AWS",
+        "Terraform",
+        "Docker",
+        "Kubernetes",
+        "CI/CD",
+        "monitoring"
       ],
-      "education": [{"degree": "B.S. Computer Engineering", "school": "UT Dallas", "year": "2020"}]
+      "experience": [
+        {
+          "role": "DevOps Engineer",
+          "company": "Streamline",
+          "startDate": "04/2021",
+          "isCurrent": true,
+          "description": "Manages AWS infrastructure with Terraform, built CI/CD pipelines that cut deploy time 60%, and set up monitoring that reduced incidents."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Engineering",
+          "school": "UT Dallas",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Nimbus Cloud",
@@ -259,11 +548,30 @@
     "profile": {
       "name": "Omar Haddad",
       "location": "Remote",
-      "skills": ["Go", "PostgreSQL", "microservices", "gRPC", "AWS", "observability"],
-      "experience": [
-        {"role": "Backend Engineer", "company": "Tidepool", "startDate": "03/2021", "isCurrent": true, "description": "Owns payment and billing services in Go handling 5M requests/day; led a PostgreSQL migration with zero downtime and cut p99 latency 40%."}
+      "skills": [
+        "Go",
+        "PostgreSQL",
+        "microservices",
+        "gRPC",
+        "AWS",
+        "observability"
       ],
-      "education": [{"degree": "B.S. Computer Science", "school": "Georgia Tech", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Backend Engineer",
+          "company": "Tidepool",
+          "startDate": "03/2021",
+          "isCurrent": true,
+          "description": "Owns payment and billing services in Go handling 5M requests/day; led a PostgreSQL migration with zero downtime and cut p99 latency 40%."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "Georgia Tech",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Ledgerline",
@@ -276,11 +584,30 @@
     "profile": {
       "name": "Hannah Weiss",
       "location": "Minneapolis, MN",
-      "skills": ["project planning", "Agile", "stakeholder management", "risk management", "Jira", "PMP"],
-      "experience": [
-        {"role": "Project Manager", "company": "Verano Systems", "startDate": "05/2019", "isCurrent": true, "description": "Runs cross-functional software projects up to $2M; delivered a platform migration across five teams on time and about 10% under budget."}
+      "skills": [
+        "project planning",
+        "Agile",
+        "stakeholder management",
+        "risk management",
+        "Jira",
+        "PMP"
       ],
-      "education": [{"degree": "B.S. Business Administration", "school": "University of Minnesota", "year": "2018"}]
+      "experience": [
+        {
+          "role": "Project Manager",
+          "company": "Verano Systems",
+          "startDate": "05/2019",
+          "isCurrent": true,
+          "description": "Runs cross-functional software projects up to $2M; delivered a platform migration across five teams on time and about 10% under budget."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Business Administration",
+          "school": "University of Minnesota",
+          "year": "2018"
+        }
+      ]
     },
     "job": {
       "company": "Cobalt Systems",
@@ -293,11 +620,30 @@
     "profile": {
       "name": "Denise Okoro",
       "location": "Charlotte, NC",
-      "skills": ["full-cycle recruiting", "sourcing", "interviewing", "ATS", "candidate experience", "employer branding"],
-      "experience": [
-        {"role": "Technical Recruiter", "company": "Brightwork Staffing", "startDate": "04/2021", "isCurrent": true, "description": "Fills 15+ engineering and product roles a quarter; cut average time-to-hire from 45 to 28 days and improved the offer-accept rate."}
+      "skills": [
+        "full-cycle recruiting",
+        "sourcing",
+        "interviewing",
+        "ATS",
+        "candidate experience",
+        "employer branding"
       ],
-      "education": [{"degree": "B.A. Psychology", "school": "UNC Chapel Hill", "year": "2019"}]
+      "experience": [
+        {
+          "role": "Technical Recruiter",
+          "company": "Brightwork Staffing",
+          "startDate": "04/2021",
+          "isCurrent": true,
+          "description": "Fills 15+ engineering and product roles a quarter; cut average time-to-hire from 45 to 28 days and improved the offer-accept rate."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Psychology",
+          "school": "UNC Chapel Hill",
+          "year": "2019"
+        }
+      ]
     },
     "job": {
       "company": "Northgate Technologies",
@@ -310,11 +656,30 @@
     "profile": {
       "name": "Aaron Mensah",
       "location": "Remote",
-      "skills": ["onboarding", "account management", "churn reduction", "quarterly business reviews", "CRM", "customer advocacy"],
-      "experience": [
-        {"role": "Customer Success Manager", "company": "Flowbase", "startDate": "02/2021", "isCurrent": true, "description": "Manages a $3M book of SaaS accounts; lifted net revenue retention to 115% and cut churn by keeping renewals ahead of schedule."}
+      "skills": [
+        "onboarding",
+        "account management",
+        "churn reduction",
+        "quarterly business reviews",
+        "CRM",
+        "customer advocacy"
       ],
-      "education": [{"degree": "B.A. Communications", "school": "University of Washington", "year": "2019"}]
+      "experience": [
+        {
+          "role": "Customer Success Manager",
+          "company": "Flowbase",
+          "startDate": "02/2021",
+          "isCurrent": true,
+          "description": "Manages a $3M book of SaaS accounts; lifted net revenue retention to 115% and cut churn by keeping renewals ahead of schedule."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Communications",
+          "school": "University of Washington",
+          "year": "2019"
+        }
+      ]
     },
     "job": {
       "company": "Cascade Software",
@@ -327,11 +692,30 @@
     "profile": {
       "name": "Maya Fischer",
       "location": "Portland, OR",
-      "skills": ["Adobe Illustrator", "Photoshop", "InDesign", "brand identity", "typography", "layout"],
-      "experience": [
-        {"role": "Graphic Designer", "company": "Foldhouse Studio", "startDate": "06/2020", "isCurrent": true, "description": "Designs brand identities and marketing collateral for consumer clients; rebranded a regional retailer, refreshing the logo and packaging across 40 stores."}
+      "skills": [
+        "Adobe Illustrator",
+        "Photoshop",
+        "InDesign",
+        "brand identity",
+        "typography",
+        "layout"
       ],
-      "education": [{"degree": "B.F.A. Graphic Design", "school": "Pacific Northwest College of Art", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Graphic Designer",
+          "company": "Foldhouse Studio",
+          "startDate": "06/2020",
+          "isCurrent": true,
+          "description": "Designs brand identities and marketing collateral for consumer clients; rebranded a regional retailer, refreshing the logo and packaging across 40 stores."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.F.A. Graphic Design",
+          "school": "Pacific Northwest College of Art",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Marigold Creative",
@@ -344,11 +728,30 @@
     "profile": {
       "name": "Daniel Cho",
       "location": "New York, NY",
-      "skills": ["financial modeling", "forecasting", "variance analysis", "Excel", "budgeting", "SQL"],
-      "experience": [
-        {"role": "Financial Analyst", "company": "Corewell Capital", "startDate": "07/2021", "isCurrent": true, "description": "Owns the FP&A model for a $50M business unit; builds monthly forecasts and variance analysis and automated a reporting process that saved two days each close."}
+      "skills": [
+        "financial modeling",
+        "forecasting",
+        "variance analysis",
+        "Excel",
+        "budgeting",
+        "SQL"
       ],
-      "education": [{"degree": "B.S. Finance", "school": "NYU Stern", "year": "2021"}]
+      "experience": [
+        {
+          "role": "Financial Analyst",
+          "company": "Corewell Capital",
+          "startDate": "07/2021",
+          "isCurrent": true,
+          "description": "Owns the FP&A model for a $50M business unit; builds monthly forecasts and variance analysis and automated a reporting process that saved two days each close."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Finance",
+          "school": "NYU Stern",
+          "year": "2021"
+        }
+      ]
     },
     "job": {
       "company": "Brightbridge",
@@ -361,11 +764,30 @@
     "profile": {
       "name": "Carla Nunez",
       "location": "Phoenix, AZ",
-      "skills": ["process improvement", "team leadership", "scheduling", "vendor management", "KPIs", "inventory"],
-      "experience": [
-        {"role": "Operations Supervisor", "company": "Sunpath Logistics", "startDate": "03/2019", "isCurrent": true, "description": "Leads a 25-person warehouse team; redesigned the pick-pack workflow to raise throughput 20% while holding a 99% on-time shipping rate."}
+      "skills": [
+        "process improvement",
+        "team leadership",
+        "scheduling",
+        "vendor management",
+        "KPIs",
+        "inventory"
       ],
-      "education": [{"degree": "B.S. Business Management", "school": "Arizona State", "year": "2018"}]
+      "experience": [
+        {
+          "role": "Operations Supervisor",
+          "company": "Sunpath Logistics",
+          "startDate": "03/2019",
+          "isCurrent": true,
+          "description": "Leads a 25-person warehouse team; redesigned the pick-pack workflow to raise throughput 20% while holding a 99% on-time shipping rate."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Business Management",
+          "school": "Arizona State",
+          "year": "2018"
+        }
+      ]
     },
     "job": {
       "company": "Vertex Distribution",
@@ -378,11 +800,30 @@
     "profile": {
       "name": "Ethan Caldwell",
       "location": "Sacramento, CA",
-      "skills": ["AutoCAD Civil 3D", "site design", "stormwater", "permitting", "grading", "construction documents"],
-      "experience": [
-        {"role": "Civil Engineer", "company": "Terra Ridge Engineering", "startDate": "06/2020", "isCurrent": true, "description": "Designs site and grading plans for commercial developments in Civil 3D; handled stormwater design and permitting for a 30-acre project through city approval."}
+      "skills": [
+        "AutoCAD Civil 3D",
+        "site design",
+        "stormwater",
+        "permitting",
+        "grading",
+        "construction documents"
       ],
-      "education": [{"degree": "B.S. Civil Engineering", "school": "UC Davis", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Civil Engineer",
+          "company": "Terra Ridge Engineering",
+          "startDate": "06/2020",
+          "isCurrent": true,
+          "description": "Designs site and grading plans for commercial developments in Civil 3D; handled stormwater design and permitting for a 30-acre project through city approval."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Civil Engineering",
+          "school": "UC Davis",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Foothill Civil Group",
@@ -395,11 +836,30 @@
     "profile": {
       "name": "Bianca Torres",
       "location": "Albuquerque, NM",
-      "skills": ["case management", "crisis intervention", "client advocacy", "resource coordination", "documentation", "motivational interviewing"],
-      "experience": [
-        {"role": "Social Worker", "company": "Mesa Community Services", "startDate": "08/2020", "isCurrent": true, "description": "Carries a caseload of 30+ clients; connects families to housing and benefits and coordinates care across agencies to keep cases from falling through."}
+      "skills": [
+        "case management",
+        "crisis intervention",
+        "client advocacy",
+        "resource coordination",
+        "documentation",
+        "motivational interviewing"
       ],
-      "education": [{"degree": "M.S.W.", "school": "New Mexico State University", "year": "2020"}]
+      "experience": [
+        {
+          "role": "Social Worker",
+          "company": "Mesa Community Services",
+          "startDate": "08/2020",
+          "isCurrent": true,
+          "description": "Carries a caseload of 30+ clients; connects families to housing and benefits and coordinates care across agencies to keep cases from falling through."
+        }
+      ],
+      "education": [
+        {
+          "degree": "M.S.W.",
+          "school": "New Mexico State University",
+          "year": "2020"
+        }
+      ]
     },
     "job": {
       "company": "Rio Grande Family Services",
@@ -407,5 +867,454 @@
       "description": "Rio Grande Family Services is hiring a Case Manager to support families facing housing instability and other challenges. You'll carry a caseload, assess client needs, connect families to housing, benefits, and community resources, coordinate care across agencies, and document your work accurately. You'll advocate for clients and step in during crises. We're looking for a social work or human services background, case management experience, strong assessment and advocacy skills, and the organization to keep a full caseload moving. An MSW or licensure and experience with crisis intervention are a plus."
     },
     "letter_body": "The families who need case management most are usually the ones already stretched thin, so making the system easier for them to navigate is the work I care about, and it's why the Case Manager role at Rio Grande Family Services drew me in.\n\nI currently work as a Social Worker at Mesa Community Services, where I carry a caseload of more than thirty clients. Much of my work is connecting families to housing and benefits and making sure the pieces of their care actually fit together.\n\nThe coordination and advocacy your posting emphasizes are the heart of what I do. I coordinate care across agencies so cases don't fall through the gaps between them, step in during crises with a calm plan, and document thoroughly so the next person always knows where things stand. I use motivational interviewing to meet clients where they are rather than where a form expects them to be.\n\nI'd be grateful for the chance to bring that steady advocacy to Rio Grande's families. Thank you for your time and consideration, and I welcome the opportunity to discuss the role."
+  },
+  {
+    "profile": {
+      "name": "Lena Vasquez",
+      "location": "Austin, TX",
+      "skills": [
+        "employee relations",
+        "onboarding",
+        "HRIS",
+        "benefits administration",
+        "conflict resolution",
+        "compliance"
+      ],
+      "experience": [
+        {
+          "role": "HR Generalist",
+          "company": "Cedar & Pine",
+          "startDate": "03/2022",
+          "isCurrent": true,
+          "description": "Runs onboarding and employee relations for a 240-person company; cut new-hire ramp time by moving onboarding into Workday and resolved the bulk of manager-employee issues before they escalated."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Organizational Psychology",
+          "school": "University of Texas at Austin",
+          "year": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Brightwater",
+      "role": "Human Resources Generalist",
+      "description": "Brightwater is a growing consumer goods company hiring an HR Generalist to support our people operations. You will own onboarding, handle day-to-day employee relations, administer benefits open enrollment, keep our HRIS accurate, and help managers stay compliant with state and federal employment law. We are looking for 3+ years in an HR role, hands-on HRIS experience, strong judgment with sensitive situations, and comfort explaining benefits and policy to employees at every level."
+    },
+    "letter_body": "When I read the Human Resources Generalist posting at Brightwater, the mix of onboarding, employee relations, and benefits felt like a description of my current week. People operations at a growing company is the work I enjoy most.\n\nAt Cedar & Pine I run onboarding and employee relations for about 240 people, so the core of this role is already my daily routine. I moved our onboarding into an HRIS and keep the system accurate, which lines up with your need for someone comfortable owning that data.\n\nThe part of your posting about helping managers stay compliant and handling sensitive situations is where I do careful work. I resolve most manager and employee issues before they grow into anything formal, and I explain benefits and policy in plain terms so people actually understand their options.\n\nI would be glad to bring that steady, people-first approach to Brightwater. Thank you for considering my application, and I would welcome the chance to talk about how I can support your team."
+  },
+  {
+    "profile": {
+      "name": "Theo Andersen",
+      "location": "Remote",
+      "skills": [
+        "Playwright",
+        "TypeScript",
+        "CI/CD",
+        "test automation",
+        "API testing",
+        "regression suites"
+      ],
+      "experience": [
+        {
+          "role": "QA Automation Engineer",
+          "company": "Northgate Software",
+          "startDate": "08/2021",
+          "isCurrent": true,
+          "description": "Owns the end-to-end test suite for a B2B web app; built a Playwright framework that cut a two-day manual regression to under an hour and wired it into CI so releases block on real failures."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Software Engineering",
+          "school": "Arizona State University",
+          "year": "2020"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Fathom",
+      "role": "QA Automation Engineer",
+      "description": "Fathom builds scheduling software for clinics, and reliability matters because our customers run their day on it. We are hiring a QA Automation Engineer to grow our automated coverage. You will design and maintain end-to-end tests in Playwright, build API-level checks, keep the suite fast and trustworthy in CI, and partner with developers to catch regressions before release. We want 3+ years in test automation, strong TypeScript, real Playwright or similar experience, and a habit of making tests that teams actually trust."
+    },
+    "letter_body": "Reliable software is a promise you keep test by test, which is why the QA Automation Engineer role at Fathom caught my attention. Building coverage that a whole team trusts is the part of this job I care about most.\n\nI currently work as a QA Automation Engineer at Northgate Software, where I own the end-to-end suite for our web app. I built our framework in Playwright and TypeScript, so the stack you describe is one I use every day.\n\nYour emphasis on fast, trustworthy tests in CI is exactly what I focus on. I turned a two-day manual regression into an automated run of under an hour and wired it into CI so releases actually block on real failures rather than noise. I also add API-level checks to catch problems below the interface.\n\nI would welcome the chance to bring that reliability-first habit to Fathom. Thank you for reading my application, and I would be happy to walk through how I would grow your coverage."
+  },
+  {
+    "profile": {
+      "name": "Naomi Okafor",
+      "location": "Chicago, IL",
+      "skills": [
+        "Python",
+        "SQL",
+        "forecasting",
+        "A/B testing",
+        "scikit-learn",
+        "dashboards"
+      ],
+      "experience": [
+        {
+          "role": "Data Scientist",
+          "company": "Metric Foundry",
+          "startDate": "06/2021",
+          "isCurrent": true,
+          "description": "Builds demand forecasts and experiment analyses for a retail client base; her churn model redirected retention spend and lifted renewal rates, and she owns the weekly forecast the ops team plans around."
+        }
+      ],
+      "education": [
+        {
+          "degree": "M.S. Statistics",
+          "school": "University of Illinois",
+          "year": "2021"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Churn model",
+          "technologies": "Python, scikit-learn"
+        }
+      ]
+    },
+    "job": {
+      "company": "Harborline",
+      "role": "Data Scientist",
+      "description": "Harborline is a subscription commerce company hiring a Data Scientist to turn our data into decisions. You will build forecasting and churn models, design and read A/B tests, and partner with product and operations to act on what you find. You will also keep a few core dashboards that leaders rely on. We are looking for strong Python and SQL, real experience with forecasting or classification models, solid grounding in experiment design, and the ability to explain results to non-technical partners."
+    },
+    "letter_body": "Turning messy data into a decision someone can actually act on is the work I find most satisfying, so the Data Scientist role at Harborline stood out to me. A subscription business lives and dies on forecasting and churn, which is squarely where I work.\n\nI currently work as a Data Scientist at Metric Foundry, where I build demand forecasts and experiment analyses in Python and SQL. Owning the weekly forecast that an operations team plans around has taught me to make models that hold up in practice, not just on paper.\n\nYour focus on churn and A/B testing matches my recent work closely. My churn model redirected retention spend toward the customers who needed it and lifted renewal rates, and I design and read experiments so decisions rest on evidence rather than hunches.\n\nI would be glad to bring that practical, decision-focused approach to Harborline. Thank you for considering my application, and I would welcome a conversation about the problems your team is working on."
+  },
+  {
+    "profile": {
+      "name": "Claire Dubois",
+      "location": "Remote",
+      "skills": [
+        "long-form writing",
+        "SEO",
+        "content strategy",
+        "editing",
+        "interviewing",
+        "CMS"
+      ],
+      "experience": [
+        {
+          "role": "Content Writer",
+          "company": "Fieldnotes Media",
+          "startDate": "01/2022",
+          "isCurrent": true,
+          "description": "Writes and edits long-form articles for a software audience; grew organic traffic on the pieces she owns and runs the editorial calendar, interviewing engineers to turn technical topics into readable stories."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Journalism",
+          "school": "University of Missouri",
+          "year": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Overstory",
+      "role": "Content Marketing Writer",
+      "description": "Overstory helps developer tools reach the people who use them, and we are hiring a Content Marketing Writer to lead our long-form content. You will write and edit articles and guides, shape the editorial calendar, interview subject-matter experts, and use SEO to help the right readers find our work. We want a strong writer with real long-form experience, comfort turning technical subjects into clear prose, working knowledge of SEO, and the discipline to run a calendar and hit deadlines."
+    },
+    "letter_body": "Good content marketing reads like something a person wanted to write, not something a funnel demanded, and that belief is why the Content Marketing Writer role at Overstory appeals to me. Writing clearly for a technical audience is what I do.\n\nI currently work as a Content Writer at Fieldnotes Media, where I write and edit long-form articles for a software audience. Interviewing engineers and turning dense topics into readable stories is a regular part of my week, so your need for someone who can make technical subjects clear feels familiar.\n\nThe rest of your posting lines up too. I run the editorial calendar and hit my deadlines, and I use SEO to help the right readers find a piece without letting it flatten the writing. The organic traffic on the articles I own has grown steadily because of that balance.\n\nI would love to bring that voice and discipline to Overstory. Thank you for reading my application, and I would be happy to share writing samples and talk through your content plans."
+  },
+  {
+    "profile": {
+      "name": "Malik Johnson",
+      "location": "Detroit, MI",
+      "skills": [
+        "PCB design",
+        "Altium",
+        "power electronics",
+        "circuit analysis",
+        "hardware testing",
+        "EMC"
+      ],
+      "experience": [
+        {
+          "role": "Electrical Engineer",
+          "company": "Voltaic Systems",
+          "startDate": "07/2020",
+          "isCurrent": true,
+          "description": "Designs power electronics boards for industrial equipment; took several designs from schematic through EMC compliance and cut one board's cost meaningfully by consolidating the power stage."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Electrical Engineering",
+          "school": "Michigan State University",
+          "year": "2020"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Kestrel Robotics",
+      "role": "Electrical Engineer",
+      "description": "Kestrel Robotics builds autonomous material-handling robots and is hiring an Electrical Engineer to design the boards that power them. You will design and lay out PCBs in Altium, work on power electronics and motor drive circuits, run bring-up and hardware testing, and take designs through EMC compliance. We want a degree in electrical engineering, 3+ years designing PCBs, hands-on power electronics experience, and someone who is comfortable in the lab debugging real hardware."
+    },
+    "letter_body": "Hardware only counts once it works on the bench, and that is the part of engineering I enjoy most, so the Electrical Engineer role at Kestrel Robotics caught my eye. Designing the boards that move a real machine is the kind of work I want to keep doing.\n\nI currently work as an Electrical Engineer at Voltaic Systems, where I design power electronics boards for industrial equipment in Altium. Taking a design from schematic through bring-up and EMC compliance is my normal path, which matches how you describe this role.\n\nYour mention of power electronics and motor drive circuits is right in my lane. I recently cut one board's cost meaningfully by consolidating its power stage without losing headroom, and I spend real time in the lab debugging hardware rather than assuming the schematic was right.\n\nI would welcome the chance to bring that hands-on approach to Kestrel. Thank you for considering my application, and I would be glad to talk through my past designs and how they fit your robots."
+  },
+  {
+    "profile": {
+      "name": "Hana Suzuki",
+      "location": "Seattle, WA",
+      "skills": [
+        "medication therapy management",
+        "immunizations",
+        "patient counseling",
+        "pharmacy operations",
+        "insurance adjudication",
+        "inventory"
+      ],
+      "experience": [
+        {
+          "role": "Pharmacist",
+          "company": "Greenfield Pharmacy",
+          "startDate": "09/2019",
+          "isCurrent": true,
+          "description": "Runs a high-volume retail pharmacy; oversees medication therapy management and immunizations, resolves insurance issues at the counter, and keeps error rates low while filling several hundred prescriptions a day."
+        }
+      ],
+      "education": [
+        {
+          "degree": "Doctor of Pharmacy",
+          "school": "University of Washington",
+          "year": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Harbor Health Pharmacy",
+      "role": "Pharmacist",
+      "description": "Harbor Health Pharmacy serves a busy neighborhood and is hiring a licensed Pharmacist to join our team. You will verify and dispense prescriptions, counsel patients, provide immunizations, manage medication therapy for patients on complex regimens, and handle insurance questions at the counter. We want an active pharmacist license, retail pharmacy experience, strong attention to detail under volume, and a genuine bedside manner with patients who have questions."
+    },
+    "letter_body": "A pharmacy runs on accuracy and trust in equal measure, and holding both under real volume is the work I have built my career around. That is why the Pharmacist role at Harbor Health caught my attention.\n\nI currently work as a Pharmacist at Greenfield Pharmacy, where I run a high-volume counter and fill several hundred prescriptions a day while keeping error rates low. Verifying, dispensing, and counseling patients is my daily routine, so your core responsibilities are ones I already own.\n\nThe parts of your posting about medication therapy management and immunizations describe a good share of my week. I manage complex regimens, give immunizations, and untangle insurance problems at the counter so patients leave with what they need rather than a headache.\n\nI would be glad to bring that steady, patient-focused approach to Harbor Health. Thank you for considering my application, and I would welcome the chance to meet your team."
+  },
+  {
+    "profile": {
+      "name": "Gabriel Santos",
+      "location": "Miami, FL",
+      "skills": [
+        "staff scheduling",
+        "inventory management",
+        "P&L",
+        "customer service",
+        "food safety",
+        "hiring and training"
+      ],
+      "experience": [
+        {
+          "role": "Assistant General Manager",
+          "company": "Casa Verde",
+          "startDate": "04/2019",
+          "isCurrent": true,
+          "description": "Helps run a 90-seat restaurant; owns scheduling and inventory, trains front-of-house staff, and helped lift the restaurant's margin by tightening food cost and cutting waste."
+        }
+      ],
+      "education": [
+        {
+          "degree": "A.S. Hospitality Management",
+          "school": "Miami Dade College",
+          "year": "2016"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Marlow House",
+      "role": "Restaurant General Manager",
+      "description": "Marlow House is a neighborhood restaurant hiring a General Manager to run daily operations. You will manage staffing and schedules, own inventory and food cost, hit our margin targets, train and lead the front-of-house team, and keep the guest experience high while staying on top of food safety. We want several years in restaurant management, comfort reading a P&L, a track record of controlling food cost, and someone the staff will want to work for."
+    },
+    "letter_body": "A restaurant is a dozen small decisions an hour, and I like being the person those decisions run through, so the General Manager role at Marlow House stood out to me. Running a floor well is a craft I take seriously.\n\nI currently work as Assistant General Manager at Casa Verde, a 90-seat restaurant, where I own scheduling and inventory and train our front-of-house team. Leading a floor and keeping the guest experience high while the night gets busy is my normal shift.\n\nYour focus on food cost and margin is where I have made a real difference. I helped lift our margin by tightening food cost and cutting waste, and I stay on top of food safety so nothing about the basics is ever in question.\n\nI would welcome the chance to bring that steady hand to Marlow House. Thank you for considering my application, and I would be glad to talk about how I would run your floor."
+  },
+  {
+    "profile": {
+      "name": "Fatima Rahman",
+      "location": "Remote",
+      "skills": [
+        "SIEM",
+        "incident response",
+        "threat detection",
+        "Python scripting",
+        "vulnerability management",
+        "SOC operations"
+      ],
+      "experience": [
+        {
+          "role": "Security Analyst",
+          "company": "Sentinel Grid",
+          "startDate": "02/2021",
+          "isCurrent": true,
+          "description": "Works a security operations center; tunes SIEM detections, leads incident response for real intrusions, and cut alert noise sharply by rewriting noisy detection rules and automating triage with Python."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Cybersecurity",
+          "school": "Purdue University",
+          "year": "2020"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Ironvale",
+      "role": "Cybersecurity Analyst",
+      "description": "Ironvale protects financial data and is hiring a Cybersecurity Analyst for our security operations team. You will monitor and tune our SIEM, investigate and respond to incidents, run point on threat detection, help with vulnerability management, and automate the repetitive parts of triage. We want 2+ years in a SOC or similar role, hands-on SIEM experience, real incident response under pressure, and scripting skills to make detection and response faster."
+    },
+    "letter_body": "Security work is judgment under time pressure, deciding fast what is noise and what is real, and that is the part of the job I am good at. It is why the Cybersecurity Analyst role at Ironvale interests me.\n\nI currently work as a Security Analyst at Sentinel Grid, where I sit in a security operations center tuning SIEM detections and leading incident response. Investigating real intrusions and deciding how to contain them is my daily work, which matches what you describe.\n\nYour mention of reducing noise and automating triage is exactly where I have made the most impact. I cut our alert noise sharply by rewriting the rules that cried wolf and automated the repetitive parts of triage with Python, which let the team spend its attention on genuine threats.\n\nI would be glad to bring that focus to Ironvale, especially given how much is riding on protecting financial data. Thank you for considering my application, and I would welcome a conversation about your detection stack."
+  },
+  {
+    "profile": {
+      "name": "Owen Wright",
+      "location": "Denver, CO",
+      "skills": [
+        "product roadmapping",
+        "user research",
+        "cross-functional leadership",
+        "analytics",
+        "prioritization",
+        "A/B testing"
+      ],
+      "experience": [
+        {
+          "role": "Product Manager",
+          "company": "Trailhead Apps",
+          "startDate": "05/2021",
+          "isCurrent": true,
+          "description": "Owns a self-serve onboarding product; ran the research and prioritization that lifted activation, and coordinates engineering, design, and marketing to ship on a predictable cadence."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Economics",
+          "school": "University of Colorado",
+          "year": "2017"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Wavelength",
+      "role": "Product Manager",
+      "description": "Wavelength builds collaboration software and is hiring a Product Manager to own a core part of the product. You will set the roadmap, run user research, prioritize ruthlessly, and lead engineering and design to ship work that moves real metrics. You will also read the data to know whether it worked. We want 3+ years in product management, a record of shipping features that changed a metric, strong prioritization, and the ability to bring a cross-functional team along with you."
+    },
+    "letter_body": "Good product management is mostly deciding what not to build, and doing that with a clear reason, which is the discipline I enjoy. That is why the Product Manager role at Wavelength appeals to me.\n\nI currently work as a Product Manager at Trailhead Apps, where I own our self-serve onboarding product. Setting a roadmap, running research, and leading engineering and design to ship on a predictable cadence is my normal work, and it maps closely to this role.\n\nYour posting asks for someone who ships work that moves a metric, which is how I measure myself. The research and prioritization I ran on onboarding lifted activation, and I read the data afterward so I actually know whether a bet paid off rather than assuming it did.\n\nI would welcome the chance to bring that focus to Wavelength. Thank you for considering my application, and I would be glad to talk through how I decide what earns a spot on the roadmap."
+  },
+  {
+    "profile": {
+      "name": "Anjali Mehta",
+      "location": "New York, NY",
+      "skills": [
+        "calendar management",
+        "travel coordination",
+        "expense reporting",
+        "event planning",
+        "stakeholder communication",
+        "confidentiality"
+      ],
+      "experience": [
+        {
+          "role": "Executive Assistant",
+          "company": "Halcyon Partners",
+          "startDate": "03/2020",
+          "isCurrent": true,
+          "description": "Supports two partners at an investment firm; manages complex calendars and travel, plans quarterly offsites, and protects their time by triaging requests and keeping sensitive matters confidential."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Communications",
+          "school": "Fordham University",
+          "year": "2015"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Meridian Capital",
+      "role": "Executive Assistant",
+      "description": "Meridian Capital is hiring an Executive Assistant to support two senior executives. You will own their calendars, coordinate domestic and international travel, handle expenses, plan internal events, and act as a discreet, reliable point of contact for internal and external partners. We want several years supporting senior leaders, calm judgment under a full inbox, excellent written communication, and complete discretion with confidential information."
+    },
+    "letter_body": "The best executive support is nearly invisible, a day that simply runs, and building that quiet reliability is what I take pride in. That is why the Executive Assistant role at Meridian Capital caught my attention.\n\nI currently work as an Executive Assistant at Halcyon Partners, where I support two partners at an investment firm. Managing complex calendars, coordinating travel, and handling expenses is my daily routine, so the core of this role is familiar ground.\n\nYour posting asks for discretion and calm judgment, which is where I am at my best. I protect my partners' time by triaging requests before they reach them and keep sensitive matters strictly confidential, and I plan our quarterly offsites so the details are handled before anyone has to ask.\n\nI would be glad to bring that steadiness to Meridian Capital. Thank you for considering my application, and I would welcome the chance to meet the executives I would support."
+  },
+  {
+    "profile": {
+      "name": "Dominic Russo",
+      "location": "Columbus, OH",
+      "skills": [
+        "route planning",
+        "carrier management",
+        "WMS",
+        "freight negotiation",
+        "inventory accuracy",
+        "Excel"
+      ],
+      "experience": [
+        {
+          "role": "Logistics Coordinator",
+          "company": "Keystone Distribution",
+          "startDate": "06/2021",
+          "isCurrent": true,
+          "description": "Coordinates inbound and outbound freight for a regional distributor; negotiates carrier rates, keeps on-time delivery high, and improved inventory accuracy by tightening the receiving process in the WMS."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Supply Chain Management",
+          "school": "Ohio State University",
+          "year": "2020"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Northwind Logistics",
+      "role": "Logistics Coordinator",
+      "description": "Northwind Logistics moves freight for regional retailers and is hiring a Logistics Coordinator. You will plan routes, manage carrier relationships, negotiate freight rates, keep on-time delivery high, and maintain inventory accuracy in our warehouse management system. We want 2+ years in logistics or distribution, hands-on WMS experience, comfort negotiating with carriers, and the organization to keep many shipments moving at once without dropping one."
+    },
+    "letter_body": "Logistics is the quiet promise that a thing shows up when it should, and keeping that promise across many shipments at once is work I am good at. That is why the Logistics Coordinator role at Northwind stood out to me.\n\nI currently work as a Logistics Coordinator at Keystone Distribution, where I coordinate inbound and outbound freight for a regional distributor. Planning routes, managing carriers, and keeping on-time delivery high is my daily work, which lines up with what you need.\n\nYour posting mentions inventory accuracy and rate negotiation, both of which I have moved. I improved our inventory accuracy by tightening the receiving process in our WMS, and I negotiate carrier rates without letting service slip, so we save money and still deliver on time.\n\nI would welcome the chance to bring that organization to Northwind. Thank you for considering my application, and I would be glad to talk through how I keep freight moving."
+  },
+  {
+    "profile": {
+      "name": "Yara Nassar",
+      "location": "Sacramento, CA",
+      "skills": [
+        "student counseling",
+        "crisis intervention",
+        "IEP support",
+        "group facilitation",
+        "case documentation",
+        "family communication"
+      ],
+      "experience": [
+        {
+          "role": "School Counselor",
+          "company": "Oakridge Middle School",
+          "startDate": "08/2019",
+          "isCurrent": true,
+          "description": "Counsels a caseload of roughly 300 students; runs crisis intervention, supports IEP meetings, and built a small-group program that lowered repeat behavior referrals for the students who took part."
+        }
+      ],
+      "education": [
+        {
+          "degree": "M.Ed. School Counseling",
+          "school": "Sacramento State University",
+          "year": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Lincoln Unified School District",
+      "role": "School Counselor",
+      "description": "Lincoln Unified is hiring a School Counselor to support students at one of our middle schools. You will counsel students individually and in groups, respond to crises, support IEP and 504 meetings, document your cases carefully, and keep strong communication with families and teachers. We want a school counseling credential, experience with a full student caseload, calm crisis response, and a genuine ability to build trust with adolescents."
+    },
+    "letter_body": "Middle school is a hard stretch to go through, and being a steady adult in a student's corner during it is the work I find most meaningful. That is why the School Counselor role at Lincoln Unified speaks to me.\n\nI currently work as a School Counselor at Oakridge Middle School, where I counsel a caseload of roughly 300 students individually and in groups. Responding to crises and supporting IEP meetings is a regular part of my week, so your core responsibilities are ones I carry now.\n\nYour posting asks for someone who can build trust with adolescents and document carefully, and both matter to me. I built a small-group program that lowered repeat behavior referrals for the students who joined, and I keep clear case notes and steady communication with families and teachers so no one is out of the loop.\n\nI would be glad to bring that care to Lincoln Unified. Thank you for considering my application, and I would welcome the chance to meet your students and staff."
   }
 ]
