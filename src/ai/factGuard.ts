@@ -29,27 +29,25 @@ const WORD: Record<string, number> = {
   forty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90,
 };
 
-const SCALE: Record<string, { unit: string; mult: number }> = {
-  hundred: { unit: "", mult: 100 },
-  thousand: { unit: "k", mult: 1 },
-  million: { unit: "m", mult: 1 },
-  billion: { unit: "b", mult: 1 },
-};
+// Numeric multiplier for scale words/suffixes, so "180k" == "180,000" and
+// "5M" == "5 million" == "5,000,000" all canonicalize to the same value.
+const SCALE: Record<string, number> = { hundred: 100, thousand: 1e3, k: 1e3, million: 1e6, m: 1e6, mn: 1e6, billion: 1e9, b: 1e9 };
 
-/** Canonicalize one number to a "value+unit" token, e.g. "5m", "40%", "300". */
+/** Canonicalize one number to "value" (bare, with k/m/b expanded) or "value%"/"valuex". */
 function token(value: number, unit: string): string {
-  // trim floating noise
+  if (unit in SCALE) {
+    value *= SCALE[unit];
+    unit = "";
+  }
   const v = Number.isInteger(value) ? String(value) : String(+value.toFixed(2));
-  return v + unit;
+  return v + unit; // unit is now only "", "%", or "x"
 }
 
-/** True when a token counts as "significant" (has a unit, or is >= 100). */
+/** True when a token counts as "significant" (has %/x, or is >= 100 once scaled). */
 function significant(tok: string): boolean {
-  const m = tok.match(/^(\d+(?:\.\d+)?)(.*)$/);
+  const m = tok.match(/^(\d+(?:\.\d+)?)(%|x)?$/);
   if (!m) return false;
-  const val = parseFloat(m[1]);
-  const unit = m[2];
-  return unit !== "" || val >= 100;
+  return !!m[2] || parseFloat(m[1]) >= 100;
 }
 
 /** Extract the set of significant number tokens from a piece of text. */
@@ -63,9 +61,7 @@ export function significantNumbers(text: string): Set<string> {
     "g"
   );
   for (const m of t.matchAll(wordRe)) {
-    const base = WORD[m[1]];
-    const sc = SCALE[m[2]];
-    const tok = token(base * sc.mult, sc.unit);
+    const tok = token(WORD[m[1]], m[2]); // token() expands the scale word
     if (significant(tok)) out.add(tok);
   }
 
