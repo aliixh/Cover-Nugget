@@ -24,7 +24,7 @@
         {
           "degree": "B.S. Computer Science",
           "school": "UC Berkeley",
-          "year": "2021"
+          "graduationYear": "2021"
         }
       ],
       "projects": [
@@ -66,7 +66,7 @@
         {
           "degree": "B.S. Nursing",
           "school": "University of Illinois",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -102,7 +102,7 @@
         {
           "degree": "B.A. Communications",
           "school": "UT Austin",
-          "year": "2022"
+          "graduationYear": "2022"
         }
       ]
     },
@@ -138,7 +138,7 @@
         {
           "degree": "B.S. Statistics",
           "school": "Ohio State",
-          "year": "2021"
+          "graduationYear": "2021"
         }
       ]
     },
@@ -174,7 +174,7 @@
         {
           "degree": "B.S. Accounting",
           "school": "Boston College",
-          "year": "2021"
+          "graduationYear": "2021"
         }
       ]
     },
@@ -210,7 +210,7 @@
         {
           "degree": "B.A. Marketing",
           "school": "Arizona State",
-          "year": "2019"
+          "graduationYear": "2019"
         }
       ]
     },
@@ -246,7 +246,7 @@
         {
           "degree": "B.F.A. Design",
           "school": "RISD",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -281,7 +281,7 @@
         {
           "degree": "B.A. Elementary Education",
           "school": "Colorado State",
-          "year": "2019"
+          "graduationYear": "2019"
         }
       ]
     },
@@ -317,7 +317,7 @@
         {
           "degree": "B.S. Mechanical Engineering",
           "school": "Michigan State",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -353,7 +353,7 @@
         {
           "degree": "Paralegal Certificate",
           "school": "Houston Community College",
-          "year": "2018"
+          "graduationYear": "2018"
         }
       ]
     },
@@ -389,7 +389,7 @@
         {
           "degree": "B.S. Nutrition and Dietetics, RD",
           "school": "University of Georgia",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -425,7 +425,7 @@
         {
           "degree": "B.S. Supply Chain Management",
           "school": "Ohio State",
-          "year": "2021"
+          "graduationYear": "2021"
         }
       ]
     },
@@ -461,7 +461,7 @@
         {
           "degree": "M.S. Human-Computer Interaction",
           "school": "Carnegie Mellon",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -497,7 +497,7 @@
         {
           "degree": "B.A. Business",
           "school": "University of Arizona",
-          "year": "2022"
+          "graduationYear": "2022"
         }
       ]
     },
@@ -533,7 +533,7 @@
         {
           "degree": "B.S. Computer Engineering",
           "school": "UT Dallas",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -569,7 +569,7 @@
         {
           "degree": "B.S. Computer Science",
           "school": "Georgia Tech",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -605,7 +605,7 @@
         {
           "degree": "B.S. Business Administration",
           "school": "University of Minnesota",
-          "year": "2018"
+          "graduationYear": "2018"
         }
       ]
     },
@@ -641,7 +641,7 @@
         {
           "degree": "B.A. Psychology",
           "school": "UNC Chapel Hill",
-          "year": "2019"
+          "graduationYear": "2019"
         }
       ]
     },
@@ -677,7 +677,7 @@
         {
           "degree": "B.A. Communications",
           "school": "University of Washington",
-          "year": "2019"
+          "graduationYear": "2019"
         }
       ]
     },
@@ -713,7 +713,7 @@
         {
           "degree": "B.F.A. Graphic Design",
           "school": "Pacific Northwest College of Art",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -749,7 +749,7 @@
         {
           "degree": "B.S. Finance",
           "school": "NYU Stern",
-          "year": "2021"
+          "graduationYear": "2021"
         }
       ]
     },
@@ -785,7 +785,7 @@
         {
           "degree": "B.S. Business Management",
           "school": "Arizona State",
-          "year": "2018"
+          "graduationYear": "2018"
         }
       ]
     },
@@ -821,7 +821,7 @@
         {
           "degree": "B.S. Civil Engineering",
           "school": "UC Davis",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -857,7 +857,7 @@
         {
           "degree": "M.S.W.",
           "school": "New Mexico State University",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ]
     },
@@ -893,7 +893,7 @@
         {
           "degree": "B.A. Organizational Psychology",
           "school": "University of Texas at Austin",
-          "year": "2018"
+          "graduationYear": "2018"
         }
       ],
       "projects": []
@@ -930,7 +930,7 @@
         {
           "degree": "B.S. Software Engineering",
           "school": "Arizona State University",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ],
       "projects": []
@@ -967,7 +967,7 @@
         {
           "degree": "M.S. Statistics",
           "school": "University of Illinois",
-          "year": "2021"
+          "graduationYear": "2021"
         }
       ],
       "projects": [
@@ -1009,7 +1009,7 @@
         {
           "degree": "B.A. Journalism",
           "school": "University of Missouri",
-          "year": "2019"
+          "graduationYear": "2019"
         }
       ],
       "projects": []
@@ -1046,7 +1046,7 @@
         {
           "degree": "B.S. Electrical Engineering",
           "school": "Michigan State University",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ],
       "projects": []
@@ -1083,7 +1083,7 @@
         {
           "degree": "Doctor of Pharmacy",
           "school": "University of Washington",
-          "year": "2019"
+          "graduationYear": "2019"
         }
       ],
       "projects": []
@@ -1120,7 +1120,7 @@
         {
           "degree": "A.S. Hospitality Management",
           "school": "Miami Dade College",
-          "year": "2016"
+          "graduationYear": "2016"
         }
       ],
       "projects": []
@@ -1157,7 +1157,7 @@
         {
           "degree": "B.S. Cybersecurity",
           "school": "Purdue University",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ],
       "projects": []
@@ -1194,7 +1194,7 @@
         {
           "degree": "B.A. Economics",
           "school": "University of Colorado",
-          "year": "2017"
+          "graduationYear": "2017"
         }
       ],
       "projects": []
@@ -1231,7 +1231,7 @@
         {
           "degree": "B.A. Communications",
           "school": "Fordham University",
-          "year": "2015"
+          "graduationYear": "2015"
         }
       ],
       "projects": []
@@ -1268,7 +1268,7 @@
         {
           "degree": "B.S. Supply Chain Management",
           "school": "Ohio State University",
-          "year": "2020"
+          "graduationYear": "2020"
         }
       ],
       "projects": []
@@ -1305,7 +1305,7 @@
         {
           "degree": "M.Ed. School Counseling",
           "school": "Sacramento State University",
-          "year": "2019"
+          "graduationYear": "2019"
         }
       ],
       "projects": []

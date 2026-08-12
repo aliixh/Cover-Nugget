@@ -99,7 +99,7 @@ def profile_summary(p):
         parts.append(f"Location: {p['location']}")
     if p.get("education"):
         parts.append("Education:\n" + "\n".join(
-            f"  - {', '.join(x for x in [e.get('degree'), e.get('school'), e.get('year')] if x)}"
+            f"  - {', '.join(x for x in [e.get('degree'), e.get('school'), e.get('graduationYear') or e.get('year')] if x)}"
             for e in p["education"]))
     if p.get("experience"):
         parts.append("Experience:\n" + "\n".join(
