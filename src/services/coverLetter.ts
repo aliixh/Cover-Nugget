@@ -10,6 +10,7 @@ import { getAI } from "../ai";
 import { buildTemplateLetter } from "../ai/template";
 import { applyLetterFormat } from "./letterFormat";
 import { stripDashes } from "../ai/humanize";
+import { checkFacts } from "../ai/factGuard";
 import { POLISH_INSTRUCTION } from "../ai/promptConstants";
 import type { JobInput, SelectionAction } from "../ai/types";
 import { getFullProfile, listAiSettings } from "../db/repositories";
@@ -24,6 +25,12 @@ export interface GenerateResult {
   content: string;
   /** True when the local template was used because AI wasn't available. */
   usedFallback: boolean;
+  /**
+   * True when the model ran but its polish dropped or invented a hard fact
+   * (a number/metric), so we kept the accurate skeleton instead. Facts are
+   * owned by code, never the model.
+   */
+  factGuardTripped?: boolean;
 }
 
 /**
@@ -50,12 +57,19 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
 
   // Tier 2: model polishes it (facts preserved).
   try {
-    const polished = await getAI().editWhole({
-      fullText: skeleton,
-      instruction: POLISH_INSTRUCTION,
-      instructions,
-    });
-    return { content: format(stripDashes(polished)), usedFallback: false };
+    const polished = stripDashes(
+      await getAI().editWhole({
+        fullText: skeleton,
+        instruction: POLISH_INSTRUCTION,
+        instructions,
+      })
+    );
+    // Fact guard: if the polish dropped or invented a hard number, the model
+    // broke a fact — keep the accurate skeleton instead of the pretty lie.
+    if (!checkFacts(skeleton, polished).ok) {
+      return { content: format(skeleton), usedFallback: false, factGuardTripped: true };
+    }
+    return { content: format(polished), usedFallback: false };
   } catch {
     return { content: format(skeleton), usedFallback: true };
   }
