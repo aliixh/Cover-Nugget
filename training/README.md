@@ -128,17 +128,22 @@ v4 @ temp 0.6: **75% model-polish, 100% factual (guard-backed), 0 dashes, 16/16 
 A temperature sweep (0.3-0.6) confirmed 0.6 is optimal; the residual ~25% is numeric
 drift, addressable only by DPO/targeted training (not temperature).
 
-## DPO experiment (v4+DPO) — negative result, do not ship
+## DPO experiments — both failed; v4 is final
 
-Attempted DPO to cut the ~25% numeric-drift fallbacks. Preference pairs were
-gold (chosen) vs the same letter with metrics corrupted (rejected),
-`dataset/dpo_pairs.jsonl` (49 pairs), trained via `train_dpo.py` on top of v4.
+We tried DPO to cut the ~25% numeric-drift fallbacks. **Neither beat v4 (75%).**
 
-Training looked healthy (pref accuracy -> 100%, margins -> 0.25) but the eval
-**regressed 75% -> 63%**. Cause: synthetic corruptions are OFF-distribution vs
-how the model actually drifts (it rephrases/drops numbers, not the injected
-perturbations). **v4 remains the shipped model.**
+1. **Synthetic negatives** (`dpo_pairs.jsonl`, corrupt the gold's numbers): eval
+   **regressed 75% -> 63%**. Cause: off-distribution vs how the model really drifts.
+2. **On-policy negatives** (`dpo_onpolicy.jsonl`, the model's OWN guard-failing
+   generations on fresh number-dense profiles + faithful samples as chosen): DPO
+   trained correctly (rewards/chosen up, margins ~2.2) but eval was **69% (11/16,
+   within noise of 12/16)** — no benefit.
 
-Correct next attempt if revisited: **on-policy negatives** — generate the model's
-own outputs, keep the ones that FAIL the number guard as `rejected`, pair with
-gold as `chosen`. That matches the real failure distribution.
+Conclusion: numeric paraphrasing is a **1B capability floor**; ~60 preference
+pairs can't override it. The **code fact-guard** (`src/ai/factGuard.ts`) is what
+guarantees correctness (100% of outputs are factually safe), so the model sitting
+at 75% "pretty polish" is enough. **v4 is the shipped model.** `train_dpo.py` is
+kept (env `DPO_DATA`/`DPO_OUT`) for the record; on-policy harvest = batched
+generation from `merged/llama1b_v4_merged` (NO extra adapter — merging v4 twice
+produces garbage) filtered by the guard.
+

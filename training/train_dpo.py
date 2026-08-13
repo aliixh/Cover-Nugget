@@ -13,14 +13,15 @@ from trl import DPOTrainer, DPOConfig
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.join(HERE, "merged", "llama1b_v4_merged")  # v4 SFT weights
-OUT = os.path.join(HERE, "adapters", "llama1b_v4_dpo")
+DATA = os.environ.get("DPO_DATA", "dpo_pairs.jsonl")       # on-policy: dpo_onpolicy.jsonl
+OUT = os.path.join(HERE, "adapters", os.environ.get("DPO_OUT", "llama1b_v4_dpo"))
 
 tok = AutoTokenizer.from_pretrained(BASE)
 if tok.pad_token is None:
     tok.pad_token = tok.eos_token
 model = AutoModelForCausalLM.from_pretrained(BASE, dtype=torch.bfloat16, device_map="cuda")
 
-rows = [json.loads(l) for l in open(os.path.join(HERE, "dataset", "dpo_pairs.jsonl"))]
+rows = [json.loads(l) for l in open(os.path.join(HERE, "dataset", DATA))]
 ds = Dataset.from_list(rows)
 
 peft_cfg = LoraConfig(
