@@ -4,7 +4,7 @@
 // actual inference requires the Dev Client build.
 
 import { useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Alert, Platform, View } from "react-native";
 import { Text } from "../../src/ui/serif";
 import { ScreenContainer } from "../../src/components/ScreenContainer";
@@ -12,6 +12,7 @@ import { Button } from "../../src/components/Button";
 import { Card } from "../../src/components/Card";
 import { ProgressBar } from "../../src/components/ProgressBar";
 import { MODEL } from "../../src/ai/modelConfig";
+import { makeEtaTracker, formatEta, formatSpeed } from "../../src/utils/downloadProgress";
 import {
   deleteModel,
   downloadModel,
@@ -29,6 +30,9 @@ export default function ModelScreen() {
   const [status, setStatus] = useState<ModelStatus | null>(null);
   const [downloading, setDownloading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [eta, setEta] = useState("");
+  const [speed, setSpeed] = useState("");
+  const tracker = useRef(makeEtaTracker());
 
   const refresh = useCallback(async () => {
     setStatus(await getModelStatus());
@@ -43,8 +47,16 @@ export default function ModelScreen() {
   const onDownload = async () => {
     setDownloading(true);
     setProgress(0);
+    setEta("");
+    setSpeed("");
+    tracker.current.reset();
     try {
-      await downloadModel((f) => setProgress(f));
+      await downloadModel((p) => {
+        setProgress(p.fraction);
+        const { speed, eta } = tracker.current.push(p.written, p.total, Date.now());
+        setSpeed(formatSpeed(speed));
+        setEta(formatEta(eta));
+      });
       await refresh();
       Alert.alert("Downloaded", `${MODEL.displayName} is ready to use offline.`);
     } catch (e: any) {
@@ -105,6 +117,8 @@ export default function ModelScreen() {
               <ProgressBar value={progress} />
               <Text className="mt-2 text-sm text-muted dark:text-dark-muted">
                 Downloading… {Math.round(progress * 100)}%
+                {eta ? `  ·  ${eta}` : ""}
+                {speed ? `  ·  ${speed}` : ""}
               </Text>
             </View>
           ) : null}

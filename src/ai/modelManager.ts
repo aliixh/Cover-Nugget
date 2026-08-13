@@ -41,7 +41,15 @@ export async function getModelStatus(): Promise<ModelStatus> {
   };
 }
 
-export type ProgressCallback = (fraction: number) => void;
+import type { DownloadProgress } from "../utils/downloadProgress";
+export type ProgressCallback = (p: DownloadProgress) => void;
+
+/** Emit a progress event, filling in a sensible total when the server omits it. */
+function emit(cb: ProgressCallback | undefined, written: number, expected: number, fallbackMB: number) {
+  if (!cb) return;
+  const total = expected > 0 ? expected : fallbackMB * 1024 * 1024;
+  cb({ fraction: total > 0 ? Math.min(1, written / total) : 0, written, total });
+}
 
 /**
  * Downloads the model with progress. Resolves to the local path on success.
@@ -61,12 +69,8 @@ export async function downloadModel(onProgress?: ProgressCallback): Promise<stri
     path,
     {},
     (progress) => {
-      if (!onProgress) return;
       const { totalBytesWritten, totalBytesExpectedToWrite } = progress;
-      // totalBytesExpectedToWrite can be -1 if the server omits Content-Length.
-      if (totalBytesExpectedToWrite > 0) {
-        onProgress(totalBytesWritten / totalBytesExpectedToWrite);
-      }
+      emit(onProgress, totalBytesWritten, totalBytesExpectedToWrite, MODEL.approxSizeMB);
     }
   );
 
@@ -106,10 +110,10 @@ export async function getDownloadedAdapterPath(): Promise<string | null> {
 export async function downloadAdapter(onProgress?: ProgressCallback): Promise<string | null> {
   const path = getAdapterPath();
   if (!MODEL.adapter || !path) return null;
+  const adapterMB = MODEL.adapter.approxSizeMB;
   const task = FileSystem.createDownloadResumable(MODEL.adapter.url, path, {}, (progress) => {
-    if (!onProgress) return;
     const { totalBytesWritten, totalBytesExpectedToWrite } = progress;
-    if (totalBytesExpectedToWrite > 0) onProgress(totalBytesWritten / totalBytesExpectedToWrite);
+    emit(onProgress, totalBytesWritten, totalBytesExpectedToWrite, adapterMB);
   });
   const result = await task.downloadAsync();
   return result?.uri ?? null;

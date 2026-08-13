@@ -16,6 +16,7 @@ import { ProgressBar } from "../src/components/ProgressBar";
 import { Logo } from "../src/components/Logo";
 import { MODEL } from "../src/ai/modelConfig";
 import { downloadModel, getModelStatus } from "../src/ai/modelManager";
+import { makeEtaTracker, formatEta, formatSpeed } from "../src/utils/downloadProgress";
 import { setMeta } from "../src/db/repositories";
 
 type Phase = "idle" | "downloading" | "done" | "error";
@@ -24,8 +25,11 @@ export default function ModelSetup() {
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>("idle");
   const [progress, setProgress] = useState(0);
+  const [eta, setEta] = useState("");
+  const [speed, setSpeed] = useState("");
   const [error, setError] = useState<string | null>(null);
   const started = useRef(false); // guard against double-start in strict mode
+  const tracker = useRef(makeEtaTracker());
 
   // Kick off the download automatically on mount.
   useEffect(() => {
@@ -45,8 +49,16 @@ export default function ModelSetup() {
     setPhase("downloading");
     setError(null);
     setProgress(0);
+    setEta("");
+    setSpeed("");
+    tracker.current.reset();
     try {
-      await downloadModel((f) => setProgress(f));
+      await downloadModel((p) => {
+        setProgress(p.fraction);
+        const { speed, eta } = tracker.current.push(p.written, p.total, Date.now());
+        setSpeed(formatSpeed(speed));
+        setEta(formatEta(eta));
+      });
       await setMeta("model_setup_done", "1");
       setPhase("done");
     } catch (e: any) {
@@ -81,8 +93,13 @@ export default function ModelSetup() {
             <>
               <ProgressBar value={progress} />
               <Text className="mt-2 text-center text-sm text-muted dark:text-dark-muted">
-                {Math.round(progress * 100)}%
+                {Math.round(progress * 100)}%{eta ? `  ·  ${eta}` : ""}
               </Text>
+              {speed ? (
+                <Text className="mt-1 text-center text-xs text-muted dark:text-dark-muted">
+                  {speed}
+                </Text>
+              ) : null}
             </>
           ) : null}
 
