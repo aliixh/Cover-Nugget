@@ -39,6 +39,10 @@ export function registerNative(): void {
       },
       async complete(prompt: string, opts?: { maxTokens?: number }) {
         const n_predict = opts?.maxTokens ?? 512;
+        // Tuned sampling: enough variety that two similar profiles don't get an
+        // identical opener, but low enough temperature to stay faithful (the
+        // fact guard in services/coverLetter.ts catches any drift regardless).
+        const sampling = { temperature: 0.6, top_p: 0.9, top_k: 40, penalty_repeat: 1.12 };
         // Feed the model via its chat template — this matches how the LoRA is
         // fine-tuned and how an instruct model expects input. Fall back to a raw
         // prompt if this llama.rn build doesn't accept `messages`.
@@ -49,10 +53,11 @@ export function registerNative(): void {
               { role: "user", content: prompt },
             ],
             n_predict,
+            ...sampling,
           });
           return r.text as string;
         } catch {
-          const r = await ctx.completion({ prompt, n_predict });
+          const r = await ctx.completion({ prompt, n_predict, ...sampling });
           return r.text as string;
         }
       },
