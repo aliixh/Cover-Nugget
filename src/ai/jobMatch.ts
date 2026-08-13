@@ -23,7 +23,7 @@ function esc(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\#]/g, "\\$&");
 }
 
-// Generic posting filler that isn't a real skill/requirement — dropped so the
+// Generic posting filler that isn't a real skill/requirement - dropped so the
 // "missing" list shows things worth adding, not noise like "need"/"strong".
 const FILLER = new Set(
   ("need needs strong looking want wants must matter matters plus ideal candidate " +

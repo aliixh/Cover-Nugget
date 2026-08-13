@@ -103,7 +103,7 @@ export interface AiSetting {
 }
 
 /**
- * Full profile aggregate — everything needed to generate a cover letter.
+ * Full profile aggregate - everything needed to generate a cover letter.
  * Assembled by the repository layer and later fed to the AI module.
  */
 export interface FullProfile {

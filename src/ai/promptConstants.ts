@@ -1,4 +1,4 @@
-// Shared prompt constants — kept in one dependency-free module so the on-device
+// Shared prompt constants - kept in one dependency-free module so the on-device
 // runtime (registerNative), the generation service (coverLetter), AND the
 // fine-tuning data builder (training/) all use the EXACT same strings. If the
 // model is trained on one framing and run on another, the LoRA won't transfer.

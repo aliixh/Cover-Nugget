@@ -47,7 +47,7 @@ export function TagInput({ tags, onAdd, onRemove, placeholder }: Props) {
         </Pressable>
       </View>
 
-      {/* Chip list — wraps to multiple rows. */}
+      {/* Chip list - wraps to multiple rows. */}
       <View className="flex-row flex-wrap">
         {tags.map((tag, i) => (
           <Pressable

@@ -17,7 +17,7 @@ export function SaveButton({
 
   const onPress = async () => {
     const ok = await onSave();
-    if (ok === false) return; // validation failed — don't show the tick
+    if (ok === false) return; // validation failed - don't show the tick
     setSaved(true);
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setSaved(false), 1800);

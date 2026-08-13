@@ -22,7 +22,7 @@ interface Props {
   onBack?: () => void;
   onSkip?: () => void;
   onNext: () => void;
-  /** Continue button label — e.g. "Continue" or "Finish". */
+  /** Continue button label - e.g. "Continue" or "Finish". */
   nextLabel?: string;
 }
 

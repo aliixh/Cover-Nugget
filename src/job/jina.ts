@@ -1,7 +1,7 @@
 // Job-link reader (spec §5, Phase 4).
 //
 // Turns a job posting URL into clean, readable text using Jina Reader
-// (https://r.jina.ai/<url>) — a free endpoint that strips nav/ads and returns
+// (https://r.jina.ai/<url>) - a free endpoint that strips nav/ads and returns
 // article text. Runs on the user's device at request time; no GPU, no API key.
 //
 // IMPORTANT limitation: heavily bot-protected sites (Indeed, LinkedIn, some
@@ -43,7 +43,7 @@ function cleanJobText(raw: string): string {
 /**
  * True only if the page is genuinely a bot-check / login WALL, not a real
  * posting that happens to mention one of these words in its footer. Challenge
- * pages are short; a real posting is long — so we require a marker AND very
+ * pages are short; a real posting is long - so we require a marker AND very
  * little visible text. This kills false positives (e.g. a job page whose footer
  * says "Cloudflare" or a benefits blurb that says "captcha").
  */
@@ -140,8 +140,8 @@ export function guessCompanyRole(text: string): { company?: string; role?: strin
     }
   }
   // Last resort for the role: most postings lead with the job title as a
-  // heading. Take the first short, title-ish line — one that reads like a
-  // title (no sentence punctuation), or contains a common role word — so plain
+  // heading. Take the first short, title-ish line - one that reads like a
+  // title (no sentence punctuation), or contains a common role word - so plain
   // reader output with no labels still prefills the Role field.
   if (!role) {
     const ROLE_WORDS =
@@ -179,7 +179,7 @@ function withGuessedMeta(job: JobText): JobText {
 
 // ---------------------------------------------------------------------------
 // On-device direct fetch (primary). RN fetch has no CORS limits and uses the
-// phone's own (residential/cellular) IP — far less likely to be bot-blocked
+// phone's own (residential/cellular) IP - far less likely to be bot-blocked
 // than a datacenter reader. Most job sites embed the posting as JobPosting
 // JSON-LD, which parses cleanly with no server needed.
 // ---------------------------------------------------------------------------
@@ -271,7 +271,7 @@ async function fetchDirect(url: string): Promise<JobText | null> {
   }
   if (!res.ok) return null;
   const html = await res.text();
-  // 1) JobPosting JSON-LD is the clean win (most boards include it) — and it
+  // 1) JobPosting JSON-LD is the clean win (most boards include it) - and it
   //    carries the company + role.
   const job = extractJobPosting(html);
   if (job && job.text.length >= 100) return job;
@@ -285,8 +285,8 @@ async function fetchDirect(url: string): Promise<JobText | null> {
   return null; // page had almost no text (likely JS-rendered) → try Jina
 }
 
-// Optional self-hosted backend (Oracle VM etc.). When set, we try it first — it
-// extracts server-side (better for company/ATS pages) — then fall back to Jina.
+// Optional self-hosted backend (Oracle VM etc.). When set, we try it first - it
+// extracts server-side (better for company/ATS pages) - then fall back to Jina.
 const JOBS_API = (process.env.EXPO_PUBLIC_JOBS_API || "").replace(/\/$/, "");
 
 async function fetchViaBackend(url: string): Promise<JobText | null> {
@@ -360,7 +360,7 @@ export async function fetchJobTextFromUrl(url: string): Promise<JobText> {
   // content is returned and used, rather than wrongly rejected.
   if (cleaned.length < 60) {
     throw new Error(
-      `Couldn't read the job text from that link — the page may need a login or load its content with JavaScript. ${PASTE_HINT}`
+      `Couldn't read the job text from that link. The page may need a login or load its content with JavaScript. ${PASTE_HINT}`
     );
   }
   return withGuessedMeta({ text: cleaned });

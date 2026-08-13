@@ -1,4 +1,4 @@
-// Onboarding Page 9: Additional Information (spec section 3) — the final step.
+// Onboarding Page 9: Additional Information (spec section 3) - the final step.
 // Finishing saves this section, marks onboarding complete, and enters the app.
 
 import { useRouter } from "expo-router";

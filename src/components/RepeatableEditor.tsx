@@ -10,7 +10,7 @@
 //    you can edit; edits save immediately (persisted forever until changed).
 //
 // In BOTH modes, whatever is typed in the bottom "new entry" form is auto-saved
-// when the screen navigates away (via the imperative `flush()` handle) — so a
+// when the screen navigates away (via the imperative `flush()` handle) - so a
 // user who types an entry and taps Continue without tapping "Add" never loses
 // it. This is the fix for "the add button removes what I typed and saves nothing".
 

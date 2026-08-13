@@ -2,11 +2,11 @@
 // the letter. The app fills the slots from the user's real profile + the matched
 // job keywords (so it stays accurate) and picks variants to assemble a draft
 // with real variation. The on-device model then POLISHES that draft for flow
-// (see services/coverLetter.ts) — the library gives structure + facts, the LLM
+// (see services/coverLetter.ts) - the library gives structure + facts, the LLM
 // gives fluidity.
 //
 // Variant selection is seeded from the inputs, so the same profile+job produces
-// a stable letter, but different jobs read differently. Add freely — variants
+// a stable letter, but different jobs read differently. Add freely - variants
 // mined from real letters (e.g. akhan02/cultural-dimension-cover-letters) slot
 // straight in here.
 
@@ -56,10 +56,10 @@ const RECENT: S[] = [
 // --- Skill match: tie matched skills to the posting (only if matched) -----
 const SKILL_MATCH: S[] = [
   (s) => `Your posting calls for ${s.topSkills}, which are central to my experience.`,
-  (s) => `You're looking for ${s.topSkills} — all areas I work in regularly.`,
+  (s) => `You're looking for ${s.topSkills}, all areas I work in regularly.`,
   (s) => `The role asks for ${s.topSkills}, and those are exactly the strengths I'd bring.`,
   (s) => `I noticed you value ${s.topSkills}; these have been core to my recent work.`,
-  (s) => `Much of what you describe — ${s.topSkills} — is where I do my best work.`,
+  (s) => `Much of what you describe, ${s.topSkills}, is where I do my best work.`,
 ];
 
 // --- Achievement: a real, first-person sentence from the profile ----------
@@ -90,7 +90,7 @@ const FALLBACK_FIT: S[] = [
 const CLOSERS: S[] = [
   (s) => `I'd welcome the chance to discuss how I can help ${s.company}. Thank you for your time and consideration.`,
   () => `I'd love to talk about how my background fits your team. Thank you for considering my application.`,
-  () => `Thank you for reviewing my application — I'd be glad to share more in a conversation.`,
+  () => `Thank you for reviewing my application. I'd be glad to share more in a conversation.`,
   (s) => `I'd be glad to contribute to ${s.company}, and I appreciate you taking the time to consider me.`,
   () => `Thanks for your consideration; I hope we can discuss the role further.`,
 ];

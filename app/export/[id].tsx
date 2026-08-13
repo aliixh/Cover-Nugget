@@ -49,7 +49,7 @@ export default function ExportScreen() {
     })();
   }, [letterId]);
 
-  // Typed name, or the auto name when blank — never the previously-saved title.
+  // Typed name, or the auto name when blank - never the previously-saved title.
   const effectiveName = () => fileName.trim() || autoName;
 
   const onDone = async () => {
@@ -92,7 +92,7 @@ export default function ExportScreen() {
     { label: "Word", onPress: run((name) => exportWord(content!, name)) },
     {
       label: "Docs",
-      onPress: run(() => openInGoogleDocs(content!), "Letter copied — paste it into the new Google Doc."),
+      onPress: run(() => openInGoogleDocs(content!), "Letter copied. Paste it into the new Google Doc."),
     },
   ];
 

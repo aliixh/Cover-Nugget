@@ -1,4 +1,4 @@
-// Pure prompt-building helpers. No model calls, no GPU — just string assembly
+// Pure prompt-building helpers. No model calls, no GPU - just string assembly
 // that turns the local profile + job + settings into prompts. Keeping this
 // pure makes it easy to unit-test and to reuse across any backend.
 
@@ -14,7 +14,7 @@ import { describeExperiences } from "../utils/experience";
 // Human-readable phrasing for each highlight action (spec §8).
 const ACTION_PHRASING: Record<SelectionAction, string> = {
   shorten: "Make this shorter while keeping the meaning.",
-  expand: "Expand this with a little more relevant detail — no filler or padding.",
+  expand: "Expand this with a little more relevant detail, no filler or padding.",
   "less-formal": "Rewrite this to be less formal.",
   "more-formal": "Rewrite this to be more formal.",
   "more-confident": "Rewrite this to sound more confident.",
@@ -24,7 +24,7 @@ const ACTION_PHRASING: Record<SelectionAction, string> = {
   "more-grateful": "Rewrite this to sound more appreciative and grateful.",
   "more-enthusiastic": "Rewrite this to sound more enthusiastic.",
   simplify: "Simplify this so it is easier to read.",
-  "change-structure": "Restructure this — change the sentence structure while keeping the meaning.",
+  "change-structure": "Restructure this: change the sentence structure while keeping the meaning.",
   rephrase: "Rephrase this using different wording while keeping the meaning.",
   "active-voice": "Rewrite this in active voice.",
   "fix-grammar": "Fix any grammar and spelling issues.",
@@ -99,14 +99,14 @@ function capDescription(d: string, maxChars = 4000): string {
  * paragraph. Narrowing the task is what makes a 0.5B model write coherently. */
 export function buildGeneratePrompt(req: GenerateRequest): string {
   const job = req.job;
-  // Deterministic keyword overlap between the profile and the posting — the
+  // Deterministic keyword overlap between the profile and the posting - the
   // small model can't reliably decide relevance, so we hand it the matches.
   const match = matchProfileToJob(req.profile, job.description);
   const matchedTerms = [...match.skills, ...match.keywords].slice(0, 12);
   const recency = describeExperiences(req.profile.experience).recencyNote;
   return [
     "You write the BODY paragraphs of a professional cover letter. The greeting,",
-    "header, date, and sign-off are added separately — do not write them.",
+    "header, date, and sign-off are added separately; do not write them.",
     "Use only the candidate's experience and skills that are RELEVANT to this",
     "specific role; do not add unrelated skills or filler.",
     "",
@@ -116,7 +116,7 @@ export function buildGeneratePrompt(req: GenerateRequest): string {
     "3. A brief, confident closing that thanks them and invites a conversation.",
     "",
     "Do NOT write \"Dear ...\", a sign-off, a name, an address, contact info, or a",
-    "date — only the paragraphs themselves.",
+    "date; only the paragraphs themselves.",
     instructionBlock(req.instructions),
     "\nCandidate profile:",
     buildProfileSummary(req),
@@ -126,23 +126,23 @@ export function buildGeneratePrompt(req: GenerateRequest): string {
     `Description:\n${capDescription(job.description)}`,
     // The concrete profile↔job overlaps to build the paragraphs around.
     matchedTerms.length
-      ? `\nThese profile terms match this job — center the letter on them and do not invent others: ${matchedTerms.join(", ")}.`
+      ? `\nThese profile terms match this job; center the letter on them and do not invent others: ${matchedTerms.join(", ")}.`
       : "",
     recency ? `\n${recency} Use natural, approximate tenure (e.g. "about two years"), never exact months.` : "",
-    // Restate the user's rules right before generation — small models follow
+    // Restate the user's rules right before generation - small models follow
     // instructions best when they're the last thing they read.
     req.instructions.length
       ? `\nBefore writing, re-read and strictly follow these rules:\n${req.instructions
           .map((i) => `- ${i}`)
           .join("\n")}`
       : "",
-    "\nReturn only the body paragraphs — no greeting, no sign-off.",
+    "\nReturn only the body paragraphs, no greeting, no sign-off.",
   ]
     .filter(Boolean)
     .join("\n");
 }
 
-/** Highlight-edit prompt (spec §8) — the model rewrites only the selection. */
+/** Highlight-edit prompt (spec §8) - the model rewrites only the selection. */
 export function buildSelectionPrompt(req: EditSelectionRequest): string {
   const instruction =
     req.action === "custom" ? req.customInstruction ?? "" : ACTION_PHRASING[req.action];

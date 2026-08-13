@@ -1,4 +1,4 @@
-// Native-module registration — WEB / default target (no-op).
+// Native-module registration - WEB / default target (no-op).
 //
 // Metro resolves `registerNative.native.ts` for iOS/Android and this file for
 // web (and anywhere without a `.native` variant). On web there are no custom

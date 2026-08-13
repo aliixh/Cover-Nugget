@@ -153,7 +153,7 @@ export async function getProfile(): Promise<Profile | null> {
   return row ? toProfile(row) : null;
 }
 
-/** True once a profile exists — used to decide whether to show onboarding. */
+/** True once a profile exists - used to decide whether to show onboarding. */
 export async function hasProfile(): Promise<boolean> {
   return (await getProfile()) !== null;
 }
@@ -495,7 +495,7 @@ export async function saveAdditional(
 /* Full profile aggregate                                              */
 /* ------------------------------------------------------------------ */
 
-/** Assembles the whole profile — used by Profile page and (later) the AI module. */
+/** Assembles the whole profile - used by Profile page and (later) the AI module. */
 export async function getFullProfile(): Promise<FullProfile | null> {
   const profile = await getProfile();
   if (!profile) return null;
@@ -534,7 +534,7 @@ export async function getCoverLetter(id: number): Promise<CoverLetter | null> {
 }
 
 /** Auto-name a letter from its company/role (e.g. "Google Cover Letter"). */
-/** Auto file name from company/role. Empty when neither is set — the caller
+/** Auto file name from company/role. Empty when neither is set - the caller
  *  then falls back to "Untitled N" (N = the letter's number). */
 export function defaultLetterTitle(company?: string | null, role?: string | null): string {
   const c = company?.trim();

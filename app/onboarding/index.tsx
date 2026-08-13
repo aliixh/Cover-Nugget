@@ -1,4 +1,4 @@
-// Onboarding welcome screen — a friendly intro shown before the first form.
+// Onboarding welcome screen - a friendly intro shown before the first form.
 // "Get started" continues into Personal Information.
 
 import { useRouter } from "expo-router";

@@ -23,7 +23,7 @@ export default function PersonalInfo() {
       Alert.alert("Name required", "Please enter your name to continue.");
       return;
     }
-    // Persist immediately — creates the profile row used by every later step.
+    // Persist immediately - creates the profile row used by every later step.
     await saveProfile({
       name: name.trim(),
       email,

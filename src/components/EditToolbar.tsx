@@ -95,7 +95,7 @@ export function EditToolbar({
       {/* Selection count / hint */}
       <Text className="mb-2 text-sm text-muted dark:text-dark-muted">
         {hasSel
-          ? `${selectedCount} sentence${selectedCount === 1 ? "" : "s"} selected — pick a change`
+          ? `${selectedCount} sentence${selectedCount === 1 ? "" : "s"} selected, pick a change`
           : "Tap sentences to select, then pick a change"}
       </Text>
 

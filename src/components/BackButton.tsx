@@ -1,7 +1,7 @@
 // Round back button: a bold left chevron in a soft pink circle (matches the
 // sidebar highlight). Used on pushed screens (editor, export, generate).
 //
-// The glyph is rendered with React Native's core Text (system font) — the app's
+// The glyph is rendered with React Native's core Text (system font) - the app's
 // serif Text made the arrow look thin and sit off-center.
 
 import React from "react";

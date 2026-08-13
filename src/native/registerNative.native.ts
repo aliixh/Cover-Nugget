@@ -1,4 +1,4 @@
-// Native-module registration — iOS / Android (Metro picks this `.native` file).
+// Native-module registration - iOS / Android (Metro picks this `.native` file).
 //
 // The on-device LLM (`llama.rn`) and AdMob (`react-native-google-mobile-ads`)
 // are CUSTOM native modules. They exist in a Dev Client / production build but
@@ -8,7 +8,7 @@
 //   2. gate on the execution environment so Expo Go ('storeClient') stays a
 //      no-op and only real dev/standalone builds register.
 //
-// This is the wiring that used to be a manual copy-paste in docs/AI_MODEL.md —
+// This is the wiring that used to be a manual copy-paste in docs/AI_MODEL.md -
 // it is now automatic: `_layout.tsx` calls registerNative() once at startup and
 // every AI/ad action becomes real in a dev build with zero further code.
 //
@@ -23,7 +23,7 @@ import { SYSTEM } from "../ai/promptConstants";
 declare const require: (name: string) => any;
 
 export function registerNative(): void {
-  // Expo Go can't load custom native modules — leave everything stubbed.
+  // Expo Go can't load custom native modules - leave everything stubbed.
   if (Constants.executionEnvironment === "storeClient") return;
 
   // --- On-device LLM (llama.rn) ---
@@ -43,7 +43,7 @@ export function registerNative(): void {
         // identical opener, but low enough temperature to stay faithful (the
         // fact guard in services/coverLetter.ts catches any drift regardless).
         const sampling = { temperature: 0.6, top_p: 0.9, top_k: 40, penalty_repeat: 1.12 };
-        // Feed the model via its chat template — this matches how the LoRA is
+        // Feed the model via its chat template - this matches how the LoRA is
         // fine-tuned and how an instruct model expects input. Fall back to a raw
         // prompt if this llama.rn build doesn't accept `messages`.
         try {
@@ -63,10 +63,10 @@ export function registerNative(): void {
       },
     });
   } catch {
-    // llama.rn absent in this build — generation falls back to the template.
+    // llama.rn absent in this build - generation falls back to the template.
   }
 
-  // --- Banner ads (AdMob) — HELD OFF for now, space kept. ------------------
+  // --- Banner ads (AdMob) - HELD OFF for now, space kept. ------------------
   // The ads *seam* stays live (`src/ads/ads.ts` + `<AdBanner/>` on Home render
   // nothing until a renderer is registered), so enabling ads later is code-
   // local and needs no UI change. To turn ads on:
@@ -87,6 +87,6 @@ export function registerNative(): void {
   //       }),
   //   });
   // } catch {
-  //   // ad SDK absent — ad slots keep rendering nothing.
+  //   // ad SDK absent - ad slots keep rendering nothing.
   // }
 }

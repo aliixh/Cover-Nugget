@@ -19,7 +19,7 @@ interface AppContextValue {
   refreshOnboarded: () => Promise<void>;
   /** Raw color values for the active scheme (for non-className surfaces). */
   colors: AppColors;
-  /** "light" | "dark" — the resolved scheme. */
+  /** "light" | "dark" - the resolved scheme. */
   scheme: "light" | "dark";
   /** The user's saved appearance preference. */
   themePref: ThemePref;

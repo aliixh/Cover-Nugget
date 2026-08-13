@@ -1,5 +1,5 @@
 // AI module contract (kept separate so a real model can be dropped in later
-// — Qwen3.5-0.8B in Phase 4 — without touching the UI).
+// - Qwen3.5-0.8B in Phase 4 - without touching the UI).
 //
 // IMPORTANT: nothing here runs a model. These are pure types + a provider
 // interface. No GPU usage anywhere in the app.

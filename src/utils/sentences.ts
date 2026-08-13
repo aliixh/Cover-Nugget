@@ -1,6 +1,6 @@
 // Splits letter text into tappable "sentence" tokens for the editor, keeping
 // the whitespace between them as separate (non-selectable) tokens so the
-// original layout — line breaks, blank lines, indentation — is preserved when
+// original layout - line breaks, blank lines, indentation - is preserved when
 // rendered as a run of nested <Text> spans.
 //
 // A sentence ends at ., !, or ? (optionally followed by closing quotes/brackets)

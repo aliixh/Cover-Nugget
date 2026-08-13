@@ -1,4 +1,4 @@
-// Onboarding Page 4: Work / Volunteer experience (spec §3) — one combined
+// Onboarding Page 4: Work / Volunteer experience (spec §3) - one combined
 // section. Add as many roles as you like (paid or volunteer).
 
 import { RepeatableSection } from "../../src/components/RepeatableSection";

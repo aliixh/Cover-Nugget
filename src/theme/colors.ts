@@ -1,7 +1,7 @@
 // Central color source of truth (mirrors tailwind.config.js + spec section 19).
 //
 // Tailwind classes cover most of the UI, but a few places need raw color values
-// in JavaScript — React Navigation's drawer/header theming and inline styles for
+// in JavaScript - React Navigation's drawer/header theming and inline styles for
 // native components that don't accept `className`. Keep this in sync with
 // tailwind.config.js.
 
@@ -29,7 +29,7 @@ export const darkColors = {
   border: "#2A4438",
 } as const;
 
-// Structural type (string values) so both light and dark palettes satisfy it —
+// Structural type (string values) so both light and dark palettes satisfy it -
 // deriving from `typeof lightColors` would lock each field to a literal.
 export interface AppColors {
   background: string;

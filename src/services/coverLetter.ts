@@ -1,7 +1,7 @@
 // High-level cover-letter service used by the screens.
 //
 // It assembles the inputs (full profile + permanent AI instructions), calls the
-// active AI provider, and — for generation — falls back to a local template
+// active AI provider, and - for generation - falls back to a local template
 // when the model isn't available, so the flow always works. Editing actions
 // require the model; when it's unavailable they throw a clear message for the
 // UI to show.
@@ -35,9 +35,9 @@ export interface GenerateResult {
 
 /**
  * Generate a first draft with the hybrid, tiered approach:
- *   Tier 1 — build an accurate, VARIED skeleton from the sentence-structure
+ *   Tier 1 - build an accurate, VARIED skeleton from the sentence-structure
  *            library (grounded in the real profile + matched job keywords).
- *   Tier 2 — the on-device model POLISHES that skeleton for flow/variation,
+ *   Tier 2 - the on-device model POLISHES that skeleton for flow/variation,
  *            keeping every fact. Falls back to the skeleton when no model is
  *            available (Expo Go / not downloaded).
  */
@@ -130,7 +130,7 @@ export async function editWholeLetter(
  * Shorten the letter until it fits `limit`, measured by OUR counter (the model
  * can't count reliably). Runs up to 3 model passes; the user only ever sees the
  * final, within-limit result. Throws if the model isn't available (caller shows
- * a message) — length is still displayed via the counter regardless.
+ * a message) - length is still displayed via the counter regardless.
  */
 export interface FitOptions {
   /** Max shortening passes (default 4). */
@@ -158,7 +158,7 @@ export async function fitToLength(
     current = (
       await getAI().editWhole({
         fullText: current,
-        instruction: `Rewrite this cover letter to be at most ${limit!.value} ${unit}. Keep it complete, natural, and professional — do not cut off mid-sentence.`,
+        instruction: `Rewrite this cover letter to be at most ${limit!.value} ${unit}. Keep it complete, natural, and professional, and do not cut off mid-sentence.`,
         instructions,
       })
     ).trim();

@@ -1,7 +1,7 @@
 // The most obvious "this was written by AI" tells, kept short on purpose.
 //  - AVOID_LINE is added to the polish prompt so the model steers clear.
 //  - stripDashes is a deterministic cleanup applied to every generated letter
-//    (works offline too) — em/en dashes are the single most obvious tell, and
+//    (works offline too) - em/en dashes are the single most obvious tell, and
 //    the user dislikes them anyway.
 
 export const AVOID_LINE =
@@ -10,7 +10,7 @@ export const AVOID_LINE =
   "seamless, synergy, \"passionate about\", \"proven track record\") and stiff " +
   "connectors (Furthermore, Moreover, In conclusion).";
 
-/** Replace em/en dashes (—, –) with commas — the clearest AI tell to remove.
+/** Replace em/en dashes with commas, the clearest AI tell to remove.
  *  Hyphens (-) in words like "end-to-end" are left alone. */
 export function stripDashes(text: string): string {
   return text

@@ -1,5 +1,5 @@
 // Deterministic keyword matching between the candidate profile and the job
-// description — no model involved. A tiny LLM can't reliably decide which of
+// description - no model involved. A tiny LLM can't reliably decide which of
 // your skills matter for a role, so the app does it: we tokenize both sides,
 // drop filler ("stop") words, and surface the overlap (which, after removing
 // stop words, is mostly the meaningful nouns / skills / verbs / proper nouns).
@@ -78,7 +78,7 @@ export function matchProfileToJob(profile: FullProfile, jobText: string): Keywor
   matchedSkills.sort((a, b) => freq(b.toLowerCase()) - freq(a.toLowerCase()));
 
   // 2) Overlapping keywords from the rest of the profile (experience, projects,
-  //    education, certs) — the shared nouns/verbs beyond the tagged skills.
+  //    education, certs) - the shared nouns/verbs beyond the tagged skills.
   const profileText = [
     ...profile.experience.map((e) => `${e.role ?? ""} ${e.description ?? ""} ${e.achievements ?? ""}`),
     ...profile.projects.map((p) => `${p.name ?? ""} ${p.technologies ?? ""} ${p.description ?? ""}`),

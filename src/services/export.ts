@@ -20,7 +20,7 @@ function escapeHtml(s: string): string {
     .replace(/>/g, "&gt;");
 }
 
-// A line that is only "rule" characters (box-drawing / dashes) — rendered as a
+// A line that is only "rule" characters (box-drawing / dashes) - rendered as a
 // full-width <hr> on export instead of fixed-width characters that stop halfway.
 const RULE_LINE = /^[─━—–\-─—–]{5,}$/;
 
@@ -55,7 +55,7 @@ function letterInner(content: string): string {
     .join("\n");
 }
 
-/** Printable HTML (PDF) — Times New Roman 12pt. Margins come from body padding
+/** Printable HTML (PDF) - Times New Roman 12pt. Margins come from body padding
  *  (WebKit/expo-print ignores `@page` margins on iOS, which jammed the text
  *  against the page edge). */
 function letterHtml(content: string): string {
@@ -118,7 +118,7 @@ export async function exportPdf(content: string, fileName?: string): Promise<voi
 
 /**
  * Export a Word-compatible document. We write an HTML file with a .doc
- * extension — Word, Pages, and Google Docs all open it and preserve paragraphs.
+ * extension - Word, Pages, and Google Docs all open it and preserve paragraphs.
  */
 export async function exportWord(content: string, fileName?: string): Promise<void> {
   if (!FileSystem.documentDirectory) {

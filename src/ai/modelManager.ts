@@ -2,10 +2,10 @@
 //
 // Handles downloading the GGUF weights to app storage with live progress,
 // checking whether they already exist, reporting size, and deleting them.
-// Uses expo-file-system — works in Expo Go, dev builds, and web (web falls
+// Uses expo-file-system - works in Expo Go, dev builds, and web (web falls
 // back gracefully since local model inference isn't supported in a browser).
 //
-// No GPU and no model execution here — this only moves a file onto the device.
+// No GPU and no model execution here - this only moves a file onto the device.
 
 // SDK 54 moved the classic file API (documentDirectory, download resumables,
 // getInfoAsync, ...) to the `/legacy` entry; the new default export is the
@@ -29,7 +29,7 @@ export interface ModelStatus {
 /** Reports whether the model is already present on the device. */
 export async function getModelStatus(): Promise<ModelStatus> {
   const path = getModelPath();
-  // documentDirectory is null on web — treat as "not downloadable here".
+  // documentDirectory is null on web - treat as "not downloadable here".
   if (!FileSystem.documentDirectory) {
     return { downloaded: false, path };
   }
@@ -53,7 +53,7 @@ function emit(cb: ProgressCallback | undefined, written: number, expected: numbe
 
 /**
  * Downloads the model with progress. Resolves to the local path on success.
- * Safe to call again if a partial file exists — it restarts the download.
+ * Safe to call again if a partial file exists - it restarts the download.
  */
 export async function downloadModel(onProgress?: ProgressCallback): Promise<string> {
   if (!FileSystem.documentDirectory) {

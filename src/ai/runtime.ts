@@ -2,7 +2,7 @@
 //
 // The actual on-device LLM engine (e.g. llama.rn / llama.cpp bindings) is a
 // custom native module and therefore only exists in a Dev Client / production
-// build — NOT in Expo Go or on web. To keep the whole app bundling everywhere,
+// build - NOT in Expo Go or on web. To keep the whole app bundling everywhere,
 // we never `import "llama.rn"` directly. Instead a dev build registers a
 // runtime object here at startup via `setLlamaRuntime()`.
 //

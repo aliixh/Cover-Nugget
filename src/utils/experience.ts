@@ -1,6 +1,6 @@
 // Turns work-experience dates into recency + tenure phrasing the letter can use
 // ("I currently work at…", "Most recently…", "for about two years"). All
-// deterministic — the model is only told the facts, it doesn't compute them.
+// deterministic - the model is only told the facts, it doesn't compute them.
 
 import type { Experience } from "../types/models";
 
@@ -39,7 +39,7 @@ function monthsBetween(a: YM, b: YM): number {
   return (b.y - a.y) * 12 + (b.m - a.m);
 }
 
-/** Friendly, rounded tenure — "for about 2 years", "for a year and a half",
+/** Friendly, rounded tenure - "for about 2 years", "for a year and a half",
  *  "for 8 months". Threshold: 4–8 months past a year reads as "and a half". */
 export function tenurePhrase(months: number): string {
   if (months < 1) return "";

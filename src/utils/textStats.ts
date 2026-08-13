@@ -1,5 +1,5 @@
 // Our own (non-AI) word/character counter. The small on-device model is bad at
-// counting, so length is ALWAYS measured here — both for the live counts shown
+// counting, so length is ALWAYS measured here - both for the live counts shown
 // to the user and for deciding whether to ask the model to shorten a draft.
 
 export function countWords(s: string): number {

@@ -1,4 +1,4 @@
-// Generate flow — Job Input (spec §5). Provide the job as a link (auto-scraped
+// Generate flow - Job Input (spec §5). Provide the job as a link (auto-scraped
 // via Jina Reader) or by pasting the description, then generate a draft.
 // For links: we scrape as soon as a valid URL is entered, show a progress bar,
 // keep "Generate" disabled until the scrape succeeds, and warn if it's blocked.
@@ -174,14 +174,14 @@ export default function GenerateScreen() {
   const canGenerate =
     mode === "link" ? scrapeState === "ok" : description.trim().length > 0;
 
-  // Tapping Generate: if the AI model isn't installed, confirm first — a no-AI
+  // Tapping Generate: if the AI model isn't installed, confirm first - a no-AI
   // letter is more basic, may read rougher, and the advanced (AI) editing tools
   // won't be offered. Otherwise generate straight away.
   const onGenerate = () => {
     if (modelReady === false) {
       Alert.alert(
         "Generate without the AI?",
-        "The AI model isn't downloaded. You can make a letter now using basic templates, but it will be simpler, more likely to have rough spots, and you WON'T get the advanced AI editing tools (rewrite, tone, auto-fit) — only manual editing.",
+        "The AI model isn't downloaded. You can make a letter now using basic templates, but it will be simpler, more likely to have rough spots, and you WON'T get the advanced AI editing tools (rewrite, tone, auto-fit); only manual editing.",
         [
           { text: "Download now", onPress: () => router.push("/model") },
           {
@@ -233,7 +233,7 @@ export default function GenerateScreen() {
               setBusyLabel(`Trimming to ${activeLimit.value} ${activeLimit.type === "word" ? "words" : "chars"}… (${p}/${max})`),
           });
         } catch {
-          // Model dropped out mid-fit — keep the draft; editor still flags it.
+          // Model dropped out mid-fit - keep the draft; editor still flags it.
         }
       }
 
@@ -273,7 +273,7 @@ export default function GenerateScreen() {
         Add the job
       </Text>
       <Text className="mb-5 text-base text-secondary dark:text-dark-ink">
-        Paste a job link or the description — we'll tailor your letter to it.
+        Paste a job link or the description, and we'll tailor your letter to it.
       </Text>
 
       {/* AI model not downloaded: be explicit that letters will use the basic
@@ -284,8 +284,8 @@ export default function GenerateScreen() {
             AI model not downloaded
           </Text>
           <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
-            You can still generate, but your letter will use basic templates only
-            — not the AI. Download the model (~{MODEL.approxSizeMB} MB, one time)
+            You can still generate, but your letter will use basic templates,
+            not the AI. Download the model (~{MODEL.approxSizeMB} MB, one time)
             for polished, tailored writing that runs fully offline on your device.
           </Text>
           <Pressable
@@ -335,7 +335,7 @@ export default function GenerateScreen() {
 
           <Text className="mb-2 text-xs text-muted dark:text-dark-muted">
             Works on most company career pages, Greenhouse, Lever, and Ashby.
-            Indeed & LinkedIn block automatic reading — for those, use “Paste
+            Indeed & LinkedIn block automatic reading. For those, use “Paste
             Description” instead.
           </Text>
 
@@ -376,7 +376,7 @@ export default function GenerateScreen() {
         />
       )}
 
-      {/* Company / Role — below the job input; auto-filled from the link or
+      {/* Company / Role - below the job input; auto-filled from the link or
           pasted text when we can detect them (still editable). */}
       <View className="mt-1 flex-row">
         <View className="mr-2 flex-1">
@@ -409,13 +409,13 @@ export default function GenerateScreen() {
             </Text>
           ) : (
             <Text className="mt-3 text-sm text-secondary dark:text-dark-primary">
-              Strong match — your profile covers the posting's key terms.
+              Strong match: your profile covers the posting's key terms.
             </Text>
           )}
         </Card>
       ) : null}
 
-      {/* Optional length limit — enforced before the letter is shown. */}
+      {/* Optional length limit - enforced before the letter is shown. */}
       <View className="mt-4">
         <LengthLimitControl state={limit} onChange={setLimit} />
       </View>
@@ -432,7 +432,7 @@ export default function GenerateScreen() {
           📄
         </Text>
         <Text className="text-lg font-bold text-background dark:text-dark-background">
-          {modelReady === false ? "Generate (basic — no AI)" : "Generate Cover Letter"}
+          {modelReady === false ? "Generate (basic, no AI)" : "Generate Cover Letter"}
         </Text>
       </Pressable>
 

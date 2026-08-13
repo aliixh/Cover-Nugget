@@ -44,7 +44,7 @@ export default function AppDrawerLayout() {
     <Drawer
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{
-        // Header — default ☰ hamburger (three lines)
+        // Header - default ☰ hamburger (three lines)
         headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.primary,
         headerTitleStyle: { fontFamily: SERIF, fontWeight: "700" },

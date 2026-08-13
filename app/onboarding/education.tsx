@@ -16,7 +16,7 @@ export default function EducationStep() {
       step={2}
       total={7}
       nextRoute="/onboarding/experience"
-      // Keep onboarding light — just the essentials. Major/minor/coursework can
+      // Keep onboarding light - just the essentials. Major/minor/coursework can
       // be added later in Profile.
       fields={[
         { key: "school", label: "School name", placeholder: "University of Washington" },

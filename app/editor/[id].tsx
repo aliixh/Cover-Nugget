@@ -102,7 +102,7 @@ export default function EditorScreen() {
   const [customInstruction, setCustomInstruction] = useState("");
 
   // Advanced (AI) editing needs the on-device model. When it isn't installed we
-  // hide those tools and show a note — a no-AI letter only gets manual editing.
+  // hide those tools and show a note - a no-AI letter only gets manual editing.
   // Re-checked on focus so downloading the model unlocks the tools on return.
   const [modelReady, setModelReady] = useState<boolean | null>(null);
   useFocusEffect(

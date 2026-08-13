@@ -1,5 +1,5 @@
 // First-run model setup. Shown once, right after onboarding, so the on-device
-// AI model downloads automatically (no button tap) — the closest a JS/Expo app
+// AI model downloads automatically (no button tap) - the closest a JS/Expo app
 // gets to "downloaded with the app". The user can defer (e.g. on cellular) and
 // grab it later from the AI Model screen.
 //
@@ -83,7 +83,7 @@ export default function ModelSetup() {
         <Text className="mt-2 text-center text-base text-secondary dark:text-dark-ink">
           We're setting up your assistant. This is a{" "}
           <Text className="font-semibold">one-time download</Text> (~
-          {MODEL.approxSizeMB} MB) — once it's done, Cover Nugget is{" "}
+          {MODEL.approxSizeMB} MB). Once it's done, Cover Nugget is{" "}
           <Text className="font-semibold">100% free forever</Text> and runs
           completely offline and private on your device.
         </Text>
@@ -124,7 +124,7 @@ export default function ModelSetup() {
           <Button label="Skip for now" variant="ghost" onPress={finish} />
         </View>
       ) : (
-        <Button label="Skip for now — download later" variant="ghost" onPress={finish} />
+        <Button label="Skip for now, download later" variant="ghost" onPress={finish} />
       )}
     </ScreenContainer>
   );

@@ -144,7 +144,7 @@ export default function ModelScreen() {
         <Card>
           <Text className="text-sm text-muted dark:text-dark-muted">
             The model is downloaded. Running it needs the full Cover Nugget app
-            build — in the Expo Go preview, generating and editing stay disabled.
+            build. In the Expo Go preview, generating and editing stay disabled.
           </Text>
         </Card>
       ) : null}

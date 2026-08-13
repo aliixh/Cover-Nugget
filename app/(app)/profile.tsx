@@ -332,7 +332,7 @@ export default function ProfileScreen() {
         })}
       </ScrollView>
 
-      {/* Swipeable pages — one per tab. Each page is a fixed-size box so the
+      {/* Swipeable pages - one per tab. Each page is a fixed-size box so the
           horizontal pager can page; its inner ScrollView (bounded by that box)
           scrolls the tab's content vertically. */}
       <View

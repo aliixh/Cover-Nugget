@@ -1,7 +1,7 @@
 // Single-section onboarding step: one RepeatableEditor inside the onboarding
 // scaffold. Kept as a thin wrapper so education / projects / certifications stay
-// a few lines of config. (Work + Volunteer share one screen — see the combined
-// experience step — and use RepeatableEditor directly.)
+// a few lines of config. (Work + Volunteer share one screen - see the combined
+// experience step - and use RepeatableEditor directly.)
 //
 // Continue / Skip auto-save any in-progress draft first, so nothing typed is lost.
 

@@ -1,8 +1,8 @@
-// Ads seam (spec §20 Phase 4 — AdMob monetization).
+// Ads seam (spec §20 Phase 4 - AdMob monetization).
 //
 // Like the LLM runtime, the ad SDK (react-native-google-mobile-ads) is a native
 // module that only exists in a Dev Client / production build. To keep the app
-// bundling in Expo Go / web, we never import it directly — a dev build registers
+// bundling in Expo Go / web, we never import it directly - a dev build registers
 // a renderer here at startup. Until then, ad slots render nothing.
 
 import type React from "react";

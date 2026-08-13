@@ -61,7 +61,7 @@ export default function HomeScreen() {
           </Text>
           <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
             Cover Nugget runs completely privately on your device. Download the
-            model once and everything works offline — your information never
+            model once and everything works offline, and your information never
             leaves your phone.
           </Text>
         </Card>
@@ -96,7 +96,7 @@ export default function HomeScreen() {
         ))
       )}
 
-      {/* Banner ad slot — renders only in a build with the ad SDK registered. */}
+      {/* Banner ad slot - renders only in a build with the ad SDK registered. */}
       <View className="mt-6 items-center">
         <AdBanner />
       </View>

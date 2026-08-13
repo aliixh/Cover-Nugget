@@ -10,7 +10,7 @@
 // number that isn't in the skeleton, or dropped one the skeleton had. The caller
 // (services/coverLetter.ts) falls back to the skeleton when the guard trips.
 //
-// Scope: numbers with a unit (%, k, m, b, x) or values >= 100 — the high-signal,
+// Scope: numbers with a unit (%, k, m, b, x) or values >= 100 - the high-signal,
 // low-false-positive set. Natural paraphrase ("5M" <-> "five million", "six
 // patients") is intentionally NOT flagged.
 
@@ -135,7 +135,7 @@ export function claimsCurrentlyEmployed(output: string, topRole?: { isCurrent?: 
   return /\b(currently|presently|right now)\b[^.]{0,30}\b(work|working|employed|employ)\b/i.test(output);
 }
 
-// Tools/frameworks/platforms — unambiguous names (no bare languages like "go"/"c",
+// Tools/frameworks/platforms - unambiguous names (no bare languages like "go"/"c",
 // which would false-positive on ordinary words). Used to catch invented skills.
 const TECH = (
   "docker kubernetes tensorflow pytorch keras react angular vue svelte django flask fastapi " +
@@ -147,7 +147,7 @@ const TECH = (
 
 /**
  * Invented-tool guard. Returns tech/tool names that appear in the letter but in
- * NEITHER the profile NOR the job description (allowedText) — i.e. fabricated
+ * NEITHER the profile NOR the job description (allowedText) - i.e. fabricated
  * skills the candidate never listed.
  */
 export function inventedTech(output: string, allowedText: string): string[] {

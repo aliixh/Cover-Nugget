@@ -1,6 +1,6 @@
 // Cover-letter FORMATS (spec: letter layout presets).
 //
-// A "format" only rearranges the scaffolding around the letter — the contact
+// A "format" only rearranges the scaffolding around the letter - the contact
 // header, the date, the greeting, the closing salutation, and the spacing /
 // indentation. The body paragraphs the user actually wrote are preserved, so
 // the editor can cycle through formats instantly with NO model call.
@@ -45,7 +45,7 @@ function contactBits(p: Profile): string[] {
 }
 
 /** Join non-empty sections with a blank line between them. Only surrounding
- *  blank lines are trimmed — a leading tab (semi-block indent) is preserved. */
+ *  blank lines are trimmed - a leading tab (semi-block indent) is preserved. */
 function join(sections: (string | undefined)[]): string {
   return sections
     .map((s) => (s ?? "").replace(/^\n+|\n+$/g, ""))
@@ -68,7 +68,7 @@ export const LETTER_FORMATS: LetterFormat[] = [
   {
     key: "block",
     name: "Classic Block",
-    blurb: "Name, address, contact, date — all left-aligned. The standard.",
+    blurb: "Name, address, contact, date, all left-aligned. The standard.",
     render: (p, parts) =>
       join([
         [t(p.name), t(p.location), contactBits(p).join(" · ")].filter(Boolean).join("\n"),
@@ -81,7 +81,7 @@ export const LETTER_FORMATS: LetterFormat[] = [
   {
     key: "modern",
     name: "Modern Compact",
-    blurb: "Tight two-line header, no date block — clean and tech-friendly.",
+    blurb: "Tight two-line header, no date block. Clean and tech-friendly.",
     render: (p, parts) =>
       join([
         [t(p.name), contactBits(p).join("  ·  ")].filter(Boolean).join("\n"),
@@ -108,7 +108,7 @@ export const LETTER_FORMATS: LetterFormat[] = [
   {
     key: "email",
     name: "Email Style",
-    blurb: "No header up top — contact info sits under your signature.",
+    blurb: "No header up top; contact info sits under your signature.",
     render: (p, parts) =>
       join([
         parts.greeting,
@@ -135,7 +135,7 @@ export const LETTER_FORMATS: LetterFormat[] = [
     blurb: "Uppercase name, bullet-separated contact, spare and modern.",
     render: (p, parts) =>
       join([
-        // Name, contact, and date all single-spaced — a tight header block.
+        // Name, contact, and date all single-spaced - a tight header block.
         [t(p.name).toUpperCase(), contactBits(p).join("  •  "), today()]
           .filter(Boolean)
           .join("\n"),
