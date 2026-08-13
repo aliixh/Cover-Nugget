@@ -127,3 +127,18 @@ Objective quality tracking across model versions (see `dataset/eval_profiles.jso
 v4 @ temp 0.6: **75% model-polish, 100% factual (guard-backed), 0 dashes, 16/16 unique openers.**
 A temperature sweep (0.3-0.6) confirmed 0.6 is optimal; the residual ~25% is numeric
 drift, addressable only by DPO/targeted training (not temperature).
+
+## DPO experiment (v4+DPO) — negative result, do not ship
+
+Attempted DPO to cut the ~25% numeric-drift fallbacks. Preference pairs were
+gold (chosen) vs the same letter with metrics corrupted (rejected),
+`dataset/dpo_pairs.jsonl` (49 pairs), trained via `train_dpo.py` on top of v4.
+
+Training looked healthy (pref accuracy -> 100%, margins -> 0.25) but the eval
+**regressed 75% -> 63%**. Cause: synthetic corruptions are OFF-distribution vs
+how the model actually drifts (it rephrases/drops numbers, not the injected
+perturbations). **v4 remains the shipped model.**
+
+Correct next attempt if revisited: **on-policy negatives** — generate the model's
+own outputs, keep the ones that FAIL the number guard as `rejected`, pair with
+gold as `chosen`. That matches the real failure distribution.
