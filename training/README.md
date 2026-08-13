@@ -147,3 +147,18 @@ kept (env `DPO_DATA`/`DPO_OUT`) for the record; on-policy harvest = batched
 generation from `merged/llama1b_v4_merged` (NO extra adapter — merging v4 twice
 produces garbage) filtered by the guard.
 
+
+## Distillation experiment (v5) — negative result, do not ship
+
+Idea: use the base Llama-3.2-3B as a *teacher* to write letters for 120 fresh
+profiles, filter to clean/faithful ones (`dataset/distill_train.jsonl`, 40 kept
+of 120 — 73 dropped for style), and SFT the 1B on those + the 56 hand seeds.
+
+Result: v5 **regressed** — eval polish 12/16 -> 8/16, and generic-phrase hits
+11 -> 16 ("aligns", "ideal fit", "excited about", "confident that", "opportunity
+to join", "solid foundation"...). Cause: the base 3B's coherence is bundled with
+generic corporate clichés; distilling from it dilutes the plain, human voice the
+1B learned from the hand-written seeds. **v4 stays shipped.**
+
+Lesson: the only good *voice* teacher is a strong model (or a human) that already
+writes plainly. The local 3B is a coherence teacher, not a style teacher.
