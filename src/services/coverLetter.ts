@@ -10,7 +10,7 @@ import { getAI } from "../ai";
 import { buildTemplateLetter } from "../ai/template";
 import { applyLetterFormat } from "./letterFormat";
 import { stripDashes } from "../ai/humanize";
-import { checkFacts } from "../ai/factGuard";
+import { checkFacts, claimsCurrentlyEmployed, inventedTech } from "../ai/factGuard";
 import { POLISH_INSTRUCTION } from "../ai/promptConstants";
 import type { JobInput, SelectionAction } from "../ai/types";
 import { getFullProfile, listAiSettings } from "../db/repositories";
@@ -55,6 +55,25 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
   // Tier 1: accurate, varied skeleton (dashes stripped for a human feel).
   const skeleton = stripDashes(buildTemplateLetter(req));
 
+  // Everything the letter is allowed to claim as a skill: the profile + this job.
+  const p = profile;
+  const allowedText = [
+    ...p.skills.map((s) => s.skill),
+    ...p.experience.map((e) => `${e.role ?? ""} ${e.company ?? ""} ${e.description ?? ""}`),
+    ...p.projects.map((x) => `${x.name ?? ""} ${x.technologies ?? ""}`),
+    ...p.education.map((e) => `${e.degree ?? ""} ${e.school ?? ""}`),
+    job.description ?? "",
+    job.role ?? "",
+  ].join(" ");
+  const topRole = p.experience[0];
+
+  /** The model may make the skeleton prettier, but it can't change a fact:
+   *  no number drift, no present-tense claim on an ended role, no invented tool. */
+  const grounded = (letter: string) =>
+    checkFacts(skeleton, letter).ok &&
+    !claimsCurrentlyEmployed(letter, topRole) &&
+    inventedTech(letter, allowedText).length === 0;
+
   // Tier 2: model polishes it (facts preserved).
   try {
     const polished = stripDashes(
@@ -64,9 +83,9 @@ export async function generateLetter(job: JobInput): Promise<GenerateResult> {
         instructions,
       })
     );
-    // Fact guard: if the polish dropped or invented a hard number, the model
-    // broke a fact — keep the accurate skeleton instead of the pretty lie.
-    if (!checkFacts(skeleton, polished).ok) {
+    // Fact guard: if the polish broke a fact (number, employment status, or an
+    // invented skill), keep the accurate skeleton instead of the pretty lie.
+    if (!grounded(polished)) {
       return { content: format(skeleton), usedFallback: false, factGuardTripped: true };
     }
     return { content: format(polished), usedFallback: false };

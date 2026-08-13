@@ -118,3 +118,38 @@ export function checkFacts(skeleton: string, output: string): FactCheck {
   const dropped = [...src].filter((n) => !out.has(n));
   return { ok: invented.length === 0 && dropped.length === 0, invented, dropped };
 }
+
+function hasWord(text: string, term: string): boolean {
+  const t = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`\\b${t}\\b`, "i").test(text);
+}
+
+/**
+ * Employment-status guard. When the top role has ended (`isCurrent === false`),
+ * the letter must not claim present-tense employment there. The model likes to
+ * turn "most recently I worked" into "I currently work", which misstates status.
+ */
+export function claimsCurrentlyEmployed(output: string, topRole?: { isCurrent?: boolean } | null): boolean {
+  if (!topRole || topRole.isCurrent !== false) return false; // current/unknown -> "currently" is fine
+  // "currently"/"presently"/"now" within a short span of work/employ (skips "currently pursuing")
+  return /\b(currently|presently|right now)\b[^.]{0,30}\b(work|working|employed|employ)\b/i.test(output);
+}
+
+// Tools/frameworks/platforms — unambiguous names (no bare languages like "go"/"c",
+// which would false-positive on ordinary words). Used to catch invented skills.
+const TECH = (
+  "docker kubernetes tensorflow pytorch keras react angular vue svelte django flask fastapi " +
+  "spring express kafka spark hadoop airflow redis mongodb postgresql postgres mysql sqlite " +
+  "elasticsearch terraform ansible jenkins graphql grpc tableau powerbi figma sketch jira " +
+  "confluence salesforce snowflake databricks azure firebase heroku cuda opencv pandas numpy " +
+  "scikit-learn sklearn huggingface langchain kotlin swift rust scala"
+).split(" ");
+
+/**
+ * Invented-tool guard. Returns tech/tool names that appear in the letter but in
+ * NEITHER the profile NOR the job description (allowedText) — i.e. fabricated
+ * skills the candidate never listed.
+ */
+export function inventedTech(output: string, allowedText: string): string[] {
+  return TECH.filter((t) => hasWord(output, t) && !hasWord(allowedText, t));
+}
