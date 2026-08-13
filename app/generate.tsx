@@ -3,8 +3,8 @@
 // For links: we scrape as soon as a valid URL is entered, show a progress bar,
 // keep "Generate" disabled until the scrape succeeds, and warn if it's blocked.
 
-import { useRouter } from "expo-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useFocusEffect, useRouter } from "expo-router";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Animated, Modal, Pressable, ScrollView, View } from "react-native";
 import { Text } from "../src/ui/serif";
 import { ScreenContainer } from "../src/components/ScreenContainer";
@@ -17,6 +17,8 @@ import { LengthLimitControl, type LimitState } from "../src/components/LengthLim
 import { useApp } from "../src/context/AppContext";
 import { fetchJobTextFromUrl, guessCompanyRole } from "../src/job/jina";
 import { generateLetter, fitToLength } from "../src/services/coverLetter";
+import { getModelStatus } from "../src/ai/modelManager";
+import { MODEL } from "../src/ai/modelConfig";
 import { jobMatchInsight } from "../src/ai/jobMatch";
 import type { FullProfile } from "../src/types/models";
 import {
@@ -88,6 +90,17 @@ export default function GenerateScreen() {
   useEffect(() => {
     getFullProfile().then(setProfile).catch(() => {});
   }, []);
+
+  // Whether the on-device AI model is downloaded. null = still checking.
+  // Re-checked on focus so returning from the download screen clears the warning.
+  const [modelReady, setModelReady] = useState<boolean | null>(null);
+  useFocusEffect(
+    useCallback(() => {
+      getModelStatus()
+        .then((s) => setModelReady(s.downloaded))
+        .catch(() => setModelReady(null));
+    }, [])
+  );
   const scrapeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Dev tool: preview the full scraped text.
@@ -240,6 +253,29 @@ export default function GenerateScreen() {
         Paste a job link or the description — we'll tailor your letter to it.
       </Text>
 
+      {/* AI model not downloaded: be explicit that letters will use the basic
+          template writer (no AI), and give a one-tap path to download it. */}
+      {modelReady === false ? (
+        <Card className="mb-5 border-accent">
+          <Text className="text-base font-semibold text-ink dark:text-dark-ink">
+            AI model not downloaded
+          </Text>
+          <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
+            You can still generate, but your letter will use basic templates only
+            — not the AI. Download the model (~{MODEL.approxSizeMB} MB, one time)
+            for polished, tailored writing that runs fully offline on your device.
+          </Text>
+          <Pressable
+            onPress={() => router.push("/model")}
+            className="mt-3 self-start rounded-xl bg-primary px-4 py-2 active:opacity-80 dark:bg-dark-primary"
+          >
+            <Text className="font-semibold text-background dark:text-dark-background">
+              Download AI model
+            </Text>
+          </Pressable>
+        </Card>
+      ) : null}
+
       {/* Mode toggle */}
       <View className="mb-5 flex-row rounded-xl bg-highlight p-1 dark:bg-dark-surface">
         {(["description", "link"] as Mode[]).map((m) => (
@@ -373,7 +409,7 @@ export default function GenerateScreen() {
           📄
         </Text>
         <Text className="text-lg font-bold text-background dark:text-dark-background">
-          Generate Cover Letter
+          {modelReady === false ? "Generate (basic — no AI)" : "Generate Cover Letter"}
         </Text>
       </Pressable>
 
