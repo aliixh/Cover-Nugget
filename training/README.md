@@ -112,3 +112,18 @@ drops/invents a number, the app keeps the deterministic skeleton.
 - `train_lora.py` — HF/peft/trl LoRA trainer for any base (Qwen2.5-0.5B, Llama-3.2-1B).
 - `generate_bench.py` — base-vs-LoRA generation on the held-out set.
 - `requirements.txt` — CPU deps (synth); training deps install on the GPU box.
+
+## Evaluation harness
+
+Objective quality tracking across model versions (see `dataset/eval_profiles.json`,
+16 diverse profiles: current/past roles, thin/rich, number-heavy, tool-tempting).
+
+1. Build cases -> `/tmp/eval_cases.json` (already saved as `dataset/eval_profiles.json`).
+2. Generate: run each case's `messages` through the model (GPU) with production
+   sampling (temp 0.6, top_p 0.9, top_k 40, rep 1.12) -> `/tmp/eval_polished.json`.
+3. Score: `npx tsx training/eval_score.ts` -> model-polish rate, guard-fallback
+   breakdown (numbers/status/tool), dash/cliche counts, opener uniqueness.
+
+v4 @ temp 0.6: **75% model-polish, 100% factual (guard-backed), 0 dashes, 16/16 unique openers.**
+A temperature sweep (0.3-0.6) confirmed 0.6 is optimal; the residual ~25% is numeric
+drift, addressable only by DPO/targeted training (not temperature).

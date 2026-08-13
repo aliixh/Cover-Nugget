@@ -1,0 +1,322 @@
+[
+  {
+    "idx": 0,
+    "tag": "current/tech",
+    "name": "Ken Ito",
+    "role": "Backend Engineer",
+    "company": "Loop",
+    "skeleton": "Dear Hiring Manager,\n\nI'm reaching out to put my name forward for the Backend Engineer role at Loop. It lines up closely with what I do best. I currently work as Software Engineer at Nimbus for about 5 and a half years.\n\nYou're looking for Python, Django and PostgreSQL, all areas I work in regularly. A recent highlight: I build APIs in Django serving 2M requests a day, cut p95 latency 35% with query tuning. I also bring B.S. Computer Science from UT Austin.\n\nI'd welcome the chance to discuss how I can help Loop. Thank you for your time and consideration.\n\nSincerely,\nKen Ito",
+    "allowedText": "Python Django PostgreSQL REST APIs AWS Software Engineer Nimbus Builds APIs in Django serving 2M requests a day; cut p95 latency 35% with query tuning. B.S. Computer Science UT Austin Python, Django, PostgreSQL, REST APIs, scalable backend services, AWS Backend Engineer",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nI'm reaching out to put my name forward for the Backend Engineer role at Loop. It lines up closely with what I do best. I currently work as Software Engineer at Nimbus for about 5 and a half years.\n\nYou're looking for Python, Django and PostgreSQL, all areas I work in regularly. A recent highlight: I build APIs in Django serving 2M requests a day, cut p95 latency 35% with query tuning. I also bring B.S. Computer Science from UT Austin.\n\nI'd welcome the chance to discuss how I can help Loop. Thank you for your time and consideration.\n\nSincerely,\nKen Ito\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 1,
+    "tag": "current/health",
+    "name": "Sara Kline",
+    "role": "ICU Registered Nurse",
+    "company": "Summit Care",
+    "skeleton": "Dear Hiring Manager,\n\nThe ICU Registered Nurse position at Summit Care is a strong match for what I do. The focus of the position fits my experience well. I currently work as Registered Nurse at Mercy General for about 7 years, which has prepared me well for this next step.\n\nYour posting calls for IV therapy, patient care and EPIC EHR, which are central to my experience. To put that concretely, I care for up to 5 ICU patients a shift, precepts new nurses and led a sepsis-protocol rollout. I hold B.S. Nursing from CU Denver.\n\nI'd welcome the chance to discuss how I can help Summit Care. Thank you for your time and consideration.\n\nSincerely,\nSara Kline",
+    "allowedText": "patient care IV therapy triage EPIC EHR wound care Registered Nurse Mercy General Cares for up to 5 ICU patients a shift; precepts new nurses and led a sepsis-protocol rollout. B.S. Nursing CU Denver critical care, IV therapy, EPIC, teamwork, patient safety ICU Registered Nurse",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe ICU Registered Nurse position at Summit Care is a strong match for what I do. The focus of the position fits my experience well. I currently work as Registered Nurse at Mercy General for about 7 years, which has prepared me well for this next step.\n\nYour posting calls for IV therapy, patient care and EPIC EHR, which are central to my experience. To put that concretely, I care for up to 5 ICU patients a shift, precepts new nurses and led a sepsis-protocol rollout. I hold B.S. Nursing from CU Denver.\n\nI'd welcome the chance to discuss how I can help Summit Care. Thank you for your time and consideration.\n\nSincerely,\nSara Kline\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 2,
+    "tag": "current/marketing-$",
+    "name": "Dana Roy",
+    "role": "Growth Marketing Manager",
+    "company": "Brightwave",
+    "skeleton": "Dear Hiring Manager,\n\nWhen I came across the Growth Marketing Manager opening at Brightwave, I knew I wanted to apply. It's the kind of role I've been working toward. I currently work as Marketing Manager at Fernpath for about 6 and a half years, so I'd bring hands-on, relevant experience from day one.\n\nThe role asks for SEO, analytics and paid social, and those are exactly the strengths I'd bring. I own growth for a SaaS product, grew signups 3x and lifted MQLs 40% while cutting CAC 18%. My background includes B.A. Marketing from DePaul.\n\nThank you for reviewing my application, I'd be glad to share more in a conversation.\n\nSincerely,\nDana Roy",
+    "allowedText": "SEO content strategy email marketing analytics paid social Marketing Manager Fernpath Owns growth for a SaaS product; grew signups 3x and lifted MQLs 40% while cutting CAC 18%. B.A. Marketing DePaul SEO, content, paid social, analytics, funnel optimization Growth Marketing Manager",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nWhen I came across the Growth Marketing Manager opening at Brightwave, I knew I wanted to apply. It's the kind of role I've been working toward. I currently work as Marketing Manager at Fernpath for about 6 and a half years, so I'd bring hands-on, relevant experience from day one.\n\nThe role asks for SEO, analytics and paid social, and those are exactly the strengths I'd bring. I own growth for a SaaS product, grew signups 3x and lifted MQLs 40% while cutting CAC 18%. My background includes B.A. Marketing from DePaul.\n\nThank you for reviewing my application, I'd be glad to share more in a conversation.\n\nSincerely,\nDana Roy\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 3,
+    "tag": "current/finance-$$",
+    "name": "Owen Park",
+    "role": "Senior Financial Analyst",
+    "company": "Harborline",
+    "skeleton": "Dear Hiring Manager,\n\nWhen I came across the Senior Financial Analyst opening at Harborline, I knew I wanted to apply. It lines up closely with what I do best. I currently work as Financial Analyst at Cardinal Capital for about 6 years, and I'm ready to bring that experience to your team.\n\nI noticed you value financial modeling, Excel and valuation; these have been core to my recent work. As one example, I support a $250M portfolio, built the forecasting model and improved accuracy 15% while cutting the close from 6 days to 3. My background includes B.S. Finance from NYU.\n\nI'd be glad to contribute to Harborline, and I appreciate you taking the time to consider me.\n\nSincerely,\nOwen Park",
+    "allowedText": "financial modeling Excel valuation forecasting Financial Analyst Cardinal Capital Supports a $250M portfolio; built the forecasting model and improved accuracy 15% while cutting the close from 6 days to 3. B.S. Finance NYU financial modeling, valuation, forecasting, Excel Senior Financial Analyst",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nWhen I came across the Senior Financial Analyst opening at Harborline, I knew I wanted to apply. It lines up closely with what I do best. I currently work as Financial Analyst at Cardinal Capital for about 6 years, and I'm ready to bring that experience to your team.\n\nI noticed you value financial modeling, Excel and valuation; these have been core to my recent work. As one example, I support a $250M portfolio, built the forecasting model and improved accuracy 15% while cutting the close from 6 days to 3. My background includes B.S. Finance from NYU.\n\nI'd be glad to contribute to Harborline, and I appreciate you taking the time to consider me.\n\nSincerely,\nOwen Park\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 4,
+    "tag": "current/teacher",
+    "name": "Ivy Mars",
+    "role": "Elementary Teacher",
+    "company": "Grove Academy",
+    "skeleton": "Dear Hiring Manager,\n\nThe Elementary Teacher opening at Grove Academy immediately caught my eye. It lines up closely with what I do best. I currently work as 5th Grade Teacher at Cedar Elementary for about 8 years, so I'd bring hands-on, relevant experience from day one.\n\nThe role asks for assessment and classroom management, and those are exactly the strengths I'd bring. To put that concretely, I teach a class of 28, raised math proficiency 22% with small-group instruction. I also bring B.A. Education from Portland State.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nIvy Mars",
+    "allowedText": "lesson planning classroom management differentiation assessment 5th Grade Teacher Cedar Elementary Teaches a class of 28; raised math proficiency 22% with small-group instruction. B.A. Education Portland State differentiated instruction, classroom culture, assessment Elementary Teacher",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Elementary Teacher opening at Grove Academy immediately caught my eye. It lines up closely with what I do best. I currently work as 5th Grade Teacher at Cedar Elementary for about 8 years, so I'd bring hands-on, relevant experience from day one.\n\nThe role asks for assessment and classroom management, and those are exactly the strengths I'd bring. To put that concretely, I teach a class of 28, raised math proficiency 22% with small-group instruction. I also bring B.A. Education from Portland State.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nIvy Mars\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 5,
+    "tag": "current/data-tooltempt",
+    "name": "Rae Lund",
+    "role": "Data Engineer",
+    "company": "Vantage",
+    "skeleton": "Dear Hiring Manager,\n\nThe Data Engineer position at Vantage is a strong match for what I do. The work it involves is exactly what I care most about. I currently work as Data Engineer at Streamline for over 5 years, and I'm ready to bring that experience to your team.\n\nYou're looking for SQL, Python and dbt, all areas I work in regularly. A recent highlight: I own the data warehouse, built pipelines in dbt and Airflow processing 500M rows a day. My background includes B.S. Computer Science from UW.\n\nI'd welcome the chance to discuss how I can help Vantage. Thank you for your time and consideration.\n\nSincerely,\nRae Lund",
+    "allowedText": "SQL Python dbt data pipelines Airflow Data Engineer Streamline Owns the data warehouse; built pipelines in dbt and Airflow processing 500M rows a day. B.S. Computer Science UW SQL, Python, dbt, data pipelines, warehousing Data Engineer",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Data Engineer position at Vantage is a strong match for what I do. The work it involves is exactly what I care most about. I currently work as Data Engineer at Streamline for over 5 years, and I'm ready to bring that experience to your team.\n\nYou're looking for SQL, Python and dbt, all areas I work in regularly. A recent highlight: I own the data warehouse, built pipelines in dbt and Airflow processing 500M rows a day. My background includes B.S. Computer Science from UW.\n\nI'd welcome the chance to discuss how I can help Vantage. Thank you for your time and consideration.\n\nSincerely,\nRae Lund\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 6,
+    "tag": "current/design",
+    "name": "Cleo Fox",
+    "role": "Senior Product Designer",
+    "company": "Beacon",
+    "skeleton": "Dear Hiring Manager,\n\nThe Senior Product Designer opening at Beacon immediately caught my eye. The focus of the position fits my experience well. I currently work as Product Designer at Northwind for about 6 years, and I'm ready to bring that experience to your team.\n\nYour posting calls for Figma, design systems and user research, which are central to my experience. A recent highlight: I lead design for a B2B tool, ran the redesign that raised activation 25%. I also bring B.F.A. Design from RISD.\n\nI'd love to talk about how my background fits your team. Thank you for considering my application.\n\nSincerely,\nCleo Fox",
+    "allowedText": "Figma design systems prototyping user research Product Designer Northwind Leads design for a B2B tool; ran the redesign that raised activation 25%. B.F.A. Design RISD Figma, design systems, user research, B2B Senior Product Designer",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Senior Product Designer opening at Beacon immediately caught my eye. The focus of the position fits my experience well. I currently work as Product Designer at Northwind for about 6 years, and I'm ready to bring that experience to your team.\n\nYour posting calls for Figma, design systems and user research, which are central to my experience. A recent highlight: I lead design for a B2B tool, ran the redesign that raised activation 25%. I also bring B.F.A. Design from RISD.\n\nI'd love to talk about how my background fits your team. Thank you for considering my application.\n\nSincerely,\nCleo Fox\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 7,
+    "tag": "current/sales",
+    "name": "Max Hale",
+    "role": "Account Executive",
+    "company": "Northpeak",
+    "skeleton": "Dear Hiring Manager,\n\nThe Account Executive opening at Northpeak immediately caught my eye. Your emphasis on B2B sales and pipeline management maps directly to my day-to-day work. I currently work as Account Executive at Vantage Systems for about 7 and a half years, so I'd bring hands-on, relevant experience from day one.\n\nI noticed you value B2B sales and pipeline management; these have been core to my recent work. I run a B2B territory, hit 120% of quota two years running and closed a $1.2M deal. I also bring B.A. Business from SMU.\n\nI'd welcome the chance to discuss how I can help Northpeak. Thank you for your time and consideration.\n\nSincerely,\nMax Hale",
+    "allowedText": "B2B sales pipeline management CRM negotiation Account Executive Vantage Systems Runs a B2B territory; hit 120% of quota two years running and closed a $1.2M deal. B.A. Business SMU B2B sales, pipeline, quota, closing Account Executive",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Account Executive opening at Northpeak immediately caught my eye. Your emphasis on B2B sales and pipeline management maps directly to my day-to-day work. I currently work as Account Executive at Vantage Systems for about 7 and a half years, so I'd bring hands-on, relevant experience from day one.\n\nI noticed you value B2B sales and pipeline management; these have been core to my recent work. I run a B2B territory, hit 120% of quota two years running and closed a $1.2M deal. I also bring B.A. Business from SMU.\n\nI'd welcome the chance to discuss how I can help Northpeak. Thank you for your time and consideration.\n\nSincerely,\nMax Hale\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 8,
+    "tag": "past/newgrad-swe",
+    "name": "Nia Cole",
+    "role": "Software Engineer",
+    "company": "Latchpoint",
+    "skeleton": "Dear Hiring Manager,\n\nThe Software Engineer opening at Latchpoint immediately caught my eye. The focus of the position fits my experience well. Most recently, I worked as Software Engineering Intern at Cloudreach, and I'm ready to bring that experience to your team.\n\nI noticed you value Java, Python and Git; these have been core to my recent work. A recent highlight: I built REST tools in Java, added tests that raised coverage from 40% to 80%. I also bring B.S. Computer Science from BU.\n\nThank you for reviewing my application, I'd be glad to share more in a conversation.\n\nSincerely,\nNia Cole",
+    "allowedText": "Java Python Git SQL Software Engineering Intern Cloudreach Built REST tools in Java; added tests that raised coverage from 40% to 80%. Budget app React B.S. Computer Science BU Java or Python, tests, Git, SQL, new grad Software Engineer",
+    "topIsCurrent": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Software Engineer opening at Latchpoint immediately caught my eye. The focus of the position fits my experience well. Most recently, I worked as Software Engineering Intern at Cloudreach, and I'm ready to bring that experience to your team.\n\nI noticed you value Java, Python and Git; these have been core to my recent work. A recent highlight: I built REST tools in Java, added tests that raised coverage from 40% to 80%. I also bring B.S. Computer Science from BU.\n\nThank you for reviewing my application, I'd be glad to share more in a conversation.\n\nSincerely,\nNia Cole\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 9,
+    "tag": "past/career-changer",
+    "name": "Gus Reed",
+    "role": "Customer Success Associate",
+    "company": "Helpshift",
+    "skeleton": "Dear Hiring Manager,\n\nApplying for the Customer Success Associate position at Helpshift is an easy decision for me. Your emphasis on communication and customer service maps directly to my day-to-day work. I currently work as Barista Shift Lead at Grind House for over 5 years, and I'm ready to bring that experience to your team.\n\nThe role asks for communication and customer service, and those are exactly the strengths I'd bring. As one example, I lead a shift of 6, boosted upsell revenue 12%. My background includes B.A. Communications from Portland State.\n\nI'd be glad to contribute to Helpshift, and I appreciate you taking the time to consider me.\n\nSincerely,\nGus Reed",
+    "allowedText": "customer service communication problem solving Barista Shift Lead Grind House Leads a shift of 6; boosted upsell revenue 12%. B.A. Communications Portland State customer communication, onboarding SaaS clients, empathy Customer Success Associate",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nApplying for the Customer Success Associate position at Helpshift is an easy decision for me. Your emphasis on communication and customer service maps directly to my day-to-day work. I currently work as Barista Shift Lead at Grind House for over 5 years, and I'm ready to bring that experience to your team.\n\nThe role asks for communication and customer service, and those are exactly the strengths I'd bring. As one example, I lead a shift of 6, boosted upsell revenue 12%. My background includes B.A. Communications from Portland State.\n\nI'd be glad to contribute to Helpshift, and I appreciate you taking the time to consider me.\n\nSincerely,\nGus Reed\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 10,
+    "tag": "past/emp-gap",
+    "name": "Lia Voss",
+    "role": "Operations Manager",
+    "company": "Summit Group",
+    "skeleton": "Dear Hiring Manager,\n\nThe Operations Manager position at Summit Group is a strong match for what I do. The focus of the position fits my experience well. Most recently, I worked as Operations Manager at Astra for about 6 and a half years, and I'm ready to bring that experience to your team.\n\nA recent highlight: I ran ops for a 50-person office, kept 95% of projects on budget and cut costs $300K. My background includes B.A. Management from UNT.\n\nI'd love to talk about how my background fits your team. Thank you for considering my application.\n\nSincerely,\nLia Voss",
+    "allowedText": "project coordination budgeting vendor management Operations Manager Astra Ran ops for a 50-person office; kept 95% of projects on budget and cut costs $300K. B.A. Management UNT operations, budgets, vendors, process Operations Manager",
+    "topIsCurrent": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Operations Manager position at Summit Group is a strong match for what I do. The focus of the position fits my experience well. Most recently, I worked as Operations Manager at Astra for about 6 and a half years, and I'm ready to bring that experience to your team.\n\nA recent highlight: I ran ops for a 50-person office, kept 95% of projects on budget and cut costs $300K. My background includes B.A. Management from UNT.\n\nI'd love to talk about how my background fits your team. Thank you for considering my application.\n\nSincerely,\nLia Voss\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 11,
+    "tag": "past/recent-grad-data",
+    "name": "Eli Ford",
+    "role": "Data Analyst",
+    "company": "Brightside",
+    "skeleton": "Dear Hiring Manager,\n\nI'm very interested in the Data Analyst role at Brightside. It lines up closely with what I do best. Most recently, I worked as Data Science Intern at Meridian, which has prepared me well for this next step.\n\nI noticed you value Python and SQL; these have been core to my recent work. To put that concretely, I analyzed churn in Python, built a dashboard that cut reporting work in half. My background includes B.S. Statistics from UIUC.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nEli Ford",
+    "allowedText": "Python SQL pandas data visualization Data Science Intern Meridian Analyzed churn in Python; built a dashboard that cut reporting work in half. B.S. Statistics UIUC SQL, Python, dashboards, A/B testing, entry level Data Analyst",
+    "topIsCurrent": false,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nI'm very interested in the Data Analyst role at Brightside. It lines up closely with what I do best. Most recently, I worked as Data Science Intern at Meridian, which has prepared me well for this next step.\n\nI noticed you value Python and SQL; these have been core to my recent work. To put that concretely, I analyzed churn in Python, built a dashboard that cut reporting work in half. My background includes B.S. Statistics from UIUC.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nEli Ford\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 12,
+    "tag": "thin/minimal",
+    "name": "Tom Ash",
+    "role": "Sales Associate",
+    "company": "Cornerstone",
+    "skeleton": "Dear Hiring Manager,\n\nThe Sales Associate opening at Cornerstone immediately caught my eye. It's the kind of role I've been working toward. I currently work as Retail Associate at Rivertown for about 3 and a half years, and I'm ready to bring that experience to your team.\n\nThe role asks for customer service, and those are exactly the strengths I'd bring. A recent highlight: I handle a busy sales floor. I also bring High School Diploma from Reno High.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nTom Ash",
+    "allowedText": "customer service cash handling Retail Associate Rivertown Handles a busy sales floor. High School Diploma Reno High customer service, teamwork, reliability Sales Associate",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Sales Associate opening at Cornerstone immediately caught my eye. It's the kind of role I've been working toward. I currently work as Retail Associate at Rivertown for about 3 and a half years, and I'm ready to bring that experience to your team.\n\nThe role asks for customer service, and those are exactly the strengths I'd bring. A recent highlight: I handle a busy sales floor. I also bring High School Diploma from Reno High.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nTom Ash\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 13,
+    "tag": "thin/projects-only",
+    "name": "Ada Vex",
+    "role": "Machine Learning Intern",
+    "company": "Vireo",
+    "skeleton": "Dear Hiring Manager,\n\nI'd love to be considered for the Machine Learning Intern role at Vireo. What draws me in is how well it matches my background.\n\nYour posting calls for Python, which are central to my experience. My background includes B.S. Computer Science from ASU.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nAda Vex",
+    "allowedText": "Python machine learning pandas Image classifier Python, PyTorch Stock predictor Python, pandas B.S. Computer Science ASU Python, ML, projects, curiosity Machine Learning Intern",
+    "topIsCurrent": null,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nI'd love to be considered for the Machine Learning Intern role at Vireo. What draws me in is how well it matches my background.\n\nYour posting calls for Python, which are central to my experience. My background includes B.S. Computer Science from ASU.\n\nThanks for your consideration; I hope we can discuss the role further.\n\nSincerely,\nAda Vex\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 14,
+    "tag": "num-heavy/ops",
+    "name": "Ben Cruz",
+    "role": "Operations Manager",
+    "company": "Northwind",
+    "skeleton": "Dear Hiring Manager,\n\nThe Operations Manager opening at Northwind immediately caught my eye. Your emphasis on operations, lean and forecasting maps directly to my day-to-day work. I currently work as Operations Manager at Vertex for about 8 and a half years, which has prepared me well for this next step.\n\nTo put that concretely, I run a 25-person warehouse, raised throughput 20% while holding 99% on-time shipping and cutting cost $2M. I hold B.S. Supply Chain from OSU.\n\nI'd love to talk about how my background fits your team. Thank you for considering my application.\n\nSincerely,\nBen Cruz",
+    "allowedText": "operations lean forecasting Operations Manager Vertex Runs a 25-person warehouse; raised throughput 20% while holding 99% on-time shipping and cutting cost $2M. B.S. Supply Chain OSU warehouse ops, KPIs, throughput, cost Operations Manager",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nThe Operations Manager opening at Northwind immediately caught my eye. Your emphasis on operations, lean and forecasting maps directly to my day-to-day work. I currently work as Operations Manager at Vertex for about 8 and a half years, which has prepared me well for this next step.\n\nTo put that concretely, I run a 25-person warehouse, raised throughput 20% while holding 99% on-time shipping and cutting cost $2M. I hold B.S. Supply Chain from OSU.\n\nI'd love to talk about how my background fits your team. Thank you for considering my application.\n\nSincerely,\nBen Cruz\n\nReturn only the rewritten letter."
+      }
+    ]
+  },
+  {
+    "idx": 15,
+    "tag": "num-heavy/eng",
+    "name": "Zoe Ray",
+    "role": "Mechanical Engineer",
+    "company": "Kestrel",
+    "skeleton": "Dear Hiring Manager,\n\nI'm reaching out to put my name forward for the Mechanical Engineer role at Kestrel. Your emphasis on SolidWorks, GD&T and mechanical design maps directly to my day-to-day work. I currently work as Mechanical Engineer at Voltaic for about 6 years, and I'm ready to bring that experience to your team.\n\nMuch of what you describe, SolidWorks, GD&T and mechanical design, is where I do my best work. To put that concretely, I design enclosures in SolidWorks, cut part count 15% and saved $180K on one assembly. I hold B.S. Mechanical Engineering from MSU.\n\nThank you for reviewing my application, I'd be glad to share more in a conversation.\n\nSincerely,\nZoe Ray",
+    "allowedText": "SolidWorks GD&T mechanical design Mechanical Engineer Voltaic Designs enclosures in SolidWorks; cut part count 15% and saved $180K on one assembly. B.S. Mechanical Engineering MSU SolidWorks, GD&T, design, prototyping Mechanical Engineer",
+    "topIsCurrent": true,
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a precise writing assistant for professional cover letters. Follow the instructions exactly and return only what is asked."
+      },
+      {
+        "role": "user",
+        "content": "Rewrite the entire cover letter according to the instruction.\n\nInstruction: Rewrite this cover letter so it reads smoothly and naturally: improve the flow between sentences, vary the sentence structure, and make it sound genuinely human. Keep EVERY fact exactly as written: do not add, remove, or change any names, companies, roles, skills, dates, numbers, or achievements, and do not invent anything. Write like a real person: use contractions, plain words, and specific facts. Do NOT use em dashes or en dashes. Avoid clichés (delve, leverage, robust, seamless, synergy, \"passionate about\", \"proven track record\") and stiff connectors (Furthermore, Moreover, In conclusion).\n\nCurrent letter:\nDear Hiring Manager,\n\nI'm reaching out to put my name forward for the Mechanical Engineer role at Kestrel. Your emphasis on SolidWorks, GD&T and mechanical design maps directly to my day-to-day work. I currently work as Mechanical Engineer at Voltaic for about 6 years, and I'm ready to bring that experience to your team.\n\nMuch of what you describe, SolidWorks, GD&T and mechanical design, is where I do my best work. To put that concretely, I design enclosures in SolidWorks, cut part count 15% and saved $180K on one assembly. I hold B.S. Mechanical Engineering from MSU.\n\nThank you for reviewing my application, I'd be glad to share more in a conversation.\n\nSincerely,\nZoe Ray\n\nReturn only the rewritten letter."
+      }
+    ]
+  }
+]
