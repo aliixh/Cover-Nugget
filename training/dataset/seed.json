@@ -2228,5 +2228,647 @@
       "description": "Helpline is hiring a Customer Support Associate. You will answer customer questions, resolve issues with patience, document interactions, and keep a positive tone under pressure. Retail or service experience is a strong fit."
     },
     "letter_body": "Good support is half solving the problem and half making a frustrated person feel heard, and doing both is what I am good at, so the Customer Support Associate role at Helpline caught my attention.\n\nMost recently, I worked as a Retail Associate at Rivertown Goods, where I handled a busy sales floor and resolved customer issues. I earned the highest customer-satisfaction score on my team two quarters running, because I treat a complaint as a chance to fix something rather than a problem to survive.\n\nYour posting values patience and a positive tone under pressure, and both are how I work. I stay calm with upset customers, I keep clear notes, and I follow through until an issue is actually resolved.\n\nI would be glad to bring that to Helpline. Thank you for considering my application, and I would welcome the chance to meet the team."
+  },
+  {
+    "profile": {
+      "name": "Priyanka Menon",
+      "location": "Seattle, WA",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "GraphQL",
+        "testing"
+      ],
+      "experience": [
+        {
+          "role": "Frontend Engineer",
+          "company": "Cobalt",
+          "startDate": "04/2021",
+          "description": "Builds the web app that our sales team lives in; rebuilt the dashboard so it loads in under a second and cut our bug backlog in half.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "University of Washington",
+          "graduationYear": "2020"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Ledger",
+      "role": "Frontend Engineer",
+      "description": "Build responsive React interfaces in TypeScript, own components end to end, wire up GraphQL APIs, and write tests. We want strong React, an eye for performance, and someone who ships."
+    },
+    "letter_body": "The web app people use all day is worth getting right, and that is the part of frontend work I care about, so the Frontend Engineer role at Ledger caught my attention.\n\nI currently work as a Frontend Engineer at Cobalt, where I build the web app our sales team lives in. I work in React and TypeScript every day and wire up GraphQL for the data behind the screens, so your stack is one I already know well.\n\nYour posting asks for an eye for performance, which is where I do some of my best work. I rebuilt our dashboard so it loads in under a second, and I cut our bug backlog in half by writing tests around the parts that kept breaking.\n\nI would be glad to bring that to Ledger. Thank you for considering my application, and I would welcome the chance to talk through how I build."
+  },
+  {
+    "profile": {
+      "name": "Curtis Bell",
+      "location": "Kansas City, MO",
+      "skills": [
+        "welding",
+        "blueprint reading",
+        "fabrication",
+        "quality inspection"
+      ],
+      "experience": [
+        {
+          "role": "Welder",
+          "company": "Ironline Fab",
+          "startDate": "06/2016",
+          "description": "Welds structural steel for commercial jobs; reads blueprints, runs MIG and TIG, and passed every third-party weld inspection last year.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "Welding Certificate",
+          "school": "Metropolitan Community College",
+          "graduationYear": "2015"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Summit Steel",
+      "role": "Structural Welder",
+      "description": "Weld structural steel to spec, read blueprints, run MIG and TIG, and meet inspection standards. We want a certified welder with commercial experience and a clean inspection record."
+    },
+    "letter_body": "A weld either holds or it doesn't, and taking that seriously is how I have worked my whole career, so the Structural Welder role at Summit Steel caught my eye.\n\nI currently work as a Welder at Ironline Fab, where I weld structural steel for commercial jobs. I read blueprints, run both MIG and TIG, and I know how to set up a joint so it passes the first time.\n\nYour posting puts weight on inspection standards, which is where I stand out. I passed every third-party weld inspection last year, because I would rather take an extra minute on the setup than redo a bad weld later.\n\nI would be glad to bring that to Summit Steel. Thank you for considering my application, and I would welcome the chance to show you my work."
+  },
+  {
+    "profile": {
+      "name": "Renee Adjei",
+      "location": "Baltimore, MD",
+      "skills": [
+        "bookkeeping",
+        "QuickBooks",
+        "accounts payable",
+        "reconciliation",
+        "payroll"
+      ],
+      "experience": [
+        {
+          "role": "Bookkeeper",
+          "company": "Harborview Dental",
+          "startDate": "03/2019",
+          "description": "Keeps the books for a three-office dental group; reconciles accounts monthly, runs payroll for 22 staff, and cleaned up two years of back records in her first quarter.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "A.A.S. Accounting",
+          "school": "Baltimore City Community College",
+          "graduationYear": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Cedar & Main",
+      "role": "Bookkeeper",
+      "description": "Own day-to-day bookkeeping in QuickBooks, manage accounts payable and receivable, reconcile accounts, and run payroll. We want someone accurate, organized, and comfortable owning the numbers."
+    },
+    "letter_body": "Clean books are quiet books, and getting them to that point is the part of the job I enjoy, so the Bookkeeper role at Cedar & Main appealed to me.\n\nI currently keep the books for Harborview Dental, a three-office group, where I reconcile accounts monthly and run payroll for twenty-two staff. Owning the day-to-day in QuickBooks is my normal routine, so your core duties are ones I already handle.\n\nYour posting values accuracy and organization, which is where I have made a difference. In my first quarter I cleaned up two years of back records, because I would rather fix the root of a mess than keep working around it.\n\nI would be glad to bring that to Cedar & Main. Thank you for considering my application, and I would welcome the chance to meet your team."
+  },
+  {
+    "profile": {
+      "name": "Dominic Hayes",
+      "location": "Remote",
+      "skills": [
+        "technical writing",
+        "API documentation",
+        "Markdown",
+        "Git",
+        "editing"
+      ],
+      "experience": [
+        {
+          "role": "Technical Writer",
+          "company": "Streamline",
+          "startDate": "05/2021",
+          "description": "Owns the developer docs for a payments API; rewrote the getting-started guide and cut support tickets from new developers by a third.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. English",
+          "school": "University of Oregon",
+          "graduationYear": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Parcel",
+      "role": "Technical Writer",
+      "description": "Write and maintain developer documentation for our API, work in Markdown and Git, partner with engineers, and make hard things clear. We want strong writing and comfort in a technical codebase."
+    },
+    "letter_body": "Good docs are the difference between a developer who ships and one who gives up, and closing that gap is the work I care about, so the Technical Writer role at Parcel caught my attention.\n\nI currently work as a Technical Writer at Streamline, where I own the developer docs for a payments API. I write in Markdown, work in Git alongside the engineers, and turn dense features into pages a developer can actually follow.\n\nYour posting asks for someone who makes hard things clear, which is where I do my best work. I rewrote our getting-started guide and cut support tickets from new developers by a third, because a good page answers the question before it gets asked.\n\nI would love to bring that to Parcel. Thank you for considering my application, and I would be glad to share writing samples."
+  },
+  {
+    "profile": {
+      "name": "Alina Petrova",
+      "location": "Chicago, IL",
+      "skills": [
+        "social work",
+        "case management",
+        "crisis intervention",
+        "advocacy"
+      ],
+      "experience": [
+        {
+          "role": "Social Worker",
+          "company": "Lakeside Services",
+          "startDate": "08/2018",
+          "description": "Carried a caseload of about forty clients at a family services agency; connected families to housing and benefits and de-escalated crises without letting anyone fall through the cracks.",
+          "endDate": "06/2024"
+        }
+      ],
+      "education": [
+        {
+          "degree": "M.S.W.",
+          "school": "University of Illinois Chicago",
+          "graduationYear": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Bright Horizons Family Services",
+      "role": "Case Manager",
+      "description": "Carry a caseload, assess needs, connect families to housing and community resources, respond to crises, and document carefully. Social work background and crisis experience preferred."
+    },
+    "letter_body": "Being the steady person for a family on a hard day is the work I find most meaningful, so the Case Manager role at Bright Horizons Family Services speaks to me as I look for my next role.\n\nMost recently, I worked as a Social Worker at Lakeside Services, where I carried a caseload of about forty clients at a family services agency. Assessing needs and connecting families to housing and benefits was my daily work, so the core of this role is familiar ground.\n\nYour posting asks for steadiness in a crisis, which is where I am at my best. I de-escalated crises without letting anyone fall through the cracks, and I documented carefully so the next person always knew where things stood.\n\nI would be glad to bring that care to Bright Horizons. Thank you for considering my application, and I would welcome the chance to meet your team."
+  },
+  {
+    "profile": {
+      "name": "Grant Fisher",
+      "location": "Denver, CO",
+      "skills": [
+        "carpentry",
+        "framing",
+        "finish work",
+        "blueprint reading",
+        "crew leadership"
+      ],
+      "experience": [
+        {
+          "role": "Lead Carpenter",
+          "company": "Summit Builders",
+          "startDate": "04/2015",
+          "description": "Runs framing and finish crews on custom homes; leads a crew of five and has kept the last eight builds on schedule.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "High School Diploma",
+          "school": "Denver East High",
+          "graduationYear": "2012"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Rockface Construction",
+      "role": "Lead Carpenter",
+      "description": "Run framing and finish carpentry on residential builds, read plans, lead a small crew, and keep jobs on schedule and to spec. We want an experienced carpenter who can lead."
+    },
+    "letter_body": "A house is only as good as the framing nobody ever sees, and taking pride in that is how I work, so the Lead Carpenter role at Rockface Construction caught my attention.\n\nI currently work as a Lead Carpenter at Summit Builders, where I run framing and finish crews on custom homes. Reading plans and leading a crew of five is my daily work, so your core responsibilities are ones I already own.\n\nYour posting values keeping jobs on schedule and to spec, which is where I have a track record. I have kept the last eight builds on schedule, because I plan the day before the crew shows up rather than figuring it out on the fly.\n\nI would be glad to bring that to Rockface. Thank you for considering my application, and I would welcome the chance to walk a job site with you."
+  },
+  {
+    "profile": {
+      "name": "Yuki Tanaka",
+      "location": "San Jose, CA",
+      "skills": [
+        "QA automation",
+        "Selenium",
+        "Python",
+        "CI/CD",
+        "test planning"
+      ],
+      "experience": [
+        {
+          "role": "QA Engineer",
+          "company": "Nimbus",
+          "startDate": "06/2020",
+          "description": "Owns automated testing for a web platform; built a Selenium suite in Python that cut a two-day manual regression to under an hour.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "San Jose State",
+          "graduationYear": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Fathom",
+      "role": "QA Automation Engineer",
+      "description": "Design and maintain automated tests, work in Python, keep the suite fast in CI, and partner with developers to catch regressions early. We want real automation experience and a habit of building tests teams trust."
+    },
+    "letter_body": "Reliable software is a promise you keep test by test, so the QA Automation Engineer role at Fathom caught my attention.\n\nI currently work as a QA Engineer at Nimbus, where I own automated testing for our web platform. I build tests in Python and keep them running in CI, so the stack you describe is one I use every day.\n\nYour posting asks for tests a team actually trusts, which is what I focus on. I built a Selenium suite that turned a two-day manual regression into an automated run of under an hour, so releases block on real failures rather than noise.\n\nI would be glad to bring that to Fathom. Thank you for considering my application, and I would welcome the chance to talk through how I would grow your coverage."
+  },
+  {
+    "profile": {
+      "name": "Bianca Ferreira",
+      "location": "Miami, FL",
+      "skills": [
+        "event planning",
+        "vendor management",
+        "budgeting",
+        "client relations"
+      ],
+      "experience": [
+        {
+          "role": "Events Coordinator",
+          "company": "Coral Group",
+          "startDate": "03/2019",
+          "description": "Plans corporate events and weddings up to 300 guests; manages vendors and budgets and has never gone over budget on a booked event.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Hospitality",
+          "school": "Florida International University",
+          "graduationYear": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Bayfront Events",
+      "role": "Event Coordinator",
+      "description": "Plan and run events end to end, manage vendors and budgets, and keep clients happy under pressure. We want strong organization and grace when things change last minute."
+    },
+    "letter_body": "An event is a hundred small decisions that all have to land on the same day, and I like being the person they run through, so the Event Coordinator role at Bayfront Events caught my eye.\n\nI currently work as an Events Coordinator at Coral Group, where I plan corporate events and weddings for up to 300 guests. Managing vendors and budgets is my daily work, so your core responsibilities are familiar ground.\n\nYour posting values grace when things change last minute, which is where I stay calm. I have never gone over budget on a booked event, because I build in room for the surprises that always come.\n\nI would be glad to bring that to Bayfront. Thank you for considering my application, and I would welcome the chance to talk through a recent event I ran."
+  },
+  {
+    "profile": {
+      "name": "Marcus Whitfield",
+      "location": "Atlanta, GA",
+      "skills": [
+        "customer success",
+        "onboarding",
+        "SaaS",
+        "account management",
+        "analytics"
+      ],
+      "experience": [
+        {
+          "role": "Customer Success Manager",
+          "company": "Fernway",
+          "startDate": "05/2021",
+          "description": "Owns a book of 40 SaaS accounts; lifted renewal rate to 94% and turned three at-risk accounts into references.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Communications",
+          "school": "Georgia State",
+          "graduationYear": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Helpshift",
+      "role": "Customer Success Manager",
+      "description": "Own a book of accounts, drive onboarding and adoption, cut churn, and turn happy customers into references. We want SaaS CS experience and genuine care for the customer."
+    },
+    "letter_body": "Keeping a customer is mostly about noticing trouble before they do, and that is the part of customer success I am good at, so the Customer Success Manager role at Helpshift caught my attention.\n\nI currently work as a Customer Success Manager at Fernway, where I own a book of forty SaaS accounts. Driving onboarding and adoption is my daily work, so the core of this role is already my routine.\n\nYour posting asks for someone who cuts churn and builds references, which is where I have delivered. I lifted our renewal rate to ninety-four percent and turned three at-risk accounts into references, because I would rather fix a problem early than manage a save later.\n\nI would be glad to bring that to Helpshift. Thank you for considering my application, and I would welcome the chance to talk through my accounts."
+  },
+  {
+    "profile": {
+      "name": "Camila Vargas",
+      "location": "Phoenix, AZ",
+      "skills": [
+        "dental hygiene",
+        "cleanings",
+        "radiographs",
+        "patient education"
+      ],
+      "experience": [
+        {
+          "role": "Dental Hygienist",
+          "company": "Desert Smile",
+          "startDate": "09/2019",
+          "description": "Provides cleanings and periodontal care in a busy practice; takes radiographs and built a recall habit that improved patient follow-through.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "A.S. Dental Hygiene",
+          "school": "Rio Salado College",
+          "graduationYear": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Cactus Dental",
+      "role": "Dental Hygienist",
+      "description": "Perform cleanings and periodontal care, take radiographs, educate patients on home care, and keep to infection-control standards. We want a gentle chairside manner and strong periodontal skills."
+    },
+    "letter_body": "A cleaning only helps if the patient keeps up the work at home, and getting them there is what I take pride in, so the Dental Hygienist role at Cactus Dental caught my attention.\n\nI currently work as a Dental Hygienist at Desert Smile, where I provide cleanings and periodontal care in a busy practice. Taking radiographs and charting is part of every appointment, so your core duties are ones I already own.\n\nYour posting values a gentle chairside manner, which is where I focus. I built a recall habit that improved our patients' follow-through, because the visit matters less than what happens between visits.\n\nI would be glad to bring that to Cactus Dental. Thank you for considering my application, and I would welcome the chance to meet your team."
+  },
+  {
+    "profile": {
+      "name": "Owen Nakamura",
+      "location": "Portland, OR",
+      "skills": [
+        "video editing",
+        "Premiere Pro",
+        "motion graphics",
+        "color grading",
+        "storytelling"
+      ],
+      "experience": [
+        {
+          "role": "Video Editor",
+          "company": "Fieldnotes Media",
+          "startDate": "06/2020",
+          "description": "Edits brand videos and social content; cut a series that passed two million views and trimmed our turnaround from a week to two days.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.F.A. Film",
+          "school": "Portland State",
+          "graduationYear": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Overstory",
+      "role": "Video Editor",
+      "description": "Edit brand and social video in Premiere Pro, add motion graphics, color grade, and tell a clear story fast. We want a strong editor with a quick turnaround."
+    },
+    "letter_body": "A good cut disappears and the story just lands, and chasing that is the part of editing I love, so the Video Editor role at Overstory caught my attention.\n\nI currently work as a Video Editor at Fieldnotes Media, where I edit brand videos and social content in Premiere Pro. Adding motion graphics and color grading is part of my normal workflow, so your core work is familiar.\n\nYour posting values a quick turnaround, which is where I have improved. I trimmed our turnaround from a week to two days, and I cut a series that passed two million views, because a fast edit that still tells the story beats a slow one that doesn't.\n\nI would love to bring that to Overstory. Thank you for considering my application, and I would be glad to share a reel."
+  },
+  {
+    "profile": {
+      "name": "Hannah Delgado",
+      "location": "San Diego, CA",
+      "skills": [
+        "physical therapy",
+        "rehab",
+        "manual therapy",
+        "patient education"
+      ],
+      "experience": [
+        {
+          "role": "Physical Therapist",
+          "company": "Coastal Rehab",
+          "startDate": "06/2020",
+          "description": "Treats an outpatient orthopedic caseload; builds recovery plans and got most post-op patients back to activity ahead of schedule.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "Doctor of Physical Therapy",
+          "school": "San Diego State",
+          "graduationYear": "2020"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Harbor Physical Therapy",
+      "role": "Physical Therapist",
+      "description": "Evaluate patients, build and adjust treatment plans, deliver manual therapy and exercise, and keep patients motivated through recovery. Outpatient orthopedic experience preferred."
+    },
+    "letter_body": "Recovery is a series of small wins a patient can feel, and coaching people through them is the part of physical therapy I care about, so the Physical Therapist role at Harbor Physical Therapy appealed to me.\n\nI currently work as a Physical Therapist at Coastal Rehab, where I treat an outpatient orthopedic caseload. Building and adjusting treatment plans is my daily work, so the core of this role is already my routine.\n\nYour posting values keeping patients motivated, which is where I do my best work. I got most of my post-op patients back to activity ahead of schedule by adjusting the plan as they progressed rather than following it blindly.\n\nI would be glad to bring that to Harbor. Thank you for considering my application, and I would welcome the chance to meet your clinical team."
+  },
+  {
+    "profile": {
+      "name": "Isabel Moreno",
+      "location": "Austin, TX",
+      "skills": [
+        "recruiting",
+        "sourcing",
+        "interviewing",
+        "ATS",
+        "candidate experience"
+      ],
+      "experience": [
+        {
+          "role": "Recruiter",
+          "company": "Talentworks",
+          "startDate": "04/2021",
+          "description": "Recruits for engineering and product roles; filled 60 roles last year and cut time-to-hire from 45 days to 30.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Psychology",
+          "school": "University of Texas",
+          "graduationYear": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Beacon",
+      "role": "Technical Recruiter",
+      "description": "Source and screen candidates for technical roles, run a clean interview process, keep the ATS accurate, and give candidates a great experience. We want recruiting experience and strong communication."
+    },
+    "letter_body": "Hiring well is mostly about respecting people's time on both sides of the table, and that is how I recruit, so the Technical Recruiter role at Beacon caught my attention.\n\nI currently work as a Recruiter at Talentworks, where I recruit for engineering and product roles. Sourcing, screening, and running a clean process is my daily work, so your core responsibilities are familiar ground.\n\nYour posting values candidate experience, which is where I focus. I filled sixty roles last year and cut our time-to-hire from forty-five days to thirty, because a fast, respectful process is what keeps good candidates from walking.\n\nI would be glad to bring that to Beacon. Thank you for considering my application, and I would welcome the chance to talk through how I hire."
+  },
+  {
+    "profile": {
+      "name": "Elliot Ward",
+      "location": "Columbus, OH",
+      "skills": [
+        "auto repair",
+        "diagnostics",
+        "brakes",
+        "engine work",
+        "customer service"
+      ],
+      "experience": [
+        {
+          "role": "Automotive Technician",
+          "company": "Buckeye Auto",
+          "startDate": "03/2016",
+          "description": "Diagnoses and repairs cars at a busy shop; keeps a high comeback-free rate and explains repairs so customers actually understand them.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "ASE Certification",
+          "school": "Columbus State",
+          "graduationYear": "2015"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Cornerstone Auto",
+      "role": "Automotive Technician",
+      "description": "Diagnose and repair vehicles, handle brakes and engine work, and communicate clearly with customers. We want an ASE-certified tech with a clean, honest track record."
+    },
+    "letter_body": "A repair done right the first time and explained honestly is what keeps a customer coming back, and that is how I work, so the Automotive Technician role at Cornerstone Auto caught my eye.\n\nI currently work as an Automotive Technician at Buckeye Auto, where I diagnose and repair cars at a busy shop. Handling brakes and engine work is my daily routine, so your core duties are ones I already own.\n\nYour posting values an honest track record, which is where I stand out. I keep a high comeback-free rate, and I explain repairs so customers actually understand what they are paying for rather than just trusting me blindly.\n\nI would be glad to bring that to Cornerstone. Thank you for considering my application, and I would welcome the chance to meet the team."
+  },
+  {
+    "profile": {
+      "name": "Naomi Brooks",
+      "location": "Remote",
+      "skills": [
+        "copywriting",
+        "brand voice",
+        "email marketing",
+        "editing"
+      ],
+      "experience": [
+        {
+          "role": "Copywriter",
+          "company": "Lumen Goods",
+          "startDate": "05/2021",
+          "description": "Writes copy for a DTC brand; rewrote the email flow that lifted click-through and set the brand voice the whole team now uses.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Journalism",
+          "school": "University of Missouri",
+          "graduationYear": "2019"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Coastal Co",
+      "role": "Copywriter",
+      "description": "Write copy across email, web, and social, own the brand voice, and edit for clarity. We want a sharp writer who can sound like a person, not a brand deck."
+    },
+    "letter_body": "Good copy sounds like a person talking, not a brand clearing its throat, and finding that voice is what I enjoy, so the Copywriter role at Coastal Co caught my attention.\n\nI currently work as a Copywriter at Lumen Goods, where I write copy for a DTC brand across email, web, and social. Owning the brand voice and editing for clarity is my daily work, so your core responsibilities are familiar.\n\nYour posting asks for a writer who sounds like a person, which is exactly how I write. I rewrote the email flow that lifted our click-through, and I set the brand voice the whole team now works from, because consistency is what makes a brand feel real.\n\nI would love to bring that to Coastal Co. Thank you for reading my application, and I would be glad to share samples."
+  },
+  {
+    "profile": {
+      "name": "Diego Alvarez",
+      "location": "Newark, NJ",
+      "skills": [
+        "electrical",
+        "wiring",
+        "code compliance",
+        "troubleshooting",
+        "blueprint reading"
+      ],
+      "experience": [
+        {
+          "role": "Electrician",
+          "company": "BrightVolt",
+          "startDate": "04/2017",
+          "description": "Wires commercial buildings to code; leads a small crew and finished a large fit-out two weeks ahead of schedule.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "Electrical Apprenticeship",
+          "school": "IBEW Local 102",
+          "graduationYear": "2017"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Cornerstone Electric",
+      "role": "Commercial Electrician",
+      "description": "Wire commercial buildings to NEC code, troubleshoot, read blueprints, and lead a crew. We want a licensed electrician with commercial experience and a safety-first habit."
+    },
+    "letter_body": "Electrical work leaves no room to be almost right, and that standard is how I have worked my whole career, so the Commercial Electrician role at Cornerstone Electric caught my eye.\n\nI currently work as an Electrician at BrightVolt, where I wire commercial buildings to code. Troubleshooting and reading blueprints is my daily work, so your core responsibilities are ones I already own.\n\nYour posting values leading a crew and working safely, which is where I have a record. I lead a small crew and finished a large fit-out two weeks ahead of schedule, without cutting a single corner on safety to do it.\n\nI would be glad to bring that to Cornerstone Electric. Thank you for considering my application, and I would welcome the chance to talk through my past work."
+  },
+  {
+    "profile": {
+      "name": "Priya Kaur",
+      "location": "Boston, MA",
+      "skills": [
+        "clinical research",
+        "data collection",
+        "IRB",
+        "patient recruitment",
+        "GCP"
+      ],
+      "experience": [
+        {
+          "role": "Clinical Research Coordinator",
+          "company": "Beacon Hospital",
+          "startDate": "06/2019",
+          "description": "Runs trials at an academic hospital; recruited and enrolled patients, kept meticulous records, and cleared every audit without a finding.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Biology",
+          "school": "Boston University",
+          "graduationYear": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Meridian Research",
+      "role": "Clinical Research Coordinator",
+      "description": "Coordinate clinical trials, recruit and enroll patients, manage data and IRB submissions, and keep to GCP standards. We want research coordination experience and careful documentation."
+    },
+    "letter_body": "A trial is only as good as the records behind it, and keeping those airtight is the part of research I take seriously, so the Clinical Research Coordinator role at Meridian Research caught my attention.\n\nI currently work as a Clinical Research Coordinator at Beacon Hospital, where I run trials at an academic hospital. Recruiting and enrolling patients and managing IRB submissions is my daily work, so your core responsibilities are familiar ground.\n\nYour posting values careful documentation, which is where I stand out. I cleared every audit without a finding, because I keep records as if an auditor is going to read them tomorrow.\n\nI would be glad to bring that to Meridian. Thank you for considering my application, and I would welcome the chance to meet your team."
+  },
+  {
+    "profile": {
+      "name": "Trevor Lang",
+      "location": "Nashville, TN",
+      "skills": [
+        "restaurant management",
+        "scheduling",
+        "inventory",
+        "food safety",
+        "training"
+      ],
+      "experience": [
+        {
+          "role": "Assistant Manager",
+          "company": "Copper Kettle",
+          "startDate": "05/2018",
+          "description": "Helps run a busy 120-seat restaurant; owns scheduling and inventory and lifted margin by tightening food cost and cutting waste.",
+          "isCurrent": true
+        }
+      ],
+      "education": [
+        {
+          "degree": "A.S. Hospitality",
+          "school": "Nashville State",
+          "graduationYear": "2016"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Marlow House",
+      "role": "Restaurant Manager",
+      "description": "Run daily operations, own scheduling and food cost, train the front-of-house team, and keep the guest experience high. We want restaurant management experience and a leader the staff wants to work for."
+    },
+    "letter_body": "A restaurant is a dozen small decisions an hour, and I like being the person those run through, so the Restaurant Manager role at Marlow House caught my attention.\n\nI currently work as an Assistant Manager at Copper Kettle, a busy 120-seat restaurant, where I own scheduling and inventory. Leading the floor and keeping the guest experience high is my normal shift, so your core responsibilities are familiar.\n\nYour posting values controlling food cost, which is where I have delivered. I lifted our margin by tightening food cost and cutting waste, and I stay on top of food safety so the basics are never in question.\n\nI would be glad to bring that to Marlow House. Thank you for considering my application, and I would welcome the chance to talk through how I would run your floor."
   }
 ]

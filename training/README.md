@@ -162,3 +162,13 @@ generic corporate clichés; distilling from it dilutes the plain, human voice th
 
 Lesson: the only good *voice* teacher is a strong model (or a human) that already
 writes plainly. The local 3B is a coherence teacher, not a style teacher.
+
+## v6 (assistant-authored seeds, 60 -> 78) — voice ↑ but a wash overall
+
+Following the v5 distillation failure, wrote 18 more gold seeds by hand (the
+assistant is the teacher — plain, human, no clichés). v6 vs v4 on the eval:
+voice improved (generic-phrase hits 11 -> 8, vs v5's 16 from the 3B) but
+model-polish dropped 12/16 -> 9/16 (more numeric drift, within noise). Net: a
+wash — confirms the volume plateau. **v4 remains shipped**; the 78-seed corpus is
+kept for any future retrain. Takeaway: authoring gold yourself beats distilling
+from a weak model, but ~60 good seeds already saturate a 1B's style capacity.
