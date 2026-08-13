@@ -31,3 +31,6 @@ MEMORY.md
 
 # LoRA adapter weights (large binaries; export GGUF for release)
 training/adapters/
+
+# merged fp16 models (large; export GGUF instead)
+training/merged/
