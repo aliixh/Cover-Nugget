@@ -2,8 +2,10 @@
 // volunteer, projects, certifications).
 //
 // Two behaviours, one component:
-//  - Onboarding (editable=false): existing entries show as compact cards you
-//    can remove; a form at the bottom + "Add another" appends a new entry.
+//  - Onboarding (editable=false): existing entries show as compact summary
+//    cards with Edit + Remove. "Edit" expands that entry into its fields (all
+//    grouped in one shaded card) so it can be changed in place; a shaded
+//    "Add another" form at the bottom appends a new entry. (Edit needs `update`.)
 //  - Profile (editable=true): every existing entry is shown as an inline form
 //    you can edit; edits save immediately (persisted forever until changed).
 //
@@ -93,6 +95,8 @@ export const RepeatableEditor = forwardRef<RepeatableEditorHandle, Props>(
     const [pid, setPid] = useState<number | null>(profileId);
     const [entries, setEntries] = useState<SavedEntry[]>([]);
     const [draft, setDraft] = useState<Record<string, string>>(emptyDraft(fields));
+    // Onboarding: which saved entry is currently expanded for inline editing.
+    const [editingId, setEditingId] = useState<number | null>(null);
 
     // Render one field (text or switch), honoring an optional `hidden` predicate.
     const renderField = (
@@ -183,6 +187,16 @@ export const RepeatableEditor = forwardRef<RepeatableEditorHandle, Props>(
       );
     };
 
+    // Onboarding: persist a single expanded entry's edits, then collapse it.
+    const saveEdit = async (entry: SavedEntry) => {
+      const id = await ensureProfile();
+      if (entry.id > 0 && update) {
+        await update(entry.id, valuesOf(fields, entry));
+      }
+      setEditingId(null);
+      setEntries(await load(id));
+    };
+
     // Persist all entries: update existing (id>0), insert new blanks with content.
     const saveAll = async (): Promise<boolean> => {
       const id = await ensureProfile();
@@ -249,47 +263,90 @@ export const RepeatableEditor = forwardRef<RepeatableEditorHandle, Props>(
             <Text className="mb-2 text-sm font-medium text-muted dark:text-dark-muted">
               Added ({entries.length})
             </Text>
-            {entries.map((e) => (
-              <Card
-                key={e.id}
-                className="mb-2 flex-row items-center justify-between"
-              >
-                <View className="flex-1 pr-3">
-                  <Text className="text-base font-semibold text-ink dark:text-dark-ink">
-                    {summarize(e).primary || "Untitled"}
-                  </Text>
-                  {summarize(e).secondary ? (
-                    <Text className="text-sm text-muted dark:text-dark-muted">
-                      {summarize(e).secondary}
-                    </Text>
-                  ) : null}
-                </View>
-                <Pressable
-                  onPress={() => onRemove(e.id)}
-                  className="rounded-full bg-highlight px-3 py-1 active:opacity-70 dark:bg-dark-highlight"
+            {entries.map((e) =>
+              editingId === e.id ? (
+                // Expanded: all of this entry's fields grouped in one shaded box.
+                <Card key={e.id} className="mb-2">
+                  {fields.map((f) =>
+                    renderField(f, e, (k, t) => onEditField(e, k, t))
+                  )}
+                  <View className="flex-row">
+                    <Pressable
+                      onPress={() => saveEdit(e)}
+                      className="rounded-full bg-primary px-4 py-1.5 active:opacity-70 dark:bg-dark-primary"
+                    >
+                      <Text className="font-semibold text-white dark:text-dark-background">
+                        Done
+                      </Text>
+                    </Pressable>
+                    <Pressable
+                      onPress={() => onRemove(e.id)}
+                      className="ml-2 rounded-full bg-highlight px-4 py-1.5 active:opacity-70 dark:bg-dark-highlight"
+                    >
+                      <Text className="text-primary">Remove</Text>
+                    </Pressable>
+                  </View>
+                </Card>
+              ) : (
+                <Card
+                  key={e.id}
+                  className="mb-2 flex-row items-center justify-between"
                 >
-                  <Text className="text-primary">Remove</Text>
-                </Pressable>
-              </Card>
-            ))}
+                  <View className="flex-1 pr-3">
+                    <Text className="text-base font-semibold text-ink dark:text-dark-ink">
+                      {summarize(e).primary || "Untitled"}
+                    </Text>
+                    {summarize(e).secondary ? (
+                      <Text className="text-sm text-muted dark:text-dark-muted">
+                        {summarize(e).secondary}
+                      </Text>
+                    ) : null}
+                  </View>
+                  <View className="flex-row items-center">
+                    {update ? (
+                      <Pressable
+                        onPress={() => setEditingId(e.id)}
+                        className="mr-2 rounded-full bg-highlight px-3 py-1 active:opacity-70 dark:bg-dark-highlight"
+                      >
+                        <Text className="text-primary">Edit</Text>
+                      </Pressable>
+                    ) : null}
+                    <Pressable
+                      onPress={() => onRemove(e.id)}
+                      className="rounded-full bg-highlight px-3 py-1 active:opacity-70 dark:bg-dark-highlight"
+                    >
+                      <Text className="text-primary">Remove</Text>
+                    </Pressable>
+                  </View>
+                </Card>
+              )
+            )}
           </View>
         ) : null}
 
-        {fields.map((f) =>
-          renderField(f, draft, (k, t) => setDraft((d) => ({ ...d, [k]: t })))
-        )}
-
-        <Pressable
-          onPress={commitDraft}
-          disabled={!hasDraftContent}
-          className={`mt-1 self-start rounded-xl border border-primary px-4 py-2 active:opacity-70 dark:border-dark-primary ${
-            hasDraftContent ? "" : "opacity-40"
-          }`}
-        >
-          <Text className="font-semibold text-primary dark:text-dark-primary">
-            {addLabel}
-          </Text>
-        </Pressable>
+        {/* New-entry form: fields grouped in their own shaded box so it's clear
+            they all belong to one entry. */}
+        <Card>
+          {entries.length > 0 ? (
+            <Text className="mb-3 text-sm font-medium text-muted dark:text-dark-muted">
+              Add another
+            </Text>
+          ) : null}
+          {fields.map((f) =>
+            renderField(f, draft, (k, t) => setDraft((d) => ({ ...d, [k]: t })))
+          )}
+          <Pressable
+            onPress={commitDraft}
+            disabled={!hasDraftContent}
+            className={`mt-1 self-start rounded-xl border border-primary px-4 py-2 active:opacity-70 dark:border-dark-primary ${
+              hasDraftContent ? "" : "opacity-40"
+            }`}
+          >
+            <Text className="font-semibold text-primary dark:text-dark-primary">
+              {addLabel}
+            </Text>
+          </Pressable>
+        </Card>
       </View>
     );
   }

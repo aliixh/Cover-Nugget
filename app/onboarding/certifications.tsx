@@ -5,6 +5,7 @@ import {
   addCertification,
   deleteRow,
   listCertifications,
+  updateCertification,
 } from "../../src/db/repositories";
 
 export default function CertificationsStep() {
@@ -24,6 +25,13 @@ export default function CertificationsStep() {
       load={listCertifications}
       add={(profileId, v) =>
         addCertification(profileId, {
+          name: v.name,
+          organization: v.organization,
+          date: v.date,
+        })
+      }
+      update={(id, v) =>
+        updateCertification(id, {
           name: v.name,
           organization: v.organization,
           date: v.date,

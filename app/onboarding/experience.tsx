@@ -2,7 +2,12 @@
 // section. Add as many roles as you like (paid or volunteer).
 
 import { RepeatableSection } from "../../src/components/RepeatableSection";
-import { addExperience, deleteRow, listExperience } from "../../src/db/repositories";
+import {
+  addExperience,
+  deleteRow,
+  listExperience,
+  updateExperience,
+} from "../../src/db/repositories";
 
 export default function ExperienceStep() {
   return (
@@ -24,6 +29,16 @@ export default function ExperienceStep() {
       load={async (p) => (await listExperience(p)).map((e) => ({ ...e, current: e.isCurrent ? "1" : "" }))}
       add={(profileId, v) =>
         addExperience(profileId, {
+          company: v.company,
+          role: v.role,
+          startDate: v.startDate,
+          endDate: v.endDate,
+          isCurrent: v.current === "1",
+          description: v.description,
+        })
+      }
+      update={(id, v) =>
+        updateExperience(id, {
           company: v.company,
           role: v.role,
           startDate: v.startDate,

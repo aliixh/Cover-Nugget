@@ -1,7 +1,12 @@
 // Onboarding Page 3: Education (spec section 3). Supports multiple entries.
 
 import { RepeatableSection } from "../../src/components/RepeatableSection";
-import { addEducation, deleteRow, listEducation } from "../../src/db/repositories";
+import {
+  addEducation,
+  deleteRow,
+  listEducation,
+  updateEducation,
+} from "../../src/db/repositories";
 
 export default function EducationStep() {
   return (
@@ -22,6 +27,14 @@ export default function EducationStep() {
       load={listEducation}
       add={(profileId, v) =>
         addEducation(profileId, {
+          school: v.school,
+          degree: v.degree,
+          gpa: v.gpa,
+          graduationYear: v.graduationYear,
+        })
+      }
+      update={(id, v) =>
+        updateEducation(id, {
           school: v.school,
           degree: v.degree,
           gpa: v.gpa,

@@ -1,7 +1,12 @@
 // Onboarding Page 6: Projects (spec section 3). Multiple entries.
 
 import { RepeatableSection } from "../../src/components/RepeatableSection";
-import { addProject, deleteRow, listProjects } from "../../src/db/repositories";
+import {
+  addProject,
+  deleteRow,
+  listProjects,
+  updateProject,
+} from "../../src/db/repositories";
 
 export default function ProjectsStep() {
   return (
@@ -20,6 +25,14 @@ export default function ProjectsStep() {
       load={listProjects}
       add={(profileId, v) =>
         addProject(profileId, {
+          name: v.name,
+          technologies: v.technologies,
+          description: v.description,
+          results: v.results,
+        })
+      }
+      update={(id, v) =>
+        updateProject(id, {
           name: v.name,
           technologies: v.technologies,
           description: v.description,

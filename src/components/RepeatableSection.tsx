@@ -23,6 +23,8 @@ interface Props {
   fields: FieldDef[];
   load: (profileId: number) => Promise<SavedEntry[]>;
   add: (profileId: number, values: Record<string, string>) => Promise<number>;
+  /** Enables the inline "Edit" action on added entries. */
+  update?: (id: number, values: Record<string, string>) => Promise<void>;
   remove: (id: number) => Promise<void>;
   summarize: (entry: SavedEntry) => { primary: string; secondary?: string };
   nextRoute: string;
@@ -37,6 +39,7 @@ export function RepeatableSection({
   fields,
   load,
   add,
+  update,
   remove,
   summarize,
   nextRoute,
@@ -65,6 +68,7 @@ export function RepeatableSection({
         fields={fields}
         load={load}
         add={add}
+        update={update}
         remove={remove}
         summarize={summarize}
         addLabel={addLabel}
