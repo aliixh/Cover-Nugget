@@ -9,8 +9,8 @@
 // AI actions need the on-device model; in Expo Go they show a clear message.
 // Manual editing always works.
 
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Animated, InputAccessoryView, Keyboard, Modal, Platform, Pressable, ScrollView, Text as RNText, View } from "react-native";
 import { Text, TextInput } from "../../src/ui/serif";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -38,6 +38,7 @@ import { EditToolbar, type EditCategory } from "../../src/components/EditToolbar
 import { countChars, countWords, withinLimit, type LengthLimit } from "../../src/utils/textStats";
 import { tokenizeSentences } from "../../src/utils/sentences";
 import type { SelectionAction } from "../../src/ai/types";
+import { getModelStatus } from "../../src/ai/modelManager";
 
 const KB_ACCESSORY_ID = "editorKbDone";
 
@@ -99,6 +100,18 @@ export default function EditorScreen() {
   // Custom-edit modal.
   const [customOpen, setCustomOpen] = useState(false);
   const [customInstruction, setCustomInstruction] = useState("");
+
+  // Advanced (AI) editing needs the on-device model. When it isn't installed we
+  // hide those tools and show a note — a no-AI letter only gets manual editing.
+  // Re-checked on focus so downloading the model unlocks the tools on return.
+  const [modelReady, setModelReady] = useState<boolean | null>(null);
+  useFocusEffect(
+    useCallback(() => {
+      getModelStatus()
+        .then((s) => setModelReady(s.downloaded))
+        .catch(() => setModelReady(null));
+    }, [])
+  );
 
   useEffect(() => {
     (async () => {
@@ -428,18 +441,41 @@ export default function EditorScreen() {
               </View>
             ) : (
               <View className="mt-3">
-                <EditToolbar
-                  selectedCount={selected.size}
-                  openCat={openCat}
-                  setOpenCat={setOpenCat}
-                  disabled={busyAny}
-                  onSelectionAction={applyToSelected}
-                  onCustom={onCustom}
-                />
+                {modelReady === false ? (
+                  /* No AI model → hide the advanced (AI) editing tools and say so. */
+                  <View className="rounded-2xl border border-border bg-white p-4 dark:border-dark-border dark:bg-dark-surface">
+                    <Text className="text-sm font-semibold text-ink dark:text-dark-ink">
+                      Advanced editing is off
+                    </Text>
+                    <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
+                      This letter was written without the AI model, so the AI tools
+                      (rewrite, shorten, tone, auto-fit) aren't available. You can
+                      still edit it yourself with “✎ Edit myself”. Download the model
+                      to unlock the advanced tools.
+                    </Text>
+                    <Pressable
+                      onPress={() => router.push("/model")}
+                      className="mt-3 self-start rounded-xl bg-primary px-4 py-2 active:opacity-80 dark:bg-dark-primary"
+                    >
+                      <Text className="font-semibold text-background dark:text-dark-background">
+                        Download AI model
+                      </Text>
+                    </Pressable>
+                  </View>
+                ) : (
+                  <EditToolbar
+                    selectedCount={selected.size}
+                    openCat={openCat}
+                    setOpenCat={setOpenCat}
+                    disabled={busyAny}
+                    onSelectionAction={applyToSelected}
+                    onCustom={onCustom}
+                  />
+                )}
 
                 <View className="mt-3">
                   <LengthLimitControl state={limit} onChange={onLimitChange} />
-                  {activeLimit && overLimit ? (
+                  {activeLimit && overLimit && modelReady !== false ? (
                     <Pressable
                       onPress={fitLength}
                       disabled={busyAny}

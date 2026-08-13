@@ -174,7 +174,30 @@ export default function GenerateScreen() {
   const canGenerate =
     mode === "link" ? scrapeState === "ok" : description.trim().length > 0;
 
-  const onGenerate = async () => {
+  // Tapping Generate: if the AI model isn't installed, confirm first — a no-AI
+  // letter is more basic, may read rougher, and the advanced (AI) editing tools
+  // won't be offered. Otherwise generate straight away.
+  const onGenerate = () => {
+    if (modelReady === false) {
+      Alert.alert(
+        "Generate without the AI?",
+        "The AI model isn't downloaded. You can make a letter now using basic templates, but it will be simpler, more likely to have rough spots, and you WON'T get the advanced AI editing tools (rewrite, tone, auto-fit) — only manual editing.",
+        [
+          { text: "Download now", onPress: () => router.push("/model") },
+          {
+            text: "Continue anyway",
+            style: "destructive",
+            onPress: () => runGenerate(),
+          },
+          { text: "Cancel", style: "cancel" },
+        ]
+      );
+      return;
+    }
+    runGenerate();
+  };
+
+  const runGenerate = async () => {
     try {
       setBusy(true);
       const jobText = (mode === "link" ? scrapedText : description).trim();
