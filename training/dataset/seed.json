@@ -1839,5 +1839,394 @@
       "description": "Magnolia Bank is hiring a Personal Banker to serve customers at one of our branches. You will open and service accounts, understand each customer's needs, recommend the right products, handle transactions accurately, and stay compliant with banking regulations. We want retail banking experience, strong customer service, comfort matching customers to products without overselling, and careful, accurate handling of accounts and cash."
     },
     "letter_body": "Banking is trust made concrete, and earning it by matching a customer to what they actually need is the part of the job I take pride in. That is why the Personal Banker role at Magnolia Bank caught my attention.\n\nI currently work as a Personal Banker at Peachtree Bank, where I serve retail clients. Opening accounts, resolving issues, and handling transactions accurately is my daily work, so your core responsibilities are ones I already own.\n\nYour posting asks for someone who matches customers to products without overselling, which is exactly how I work. I match customers to the right products by understanding their needs first, and I consistently rank among the top of my branch for customer satisfaction because that approach earns repeat trust.\n\nI would be glad to bring that to Magnolia. Thank you for considering my application, and I would welcome the chance to meet your branch team."
+  },
+  {
+    "profile": {
+      "name": "Owen Blake",
+      "location": "Seattle, WA",
+      "skills": [
+        "Java",
+        "Python",
+        "REST APIs",
+        "Git",
+        "SQL",
+        "unit testing"
+      ],
+      "experience": [
+        {
+          "role": "Software Engineering Intern",
+          "company": "Cloudreach",
+          "startDate": "06/2024",
+          "endDate": "09/2024",
+          "isCurrent": false,
+          "description": "Built internal REST tools in Java and added unit tests that raised coverage on my team's service from 40% to 80%."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "University of Washington",
+          "graduationYear": "2025"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Budget tracker app",
+          "technologies": "React, Node.js"
+        }
+      ]
+    },
+    "job": {
+      "company": "Latchpoint",
+      "role": "Software Engineer",
+      "description": "We are hiring a new-grad Software Engineer. You will build and maintain backend services in Java or Python, write tests, use Git for source control, and work with SQL databases. We want strong fundamentals, some internship or project experience, and a genuine interest in writing tested, maintainable code."
+    },
+    "letter_body": "Writing code that the next person can actually build on is the part of engineering I care about most, so the Software Engineer role at Latchpoint caught my attention as I finish my degree.\n\nMost recently, I worked as a Software Engineering Intern at Cloudreach, where I built internal REST tools in Java. That summer taught me that tests are not busywork: I added unit tests that raised my team's coverage from 40% to 80%, which caught real bugs before they shipped.\n\nYour posting asks for strong fundamentals and a habit of writing maintainable code, and that is how I work. I lean on Git for clean history, I write SQL comfortably, and I would rather add a test than hope a change works.\n\nI would be glad to bring that to Latchpoint as I start my career. Thank you for considering my application, and I would welcome the chance to talk through my internship and projects."
+  },
+  {
+    "profile": {
+      "name": "Divya Rao",
+      "location": "Chicago, IL",
+      "skills": [
+        "Python",
+        "SQL",
+        "pandas",
+        "data visualization",
+        "A/B testing",
+        "statistics"
+      ],
+      "experience": [
+        {
+          "role": "Data Science Intern",
+          "company": "Meridian Analytics",
+          "startDate": "05/2024",
+          "endDate": "08/2024",
+          "isCurrent": false,
+          "description": "Analyzed customer churn in Python and built a dashboard that helped the team cut monthly reporting work by half."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Statistics",
+          "school": "University of Illinois",
+          "graduationYear": "2025"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Brightside",
+      "role": "Data Analyst",
+      "description": "Brightside is hiring a Data Analyst to turn data into decisions. You will write SQL and Python, build dashboards, run and read A/B tests, and explain findings to non-technical partners. We welcome recent graduates with internship or project experience and strong statistics fundamentals."
+    },
+    "letter_body": "Turning a messy dataset into something a team can act on is the work I find most satisfying, so the Data Analyst role at Brightside stood out to me as I wrap up my statistics degree.\n\nMost recently, I worked as a Data Science Intern at Meridian Analytics, where I analyzed customer churn in Python. I built a dashboard that cut the team's monthly reporting work in half, which taught me that the useful part of analysis is making it easy for other people to use.\n\nYour posting values SQL, dashboards, and clear communication, and those are my strengths. I write SQL and Python daily, I have run A/B tests, and I make a point of explaining results in plain language.\n\nI would be glad to bring that curiosity to Brightside. Thank you for considering my application, and I would welcome a conversation about the problems your team is working on."
+  },
+  {
+    "profile": {
+      "name": "Caleb Nguyen",
+      "location": "Austin, TX",
+      "skills": [
+        "social media",
+        "copywriting",
+        "content creation",
+        "analytics",
+        "email marketing",
+        "Canva"
+      ],
+      "experience": [
+        {
+          "role": "Marketing Intern",
+          "company": "Faye & Co",
+          "startDate": "06/2024",
+          "endDate": "08/2024",
+          "isCurrent": false,
+          "description": "Ran the brand's Instagram over the summer and grew engagement 35% by testing a new content format and posting schedule."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Communications",
+          "school": "University of Texas",
+          "graduationYear": "2025"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Nimbleweb",
+      "role": "Marketing Coordinator",
+      "description": "Nimbleweb is hiring a Marketing Coordinator to grow our social channels and content. You will create posts, write copy, schedule content, and use analytics to decide what to do next. Recent graduates with internship experience are welcome; strong writing and genuine curiosity about what makes people click matter most."
+    },
+    "letter_body": "Good marketing reads like a person wanted to write it, and finding that voice is what I enjoy, so the Marketing Coordinator role at Nimbleweb appealed to me as I finish my degree.\n\nMost recently, I worked as a Marketing Intern at Faye & Co, where I ran the brand's Instagram for the summer. I grew engagement by 35% by testing a new content format and posting schedule, which taught me to let the data settle debates rather than my own taste.\n\nYour posting asks for strong writing and a curiosity about what makes people click, and both are true of me. I write copy, create content, and read the analytics to see what actually landed.\n\nI would love to bring that energy to Nimbleweb. Thank you for reading my application, and I would be glad to share samples and talk through my internship."
+  },
+  {
+    "profile": {
+      "name": "Sofia Reyes",
+      "location": "Denver, CO",
+      "skills": [
+        "project coordination",
+        "budgeting",
+        "vendor management",
+        "scheduling",
+        "stakeholder communication"
+      ],
+      "experience": [
+        {
+          "role": "Project Coordinator",
+          "company": "Astra Events",
+          "startDate": "02/2019",
+          "endDate": "10/2024",
+          "isCurrent": false,
+          "description": "Coordinated corporate events up to 400 attendees and kept 95% of projects on budget while managing vendors and timelines."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Hospitality Management",
+          "school": "University of Denver",
+          "graduationYear": "2018"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Cardinal Group",
+      "role": "Project Coordinator",
+      "description": "Cardinal Group is hiring a Project Coordinator to keep programs organized. You will coordinate schedules, track budgets, manage vendors, and communicate with stakeholders. We want several years of coordination experience, strong organization, and calm judgment under deadlines."
+    },
+    "letter_body": "Keeping many moving pieces organized without losing the human side is the part of coordination I enjoy, so the Project Coordinator role at Cardinal Group caught my eye as I return to work after some time away.\n\nMost recently, I worked as a Project Coordinator at Astra Events, where I coordinated corporate events for up to 400 attendees. I kept 95% of my projects on budget while managing vendors and timelines, because a plan only helps if you hold it to the numbers.\n\nYour posting asks for strong organization and steady judgment under deadlines, and that is how I work. I track budgets closely, I keep vendors aligned, and I communicate early rather than letting a problem surprise anyone.\n\nI would be glad to bring that steadiness to Cardinal Group. Thank you for considering my application, and I would welcome the chance to meet your team."
+  },
+  {
+    "profile": {
+      "name": "Isaac Berg",
+      "location": "Boston, MA",
+      "skills": [
+        "Python",
+        "PyTorch",
+        "machine learning",
+        "research",
+        "data preprocessing",
+        "LaTeX"
+      ],
+      "experience": [
+        {
+          "role": "Research Assistant",
+          "company": "BU Vision Lab",
+          "startDate": "09/2023",
+          "endDate": "05/2024",
+          "isCurrent": false,
+          "description": "Trained image models in PyTorch for a research project and improved a baseline's accuracy by 6% through better data augmentation."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Computer Science",
+          "school": "Boston University",
+          "graduationYear": "2025"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Handwriting recognizer",
+          "technologies": "Python, PyTorch"
+        }
+      ]
+    },
+    "job": {
+      "company": "Vireo AI",
+      "role": "Machine Learning Intern",
+      "description": "Vireo AI is hiring a Machine Learning Intern. You will train and evaluate models in PyTorch, preprocess data, run experiments, and document results. We want strong Python, familiarity with deep learning, and research or project experience."
+    },
+    "letter_body": "A model only earns its place once the experiments show it actually helped, and running that loop carefully is the work I enjoy, so the Machine Learning Intern role at Vireo AI caught my attention.\n\nMost recently, I worked as a Research Assistant in BU's Vision Lab, where I trained image models in PyTorch for a research project. I improved a baseline's accuracy by 6% through better data augmentation, which taught me that the data often matters more than the architecture.\n\nYour posting asks for strong Python and a habit of documenting results, and both fit how I work. I run clean experiments, preprocess data carefully, and write up what I find so others can build on it.\n\nI would be glad to bring that rigor to Vireo. Thank you for considering my application, and I would welcome the chance to talk through my research."
+  },
+  {
+    "profile": {
+      "name": "Hana Kim",
+      "location": "Sacramento, CA",
+      "skills": [
+        "lesson planning",
+        "classroom support",
+        "tutoring",
+        "student assessment",
+        "differentiated instruction"
+      ],
+      "experience": [
+        {
+          "role": "Teaching Assistant",
+          "company": "Lincoln Elementary",
+          "startDate": "08/2023",
+          "endDate": "06/2024",
+          "isCurrent": false,
+          "description": "Supported a 2nd-grade classroom of 25 and ran small-group reading sessions that helped struggling readers catch up."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.A. Liberal Studies",
+          "school": "Sacramento State",
+          "graduationYear": "2024"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Maple Grove School",
+      "role": "Elementary Teacher",
+      "description": "Maple Grove is hiring an Elementary Teacher. You will plan and teach lessons, support diverse learners, assess student progress, and build a warm classroom. We welcome newer teachers with classroom experience and a real commitment to students."
+    },
+    "letter_body": "Being a steady, encouraging adult for young students is the most meaningful work I know, so the Elementary Teacher role at Maple Grove speaks to me as I move from assisting into leading my own classroom.\n\nMost recently, I worked as a Teaching Assistant at Lincoln Elementary, where I supported a second-grade classroom of 25 students. I ran small-group reading sessions that helped struggling readers catch up, and it showed me how much a little focused attention can change a child's week.\n\nYour posting values support for diverse learners and a warm classroom, and both are close to my heart. I plan lessons, differentiate for different levels, and keep track of where each student is.\n\nI would be glad to bring that care to Maple Grove. Thank you for considering my application, and I would welcome the chance to meet your students and staff."
+  },
+  {
+    "profile": {
+      "name": "Liam Foster",
+      "location": "New York, NY",
+      "skills": [
+        "financial modeling",
+        "Excel",
+        "valuation",
+        "forecasting",
+        "PowerPoint"
+      ],
+      "experience": [
+        {
+          "role": "Finance Intern",
+          "company": "Cedar Capital",
+          "startDate": "06/2024",
+          "endDate": "08/2024",
+          "isCurrent": false,
+          "description": "Built valuation models in Excel and prepared the analysis behind a client pitch that helped win a new account."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Finance",
+          "school": "Fordham University",
+          "graduationYear": "2025"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Harborline",
+      "role": "Financial Analyst",
+      "description": "Harborline is hiring a Financial Analyst. You will build financial models, run valuations, forecast performance, and prepare analysis for leadership. Recent graduates with internship experience and strong Excel skills are welcome."
+    },
+    "letter_body": "Financial work rewards precision and a clear story behind the numbers, and holding both is what I enjoy, so the Financial Analyst role at Harborline caught my attention as I finish my degree.\n\nMost recently, I worked as a Finance Intern at Cedar Capital, where I built valuation models in Excel. I prepared the analysis behind a client pitch that helped win a new account, which taught me that a model only matters if someone can act on it.\n\nYour posting asks for strong Excel and modeling skills, and those are my strengths. I build clean models, run valuations, and turn the output into something a decision-maker can read.\n\nI would be glad to bring that to Harborline. Thank you for considering my application, and I would welcome the chance to talk through my work."
+  },
+  {
+    "profile": {
+      "name": "Zoe Adams",
+      "location": "Remote",
+      "skills": [
+        "Figma",
+        "user research",
+        "prototyping",
+        "wireframing",
+        "usability testing"
+      ],
+      "experience": [
+        {
+          "role": "UX Design Intern",
+          "company": "Northwind Apps",
+          "startDate": "06/2024",
+          "endDate": "09/2024",
+          "isCurrent": false,
+          "description": "Redesigned an onboarding flow in Figma and ran usability tests that cut drop-off on the first screen by 20%."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.F.A. Design",
+          "school": "Rhode Island School of Design",
+          "graduationYear": "2025"
+        }
+      ],
+      "projects": [
+        {
+          "name": "Recipe app concept",
+          "technologies": "Figma"
+        }
+      ]
+    },
+    "job": {
+      "company": "Beacon",
+      "role": "Product Designer",
+      "description": "Beacon is hiring a junior Product Designer. You will design flows, prototype in Figma, run user research, and test your work with real users. Recent graduates with internship or strong project work are welcome."
+    },
+    "letter_body": "Design only counts once real users can get through it, and watching them try is the part I care about, so the Product Designer role at Beacon caught my attention as I finish school.\n\nMost recently, I worked as a UX Design Intern at Northwind Apps, where I redesigned an onboarding flow in Figma. I ran usability tests that cut drop-off on the first screen by 20%, which taught me to trust what users do over what I assumed they would.\n\nYour posting values prototyping and real user research, and both are how I work. I wireframe, prototype in Figma, and put my designs in front of people early.\n\nI would love to bring that to Beacon. Thank you for considering my application, and I would be glad to walk through my portfolio."
+  },
+  {
+    "profile": {
+      "name": "Noah Bright",
+      "location": "Detroit, MI",
+      "skills": [
+        "SolidWorks",
+        "GD&T",
+        "mechanical design",
+        "prototyping",
+        "tolerance analysis"
+      ],
+      "experience": [
+        {
+          "role": "Mechanical Engineer",
+          "company": "Forge Dynamics",
+          "startDate": "07/2020",
+          "endDate": "03/2024",
+          "isCurrent": false,
+          "description": "Designed sheet-metal enclosures in SolidWorks and cut part count on one assembly by 15% through a redesign."
+        }
+      ],
+      "education": [
+        {
+          "degree": "B.S. Mechanical Engineering",
+          "school": "University of Michigan",
+          "graduationYear": "2020"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Kestrel Robotics",
+      "role": "Mechanical Engineer",
+      "description": "Kestrel Robotics is hiring a Mechanical Engineer to design enclosures and mechanical assemblies in SolidWorks. You will apply GD&T, run tolerance analysis, and prototype hardware. We want a few years of design experience and strong SolidWorks skills."
+    },
+    "letter_body": "Good mechanical design shows up in fewer parts and cleaner tolerances, and chasing that is the work I enjoy, so the Mechanical Engineer role at Kestrel Robotics caught my attention as I look for my next role.\n\nMost recently, I worked as a Mechanical Engineer at Forge Dynamics, where I designed sheet-metal enclosures in SolidWorks. I cut part count on one assembly by 15% through a redesign, because the simplest design that still works is usually the best one.\n\nYour posting asks for strong SolidWorks and GD&T, and those are my core skills. I apply GD&T carefully, run tolerance analysis, and prototype to catch problems before production.\n\nI would be glad to bring that to Kestrel. Thank you for considering my application, and I would welcome the chance to talk through my past designs."
+  },
+  {
+    "profile": {
+      "name": "Ella Warren",
+      "location": "Columbus, OH",
+      "skills": [
+        "customer service",
+        "conflict resolution",
+        "POS systems",
+        "communication",
+        "attention to detail"
+      ],
+      "experience": [
+        {
+          "role": "Retail Associate",
+          "company": "Rivertown Goods",
+          "startDate": "03/2022",
+          "endDate": "09/2024",
+          "isCurrent": false,
+          "description": "Handled a busy sales floor and resolved customer issues, earning the highest customer-satisfaction score on the team two quarters running."
+        }
+      ],
+      "education": [
+        {
+          "degree": "Associate of Arts",
+          "school": "Columbus State",
+          "graduationYear": "2021"
+        }
+      ],
+      "projects": []
+    },
+    "job": {
+      "company": "Helpline",
+      "role": "Customer Support Associate",
+      "description": "Helpline is hiring a Customer Support Associate. You will answer customer questions, resolve issues with patience, document interactions, and keep a positive tone under pressure. Retail or service experience is a strong fit."
+    },
+    "letter_body": "Good support is half solving the problem and half making a frustrated person feel heard, and doing both is what I am good at, so the Customer Support Associate role at Helpline caught my attention.\n\nMost recently, I worked as a Retail Associate at Rivertown Goods, where I handled a busy sales floor and resolved customer issues. I earned the highest customer-satisfaction score on my team two quarters running, because I treat a complaint as a chance to fix something rather than a problem to survive.\n\nYour posting values patience and a positive tone under pressure, and both are how I work. I stay calm with upset customers, I keep clear notes, and I follow through until an issue is actually resolved.\n\nI would be glad to bring that to Helpline. Thank you for considering my application, and I would welcome the chance to meet the team."
   }
 ]
