@@ -203,7 +203,7 @@
               <span class="chip">🆓 Free &amp; unlimited</span>
             </div>
             <form class="notify" id="notifyForm2" novalidate>
-              <input type="email" id="email2" placeholder="you@email.com" aria-label="Email address" required />
+              <input type="email" id="email2" name="email" placeholder="you@email.com" aria-label="Email address" required />
               <button type="submit" class="btn btn-primary">Notify me at launch</button>
             </form>
             <div class="success" id="success2">✅ You're on the list! We'll email you the moment it's out.</div>
@@ -248,7 +248,7 @@
           <h2 class="serif">Be first through the door.</h2>
           <p>Cover Nugget is almost ready. Drop your email and we'll let you know the day it lands on the App Store and Google Play.</p>
           <form class="notify" id="notifyForm" style="max-width:460px; margin:0 auto; justify-content:center;" novalidate>
-            <input type="email" id="email" placeholder="you@email.com" aria-label="Email address" required />
+            <input type="email" id="email" name="email" placeholder="you@email.com" aria-label="Email address" required />
             <button type="submit" class="btn btn-primary">Keep me posted</button>
           </form>
           <div class="success" id="success" style="justify-content:center;">✅ You're on the list! Talk soon.</div>
@@ -280,23 +280,31 @@
     setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
   function setTheme(t){ root.setAttribute('data-theme', t); icon.textContent = t === 'dark' ? '☀️' : '🌙'; localStorage.setItem('theme', t); }
 
-  // ---- Notify sign-up ----
-  // To collect emails for real, set FORM_ENDPOINT to a Formspree/Buttondown URL
-  // (e.g. "https://formspree.io/f/xxxxxx"). Until then it just confirms locally.
-  const FORM_ENDPOINT = "";
+  // ---- Notify sign-up (Formspree AJAX) ----
+  const FORM_ENDPOINT = "https://formspree.io/f/mkjwbpjo";
   function wireForm(formId, successId){
     const form = document.getElementById(formId);
     const input = form.querySelector('input[type=email]');
+    const btn = form.querySelector('button');
     const ok = document.getElementById(successId);
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!input.checkValidity()) { input.focus(); input.style.borderColor = 'var(--accent)'; return; }
+      input.style.borderColor = '';
       const email = input.value.trim();
-      if (FORM_ENDPOINT) {
-        try { await fetch(FORM_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ email }) }); } catch (_) {}
+      const orig = btn.textContent; btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        if (!res.ok) throw new Error('submit failed');
+        form.style.display = 'none'; ok.classList.add('show');
+      } catch (_) {
+        btn.disabled = false; btn.textContent = 'Hmm, try again';
+        setTimeout(() => { btn.textContent = orig; }, 2500);
       }
-      try { const list = JSON.parse(localStorage.getItem('cn_waitlist')||'[]'); list.push(email); localStorage.setItem('cn_waitlist', JSON.stringify(list)); } catch(_) {}
-      form.style.display = 'none'; ok.classList.add('show');
     });
   }
   wireForm('notifyForm', 'success');
