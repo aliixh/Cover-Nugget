@@ -139,6 +139,30 @@ export function guessCompanyRole(text: string): { company?: string; role?: strin
       }
     }
   }
+  // Last resort for the role: most postings lead with the job title as a
+  // heading. Take the first short, title-ish line — one that reads like a
+  // title (no sentence punctuation), or contains a common role word — so plain
+  // reader output with no labels still prefills the Role field.
+  if (!role) {
+    const ROLE_WORDS =
+      /\b(engineer|developer|manager|analyst|designer|scientist|intern|consultant|specialist|coordinator|associate|director|nurse|assistant|technician|accountant|marketing|sales|lead|architect|administrator|representative|officer|clerk|teacher|writer|editor|recruiter|paralegal|attorney|therapist|counselor)\b/i;
+    for (const l of lines.slice(0, 6)) {
+      const words = l.split(/\s+/);
+      const titleish =
+        words.length >= 2 &&
+        words.length <= 8 &&
+        !/[.!?:]$/.test(l) &&
+        !/[.!?]/.test(l); // not a full sentence
+      if ((titleish && ROLE_WORDS.test(l)) || (ROLE_WORDS.test(l) && l.length <= 60)) {
+        // "Marketing Coordinator at Bright Labs" → just the title.
+        const cand = tidyField(l.replace(/\s+at\s+[A-Z].*$/, ""));
+        if (cand && cand.toLowerCase() !== (company ?? "").toLowerCase()) {
+          role = cand;
+          break;
+        }
+      }
+    }
+  }
   return { company, role };
 }
 

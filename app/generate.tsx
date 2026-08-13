@@ -103,7 +103,7 @@ export default function GenerateScreen() {
   );
   const scrapeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Dev tool: preview the full scraped text.
+  // Let the user preview the full scraped text before generating.
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewText, setPreviewText] = useState("");
   const [previewLoading, setPreviewLoading] = useState(false);
@@ -339,7 +339,7 @@ export default function GenerateScreen() {
             className="mb-2 self-start rounded-lg border border-border px-3 py-1.5 active:opacity-70 dark:border-dark-border"
           >
             <Text className="text-sm font-medium text-secondary dark:text-dark-ink">
-              🔍 Preview scraped text (dev)
+              🔍 Preview scraped text
             </Text>
           </Pressable>
         </>
@@ -413,7 +413,7 @@ export default function GenerateScreen() {
         </Text>
       </Pressable>
 
-      {/* Scraped-text preview (dev tool) */}
+      {/* Scraped-text preview */}
       <Modal
         visible={previewOpen}
         transparent
