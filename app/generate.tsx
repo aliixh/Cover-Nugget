@@ -4,7 +4,7 @@
 // keep "Generate" disabled until the scrape succeeds, and warn if it's blocked.
 
 import { useRouter } from "expo-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Animated, Modal, Pressable, ScrollView, View } from "react-native";
 import { Text } from "../src/ui/serif";
 import { ScreenContainer } from "../src/components/ScreenContainer";
@@ -12,12 +12,16 @@ import { BackButton } from "../src/components/BackButton";
 import { Button } from "../src/components/Button";
 import { Logo } from "../src/components/Logo";
 import { TextField } from "../src/components/TextField";
+import { Card } from "../src/components/Card";
 import { LengthLimitControl, type LimitState } from "../src/components/LengthLimitControl";
 import { useApp } from "../src/context/AppContext";
 import { fetchJobTextFromUrl, guessCompanyRole } from "../src/job/jina";
 import { generateLetter, fitToLength } from "../src/services/coverLetter";
+import { jobMatchInsight } from "../src/ai/jobMatch";
+import type { FullProfile } from "../src/types/models";
 import {
   defaultLetterTitle,
+  getFullProfile,
   saveCoverLetter,
   updateCoverLetterLimit,
 } from "../src/db/repositories";
@@ -80,6 +84,10 @@ export default function GenerateScreen() {
   const [scrapeState, setScrapeState] = useState<ScrapeState>("idle");
   const [scrapeError, setScrapeError] = useState<string | null>(null);
   const [scrapedText, setScrapedText] = useState("");
+  const [profile, setProfile] = useState<FullProfile | null>(null);
+  useEffect(() => {
+    getFullProfile().then(setProfile).catch(() => {});
+  }, []);
   const scrapeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Dev tool: preview the full scraped text.
@@ -143,6 +151,12 @@ export default function GenerateScreen() {
       setPreviewLoading(false);
     }
   };
+
+  // Live profile-vs-posting match, so the user can see coverage/gaps before generating.
+  const match = useMemo(() => {
+    const jobText = (mode === "link" ? scrapedText : description).trim();
+    return profile ? jobMatchInsight(profile, jobText) : null;
+  }, [profile, mode, scrapedText, description]);
 
   const canGenerate =
     mode === "link" ? scrapeState === "ok" : description.trim().length > 0;
@@ -313,6 +327,34 @@ export default function GenerateScreen() {
           <TextField label="Role" value={role} onChangeText={setRole} optional placeholder="SWE Intern" />
         </View>
       </View>
+
+      {/* Profile ↔ posting match: coverage score + the key terms you're missing. */}
+      {match && match.total >= 4 ? (
+        <Card className="mt-4">
+          <View className="flex-row items-center justify-between">
+            <Text className="font-semibold text-ink dark:text-dark-ink">Profile match</Text>
+            <Text className="font-semibold text-secondary dark:text-dark-primary">
+              {match.covered.length}/{match.total} · {Math.round(match.score * 100)}%
+            </Text>
+          </View>
+          <View className="mt-2 h-2 w-full overflow-hidden rounded-full bg-highlight dark:bg-dark-border">
+            <View
+              className="h-2 rounded-full bg-secondary dark:bg-dark-primary"
+              style={{ width: `${Math.max(4, Math.round(match.score * 100))}%` }}
+            />
+          </View>
+          {match.missing.length ? (
+            <Text className="mt-3 text-sm text-muted dark:text-dark-muted">
+              Not in your profile yet:{" "}
+              <Text className="font-semibold text-accent">{match.missing.join(", ")}</Text>
+            </Text>
+          ) : (
+            <Text className="mt-3 text-sm text-secondary dark:text-dark-primary">
+              Strong match — your profile covers the posting's key terms.
+            </Text>
+          )}
+        </Card>
+      ) : null}
 
       {/* Optional length limit — enforced before the letter is shown. */}
       <View className="mt-4">
