@@ -131,8 +131,12 @@ export function currentOrRecentClause(exps: Experience[]): string {
   const { e, months } = meta[0];
   const head = [e.role, e.company].filter(Boolean).join(" at ");
   if (!head) return "";
-  const ten = months != null ? " " + tenurePhrase(months) : "";
-  return e.isCurrent
-    ? `I currently work as ${head}${ten}`
-    : `Most recently, I worked as ${head}${ten}`;
+  if (e.isCurrent) {
+    const ten = months != null ? " " + tenurePhrase(months) : "";
+    return `I currently work as ${head}${ten}`;
+  }
+  // Past role: only mention duration when it's substantial (>= 1 year). A short
+  // stint ("for 3 months") reads as a negative, so we leave it off.
+  const ten = months != null && months >= 12 ? " " + tenurePhrase(months) : "";
+  return `Most recently, I worked as ${head}${ten}`;
 }

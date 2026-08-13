@@ -62,7 +62,9 @@ function toFirstPerson(desc: string): string {
   if (!m) return d;
   const lw = m[1].toLowerCase();
   const present3rd = /s$/.test(lw) && !/(ss|us|is)$/.test(lw);
-  if (!present3rd && !PAST_VERBS.has(lw)) return d; // not a leading verb -> leave alone
+  // past tense: regular "-ed" (optimized, delivered) or a known irregular (built, led)
+  const past = /ed$/.test(lw) || PAST_VERBS.has(lw);
+  if (!present3rd && !past) return d; // not a leading verb -> leave alone
   const verb = present3rd ? deconjugate(lw) : lw;
   // de-conjugate later coordinate verbs ("...and resolves", ", manages...") when
   // they're recognizably verbs, so the whole first-person clause stays consistent.
