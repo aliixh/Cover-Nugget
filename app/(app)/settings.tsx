@@ -75,7 +75,7 @@ export default function SettingsScreen() {
   const resetApp = () => {
     Alert.alert(
       "Reset app data?",
-      "This deletes your profile and all cover letters, and restarts onboarding. This can't be undone.",
+      "Deletes your profile and all letters. Can't be undone.",
       [
         { text: "Cancel", style: "cancel" },
         {

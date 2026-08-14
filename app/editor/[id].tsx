@@ -170,9 +170,8 @@ export default function EditorScreen() {
 
   const aiUnavailable = (e: any) => {
     Alert.alert(
-      "This needs the full app",
-      (e?.message ?? "This runs the on-device model.") +
-        "\n\nYou can still edit the letter yourself with “Edit myself.”"
+      "Needs the AI model",
+      "Download it to use AI edits, or use “Edit myself.”"
     );
   };
 
@@ -465,13 +464,11 @@ export default function EditorScreen() {
                   /* No AI model → hide the advanced (AI) editing tools and say so. */
                   <View className="rounded-2xl border border-border bg-white p-4 dark:border-dark-border dark:bg-dark-surface">
                     <Text className="text-sm font-semibold text-ink dark:text-dark-ink">
-                      Advanced editing is off
+                      AI editing is off
                     </Text>
                     <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
-                      This letter was written without the AI model, so the AI tools
-                      (rewrite, shorten, tone, auto-fit) aren't available. You can
-                      still edit it yourself with “✎ Edit myself”. Download the model
-                      to unlock the advanced tools.
+                      No AI model, so only manual “✎ Edit myself” works. Download it
+                      to unlock AI edits.
                     </Text>
                     <Pressable
                       onPress={() => router.push("/model")}
@@ -569,10 +566,8 @@ export default function EditorScreen() {
               AI editing is off
             </Text>
             <Text className="mb-4 text-sm leading-5 text-ink dark:text-dark-ink">
-              Tapping a sentence to rewrite, shorten, or change its tone uses the
-              on-device AI model, which isn't downloaded. Get it (~{MODEL.approxSizeMB} MB,
-              one time) to unlock those tools. You can still edit the letter yourself
-              with “✎ Edit myself”.
+              Sentence edits need the AI model, which isn't downloaded. Get it, or
+              use “✎ Edit myself.”
             </Text>
             <Button
               label={`Download AI model (~${MODEL.approxSizeMB} MB)`}

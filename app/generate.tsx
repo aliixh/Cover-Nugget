@@ -277,9 +277,7 @@ export default function GenerateScreen() {
             AI model not downloaded
           </Text>
           <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
-            You can still generate, but your letter will use basic templates,
-            not the AI. Download the model (~{MODEL.approxSizeMB} MB, one time)
-            for polished, tailored writing that runs fully offline on your device.
+            Letters use basic templates until you download it (~{MODEL.approxSizeMB} MB, one time).
           </Text>
           <Pressable
             onPress={() => router.push("/model")}
@@ -327,9 +325,8 @@ export default function GenerateScreen() {
           />
 
           <Text className="mb-2 text-xs text-muted dark:text-dark-muted">
-            Works on most company career pages, Greenhouse, Lever, and Ashby.
-            Indeed & LinkedIn block automatic reading. For those, use “Paste
-            Description” instead.
+            Works on most company sites, Greenhouse, Lever, and Ashby. Indeed and
+            LinkedIn are blocked, so paste those.
           </Text>
 
           {/* Scrape status */}
@@ -439,13 +436,11 @@ export default function GenerateScreen() {
         <View className="flex-1 items-center justify-center bg-black/40 px-8">
           <View className="w-full rounded-3xl bg-background p-5 dark:bg-dark-surface">
             <Text className="mb-2 text-lg font-bold text-primary dark:text-dark-primary">
-              Generate without the AI?
+              Generate without AI?
             </Text>
             <Text className="mb-5 text-sm leading-5 text-ink dark:text-dark-ink">
-              The AI model isn't downloaded. You can make a letter now using basic
-              templates, but it will be simpler, more likely to have rough spots,
-              and you won't get the advanced AI editing tools (rewrite, tone,
-              auto-fit); only manual editing.
+              No AI model downloaded. Letters will use basic templates and skip the
+              AI editing tools.
             </Text>
             <Pressable
               onPress={() => {
