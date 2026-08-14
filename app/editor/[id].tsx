@@ -420,13 +420,7 @@ export default function EditorScreen() {
                     <Text
                       key={idx}
                       onPress={() => toggleSentence(idx)}
-                      style={
-                        modelReady === false
-                          ? { color: colors.muted }
-                          : selected.has(idx)
-                          ? selectedStyle
-                          : undefined
-                      }
+                      style={selected.has(idx) ? selectedStyle : undefined}
                     >
                       {t.text}
                     </Text>

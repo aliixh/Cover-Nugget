@@ -34,6 +34,10 @@ export interface ModelConfig {
   fileName: string;
   /** Approximate download size, for the UI ("~xxx MB"). */
   approxSizeMB: number;
+  /** Exact byte size of the finished file. Used to tell a COMPLETE download from
+   *  a partial/in-progress one (a resumable download's partial file still exists
+   *  on disk, so existence alone is not enough to call it downloaded). */
+  sizeBytes: number;
   /** Quantization / format note shown to the user. */
   formatNote: string;
   /** Optional cover-letter LoRA adapter applied on top of the base model. */
@@ -43,11 +47,11 @@ export interface ModelConfig {
 export const MODEL: ModelConfig = {
   // User-facing name only - we intentionally don't reveal the underlying model.
   displayName: "Cover Nugget Assistant",
-  // TODO(host): upload cn-llama1b-q4_k_m.gguf (807,693,984 bytes) produced by the
-  // export step and put its public URL here. Placeholder points at the owner's HF.
+  // Fine-tuned Llama-3.2-1B (LoRA merged), q4_k_m, hosted on Hugging Face.
   url: "https://huggingface.co/aliixh/cover-nugget-1b/resolve/main/cover-nugget-1b-q4_k_m.gguf",
   fileName: "cover-nugget-1b-q4_k_m.gguf",
   approxSizeMB: 770,
+  sizeBytes: 807693984,
   formatNote: "Private, on-device writing model · runs fully offline",
   // LoRA is merged into the weights above, so no separate adapter is needed.
   // (AdapterConfig is kept for the alternative base+adapter strategy.)

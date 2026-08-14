@@ -34,9 +34,14 @@ export async function getModelStatus(): Promise<ModelStatus> {
     return { downloaded: false, path };
   }
   const info = await FileSystem.getInfoAsync(path);
+  const size = info.exists ? ((info as any).size ?? 0) : 0;
+  // A resumable download writes to the final path incrementally, so a partial or
+  // interrupted download still "exists". Only count it as downloaded once the
+  // full expected file size is on disk - otherwise in-progress looks complete.
+  const downloaded = info.exists && size >= MODEL.sizeBytes;
   return {
-    downloaded: info.exists,
-    sizeBytes: info.exists ? (info as any).size : undefined,
+    downloaded,
+    sizeBytes: info.exists ? size : undefined,
     path,
   };
 }
