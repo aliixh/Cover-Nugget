@@ -39,7 +39,6 @@ import { countChars, countWords, withinLimit, type LengthLimit } from "../../src
 import { tokenizeSentences } from "../../src/utils/sentences";
 import type { SelectionAction } from "../../src/ai/types";
 import { getModelStatus } from "../../src/ai/modelManager";
-import { MODEL } from "../../src/ai/modelConfig";
 
 const KB_ACCESSORY_ID = "editorKbDone";
 
@@ -564,7 +563,7 @@ export default function EditorScreen() {
               use “✎ Edit myself.”
             </Text>
             <Button
-              label={`Download AI model (~${MODEL.approxSizeMB} MB)`}
+              label="Download AI model"
               onPress={() => {
                 setAiPromptOpen(false);
                 router.push("/model");

@@ -21,11 +21,6 @@ import {
 } from "../../src/ai/modelManager";
 import { getLlamaRuntime } from "../../src/ai/runtime";
 
-function formatMB(bytes?: number): string {
-  if (!bytes) return "";
-  return `${(bytes / (1024 * 1024)).toFixed(0)} MB`;
-}
-
 export default function ModelScreen() {
   const [status, setStatus] = useState<ModelStatus | null>(null);
   const [downloading, setDownloading] = useState(false);
@@ -90,8 +85,8 @@ export default function ModelScreen() {
       </Text>
       <Text className="mb-5 text-base text-secondary dark:text-dark-ink">
         Cover Nugget runs completely privately on your device. Download the model
-        once (~{MODEL.approxSizeMB} MB) and it will work fully offline! Your
-        information will never be sent anywhere.
+        once and it will work fully offline! Your information will never be sent
+        anywhere.
       </Text>
 
       <Card className="mb-5">
@@ -99,14 +94,11 @@ export default function ModelScreen() {
           {MODEL.displayName}
         </Text>
         <Text className="mt-1 text-sm text-muted dark:text-dark-muted">{MODEL.formatNote}</Text>
-        <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
-          Approx. download size: ~{MODEL.approxSizeMB} MB
-        </Text>
 
         <View className="mt-4">
           {status?.downloaded ? (
             <Text className="mb-3 font-semibold text-secondary dark:text-dark-primary">
-              ✓ Downloaded {formatMB(status.sizeBytes)}
+              ✓ Downloaded
             </Text>
           ) : (
             <Text className="mb-3 text-muted dark:text-dark-muted">Not downloaded yet</Text>

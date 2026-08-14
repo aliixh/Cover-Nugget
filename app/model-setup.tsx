@@ -14,7 +14,6 @@ import { ScreenContainer } from "../src/components/ScreenContainer";
 import { Button } from "../src/components/Button";
 import { ProgressBar } from "../src/components/ProgressBar";
 import { Logo } from "../src/components/Logo";
-import { MODEL } from "../src/ai/modelConfig";
 import { downloadModel, getModelStatus } from "../src/ai/modelManager";
 import { makeEtaTracker, formatEta, formatSpeed } from "../src/utils/downloadProgress";
 import { setMeta } from "../src/db/repositories";
@@ -82,8 +81,8 @@ export default function ModelSetup() {
         </Text>
         <Text className="mt-2 text-center text-base text-secondary dark:text-dark-ink">
           We're setting up your assistant. This is a{" "}
-          <Text className="font-semibold">one-time download</Text> (~
-          {MODEL.approxSizeMB} MB). Once it's done, Cover Nugget is{" "}
+          <Text className="font-semibold">one-time download</Text>. Once it's
+          done, Cover Nugget is{" "}
           <Text className="font-semibold">100% free forever</Text> and runs
           completely offline and private on your device.
         </Text>

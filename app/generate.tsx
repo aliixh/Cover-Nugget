@@ -18,7 +18,6 @@ import { useApp } from "../src/context/AppContext";
 import { fetchJobTextFromUrl, guessCompanyRole } from "../src/job/jina";
 import { generateLetter, fitToLength } from "../src/services/coverLetter";
 import { getModelStatus } from "../src/ai/modelManager";
-import { MODEL } from "../src/ai/modelConfig";
 import { jobMatchInsight } from "../src/ai/jobMatch";
 import type { FullProfile } from "../src/types/models";
 import {
@@ -277,7 +276,7 @@ export default function GenerateScreen() {
             AI model not downloaded
           </Text>
           <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
-            Letters use basic templates until you download it (~{MODEL.approxSizeMB} MB, one time).
+            Letters use basic templates until you download the AI model.
           </Text>
           <Pressable
             onPress={() => router.push("/model")}
@@ -450,7 +449,7 @@ export default function GenerateScreen() {
               className="mb-2 items-center rounded-2xl bg-primary px-5 py-3 active:opacity-80 dark:bg-dark-primary"
             >
               <Text className="text-base font-bold text-background dark:text-dark-background">
-                Download AI model (~{MODEL.approxSizeMB} MB)
+                Download AI model
               </Text>
             </Pressable>
             <Pressable
