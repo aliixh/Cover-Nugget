@@ -39,6 +39,7 @@ import { countChars, countWords, withinLimit, type LengthLimit } from "../../src
 import { tokenizeSentences } from "../../src/utils/sentences";
 import type { SelectionAction } from "../../src/ai/types";
 import { getModelStatus } from "../../src/ai/modelManager";
+import { MODEL } from "../../src/ai/modelConfig";
 
 const KB_ACCESSORY_ID = "editorKbDone";
 
@@ -105,6 +106,9 @@ export default function EditorScreen() {
   // hide those tools and show a note - a no-AI letter only gets manual editing.
   // Re-checked on focus so downloading the model unlocks the tools on return.
   const [modelReady, setModelReady] = useState<boolean | null>(null);
+  // No-AI: tapping a sentence (or Select all) opens this download prompt instead
+  // of selecting, since sentence editing needs the model.
+  const [aiPromptOpen, setAiPromptOpen] = useState(false);
   useFocusEffect(
     useCallback(() => {
       getModelStatus()
@@ -144,6 +148,10 @@ export default function EditorScreen() {
   };
 
   const toggleSentence = (idx: number) => {
+    if (modelReady === false) {
+      setAiPromptOpen(true);
+      return;
+    }
     setSelected((prev) => {
       const next = new Set(prev);
       if (next.has(idx)) next.delete(idx);
@@ -151,7 +159,13 @@ export default function EditorScreen() {
       return next;
     });
   };
-  const selectAll = () => setSelected(new Set(sentenceIdxs));
+  const selectAll = () => {
+    if (modelReady === false) {
+      setAiPromptOpen(true);
+      return;
+    }
+    setSelected(new Set(sentenceIdxs));
+  };
   const clearSelection = () => setSelected(new Set());
 
   const aiUnavailable = (e: any) => {
@@ -407,7 +421,13 @@ export default function EditorScreen() {
                     <Text
                       key={idx}
                       onPress={() => toggleSentence(idx)}
-                      style={selected.has(idx) ? selectedStyle : undefined}
+                      style={
+                        modelReady === false
+                          ? { color: colors.muted }
+                          : selected.has(idx)
+                          ? selectedStyle
+                          : undefined
+                      }
                     >
                       {t.text}
                     </Text>
@@ -535,6 +555,41 @@ export default function EditorScreen() {
           </View>
         </View>
       ) : null}
+
+      {/* No-AI: tapping a (greyed) sentence prompts to download the model */}
+      <Modal
+        visible={aiPromptOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setAiPromptOpen(false)}
+      >
+        <View className="flex-1 items-center justify-center bg-black/40 px-6">
+          <View className="w-full rounded-2xl bg-background p-5 dark:bg-dark-surface">
+            <Text className="mb-2 text-lg font-bold text-primary dark:text-dark-primary">
+              AI editing is off
+            </Text>
+            <Text className="mb-4 text-sm leading-5 text-ink dark:text-dark-ink">
+              Tapping a sentence to rewrite, shorten, or change its tone uses the
+              on-device AI model, which isn't downloaded. Get it (~{MODEL.approxSizeMB} MB,
+              one time) to unlock those tools. You can still edit the letter yourself
+              with “✎ Edit myself”.
+            </Text>
+            <Button
+              label={`Download AI model (~${MODEL.approxSizeMB} MB)`}
+              onPress={() => {
+                setAiPromptOpen(false);
+                router.push("/model");
+              }}
+              className="mb-2"
+            />
+            <Button
+              label="Not now"
+              variant="ghost"
+              onPress={() => setAiPromptOpen(false)}
+            />
+          </View>
+        </View>
+      </Modal>
 
       {/* Custom-edit modal */}
       <Modal
