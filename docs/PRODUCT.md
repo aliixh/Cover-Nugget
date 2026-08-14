@@ -202,23 +202,26 @@ header/date/sign-off from the profile while preserving the body.
 
 ## 9. The on-device model & fine-tuning direction
 
-- **Shipped model:** `Qwen2.5-0.5B-Instruct` (Q4, ~469 MB), downloaded once from
-  the **Your Assistant** screen (name hidden in-app), then fully offline via
-  `llama.rn`. Runs only in a Dev/production build, not Expo Go.
-- **Candidate upgrade:** `Llama-3.2-1B-Instruct` (Q4, ~770 MB) — clearly better
-  prose, ~1.5 GB RAM (OOM risk on old phones). Swapping is one line in
-  `src/ai/modelConfig.ts`. Decide *after* measuring on a real device.
-- **Fine-tuning goal:** a small **LoRA** that improves the *polish step's prose*
-  (not accuracy). Approach = **Option A (polish)**: train on `skeleton → gold
-  letter` pairs so training matches the app's real runtime task.
+- **Shipped model:** a **fine-tuned `Llama-3.2-1B-Instruct`** (LoRA merged in,
+  quantized to Q4_K_M, ~770 MB), hosted on Hugging Face and set in
+  `src/ai/modelConfig.ts`. Downloaded once from the **Your Assistant** screen
+  (name hidden in-app), then fully offline via `llama.rn`. Runs only in a
+  Dev/production build, not Expo Go. (Replaced the original `Qwen2.5-0.5B`; the
+  0.5B-vs-1B call went to the 1B.)
+- **Runtime fact guard:** `src/ai/factGuard.ts` — if the model drops or invents a
+  number/fact, the app falls back to the deterministic skeleton, so output is
+  always factually safe.
+- **Fine-tuning (done):** a small **LoRA** improving the *polish step's prose*
+  (not accuracy). Approach = **Option A (polish)**: trained on `skeleton → gold
+  letter` pairs (`train_polish.jsonl`) so training matched the runtime task.
   - Gold examples are **hand-written by the assistant as the "teacher" at $0** —
     full realistic job descriptions + 4-paragraph human-style letters, no
-    clichés/dashes. Current data: **24 gold seeds → 20 train / 4 held-out eval**
-    (`train_polish.jsonl` / `eval_polish.jsonl`); ~50–80 is the eventual target
-    for a *style* LoRA.
-  - Public datasets (ShashiVish, cultural-dimension) are used for **field variety
-    only** — their letters are cliché-ridden, so they are *not* gold targets.
-  - See `training/` and `HANDOFF.md` §8 for status and the exact pipeline.
+    clichés/dashes. The corpus grew to **78 gold seeds** with a held-out eval split.
+  - **v4 is the shipped model** (~75% model-polish, 100% factual via the guard,
+    0 dashes, unique openers). v5 (distill from a 3B) regressed; v6 (78 seeds) was
+    a wash; DPO experiments both failed. Full log in `training/README.md`.
+  - Public datasets (ShashiVish, cultural-dimension) were used for **field variety
+    only** — cliché-ridden, so never gold targets.
 
 ---
 
@@ -254,11 +257,11 @@ header/date/sign-off from the profile while preserving the body.
 ## 13. Roadmap
 
 **Near term**
-- Ship a Dev Client / EAS production build to turn on the on-device model.
-- Finish the LoRA: data prep is **done** (batch 3 → 24 gold seeds, polish pairs
-  regenerated, held-out eval split carved, trainer pointed at `train_polish.jsonl`).
-  Remaining: **train the LoRA on GPU and evaluate on-device**.
-- Finalize branding (dino-nugget logo as mascot + app icon).
+- Ship a Dev Client / EAS production build to run the on-device model on real
+  devices (it does not run in Expo Go), then submit to the stores.
+- Reconcile branding: the app is "Cover Nugget" (`com.covernugget.app`) but the
+  landing site is "DinoSoar" (`dinosoar-ai.vercel.app`) — pick one.
+- Finalize the dino-nugget logo as mascot + app icon.
 
 **Under consideration**
 - Lightweight application tracker (status per letter/company).
