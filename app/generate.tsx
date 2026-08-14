@@ -108,6 +108,11 @@ export default function GenerateScreen() {
   const [previewText, setPreviewText] = useState("");
   const [previewLoading, setPreviewLoading] = useState(false);
 
+  // No-AI confirm dialog. A controlled Modal, NOT a native Alert: the Alert was
+  // self-dismissing on Android (RN 0.81 / new arch) before the user could tap
+  // Download or Continue, so the choice was unreachable.
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
   // Prefill Company/Role from a detected value only when the field is empty, so
   // we never stomp on something the user typed.
   const prefillCompanyRole = (found: { company?: string; role?: string }) => {
@@ -179,19 +184,7 @@ export default function GenerateScreen() {
   // won't be offered. Otherwise generate straight away.
   const onGenerate = () => {
     if (modelReady === false) {
-      Alert.alert(
-        "Generate without the AI?",
-        "The AI model isn't downloaded. You can make a letter now using basic templates, but it will be simpler, more likely to have rough spots, and you WON'T get the advanced AI editing tools (rewrite, tone, auto-fit); only manual editing.",
-        [
-          { text: "Download now", onPress: () => router.push("/model") },
-          {
-            text: "Continue anyway",
-            style: "destructive",
-            onPress: () => runGenerate(),
-          },
-          { text: "Cancel", style: "cancel" },
-        ]
-      );
+      setConfirmOpen(true);
       return;
     }
     runGenerate();
@@ -435,6 +428,58 @@ export default function GenerateScreen() {
           {modelReady === false ? "Generate (basic, no AI)" : "Generate Cover Letter"}
         </Text>
       </Pressable>
+
+      {/* No-AI confirm (controlled Modal; replaces the self-dismissing Alert) */}
+      <Modal
+        visible={confirmOpen}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setConfirmOpen(false)}
+      >
+        <View className="flex-1 items-center justify-center bg-black/40 px-8">
+          <View className="w-full rounded-3xl bg-background p-5 dark:bg-dark-surface">
+            <Text className="mb-2 text-lg font-bold text-primary dark:text-dark-primary">
+              Generate without the AI?
+            </Text>
+            <Text className="mb-5 text-sm leading-5 text-ink dark:text-dark-ink">
+              The AI model isn't downloaded. You can make a letter now using basic
+              templates, but it will be simpler, more likely to have rough spots,
+              and you won't get the advanced AI editing tools (rewrite, tone,
+              auto-fit); only manual editing.
+            </Text>
+            <Pressable
+              onPress={() => {
+                setConfirmOpen(false);
+                router.push("/model");
+              }}
+              className="mb-2 items-center rounded-2xl bg-primary px-5 py-3 active:opacity-80 dark:bg-dark-primary"
+            >
+              <Text className="text-base font-bold text-background dark:text-dark-background">
+                Download AI model (~{MODEL.approxSizeMB} MB)
+              </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => {
+                setConfirmOpen(false);
+                runGenerate();
+              }}
+              className="mb-2 items-center rounded-2xl border border-border px-5 py-3 active:opacity-70 dark:border-dark-border"
+            >
+              <Text className="text-base font-semibold text-ink dark:text-dark-ink">
+                Continue anyway (basic)
+              </Text>
+            </Pressable>
+            <Pressable
+              onPress={() => setConfirmOpen(false)}
+              className="items-center px-5 py-2"
+            >
+              <Text className="text-base font-semibold text-muted dark:text-dark-muted">
+                Cancel
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
 
       {/* Scraped-text preview */}
       <Modal
