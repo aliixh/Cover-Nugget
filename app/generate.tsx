@@ -18,6 +18,8 @@ import { useApp } from "../src/context/AppContext";
 import { fetchJobTextFromUrl, guessCompanyRole } from "../src/job/jina";
 import { generateLetter, fitToLength } from "../src/services/coverLetter";
 import { getModelStatus } from "../src/ai/modelManager";
+import { ProgressBar } from "../src/components/ProgressBar";
+import { useModelDownload, startModelDownload } from "../src/ai/modelDownload";
 import { jobMatchInsight } from "../src/ai/jobMatch";
 import type { FullProfile } from "../src/types/models";
 import {
@@ -100,6 +102,16 @@ export default function GenerateScreen() {
         .catch(() => setModelReady(null));
     }, [])
   );
+  // Live background-download state, so the banner can show progress and unlock
+  // the AI the moment the download finishes while we're on this screen.
+  const dl = useModelDownload();
+  useEffect(() => {
+    if (dl.status === "done") {
+      getModelStatus()
+        .then((s) => setModelReady(s.downloaded))
+        .catch(() => {});
+    }
+  }, [dl.status]);
   const scrapeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Let the user preview the full scraped text before generating.
@@ -272,20 +284,36 @@ export default function GenerateScreen() {
           template writer (no AI), and give a one-tap path to download it. */}
       {modelReady === false ? (
         <Card className="mb-5 border-accent">
-          <Text className="text-base font-semibold text-ink dark:text-dark-ink">
-            AI model not downloaded
-          </Text>
-          <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
-            Letters use basic templates until you download the AI model.
-          </Text>
-          <Pressable
-            onPress={() => router.push("/model")}
-            className="mt-3 self-start rounded-xl bg-primary px-4 py-2 active:opacity-80 dark:bg-dark-primary"
-          >
-            <Text className="font-semibold text-background dark:text-dark-background">
-              Download AI model
-            </Text>
-          </Pressable>
+          {dl.status === "downloading" ? (
+            <>
+              <Text className="text-base font-semibold text-ink dark:text-dark-ink">
+                Setting up the AI…
+              </Text>
+              <View className="mt-2">
+                <ProgressBar value={dl.fraction} />
+              </View>
+              <Text className="mt-2 text-sm text-muted dark:text-dark-muted">
+                {Math.round(dl.fraction * 100)}%{dl.eta ? `  ·  ${dl.eta}` : ""}
+              </Text>
+            </>
+          ) : (
+            <>
+              <Text className="text-base font-semibold text-ink dark:text-dark-ink">
+                AI model not downloaded
+              </Text>
+              <Text className="mt-1 text-sm text-muted dark:text-dark-muted">
+                Letters use basic templates until you download the AI model.
+              </Text>
+              <Pressable
+                onPress={() => startModelDownload()}
+                className="mt-3 self-start rounded-xl bg-primary px-4 py-2 active:opacity-80 dark:bg-dark-primary"
+              >
+                <Text className="font-semibold text-background dark:text-dark-background">
+                  Download AI model
+                </Text>
+              </Pressable>
+            </>
+          )}
         </Card>
       ) : null}
 
@@ -444,7 +472,7 @@ export default function GenerateScreen() {
             <Pressable
               onPress={() => {
                 setConfirmOpen(false);
-                router.push("/model");
+                startModelDownload();
               }}
               className="mb-2 items-center rounded-2xl bg-primary px-5 py-3 active:opacity-80 dark:bg-dark-primary"
             >

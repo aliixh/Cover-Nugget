@@ -4,7 +4,7 @@
 // actual inference requires the Dev Client build.
 
 import { useFocusEffect } from "expo-router";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Alert, Platform, View } from "react-native";
 import { Text } from "../../src/ui/serif";
 import { ScreenContainer } from "../../src/components/ScreenContainer";
@@ -12,53 +12,41 @@ import { Button } from "../../src/components/Button";
 import { Card } from "../../src/components/Card";
 import { ProgressBar } from "../../src/components/ProgressBar";
 import { MODEL } from "../../src/ai/modelConfig";
-import { makeEtaTracker, formatEta, formatSpeed } from "../../src/utils/downloadProgress";
+import { deleteModel, getModelStatus, type ModelStatus } from "../../src/ai/modelManager";
 import {
-  deleteModel,
-  downloadModel,
-  getModelStatus,
-  type ModelStatus,
-} from "../../src/ai/modelManager";
+  useModelDownload,
+  startModelDownload,
+  resetModelDownload,
+  setDownloadUiFocused,
+} from "../../src/ai/modelDownload";
 import { getLlamaRuntime } from "../../src/ai/runtime";
 
 export default function ModelScreen() {
   const [status, setStatus] = useState<ModelStatus | null>(null);
-  const [downloading, setDownloading] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [eta, setEta] = useState("");
-  const [speed, setSpeed] = useState("");
-  const tracker = useRef(makeEtaTracker());
+  const dl = useModelDownload();
+  const downloading = dl.status === "downloading";
 
   const refresh = useCallback(async () => {
     setStatus(await getModelStatus());
   }, []);
 
+  // Refresh the on-disk status, and mark this screen focused so the global
+  // "ready" popup stays quiet here (progress is shown inline instead).
   useFocusEffect(
     useCallback(() => {
       refresh();
+      setDownloadUiFocused(true);
+      return () => setDownloadUiFocused(false);
     }, [refresh])
   );
 
-  const onDownload = async () => {
-    setDownloading(true);
-    setProgress(0);
-    setEta("");
-    setSpeed("");
-    tracker.current.reset();
-    try {
-      await downloadModel((p) => {
-        setProgress(p.fraction);
-        const { speed, eta } = tracker.current.push(p.written, p.total, Date.now());
-        setSpeed(formatSpeed(speed));
-        setEta(formatEta(eta));
-      });
-      await refresh();
-      Alert.alert("Downloaded", `${MODEL.displayName} is ready to use offline.`);
-    } catch (e: any) {
-      Alert.alert("Download failed", e?.message ?? "Something went wrong.");
-    } finally {
-      setDownloading(false);
-    }
+  // When the background download finishes, refresh the on-disk status.
+  useEffect(() => {
+    if (dl.status === "done") void refresh();
+  }, [dl.status, refresh]);
+
+  const onDownload = () => {
+    void startModelDownload();
   };
 
   const onDelete = async () => {
@@ -69,6 +57,7 @@ export default function ModelScreen() {
         style: "destructive",
         onPress: async () => {
           await deleteModel();
+          resetModelDownload();
           refresh();
         },
       },
@@ -106,13 +95,17 @@ export default function ModelScreen() {
 
           {downloading ? (
             <View className="mb-2">
-              <ProgressBar value={progress} />
+              <ProgressBar value={dl.fraction} />
               <Text className="mt-2 text-sm text-muted dark:text-dark-muted">
-                Downloading… {Math.round(progress * 100)}%
-                {eta ? `  ·  ${eta}` : ""}
-                {speed ? `  ·  ${speed}` : ""}
+                Downloading… {Math.round(dl.fraction * 100)}%
+                {dl.eta ? `  ·  ${dl.eta}` : ""}
+                {dl.speed ? `  ·  ${dl.speed}` : ""}
               </Text>
             </View>
+          ) : null}
+
+          {dl.status === "error" ? (
+            <Text className="mb-2 text-sm text-accent">{dl.error}</Text>
           ) : null}
 
           {isWeb ? (
@@ -123,7 +116,7 @@ export default function ModelScreen() {
             <Button label="Delete model" variant="ghost" onPress={onDelete} />
           ) : (
             <Button
-              label={downloading ? "Downloading…" : "Download model"}
+              label={downloading ? "Downloading…" : dl.status === "error" ? "Try again" : "Download model"}
               onPress={onDownload}
               disabled={downloading}
             />

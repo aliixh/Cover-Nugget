@@ -3,74 +3,61 @@
 // gets to "downloaded with the app". The user can defer (e.g. on cellular) and
 // grab it later from the AI Model screen.
 //
+// The download itself runs in the global controller (src/ai/modelDownload.ts),
+// so if the user skips into the app mid-download it keeps going in the background
+// and finishes with the app-wide "AI is ready" popup.
+//
 // A "model_setup_done" meta flag makes this appear only until the user either
 // completes or skips it, so it never nags on every launch.
 
 import { useRouter } from "expo-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { View } from "react-native";
 import { Text } from "../src/ui/serif";
 import { ScreenContainer } from "../src/components/ScreenContainer";
 import { Button } from "../src/components/Button";
 import { ProgressBar } from "../src/components/ProgressBar";
 import { Logo } from "../src/components/Logo";
-import { downloadModel, getModelStatus } from "../src/ai/modelManager";
-import { makeEtaTracker, formatEta, formatSpeed } from "../src/utils/downloadProgress";
+import { getModelStatus } from "../src/ai/modelManager";
+import {
+  useModelDownload,
+  startModelDownload,
+  setDownloadUiFocused,
+} from "../src/ai/modelDownload";
 import { setMeta } from "../src/db/repositories";
-
-type Phase = "idle" | "downloading" | "done" | "error";
 
 export default function ModelSetup() {
   const router = useRouter();
-  const [phase, setPhase] = useState<Phase>("idle");
-  const [progress, setProgress] = useState(0);
-  const [eta, setEta] = useState("");
-  const [speed, setSpeed] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const started = useRef(false); // guard against double-start in strict mode
-  const tracker = useRef(makeEtaTracker());
+  const dl = useModelDownload();
+  const started = useRef(false);
 
-  // Kick off the download automatically on mount.
+  // Kick off the download automatically on first mount (unless already present).
+  // Mark this as a download screen so the global "ready" popup stays quiet here.
   useEffect(() => {
-    if (started.current) return;
-    started.current = true;
-    (async () => {
-      const status = await getModelStatus();
-      if (status.downloaded) {
-        setPhase("done");
-        return;
-      }
-      await runDownload();
-    })();
+    setDownloadUiFocused(true);
+    if (!started.current) {
+      started.current = true;
+      (async () => {
+        const status = await getModelStatus();
+        if (!status.downloaded) void startModelDownload();
+      })();
+    }
+    return () => setDownloadUiFocused(false);
   }, []);
 
-  const runDownload = async () => {
-    setPhase("downloading");
-    setError(null);
-    setProgress(0);
-    setEta("");
-    setSpeed("");
-    tracker.current.reset();
-    try {
-      await downloadModel((p) => {
-        setProgress(p.fraction);
-        const { speed, eta } = tracker.current.push(p.written, p.total, Date.now());
-        setSpeed(formatSpeed(speed));
-        setEta(formatEta(eta));
-      });
-      await setMeta("model_setup_done", "1");
-      setPhase("done");
-    } catch (e: any) {
-      setError(e?.message ?? "Download failed.");
-      setPhase("error");
-    }
-  };
+  // Once the model is present, remember it so this screen never nags again.
+  useEffect(() => {
+    if (dl.status === "done") void setMeta("model_setup_done", "1");
+  }, [dl.status]);
 
-  // Mark setup handled and enter the app.
   const finish = async () => {
     await setMeta("model_setup_done", "1");
     router.replace("/home");
   };
+
+  const downloading = dl.status === "downloading";
+  const done = dl.status === "done";
+  const errored = dl.status === "error";
 
   return (
     <ScreenContainer scroll={false}>
@@ -88,38 +75,38 @@ export default function ModelSetup() {
         </Text>
 
         <View className="mt-8 w-full">
-          {phase === "downloading" ? (
+          {downloading ? (
             <>
-              <ProgressBar value={progress} />
+              <ProgressBar value={dl.fraction} />
               <Text className="mt-2 text-center text-sm text-muted dark:text-dark-muted">
-                {Math.round(progress * 100)}%{eta ? `  ·  ${eta}` : ""}
+                {Math.round(dl.fraction * 100)}%{dl.eta ? `  ·  ${dl.eta}` : ""}
               </Text>
-              {speed ? (
+              {dl.speed ? (
                 <Text className="mt-1 text-center text-xs text-muted dark:text-dark-muted">
-                  {speed}
+                  {dl.speed}
                 </Text>
               ) : null}
             </>
           ) : null}
 
-          {phase === "done" ? (
+          {done ? (
             <Text className="text-center font-semibold text-secondary dark:text-dark-primary">
               ✓ Ready to go
             </Text>
           ) : null}
 
-          {phase === "error" ? (
-            <Text className="text-center text-sm text-accent">{error}</Text>
+          {errored ? (
+            <Text className="text-center text-sm text-accent">{dl.error}</Text>
           ) : null}
         </View>
       </View>
 
-      {/* Footer actions adapt to the phase. */}
-      {phase === "done" ? (
+      {/* Footer actions adapt to the state. */}
+      {done ? (
         <Button label="Continue" onPress={finish} />
-      ) : phase === "error" ? (
+      ) : errored ? (
         <View>
-          <Button label="Try again" onPress={runDownload} className="mb-3" />
+          <Button label="Try again" onPress={() => startModelDownload()} className="mb-3" />
           <Button label="Skip for now" variant="ghost" onPress={finish} />
         </View>
       ) : (

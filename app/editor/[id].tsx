@@ -39,6 +39,7 @@ import { countChars, countWords, withinLimit, type LengthLimit } from "../../src
 import { tokenizeSentences } from "../../src/utils/sentences";
 import type { SelectionAction } from "../../src/ai/types";
 import { getModelStatus } from "../../src/ai/modelManager";
+import { useModelDownload, startModelDownload } from "../../src/ai/modelDownload";
 
 const KB_ACCESSORY_ID = "editorKbDone";
 
@@ -115,6 +116,13 @@ export default function EditorScreen() {
         .catch(() => setModelReady(null));
     }, [])
   );
+  // Unlock the AI tools the moment a background download finishes while editing.
+  const dl = useModelDownload();
+  useEffect(() => {
+    if (dl.status === "done") {
+      getModelStatus().then((s) => setModelReady(s.downloaded)).catch(() => {});
+    }
+  }, [dl.status]);
 
   useEffect(() => {
     (async () => {
@@ -566,7 +574,7 @@ export default function EditorScreen() {
               label="Download AI model"
               onPress={() => {
                 setAiPromptOpen(false);
-                router.push("/model");
+                startModelDownload();
               }}
               className="mb-2"
             />
